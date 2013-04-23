@@ -37,7 +37,7 @@
 .cty_article_infos dd ul em i			{ width:120px; height:26px; background:#ac3666; text-align:center; font-family:"微软雅黑"; font-size:14px; color:#FFF; line-height:25px; overflow:hidden; float:left;}
 .cty_article_infos dd ul li				{ width:537px; height:30px; margin:0 0 0 11px; display:inline; padding:0 0 0 13px; background:url(../images/index_right_right_point.png) no-repeat 0 13px; color:#343432; line-height:28px; overflow:hidden; float:left;}
 .cty_article_infos dt					{ width:402px; overflow:hidden; float:right;}
-.cty_article_infos dt em				{ width:402px; height:365px; background:url(../images/cty_article_linshi.jpg) no-repeat; overflow:hidden; float:left;}
+.cty_article_infos dt em				{ width:402px; height:365px; overflow:hidden; float:left;}
 .cty_article_infos dt i					{ margin:25px 0 0 0; display:inline; color:#666666; overflow:hidden; float:left;}
 .cty_article_infos dt b					{ width:113px; height:35px; margin:10px 0 0 0; display:inline; overflow:hidden; float:right;}
 .cty_article_infos dt b a				{ width:113px; height:35px; background-position:-135px -333px; overflow:hidden; float:left;}
