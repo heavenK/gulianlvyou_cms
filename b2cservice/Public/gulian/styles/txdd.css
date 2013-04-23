@@ -1,0 +1,43 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*通用背景*/
+.txdd_sub a	{ background:url(../images/all_bg.png) no-repeat;}
+
+/*主体*/
+.txdd_box		{ width:100%; float:left;}
+.txdd			{ width:980px; margin:0 auto; overflow:hidden;}
+
+.txdd_mainbav							{ width:979px; height:32px; padding:0 0 0 1px; color:#ac3666; line-height:31px; overflow:hidden; float:left;}
+.txdd_mainbav a							{ color:#333333;}
+.txdd_mainbav a:hover					{ color:#ff6633;}
+.txdd_lc								{ width:980px; height:40px; background:url(../images/txdd_lc_bg.jpg) no-repeat; overflow:hidden; float:left;}
+
+/*订单详细信息*/
+.txdd_ddxxxx							{ width:980px; margin:10px 0 0 0; display:inline; overflow:hidden; float:left;}
+.txdd_ddxxxx em							{ width:980px; height:26px; border-bottom:1px solid #fba033; overflow:hidden; float:left;}
+.txdd_ddxxxx em b						{ width:120px; height:26px; background:#fba033; text-align:center; font-size:16px; color:#FFF; line-height:27px; overflow:hidden; float:left;}
+.txdd_ddxxxx span						{ width:958px; padding:24px 0 0 20px; border:1px solid #e1e1e1; border-top:none; overflow:hidden; float:left;}
+.txdd_ddxxxx table td					{ font-size:14px; color:#333333;}
+.txdd_ddxxxx i							{ width:915px; height:47px; padding:5px 0 0 0; text-align:right; color:#333333; overflow:hidden; float:left;}
+.txdd_ddxxxx i u						{ font-family:"黑体"; font-size:24px; font-weight:bold; color:#fa741b;}
+.txdd_ddxxxx i b						{ font-family:"黑体"; font-size:32px; color:#fa741b;}
+
+/*填写联系人资料*/
+.txdd_txlxrzl							{ width:980px; margin:10px 0 0 0; display:inline; overflow:hidden; float:left;}
+.txdd_txlxrzl dl						{ width:980px; height:26px; border-bottom:1px solid #fba033; overflow:hidden; float:left;}
+.txdd_txlxrzl dl dd						{ width:137px; height:26px; background:#fba033; text-align:center; font-size:16px; font-weight:bold; color:#FFF; line-height:27px; overflow:hidden; float:left;}
+.txdd_txlxrzl dl dt						{ height:26px; padding:0 0 0 9px; color:#333333; line-height:27px; overflow:hidden; float:left;}
+.txdd_txlxrzl dl dt i					{ color:#ff0000;}
+.txdd_txlxrzl ul						{ width:978px; padding:21px 0 20px 0; border:1px solid #e1e1e1; border-top:none; overflow:hidden; float:left;}
+.txdd_txlxrzl ul li						{ width:978px; height:27px; margin:14px 0 0 0; display:inline; overflow:hidden; float:left;}
+.txdd_txlxrzl ul li .txdd_label			{ width:115px; height:27px; text-align:right; color:#6d6d6d; line-height:26px; _line-height:27px; overflow:hidden; float:left;}
+.txdd_txlxrzl ul li .txdd_text			{ width:210px; height:15px; padding:5px 3px; background:#FFF; border:1px solid #b3c3dd; overflow:hidden; float:left;}
+.txdd_txlxrzl ul li i					{ height:27px; padding:0 0 0 5px; color:#ff0000; line-height:26px; _line-height:27px; overflow:hidden; float:left;}
+.txdd_txlxrzl ul li .txdd_accept		{ width:14px; margin:0 0 0 114px; display:inline; vertical-align:middle;}
+.txdd_txlxrzl ul li .txdd_accept_label	{ display:inline; font-family:Tahoma; vertical-align:middle;}
+
+/*提交按钮*/
+.txdd_sub								{ width:980px; height:35px; margin:30px 0 0 0; display:inline; padding:0 0 19px 0; overflow:hidden; float:left;}
+.txdd_sub a								{ width:144px; height:35px; background-position:0 -580px; overflow:hidden; float:left;}
+.txdd_sub a:hover						{ background-position:0 -615px;}

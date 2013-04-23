@@ -1,0 +1,71 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*通用背景*/
+.list_left em,
+.list_rank_tuijian_on,
+.list_rank_tuijian_off,
+.list_rank_on,
+.list_rank_off	{ background:url(../images/all_bg.png) no-repeat;}
+
+/*主体*/
+.list_box	{ width:100%; float:left;}
+.list		{ width:980px; margin:0 auto; overflow:hidden;}
+
+/*左半部*/
+.list_left		{ width:720px; overflow:hidden; float:left;}
+.list_left em							{ width:708px; height:31px; margin:9px 0 0 0; display:inline; padding:0 12px 0 0; background-position:-55px -28px; border-bottom:2px solid #ac3666; text-align:right; color:#ac3666; line-height:31px; overflow:hidden; float:left;}
+.list_left em b							{ color:#333333;}
+.list_term								{ width:720px; padding:2px 0 0 0; overflow:hidden; float:left;}
+.list_term li							{ width:700px; padding:12px 0 6px 0; _padding:12px 0 0 0; border-bottom:1px dashed #999999; line-height:16px; _line-height:17px; overflow:hidden; float:left;}
+.list_term li b							{ width:75px; height:17px; text-align:right; font-weight:normal; color:#333333; overflow:hidden; float:left;}
+.list_term li i							{ width:625px; overflow:hidden; float:left;}
+.list_term li a							{ height:17px; margin:0 17px 6px 0; display:inline; padding:0 5px; color:#555555; overflow:hidden; float:left;}
+.list_term li a:hover					{ background:#ac3666; color:#FFF;}
+.list_term_btn							{ background:#ac3666; color:#FFF !important;}
+.list_left span							{ width:698px; height:32px; margin:20px 0 0 0; display:inline; background:#f5f5f5; border:1px solid #e8e8e8; overflow:hidden; float:left;}
+.list_left span i						{ width:48px; height:32px; padding:0 13px 0 0; text-align:right; line-height:32px; _line-height:33px; overflow:hidden; float:left;}
+.list_left span u a						{ height:24px; margin:4px 15px 0 0; display:inline; overflow:hidden; float:left;}
+.list_rank_tuijian_on					{ width:51px; background-position:0 -401px;}
+.list_rank_tuijian_off					{ width:51px; background-position:-51px -401px;}
+.list_rank_on							{ width:47px; padding:0 0 0 10px; background-position:0 -425px; color:#FFF; line-height:24px; _line-height:25px;}
+.list_rank_on:hover						{ color:#FFF;}
+.list_rank_off							{ width:47px; padding:0 0 0 10px; background-position:-57px -425px; color:#333333; line-height:24px; _line-height:25px;}
+.list_rank_off:hover					{ color:#333333;}
+.list_left span .pagelist				{ width:126px; height:24px; margin:4px 6px 0 17px; display:inline; padding:5px 0; overflow:hidden; float:right;}
+.list_left span .pagelist li			{ margin:0 8px 0 0; _margin:0 5px 0 0; display:inline; color:#FFF; overflow:hidden;}
+.list_left span .pagelist li a			{ padding:3px 7px; background-color:#f6f6f6; border:#cccccc 1px solid; color:#00306d;}	
+.list_left span .pagelist li a:hover	{ background-color:#FFF; color:#be6f6f; text-decoration:none;}
+.list_left span b						{ height:32px; font-weight:normal; color:#333333; line-height:32px; _line-height:33px; overflow:hidden; float:right;}
+.list_left ol							{ width:707px; padding:0 0 0 13px; overflow:hidden; float:left;}
+.list_left ol li						{ width:707px; padding:15px 0; border-bottom:1px dashed #cccccc; overflow:hidden; float:left;}
+.list_left ol li p						{ width:127px; height:83px; overflow:hidden; float:left;}
+.list_left ol li i						{ width:420px; padding:0 0 0 20px; overflow:hidden; float:left;}
+.list_left ol li i h1					{ width:420px; margin:1px 0 0 0; display:inline; overflow:hidden; float:left;}
+.list_left ol li i h1 b					{ vertical-align:top; font-size:14px; color:#000; line-height:20px; overflow:hidden;}
+.list_left ol li i h1 img				{ vertical-align:baseline; _vertical-align:baseline; display:inline; overflow:hidden;}
+.list_left ol li i h2					{ width:420px; padding:5px 0 0 0; color:#666666; line-height:20px; overflow:hidden; float:left;}
+.list_left ol li i h3					{ width:420px; padding:5px 0 0 0; color:#c23d64; line-height:20px; overflow:hidden; float:left;}
+.list_left ol li i h3 b					{ font-weight:normal; color:#999999;}
+.list_left ol li u						{ width:100px; height:24px; padding:2px 10px 0 0; font-family:"黑体"; color:#666666; overflow:hidden; float:right;}
+.list_left ol li u h1					{ display:inline; font-size:16px; font-weight:bold; color:#d22b70;}
+.list_left ol li u h2					{ display:inline; font-size:22px; font-weight:bold; color:#d22b70;}
+.list_left .pagelist					{ width:720px; height:30px; margin:40px 0 20px 0; display:inline; padding:5px 0 5px 0; text-align:right; overflow:hidden; float:right;}
+.list_left .pagelist li					{ margin:0 1px; display:inline; color:#FFF; overflow:hidden;}
+.list_left .pagelist .thisclass			{ _margin:0 8px 0 1px; padding:3px 7px; _padding:3px 1px 3px 7px; background-color:#d22b70; border:#e1e1e1 1px solid; color:#FFF;}
+.list_left .pagelist li a				{ padding:3px 7px; background-color:#FFF; border:#e1e1e1 1px solid; color:#666666;}	
+.list_left .pagelist li a:hover			{ background-color:#d22b70; color:#FFF; text-decoration:none;}
+
+/*右半部*/
+.list_right		{ width:250px; overflow:hidden; float:right;}
+.list_right								{ width:250px; float:right;}
+.list_right dl							{ width:248px; border:#e1e1e1 1px solid; margin:10px 0 0 0; display:inline; float:right;}
+.list_right dt							{ width:248px; height:30px; line-height:30px; text-align:left; font-size:14px; color:#FFFFFF; background-color:#ac3767; float:left;}
+.list_right dt span						{ width:36px; height:30px; background:url(../images/cty_rmlxtj_hot.png) no-repeat 4px 3px ; float:left;}
+.list_right dd							{ width:248px; height:411px; overflow:hidden; float:left;}
+.list_right dd li						{ width:234px; height:195px; line-height:22px; margin:10px 0 0 7px; display:inline; border-bottom:#CCCCCC 1px dotted; float:left;}
+.list_right dd li img					{ margin:0 0 4px; display:inline; border:#f4f4f5 1px solid; float:left;}
+.list_right dd li span					{ color:#ec3911; font-size:14px; font-weight:bold; font-family:Arial, Helvetica, sans-serif;}
+.list_right ol							{ width:250px; padding:10px 0 0 0; float:left;}
+.list_right ol li						{ width:250px; padding:0 0 10px 0; float:left;}
+.list_right ol li img					{ float:left;}
