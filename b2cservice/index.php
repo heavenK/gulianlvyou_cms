@@ -11,6 +11,9 @@ define('DEFAULT_TYPE','default');
 define('__PUBLIC__',ET_URL."Public");
 define('SITE_URL',ET_URL);
 define('APP_DEBUG', true);
+//常用定义
+define('ROOT_URL','http://'.$_SERVER['HTTP_HOST'].'/');
+define('SITE_STYLE',ROOT_URL.'demand/styles/');
 
 require(APP_PATH.'Common/Function.php');
 require(APP_PATH.'Common/B2CFunction.php');
