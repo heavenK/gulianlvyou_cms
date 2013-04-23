@@ -13,7 +13,7 @@ define('SITE_URL',ET_URL);
 define('APP_DEBUG', true);
 //常用定义
 define('ROOT_URL','http://'.$_SERVER['HTTP_HOST'].'/');
-define('SITE_STYLE',ROOT_URL.'demand/styles/');
+define('SITE_PUBLIC',ROOT_URL.'demand/');
 
 require(APP_PATH.'Common/Function.php');
 require(APP_PATH.'Common/B2CFunction.php');
