@@ -15,7 +15,7 @@ define('APP_DEBUG', true);
 require(APP_PATH.'Common/Function.php');
 require(APP_PATH.'Common/B2bFunction.php');
 var_dump(THINK_PATH);
-require(THINK_PATH.'ThinkPHP.php');
+//require(THINK_PATH.'ThinkPHP.php');
 var_dump(THINK_PATH);
 
 ?>
