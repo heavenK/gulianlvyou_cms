@@ -66,89 +66,71 @@
                 </ul>
             </dd>
             <dt>
-            	<div>
-                
-                
-                
-                
-<script src="/b2cservice/apis/jquery-1.4.2.min.js"></script>
-<script src="/b2cservice/apis/define.inc.js"></script>
-<link href="/b2cservice/apis/index2011.css" rel="stylesheet" type="text/css">
-
-<div >
-<div >
-  <div class="position_right" style=""> 
-    <!---------------日历对应产品展示: start------------------>
-    <div class="tab">
-      <ul>
-      </ul>
-    </div>
-    <div class="tab_cont">
-      <div class="Calendar" style="display: block;height:400px;">
-        <table id="calendar" cellpadding="0" cellspacing="0" border="0">
-          <tbody>
-            <tr>
-              <th style="width:55px;">星期日</th>
-              <th>星期一</th>
-              <th>星期二</th>
-              <th>星期三</th>
-              <th>星期四</th>
-              <th>星期五</th>
-              <th>星期六</th>
-            </tr>
-          </tbody>
-        </table>
-        <script>
-			 var _lineid = 24;//默认线路查询ID
-			 var _prodid = '2008112000000000485';//评分及报名截止提示
-			 var _line_DepartureId = 175;//旅游合同ID
-			 var _lineContinent = 2;//旅游合同ID
-		</script> 
-        <script src="/b2cservice/apis/teamline.js"></script> 
-        <script src="/b2cservice/apis/login.js"></script> 
-      </div>
-    </div>
-    <div class="select_03">
-      <div> <span></span> </div>
-      <a href="javascript:void(0);" class="book_03" name="预订"></a> </div>
-    <!---------------日历对应产品展示: end------------------> 
-  </div>
-</div>
-<!--------产品详情页弹出框---------->
-<div id="Popupbox_bg" style="width: 1517px; height: 3831px; opacity: 0.8;"></div>
-<div id="Popupbox"> <span class="shutdown">关闭</span>
-  <div class="hr_10"></div>
-  <div class="select_01">
-    <select>
-    </select>
-  </div>
-  <div class="pro_table">
-    <table cellpadding="0" cellspacing="0" border="0">
-      <tbody>
-        <tr>
-          <th>出发日期</th>
-          <th>报名资料截止日期</th>
-          <th>剩余名额</th>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="stastics"></div>
-  <div class="nextstep">
-    <input type="image" src="/b2cservice/apis/nextstep.gif" width="120" height="31">
-  </div>
-</div>
-                
-                
-                
+				<script src="/b2cservice/apis/jquery-1.4.2.min.js"></script>
+				<script src="/b2cservice/apis/define.inc.js"></script>
+				<link href="/b2cservice/apis/index2011.css" rel="stylesheet" type="text/css">
+  				<div class="position_right">
+    				<div class="tab">
+                      <ul><li class="curr">2013年5月</li><li>6月</li></ul>
+                    </div>
+                    <div class="tab_cont">
+                      <div class="Calendar" style="display:block;">
+                        <table id="calendar" style=" border-collapse:collapse;" cellpadding="0" cellspacing="0" border="0">
+                          <tbody>
+                            <tr>
+                              <th style="width:55px;">星期日</th>
+                              <th>星期一</th>
+                              <th>星期二</th>
+                              <th>星期三</th>
+                              <th>星期四</th>
+                              <th>星期五</th>
+                              <th>星期六</th>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <script>
+                             var _lineid = 24;//默认线路查询ID
+                             var _prodid = '2008112000000000485';//评分及报名截止提示
+                             var _line_DepartureId = 175;//旅游合同ID
+                             var _lineContinent = 2;//旅游合同ID
+                        </script> 
+                        <script src="/b2cservice/apis/teamline.js"></script> 
+                        <script src="/b2cservice/apis/login.js"></script> 
+                      </div>
+                    </div>
+                    <div class="cty_rilitijoa">
+                      <i>出发日期：{dede:field.chufariqi/}  出发地点：{dede:field.chufadidian/}</i>
+                      <b><a href="#"></a></b>
+                    </div>
+                  </div>
+                  <div id="Popupbox_bg" style="width: 1517px; height: 3831px; opacity: 0.8;"></div>
+                  <div id="Popupbox"> <span class="shutdown">关闭</span>
+                  <div class="hr_10"></div>
+                  <div class="select_01">
+                    <select>
+                    </select>
+                  </div>
+                  <div class="pro_table">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tbody>
+                        <tr>
+                          <th>出发日期</th>
+                          <th>报名资料截止日期</th>
+                          <th>剩余名额</th>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="stastics"></div>
+                  <div class="nextstep">
+                  	<input type="image" src="/b2cservice/apis/nextstep.gif" width="120" height="31">
+                  </div>
                 </div>
-                <i>出发日期：{dede:field.chufariqi/}  出发地点：{dede:field.chufadidian/}</i>
-                <b><a href="#"></a></b>
             </dt>
         </dl>
         <div class="cty_article_cont">
