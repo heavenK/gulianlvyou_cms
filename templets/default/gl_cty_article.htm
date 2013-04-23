@@ -66,12 +66,11 @@
                 </ul>
             </dd>
             <dt>
-				<script src="/b2cservice/apis/jquery-1.4.2.min.js"></script>
 				<script src="/b2cservice/apis/define.inc.js"></script>
 				<link href="/b2cservice/apis/index2011.css" rel="stylesheet" type="text/css">
   				<div class="position_right">
     				<div class="tab">
-                      <ul><li class="curr">2013年5月</li><li>6月</li></ul>
+                      <ul></ul>
                     </div>
                     <div class="tab_cont">
                       <div class="Calendar" style="display:block;">
@@ -247,8 +246,9 @@ $(document).ready(function(){
 </script>
 <script language="javascript" type="text/javascript">
 //古莲公告&旅游资讯
-$(function() {
-	$(".cty_article_explain").cty_article_explain({
+var jq = $;
+jq(function() {
+	jq(".cty_article_explain").cty_article_explain({
 		scroller_time_interval: '',
 		scroller_window_padding: '20',
 		scroller_window_width: '980',

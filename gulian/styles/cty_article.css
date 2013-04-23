@@ -31,17 +31,17 @@
 .cty_article_infos dd i h2 a:hover		{ color:#ff6633;}
 .cty_article_infos dd i h3				{ width:317px; height:38px; padding:0 0 0 12px; color:#666666; line-height:39px; overflow:hidden; float:left;}
 .cty_article_infos dd i h3 em			{ color:#333333;}
-.jiathis_style							{ padding:0 0 0 12px; font-family:"宋体"; color:#666666; overflow:hidden; float:left;}
+.jiathis_style							{ padding:0 0 0 12px; color:#666666; overflow:hidden; float:left;}
+.jiathis_txt							{ font-family:"宋体" !important;}
 .cty_article_infos dd ul				{ width:561px; padding:0 0 8px 0; overflow:hidden; float:left;}
 .cty_article_infos dd ul em				{ width:561px; height:26px; margin:0 0 6px 0; display:inline; border-bottom:1px solid #ac3666; overflow:hidden; float:left;}
 .cty_article_infos dd ul em i			{ width:120px; height:26px; background:#ac3666; text-align:center; font-family:"微软雅黑"; font-size:14px; color:#FFF; line-height:25px; overflow:hidden; float:left;}
 .cty_article_infos dd ul li				{ width:537px; height:30px; margin:0 0 0 11px; display:inline; padding:0 0 0 13px; background:url(../images/index_right_right_point.png) no-repeat 0 13px; color:#343432; line-height:28px; overflow:hidden; float:left;}
 .cty_article_infos dt					{ width:402px; overflow:hidden; float:right;}
-.cty_article_infos dt em				{ width:402px; height:365px; overflow:hidden; float:left;}
-.cty_article_infos dt i					{ margin:25px 0 0 0; display:inline; color:#666666; overflow:hidden; float:left;}
-.cty_article_infos dt b					{ width:113px; height:35px; margin:10px 0 0 0; display:inline; overflow:hidden; float:right;}
-.cty_article_infos dt b a				{ width:113px; height:35px; background-position:-135px -333px; overflow:hidden; float:left;}
-.cty_article_infos dt b a:hover			{ background-position:-135px -368px;}
+.cty_article_infos dt .cty_rilitijoa i	{ margin:25px 0 0 0; display:inline; color:#666666; overflow:hidden; float:left;}
+.cty_article_infos dt .cty_rilitijoa b	{ width:113px; height:35px; margin:10px 0 0 0; display:inline; overflow:hidden; float:right;}
+.cty_article_infos dt .cty_rilitijoa b a{ width:113px; height:35px; background-position:-135px -333px; overflow:hidden; float:left;}
+.cty_article_infos dt .cty_rilitijoa b a:hover	{ background-position:-135px -368px;}
 .cty_article_cont						{ width:980px; overflow:hidden; float:left;}
 .cty_article_cont em					{ width:979px; height:26px; padding:0 1px 0 0; border-bottom:1px solid #ac3666; overflow:hidden; float:left;}
 .cty_article_cont em b					{ width:120px; height:26px; background:#ac3666; text-align:center; font-size:16px; color:#FFF; line-height:27px; overflow:hidden; float:left;}
