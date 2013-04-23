@@ -1,9 +1,9 @@
 
 /**************参团游日历表：start*******************/
-.tab{ width:402px; height:34px; background:url(../../gulian/images/cty_article_day_01.png) repeat-x; overflow:hidden; float:left;}
+.tab{ width:402px; height:34px; background:url(../../demand/images/cty_article_day_01.png) repeat-x; overflow:hidden; float:left;}
 .tab ul{ display:block;}
-.tab li{ width:40px; height:34px; background:url(../../gulian/images/cty_article_day_bg.png) no-repeat -85px 0; margin:0 2px 0 0; display:inline; text-align:center; cursor:pointer; line-height:35px; color:#333333; float:left;}
-.tab li.curr{ width:85px; font-weight:bold; color:#FFF; background:url(../../gulian/images/cty_article_day_bg.png) no-repeat;}
+.tab li{ width:40px; height:34px; background:url(../../demand/images/cty_article_day_bg.png) no-repeat -85px 0; margin:0 2px 0 0; display:inline; text-align:center; cursor:pointer; line-height:35px; color:#333333; float:left;}
+.tab li.curr{ width:85px; font-weight:bold; color:#FFF; background:url(../../demand/images/cty_article_day_bg.png) no-repeat;}
 .tab_cont{ float:left;}
 .tab_cont .Calendar{ display:none; float:left;}
 .tab_cont .Calendar{ border:none;}
