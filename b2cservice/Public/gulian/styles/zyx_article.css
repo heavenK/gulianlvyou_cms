@@ -1,0 +1,112 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*通用背景*/
+.zyx_article_infos dl dt a,
+.zyx_article_dyxcd,
+.zyx_article_cklyht,
+.zyx_article_cont_title i,
+.zyx_article_dryj ul li ol		{ background:url(../images/all_bg.png) no-repeat;}
+
+/*主体*/
+.zyx_box		{ width:100%; float:left;}
+.zyx			{ width:980px; margin:0 auto; overflow:hidden;}
+
+.zyx_article_mainbav					{ width:979px; height:32px; padding:0 0 0 1px; color:#ac3666; line-height:31px; overflow:hidden; float:left;}
+.zyx_article_mainbav a					{ color:#333333;}
+.zyx_article_mainbav a:hover			{ color:#ff6633;}
+.zyx_article_lc							{ width:980px; height:40px; background:url(../images/cty_article_lc_bg.jpg) no-repeat; overflow:hidden; float:left;}
+.zyx_article_title						{ width:547px; height:49px; background:url(../images/zyx_article_title_bg.png) no-repeat 0 16px; overflow:hidden; float:left;}
+.zyx_article_title h1					{ width:380px; height:49px; padding:0 3px 0 55px; font-size:18px; font-weight:bold; color:#333333; line-height:52px; _line-height:54px; overflow:hidden; float:left;}
+.zyx_article_title img					{ width:33px; height:19px; margin:16px 0 0 12px; display:inline; overflow:hidden; float:left;}
+.zyx_article_infos						{ width:980px; overflow:hidden; float:left;}
+.zyx_article_infos dl					{ width:980px; height:126px; overflow:hidden; float:left;}
+.zyx_article_infos dl dd				{ width:718px; height:116px; overflow:hidden; float:left;}
+.zyx_article_infos dl p					{ width:232px; height:116px; overflow:hidden; float:left;}
+.zyx_article_infos dl h2				{ width:289px; height:38px; padding:0 0 0 192px; overflow:hidden; float:left;}
+.zyx_article_infos dl h2 em				{ height:42px; padding:0 4px 0 0; font-family:Tahoma; color:#333333; letter-spacing:0.09em; overflow:hidden; float:left;}
+.zyx_article_infos dl h2 em span		{ font-size:28px; color:#fa741b;}
+.zyx_article_infos dl h2 em b			{ font-size:34px; font-weight:normal; color:#fa741b;}
+.zyx_article_infos dl h2 a				{ margin:0 0 0 15px; display:inline; color:#8b9f62; line-height:61px; overflow:hidden; float:left;}
+.zyx_article_infos dl h2 a:hover		{ color:#ff6633;}
+.zyx_article_infos dl h3				{ width:289px; height:36px; padding:0 0 0 197px; color:#666666; line-height:39px; overflow:hidden; float:left;}
+.zyx_article_infos dl h3 em				{ color:#333333;}
+.jiathis_style							{ padding:0 0 0 197px; color:#666666; overflow:hidden; float:left;}
+.jiathis_txt							{ font-family:"宋体" !important;}
+.zyx_article_infos dl i					{ width:289px; height:26px; padding:0 0 0 197px; color:#666666; line-height:33px; overflow:hidden; float:left;}
+.zyx_article_infos dl dt				{ width:254px; height:35px; margin:80px 0 0 0; display:inline; overflow:hidden; float:left;}
+.zyx_article_infos dl dt a				{ width:113px; height:35px; background-position:-135px -333px; overflow:hidden; float:left;}
+.zyx_article_infos dl dt a:hover		{ background-position:-135px -368px;}
+.zyx_article_infos u					{ width:402px; height:365px;; background:url(../images/cty_article_linshi.jpg) no-repeat; overflow:hidden; float:left;}
+.zyx_article_infos ul					{ width:552px; padding:33px 0 0 0; overflow:hidden; float:right;}
+.zyx_article_infos ul em				{ width:552px; height:26px; margin:0 0 26px 0; display:inline; border-bottom:1px solid #ac3666; overflow:hidden; float:left;}
+.zyx_article_infos ul em i				{ width:120px; height:26px; background:#ac3666; text-align:center; font-family:"微软雅黑"; font-size:14px; color:#FFF; line-height:25px; overflow:hidden; float:left;}
+.zyx_article_infos ul li				{ width:537px; height:32px; margin:0 0 0 11px; display:inline; padding:0 0 0 13px; background:url(../images/index_right_right_point.png) no-repeat 0 13px; color:#343432; line-height:28px; overflow:hidden; float:left;}
+
+/*机票信息*/
+.zyx_article_jpxx						{ width:980px; margin:15px 0 0 0; display:inline; overflow:hidden; float:left;}
+.zyx_article_jpxx em					{ width:980px; height:26px; border-bottom:1px solid #ac3666; overflow:hidden; float:left;}
+.zyx_article_jpxx em b					{ width:120px; height:26px; background:#ac3666; text-align:center; font-size:16px; color:#FFF; line-height:27px; overflow:hidden; float:left;}
+.zyx_article_jpxx table					{ border-collapse:collapse;}
+.zyx_article_jpxx table th				{ border:1px solid #e1e1e1; border-top:none; font-weight:normal; color:#666666;}
+.zyx_article_jpxx table td				{ border:1px solid #e1e1e1; color:#333333; line-height:20px;}
+.zyx_article_jpxx table td b			{ color:#996633;}
+.zyx_article_jpxx table td img			{ vertical-align:bottom;}
+.zyx_article_jpxx table td i			{ color:#339933;}
+.zyx_article_jpxx table td u			{ color:#996633;}
+
+/*酒店信息*/
+.zyx_article_jdxx						{ width:980px; margin:15px 0 0 0; display:inline; overflow:hidden; float:left;}
+.zyx_article_jdxx em					{ width:980px; height:26px; border-bottom:1px solid #ac3666; overflow:hidden; float:left;}
+.zyx_article_jdxx em b					{ width:120px; height:26px; background:#ac3666; text-align:center; font-size:16px; color:#FFF; line-height:27px; overflow:hidden; float:left;}
+
+.zyx_article_cont						{ width:980px; margin:15px 0 0 0; display:inline; overflow:hidden; float:left;}
+.zyx_article_cont em					{ width:979px; height:26px; padding:0 1px 0 0; border-bottom:1px solid #ac3666; overflow:hidden; float:left;}
+.zyx_article_cont em b					{ width:120px; height:26px; background:#ac3666; text-align:center; font-size:16px; color:#FFF; line-height:27px; overflow:hidden; float:left;}
+.zyx_article_cont em i					{ height:26px; padding:0 0 0 12px; color:#fe0000; line-height:25px; overflow:hidden; float:left;}
+.zyx_article_cont em a					{ width:105px; height:23px; margin:1px 0 0 10px; display:inline; overflow:hidden; float:right;}
+.zyx_article_dyxcd						{ background-position:-135px -426px;}
+.zyx_article_dyxcd:hover				{ background-position:-135px -472px;}
+.zyx_article_cklyht						{ background-position:-135px -403px;}
+.zyx_article_cklyht:hover				{ background-position:-135px -449px;}
+.zyx_article_cont ul					{ width:980px; padding:22px 0 0 0; overflow:hidden; float:left;}
+.zyx_article_cont ul li					{ width:980px; padding:0 0 50px 0; overflow:hidden; float:left;}
+.zyx_article_cont_title					{ width:980px; height:38px; overflow:hidden; float:left;}
+.zyx_article_cont_title i				{ width:66px; height:38px; padding:0 0 0 8px; background-position:-147px -186px; font-size:14px; font-weight:bold; color:#ff6800; letter-spacing:0.2em; line-height:38px; overflow:hidden; float:left;}
+.zyx_article_cont_title h1				{ width:850px; height:38px; padding:0 0 0 21px; font-size:14px; font-weight:bold; color:#343434; line-height:38px; overflow:hidden; float:left;}
+.zyx_article_cont_infos					{ width:884px; height:32px; margin:12px 0 0 94px; display:inline; background:#fffff7; border:1px solid #ffd09c; color:#686868; line-height:32px; overflow:hidden; float:left;}
+.zyx_article_cont_infos b				{ padding:0 0 0 15px;}
+.zyx_article_cont_cont					{ width:884px; margin:14px 0 0 94px; display:inline; color:#343434; line-height:24px; overflow:hidden; float:left;}
+.zyx_article_explain					{ width:980px; margin:20px 0 0 0; display:inline; overflow:hidden; float:left;}
+.zyx_article_explain .tabContainer		{ width:980px; height:26px; border-bottom:1px solid #ac3666; overflow:hidden; float:left;}
+.zyx_article_explain .tabContainer ul	{ width:980px; height:26px; overflow:hidden; float:left;}
+.zyx_article_explain .tabContainer li	{ float:left;}
+.zyx_article_explain .tabContainer li a	{ width:90px; height:26px; margin:0 10px 0 0; display:inline; background:#eeeeee; text-align:center; font-size:14px; line-height:29px; overflow:hidden; float:left;}
+.zyx_article_explain .tabContainer li.currentBtn a	{ background:#ac3666;}
+.zyx_article_explain .tabBody			{ width:978px; border:1px solid #e1e1e1; border-top:none; position:relative; overflow:hidden; overflow-y:scroll;}
+.zyx_article_explain .tabBody ul		{ position:absolute;}
+.zyx_article_explain .tabBody ul li		{ width:938px; color:#333333; line-height:24px; overflow:hidden; float:left;}
+.zyx_article_dryj						{ width:980px; margin:10px 0 0 0; display:inline; padding:0 0 10px 0; overflow:hidden; float:left;}
+.zyx_article_dryj em					{ width:980px; height:26px; border-bottom:1px solid #ac3666; overflow:hidden; float:left;}
+.zyx_article_dryj em i					{ width:122px; height:26px; background:#ac3666; text-align:center; font-size:16px; font-weight:bold; color:#FFF; line-height:27px; overflow:hidden; float:left;}
+.zyx_article_dryj em a					{ height:26px; padding:0 11px 0 0; color:#666666; line-height:27px; overflow:hidden; float:right;}
+.zyx_article_dryj em a:hover			{ color:#ff6633;}
+.zyx_article_dryj ul					{ width:980px; overflow:hidden; float:left;}
+.zyx_article_dryj ul li					{ width:980px; height:115px; padding:15px 0; border-bottom:1px solid #e6e6e6; overflow:hidden; float:left;}
+.zyx_article_dryj ul li p				{ width:175px; height:115px; overflow:hidden; float:left;}
+.zyx_article_dryj ul li span			{ width:491px; height:115px; padding:0 0 0 28px; overflow:hidden; float:left;}
+.zyx_article_dryj ul li span h1			{ width:491px; height:28px; line-height:17px; overflow:hidden; float:left;}
+.zyx_article_dryj ul li span h1 a		{ font-size:14px; font-weight:bold; color:#333333;}
+.zyx_article_dryj ul li span h1 a:hover	{ color:#ff6633;}
+.zyx_article_dryj ul li span h2			{ width:491px; height:18px; color:#999999; line-height:16px; overflow:hidden; float:left;}
+.zyx_article_dryj ul li span h2 b		{ font-weight:normal; color:#c03e72;}
+.zyx_article_dryj ul li span h3			{ width:491px; height:38px; padding:12px 0 0 0; color:#666666; line-height:18px; overflow:hidden; float:left;}
+.zyx_article_dryj ul li span h3 b		{ font-weight:normal; color:#00718f;}
+.zyx_article_dryj ul li span h3 b a		{ color:#00718f;}
+.zyx_article_dryj ul li span h3 b a:hover	{ color:#ff6633;}
+.zyx_article_dryj ul li ol				{ width:225px; height:83px; margin:29px 2px 0 0; display:inline; padding:2px 0 0 17px; background-position:0 -495px; overflow:hidden; float:right;}
+.zyx_article_dryj ul li ol li			{ width:216px; height:16px; margin:8px 0 0 0; display:inline; padding:0; border:none; overflow:hidden; float:left;}
+.zyx_article_dryj ul li ol li b			{ width:16px; height:16px; overflow:hidden; float:left;}
+.zyx_article_dryj ul li ol li h1		{ width:195px; height:16px; padding:0 0 0 5px; color:#999999; line-height:16px; _line-height:17px; overflow:hidden; float:left;}
+.zyx_article_dryj ul li ol li h1 a		{ color:#0066cb;}
+.zyx_article_dryj ul li ol li h1 a:hover{ color:#ff6633;}
