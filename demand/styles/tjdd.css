@@ -1,0 +1,79 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*通用背景*/
+.tjdd_sub a	{ background:url(../images/all_bg.png) no-repeat;}
+
+/*主体*/
+.tjdd_box		{ width:100%; float:left;}
+.tjdd			{ width:980px; margin:0 auto; overflow:hidden;}
+
+.tjdd_mainbav							{ width:979px; height:32px; padding:0 0 0 1px; color:#ac3666; line-height:31px; overflow:hidden; float:left;}
+.tjdd_mainbav a							{ color:#333333;}
+.tjdd_mainbav a:hover					{ color:#ff6633;}
+.tjdd_lc								{ width:980px; height:40px; background:url(../images/tjdd_lc_bg.jpg) no-repeat; overflow:hidden; float:left;}
+
+/*订单详细信息*/
+.tjdd_ddxxxx							{ width:980px; margin:10px 0 0 0; display:inline; overflow:hidden; float:left;}
+.tjdd_ddxxxx em							{ width:980px; height:26px; border-bottom:1px solid #fba033; overflow:hidden; float:left;}
+.tjdd_ddxxxx em b						{ width:120px; height:26px; background:#fba033; text-align:center; font-size:16px; color:#FFF; line-height:27px; overflow:hidden; float:left;}
+.tjdd_ddxxxx span						{ width:958px; padding:24px 0 0 20px; border:1px solid #e1e1e1; border-top:none; overflow:hidden; float:left;}
+.tjdd_ddxxxx span p						{ width:932px; padding:0 0 30px 14px; border-bottom:1px solid #d8d8d8; font-size:14px; color:#333333; line-height:25px; overflow:hidden; float:left;}
+.tjdd_ddxxxx table						{ margin:24px 0 0 0; display:inline; float:left;}
+.tjdd_ddxxxx table td					{ font-size:14px; color:#333333;}
+.tjdd_ddxxxx i							{ width:915px; height:47px; padding:5px 0 0 0; text-align:right; color:#333333; overflow:hidden; float:left;}
+.tjdd_ddxxxx i u						{ font-family:"黑体"; font-size:24px; font-weight:bold; color:#fa741b;}
+.tjdd_ddxxxx i b						{ font-family:"黑体"; font-size:32px; color:#fa741b;}
+
+/*出行人信息*/
+.tjdd_txlxrzl							{ width:980px; margin:10px 0 0 0; display:inline; overflow:hidden; float:left;}
+.tjdd_txlxrzl dl						{ width:980px; height:26px; border-bottom:1px solid #fba033; overflow:hidden; float:left;}
+.tjdd_txlxrzl dl dd						{ width:137px; height:26px; background:#fba033; text-align:center; font-size:16px; font-weight:bold; color:#FFF; line-height:27px; overflow:hidden; float:left;}
+.tjdd_txlxrzl dl dt						{ height:26px; padding:0 0 0 9px; color:#333333; line-height:27px; overflow:hidden; float:left;}
+.tjdd_txlxrzl dl dt i					{ color:#ff0000;}
+.tjdd_txlxrzl span						{ width:978px; padding:0 0 20px 0; border:1px solid #e1e1e1; border-top:none; overflow:hidden; float:left;}
+.tjdd_txlxrzl span p					{ width:954px; height:26px; padding:0 0 0 24px; background:#eeeeee; color:#333333; line-height:26px; overflow:hidden; float:left;}
+.tjdd_txlxrzl span p u					{ color:#ff6635;}
+.tjdd_txlxrzl span p b					{ color:#ff6635;}
+.tjdd_txlxrzl span em					{ width:978px; overflow:hidden; float:left;}
+.tjdd_txlxrzl span em ul				{ width:901px; padding:14px 0 0 77px; overflow:hidden; float:left;}
+.tjdd_txlxrzl span em ul li				{ width:418px; height:27px; margin:14px 0 0 0; display:inline; overflow:hidden; float:left;}
+.tjdd_txlxrzl span em ul li .tjdd_label	{ width:64px; height:27px; text-align:right; color:#333333; line-height:26px; _line-height:27px; overflow:hidden; float:left;}
+.tjdd_txlxrzl span em ul li .tjdd_text	{ width:210px; height:15px; padding:5px 3px; background:#FFF; border:1px solid #b3c3dd; overflow:hidden; float:left;}
+.tjdd_txlxrzl span em ul li u			{ *width:216px; *height:23px; *padding:2px 0 0 0; *background:#fff; *border:1px solid #b3c3dd; overflow:hidden; float:left;}
+.tjdd_txlxrzl span em ul li strong		{ *width:216px; *background:#fff; *overflow:hidden; *float:left;}
+.tjdd_txlxrzl span em ul li select		{ width:218px; height:27px; padding:3px 4px; *margin:-1px; display:inline; background:#FFF; border:1px solid #b3c3dd; line-height:22px; float:left;}
+.tjdd_txlxrzl span em ul li b			{ height:27px; padding:0 0 0 5px; font-weight:normal; color:#ff0000; line-height:26px; _line-height:27px; overflow:hidden; float:left;}
+.tjdd_txlxrzl span em ul li h3			{ height:27px; margin:0 0 0 5px; padding:0 10px 0 24px; background:#fddfdf url(../images/tjdd_notice_bg.png) no-repeat 3px 6px; color:#333333; line-height:26px; _line-height:27px; overflow:hidden; float:left; display:none;}
+.tjdd_txlxrzl span em ol				{ width:895px; padding:0 0 0 81px; overflow:hidden; float:left;}
+.tjdd_txlxrzl span em ol li				{ width:418px; height:27px; margin:14px 0 0 0; display:inline; line-height:26px; _line-height:27px; overflow:hidden; float:left;}
+.tjdd_txlxrzl span em ol li big			{ height:27px; margin:0 10px 0 0; display:inline; font-size:12px; font-weight:normal; overflow:hidden; float:left;}
+.tjdd_txlxrzl span em ol li input		{ height:27px; margin:0 5px 0 0; display:inline; overflow:hidden; float:left;}
+.tjdd_txlxrzl span em ol li label		{ height:27px; margin:0 35px 0 0; display:inline; line-height:28px; overflow:hidden; float:left;}
+.tjdd_txlxrzl span em ol li u			{ *width:216px; *height:23px; *padding:2px 0 0 0; *background:#fff; *border:1px solid #b3c3dd; overflow:hidden; float:left;}
+.tjdd_txlxrzl span em ol li strong		{ *width:216px; *background:#fff; *overflow:hidden; *float:left;}
+.tjdd_txlxrzl span em ol li select		{ width:218px; height:27px; padding:3px 4px; *margin:-1px; display:inline; background:#FFF; border:1px solid #b3c3dd; line-height:22px; float:left;}
+.tjdd_txlxrzl span em ol li b			{ height:27px; padding:0 0 0 5px; font-weight:normal; color:#ff0000; line-height:26px; _line-height:27px; overflow:hidden; float:left;}
+.tjdd_txlxrzl span i					{ width:730px; margin:10px 0 0 57px; border:1px solid #ffcb99; overflow:hidden; float:left; display:none;}
+.tjdd_txlxrzl span i ul					{ width:333px; padding:10px 0 0 0; overflow:hidden; float:left;}
+.tjdd_txlxrzl span i ul li				{ width:333px; height:27px; margin:0 0 14px 0; display:inline; overflow:hidden; float:left;}
+.tjdd_txlxrzl span i ul li .tjdd_label	{ width:114px; height:27px; text-align:right; color:#333333; line-height:26px; _line-height:27px; overflow:hidden; float:left;}
+.tjdd_txlxrzl span i ul li .tjdd_text	{ width:210px; height:15px; padding:5px 3px; background:#FFF; border:1px solid #b3c3dd; overflow:hidden; float:left;}
+.tjdd_select_long						{ *width:216px; *height:23px; *padding:2px 0 0 0; *background:#fff; *border:1px solid #b3c3dd; overflow:hidden; float:left;}
+.tjdd_select_long strong				{ *width:216px; *background:#fff; *overflow:hidden; *float:left;}
+.tjdd_select_long select				{ width:218px; height:27px; padding:3px 4px; *margin:-1px; display:inline; background:#FFF; border:1px solid #b3c3dd; line-height:22px; float:left;}
+.tjdd_select_short_f					{ *width:59px; *height:23px; margin:0 7px 0 2px; display:inline; *padding:2px 0 0 0; *background:#fff; *border:1px solid #b3c3dd; overflow:hidden; float:left;}
+.tjdd_select_short_f strong				{ *width:59px; *background:#fff; *overflow:hidden; *float:left;}
+.tjdd_select_short_f select				{ width:61px; height:27px; padding:3px 4px; *margin:-1px; display:inline; background:#FFF; border:1px solid #b3c3dd; line-height:22px; float:left;}
+.tjdd_select_short_s					{ *width:85px; *height:23px; margin:0 7px 0 0; display:inline; *padding:2px 0 0 0; *background:#fff; *border:1px solid #b3c3dd; overflow:hidden; float:left;}
+.tjdd_select_short_s strong				{ *width:85px; *background:#fff; *overflow:hidden; *float:left;}
+.tjdd_select_short_s select				{ width:87px; height:27px; padding:3px 4px; *margin:-1px; display:inline; background:#FFF; border:1px solid #b3c3dd; line-height:22px; float:left;}
+.tjdd_select_short_t					{ *width:45px; *height:23px; *padding:2px 0 0 0; *background:#fff; *border:1px solid #b3c3dd; overflow:hidden; float:left;}
+.tjdd_select_short_t strong				{ *width:45px; *background:#fff; *overflow:hidden; *float:left;}
+.tjdd_select_short_t select				{ width:47px; height:27px; padding:3px 4px; *margin:-1px; display:inline; background:#FFF; border:1px solid #b3c3dd; line-height:22px; float:left;}
+.tjdd_txlxrzl span i b					{ width:255px; height:178px; margin:24px 25px 0 0; display:inline; background:url(../images/tjdd_certificate_pic_01.jpg) no-repeat; overflow:hidden; float:right;}
+
+/*提交按钮*/
+.tjdd_sub								{ width:980px; height:35px; margin:30px 0 0 0; display:inline; padding:0 0 19px 0; overflow:hidden; float:left;}
+.tjdd_sub a								{ width:144px; height:35px; background-position:0 -580px; overflow:hidden; float:left;}
+.tjdd_sub a:hover						{ background-position:0 -615px;}
