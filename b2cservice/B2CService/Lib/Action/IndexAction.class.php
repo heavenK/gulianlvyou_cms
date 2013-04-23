@@ -3,9 +3,6 @@
 class IndexAction extends Action{
 	
     public function index() {
-		
-		dump(123123);
-		exit;
 		$this->assign("datatitle","欢迎使用GULIANERP系统");
 		$this->toadmin();
 		$this->display('login');
