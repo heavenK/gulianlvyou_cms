@@ -84,43 +84,82 @@ $(document).ready(function(){
         
         <div class="tjdd_txlxrzl"><!--出行人信息-->
         	<dl><dd>出行人信息</dd><dt><i>*</i>为必填项</dt></dl>
-            
-            <PHP>for($i=0;$i<$order['chengrenshu'];$i++){</PHP>
-            <input type="hidden" name="manorchild<{$i}>" value="成人"/>
-            <span>
-            	<p>第<u>1</u>位游客 <b>（标准 成人）</b></p>
-                <em>
-                	<ul>
-                    	<li><label for="name" class="tjdd_label">姓&nbsp;&nbsp;&nbsp;&nbsp;名：</label><input type="text" id="name<{$i}>" name="name<{$i}>" class="tjdd_text" value="2222" /><b>*</b></li>
-                        <li><label for="name_py" class="tjdd_label">拼&nbsp;&nbsp;&nbsp;&nbsp;音：</label><input type="text" id="pinyin<{$i}>" name="pinyin<{$i}>" class="tjdd_text" value="sadfasfd" /><b>*</b></li>
-                        <li><label class="tjdd_label">证件类型：</label><u><strong>
-                        <select name="zhengjiantype<{$i}>">
-                        <option value="身份证">身份证</option>
-                        <option value="军官证">军官证</option>
-                        </select>
-                        </strong></u><b>*</b></li>
-                        <li><label for="number" class="tjdd_label">证件号码：</label><input type="text" id="zhengjianhaoma<{$i}>" name="zhengjianhaoma<{$i}>" class="tjdd_text" value="555555" /><b>*</b></li>
-                        <li><label for="phone" class="tjdd_label">联系电话：</label><input type="text" id="telnum<{$i}>" name="telnum<{$i}>" class="tjdd_text" value="66666" /></li>
-                        <li><label for="birthday" class="tjdd_label">出生日期：</label><input type="text" id="birthday<{$i}>" name="birthday<{$i}>" class="tjdd_text" value="111111" /><b>*</b></li>
-                    </ul>
-                    <ol>
-                    	<li><b>性&nbsp;&nbsp;&nbsp;&nbsp;别：</b><input type="radio" id="sex<{$i}>" name="sex<{$i}>" checked="checked" value="男" onFocus="this.blur()" /><label for="man">男</label><input type="radio" id="woman"  name="sex<{$i}>" value="女" onFocus="this.blur()" /><label for="woman">女</label></li>
-                        <li><b>旅游证件信息：</b><input type="radio" id="yes" checked="checked" name="certificate" onFocus="this.blur()" /><label for="yes">我有护照</label><input type="radio" id="no" name="certificate" onFocus="this.blur()" /><label for="no">没有护照</label></li>
-                    </ol>
-                </em>
-                <i>
-                	<ul>
-                    	<li><label class="tjdd_label">证件类型：</label><u class="tjdd_select_long"><strong><select><option>身份证</option><option>军官证</option></select></strong></u></li>
-                        <li><label for="certificate_number" class="tjdd_label">证件号码：</label><input type="text" id="certificate_number" class="tjdd_text" /></li>
-                        <li><label class="tjdd_label">签发日期：</label><u class="tjdd_select_short_f"><strong><select><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_s"><strong><select><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_t"><strong><select><option>身份证</option><option>军官证</option></select></strong></u></li>
-                        <li><label class="tjdd_label">有效期至：</label><u class="tjdd_select_short_f"><strong><select><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_s"><strong><select><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_t"><strong><select><option>身份证</option><option>军官证</option></select></strong></u></li>
-                        <li><label class="tjdd_label">签发地：</label><u class="tjdd_select_long"><strong><select><option>身份证</option><option>军官证</option></select></strong></u></li>
-                    </ul>
-                    <b></b>
-                </i>
-            </span>
+            <PHP>if($joinerall){</PHP>
+            <PHP>$c=0;foreach($joinerall as $v){$i = $v['id'];$c++;</PHP>
+                    <input type="hidden" name="id<{$i}>" value="<{$v['id']}>"/>
+                    <input type="hidden" name="manorchild<{$i}>" value="<{$v['manorchild']}>"/>
+                    <span>
+                        <p>第<u>1</u>位游客 <b>（标准 <{$v['manorchild']}>）</b></p>
+                        <em>
+                            <ul>
+                                <li><label for="name" class="tjdd_label">姓&nbsp;&nbsp;&nbsp;&nbsp;名：</label><input type="text" id="name<{$i}>" name="name<{$i}>" class="tjdd_text" value="<{$v['name']}>" /><b>*</b></li>
+                                <li><label for="name_py" class="tjdd_label">拼&nbsp;&nbsp;&nbsp;&nbsp;音：</label><input type="text" id="pinyin<{$i}>" name="pinyin<{$i}>" class="tjdd_text" value="<{$v['pinyin']}>" /><b>*</b></li>
+                                <li><label class="tjdd_label">证件类型：</label><u><strong>
+                                <select name="zhengjiantype<{$i}>">
+                                <option value="<{$v['zhengjiantype']}>"><{$v['zhengjiantype']}></option>
+                                <option disabled="disabled">------------</option>
+                                <option value="身份证">身份证</option>
+                                <option value="军官证">军官证</option>
+                                </select>
+                                </strong></u><b>*</b></li>
+                                <li><label for="number" class="tjdd_label">证件号码：</label><input type="text" id="zhengjianhaoma<{$i}>" name="zhengjianhaoma<{$i}>" class="tjdd_text" value="<{$v['zhengjianhaoma']}>" /><b>*</b></li>
+                                <li><label for="phone" class="tjdd_label">联系电话：</label><input type="text" id="telnum<{$i}>" name="telnum<{$i}>" class="tjdd_text" value="<{$v['telnum']}>" /></li>
+                                <li><label for="birthday" class="tjdd_label">出生日期：</label><input type="text" id="birthday<{$i}>" name="birthday<{$i}>" class="tjdd_text" value="<{$v['birthday']}>" /><b>*</b></li>
+                            </ul>
+                            <ol>
+                                <li><b>性&nbsp;&nbsp;&nbsp;&nbsp;别：</b><input type="radio" id="sex<{$i}>" name="sex<{$i}>" checked="checked" value="男" onFocus="this.blur()" /><label for="man">男</label><input type="radio" id="woman"  name="sex<{$i}>" value="女" onFocus="this.blur()" /><label for="woman">女</label></li>
+                                <li><b>旅游证件信息：</b><input type="radio" id="yes" checked="checked" name="certificate" onFocus="this.blur()" /><label for="yes">我有护照</label><input type="radio" id="no" name="certificate" onFocus="this.blur()" /><label for="no">没有护照</label></li>
+                            </ol>
+                        </em>
+                        <i>
+                            <ul>
+                                <li><label class="tjdd_label">证件类型：</label><u class="tjdd_select_long"><strong><select><option>身份证</option><option>军官证</option></select></strong></u></li>
+                                <li><label for="certificate_number" class="tjdd_label">证件号码：</label><input type="text" id="certificate_number" class="tjdd_text" /></li>
+                                <li><label class="tjdd_label">签发日期：</label><u class="tjdd_select_short_f"><strong><select><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_s"><strong><select><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_t"><strong><select><option>身份证</option><option>军官证</option></select></strong></u></li>
+                                <li><label class="tjdd_label">有效期至：</label><u class="tjdd_select_short_f"><strong><select><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_s"><strong><select><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_t"><strong><select><option>身份证</option><option>军官证</option></select></strong></u></li>
+                                <li><label class="tjdd_label">签发地：</label><u class="tjdd_select_long"><strong><select><option>身份证</option><option>军官证</option></select></strong></u></li>
+                            </ul>
+                            <b></b>
+                        </i>
+                    </span>
             <PHP>}</PHP>
-            
+            <PHP>}else{</PHP>
+            <PHP>for($i=0;$i<$order['chengrenshu'];$i++){</PHP>
+                    <input type="hidden" name="manorchild<{$i}>" value="成人"/>
+                    <span>
+                        <p>第<u><php>echo $i+1</php></u>位游客 <b>（标准 成人）</b></p>
+                        <em>
+                            <ul>
+                                <li><label for="name" class="tjdd_label">姓&nbsp;&nbsp;&nbsp;&nbsp;名：</label><input type="text" id="name<{$i}>" name="name<{$i}>" class="tjdd_text" value="2222" /><b>*</b></li>
+                                <li><label for="name_py" class="tjdd_label">拼&nbsp;&nbsp;&nbsp;&nbsp;音：</label><input type="text" id="pinyin<{$i}>" name="pinyin<{$i}>" class="tjdd_text" value="sadfasfd" /><b>*</b></li>
+                                <li><label class="tjdd_label">证件类型：</label><u><strong>
+                                <select name="zhengjiantype<{$i}>">
+                                <option value="身份证">身份证</option>
+                                <option value="军官证">军官证</option>
+                                </select>
+                                </strong></u><b>*</b></li>
+                                <li><label for="number" class="tjdd_label">证件号码：</label><input type="text" id="zhengjianhaoma<{$i}>" name="zhengjianhaoma<{$i}>" class="tjdd_text" value="555555" /><b>*</b></li>
+                                <li><label for="phone" class="tjdd_label">联系电话：</label><input type="text" id="telnum<{$i}>" name="telnum<{$i}>" class="tjdd_text" value="66666" /></li>
+                                <li><label for="birthday" class="tjdd_label">出生日期：</label><input type="text" id="birthday<{$i}>" name="birthday<{$i}>" class="tjdd_text" value="111111" /><b>*</b></li>
+                            </ul>
+                            <ol>
+                                <li><b>性&nbsp;&nbsp;&nbsp;&nbsp;别：</b><input type="radio" id="sex<{$i}>" name="sex<{$i}>" checked="checked" value="男" onFocus="this.blur()" /><label for="man">男</label><input type="radio" id="woman"  name="sex<{$i}>" value="女" onFocus="this.blur()" /><label for="woman">女</label></li>
+                                <li><b>旅游证件信息：</b><input type="radio" id="yes" checked="checked" name="certificate" onFocus="this.blur()" /><label for="yes">我有护照</label><input type="radio" id="no" name="certificate" onFocus="this.blur()" /><label for="no">没有护照</label></li>
+                            </ol>
+                        </em>
+                        <i>
+                            <ul>
+                                <li><label class="tjdd_label">证件类型：</label><u class="tjdd_select_long"><strong><select><option>身份证</option><option>军官证</option></select></strong></u></li>
+                                <li><label for="certificate_number" class="tjdd_label">证件号码：</label><input type="text" id="certificate_number" class="tjdd_text" /></li>
+                                <li><label class="tjdd_label">签发日期：</label><u class="tjdd_select_short_f"><strong><select><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_s"><strong><select><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_t"><strong><select><option>身份证</option><option>军官证</option></select></strong></u></li>
+                                <li><label class="tjdd_label">有效期至：</label><u class="tjdd_select_short_f"><strong><select><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_s"><strong><select><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_t"><strong><select><option>身份证</option><option>军官证</option></select></strong></u></li>
+                                <li><label class="tjdd_label">签发地：</label><u class="tjdd_select_long"><strong><select><option>身份证</option><option>军官证</option></select></strong></u></li>
+                            </ul>
+                            <b></b>
+                        </i>
+                    </span>
+            <PHP>}</PHP>
+            <PHP>}</PHP>
             
         </div>
         

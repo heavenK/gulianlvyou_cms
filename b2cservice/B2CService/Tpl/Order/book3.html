@@ -62,17 +62,17 @@ $(document).ready(function(){
             <span>
             	<table width="938" cellpadding="0" cellspacing="0">
                 	<tr height="34">
-                    	<td width="431">产品名称：<b>翡翠时光－泰国普吉岛6日度假之旅</b></td>
-                        <td width="252">出发城市：<b>沈阳</b></td>
-                        <td width="255">出发时间：<b>2013-04-13</b></td>
+                    	<td width="431">产品名称：<b><{$order['title_copy']}></b></td>
+                        <td width="252">出发城市：<b><{$order['chufadi_copy']}></b></td>
+                        <td width="255">出发时间：<b><{$order['chutuanriqi_copy']}></b></td>
                     </tr>
                     <tr height="34">
-                    	<td width="431">出团编号：<b>CAI2013-PEK0220PEK0220-1004769</b></td>
-                        <td width="252">行程天数：<b>6日</b></td>
+                    	<td width="431">出团编号：<b><{$order['tuanhao_copy']}></b></td>
+                        <td width="252">行程天数：<b><{$order['tianshu_copy']}>日</b></td>
                         <td width="255"></td>
                     </tr>
                 </table>
-                <i>出行人数： 成人 1 人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合计：<u>￥</u><b>4299</b></i>
+                <i>出行人数： 成人 <{$order['chengrenshu']}> 人&nbsp;，&nbsp;儿童 <{$order['ertonghsu']}> 人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合计：<u>￥</u><b><{$order['zongjia']}></b></i>
             </span>
         </div>
         <div class="zxzf_lxrxx"><!--联系人信息-->
@@ -85,9 +85,9 @@ $(document).ready(function(){
                   <th scope="col"></th>
                 </tr>
                 <tr height="40" align="center">
-                  <td>张三</td>
-                  <td>18640889938</td>
-                  <td>zhagnsan@163.com</td>
+                  <td><{$order['lxr_name']}></td>
+                  <td><{$order['lxr_telnum']}></td>
+                  <td><{$order['lxr_email']}></td>
                   <td></td>
                 </tr>
             </table>
@@ -106,35 +106,26 @@ $(document).ready(function(){
                   <th width="67" scope="col">签发地</th>
                   <th scope="col">有效期至</th>
                 </tr>
+                <php>foreach($joinerall as $v){</php>
                 <tr height="40" align="center">
-                  <td>张三</td>
-                  <td>ZHANG SAN</td>
-                  <td>男</td>
-                  <td>1985-01-09</td>
-                  <td>身份证</td>
-                  <td>211111111111111111</td>
-                  <td>--</td>
-                  <td>--</td>
-                  <td>--</td>
+                  <td><{$v['name']}></td>
+                  <td><{$v['pinyin']}></td>
+                  <td><{$v['sex']}></td>
+                  <td><{$v['birthday']}></td>
+                  <td><{$v['zhengjiantype']}></td>
+                  <td><{$v['zhengjianhaoma']}></td>
+                  <td><php>if($v['lyzj_haoma'])echo $v['lyzj_haoma'];else echo '--'</php></td>
+                  <td><php>if($v['lyzj_qianfadi'])echo $v['lyzj_qianfadi'];else echo '--'</php></td>
+                  <td><php>if($v['lyzj_youxiaoqi'])echo $v['lyzj_youxiaoqi'];else echo '--'</php></td>
                 </tr>
-                <tr height="40" align="center">
-                  <td>张三</td>
-                  <td>ZHANG SAN</td>
-                  <td>男</td>
-                  <td>1985-01-09</td>
-                  <td>身份证</td>
-                  <td>211111111111111111</td>
-                  <td>--</td>
-                  <td>--</td>
-                  <td>--</td>
-                </tr>
+                <php>}</php>
             </table>
         </div>
         <div class="zxzf_jsxx"><!--结算信息-->
         	<em><b>结算信息</b></em>
             <span>
             	<p>您的订单已提交，如果您没有立即支付，我们将按照您所指定的联系方式尽快回复您。但由于网上订单提交并未最终完成出团名额预订，因此为确保我们为您预留出团名额，请选择网上支付。</p>
-                <h1><b>应付金额：</b><strong>￥</strong>4299</h1>
+                <h1><b>应付金额：</b><strong>￥</strong><{$order['zongjia']}></h1>
                 <a href="#"></a>
             </span>
         </div>

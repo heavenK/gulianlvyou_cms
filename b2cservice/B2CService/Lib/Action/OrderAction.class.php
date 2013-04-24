@@ -52,6 +52,9 @@ class OrderAction extends Action{
 			echo "订单不存在！！";
 			exit;
 		}
+		$DingdanJoiner = D("DingdanJoiner");
+		$joinerall = $DingdanJoiner->where("`dingdanID` = '$order[id]'")->findall();
+		$this->assign("joinerall",$joinerall);
 		$zituan = A("MethodService")->_checkchanpin($order['serverdataID']);
 		if(false === $zituan){
 			echo "产品不存在或已经停止销售！！";
@@ -66,7 +69,6 @@ class OrderAction extends Action{
 	
 	
     public function dopostbook2() {
-		//检查dataOM
 		$order = A("MethodService")->_getdingdan($_REQUEST['orderID']);
 		if(!$order){
 			echo "订单不存在！！";
@@ -107,16 +109,21 @@ class OrderAction extends Action{
 	
 	
     public function book3() {
-		//检查dataOM
 		$order = A("MethodService")->_getdingdan($_REQUEST['orderID']);
 		if(!$order){
 			echo "订单不存在！！";
 			exit;
 		}
+		$zituan = A("MethodService")->_checkchanpin($order['serverdataID']);
+		if(false === $zituan){
+			echo "产品不存在或已经停止销售！！";
+			exit;
+		}
+		$order['zongjia'] = $order['chengrenshu']*$zituan['adult_price']+$order['ertongshu']*$order['child_price'];
 		$DingdanJoiner = D("DingdanJoiner");
-		$djall = $DingdanJoiner->where("`dingdanID` = '$order[id]'")->findall();
+		$joinerall = $DingdanJoiner->where("`dingdanID` = '$order[id]'")->findall();
 		$this->assign("order",$order);
-		$this->assign("tuanyuanall",$djall);
+		$this->assign("joinerall",$joinerall);
 		$this->display();
 		
 	}
