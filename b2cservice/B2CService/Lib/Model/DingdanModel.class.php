@@ -4,8 +4,11 @@ class DingdanModel extends Model {
 	protected $trueTableName = 'b2cservice_member_dingdan';	
    // 自动验证设置 
     protected $_validate = array( 
-//        array('erverdataID', 'require', 'erverdataID不能为空！', 1,'',1), 
-//        array('lxr_name', 'require', 'lxr_name不能为空！', 1,'',1), 
+        array('erverdataID', 'require', 'erverdataID不能为空！', 1,'',1), 
+        array('lxr_name', 'require', 'lxr_name不能为空！', 1,'',1), 
+        array('lxr_telnum', 'require', 'lxr_telnum不能为空！', 1,'',1), 
+        array('lxr_email', 'require', 'lxr_email不能为空！', 1,'',1), 
+        array('chengrenshu', 'require', 'chengrenshu不能为空！', 1,'',1), 
     );
 	
     // 自动填充设置 
@@ -14,6 +17,7 @@ class DingdanModel extends Model {
         array('time', 'time', 1,'function'),//array('field','填充内容','填充条件','附加规则',[额外参数],[表单数据标记])
         array('status', 'set_status', 1,'callback','status',1),//array('field','填充内容','填充条件','附加规则',[额外参数],[表单数据标记])
         array('status_system', 'set_status_system', 1,'callback','status_system',1),//1正常,-1删除
+        array('ertongshu', '0', 1),//1正常,-1删除
     ); 
 	
 	protected function set_mid($mid) {

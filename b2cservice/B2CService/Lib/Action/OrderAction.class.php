@@ -8,8 +8,6 @@ class OrderAction extends Action{
 			echo "产品不存在或已经停止销售！！";
 			exit;
 		}
-		$zituan = str_replace('﻿','',$zituan);//未知原因数据序列化后多3个不可见字符问题，序列化失败解决办法。
-		$zituan = unserialize($zituan);
 		$xianlu = unserialize($zituan['xianlulist']['datatext']);
 		$zongjia = $zituan['adult_price']*$_REQUEST['chengrenshu']+$zituan['child_price']*$_REQUEST['ertongshu'];
 		$this->assign("zongjia",$zongjia);
@@ -24,8 +22,6 @@ class OrderAction extends Action{
 			echo "产品不存在或已经停止销售！！";
 			exit;
 		}
-		$chanpin = str_replace('﻿','',$chanpin);//未知原因数据序列化后多3个不可见字符问题，序列化失败解决办法。
-		$chanpin = unserialize($chanpin);
 		//提交到订单
 		$rows = $_REQUEST;
 		$rows['serverdataID'] = $_REQUEST['chanpinID'];
