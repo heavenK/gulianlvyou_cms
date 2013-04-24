@@ -46,9 +46,9 @@
 .position_right .Calendar .title span{ float:left; display:block;}
 .position_right .Calendar .title .calendar_name{ font-weight:bold; font-size:14px;}
 .position_right .Calendar td.has_pro{ color:#666666; font-weight:bold; background:#fdeab8;}
-.position_right .Calendar td.has_pro .pro_state{ display:block; width:25px; height:14px; float:right; line-height:14px; line-height:15px\9; margin:4px 2px 0 0; font-weight:normal; *margin-top:-16px; text-align:center;}
+.position_right .Calendar td.has_pro .pro_state{ display:block; color:#666666; width:25px; height:14px; float:right; line-height:14px; line-height:15px\9; margin:4px 2px 0 0; font-weight:normal; *margin-top:-16px; text-align:center;}
 .position_right .Calendar td.has_pro .pro_price{ display:block; text-align:right; height:14px; font-weight:normal; padding-right:2px; line-height:14px; }
-.position_right .Calendar td.has_pro .detail_data{ display:block; text-align:right; height:14px; line-height:14px; padding-right:2px; font-weight:normal; }
+.position_right .Calendar td.has_pro .detail_data{ display:block; color:#666666; text-align:right; height:14px; line-height:14px; padding-right:2px; font-weight:normal; }
 .position_right .Calendar td.curr .pro_state{ background-position:0 -71px; color:#ff0000;}
 .position_right .Calendar td.curr .pro_price em{ color:#fff;}
 .position_right .Calendar td.curr .detail_data{ color:#fff;}

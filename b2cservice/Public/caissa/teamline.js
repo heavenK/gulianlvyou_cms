@@ -9,7 +9,7 @@ var nowgroup = null;
 var arrline = null;
 var otherdepture = null;
 function loadgroup(lineid) {
-	url = 'http://www.myerpcenter.com/index.php?s=/Connection/getxianlubyID/erpxianluID/' + _lineid;
+	url = server_url+'/index.php?s=/Connection/getxianlubyID/erpxianluID/' + _lineid;
 	jQuery.getJSON(url +"&jsoncallback=?", function(data){  
         if (data.status == 1) {
 			
@@ -297,7 +297,7 @@ function computeprice(ctrl, type) {
     $(text).insertAfter("#Popupbox ul:last");
 
     totalnum = pernum + childnum;
-    clickurl = "http://www.myerpcenter.com/index.php?s=/Yuding/addDingdan/chanpinID/"+group.groupid;
+    clickurl = server_url+"/index.php?s=/Yuding/addDingdan/chanpinID/"+group.groupid;
     if (totalnum > group.num || group.num == 0 || pernum == 0) {
         $("#Popupbox .nextstep input").attr("src", "./德国10日全景之旅-北京出发-凯撒旅游网2_files/xiayibu_gray.gif");
         $("#Popupbox .nextstep input").unbind().bind("click", function() { alert("请检查预订人数，不可超过该团的剩余名额,并且成人数不能为0！"); });
