@@ -39,13 +39,13 @@
 .list_left span b						{ height:32px; font-weight:normal; color:#333333; line-height:32px; _line-height:33px; overflow:hidden; float:right;}
 .list_left ol							{ width:707px; padding:0 0 0 13px; overflow:hidden; float:left;}
 .list_left ol li						{ width:707px; padding:15px 0; border-bottom:1px dashed #cccccc; overflow:hidden; float:left;}
-.list_left ol li p						{ width:127px; height:83px; overflow:hidden; float:left;}
+.list_left ol li p						{ width:128px; height:77px; border:1px solid #e6e6e6; overflow:hidden; float:left;}
 .list_left ol li i						{ width:420px; padding:0 0 0 20px; overflow:hidden; float:left;}
 .list_left ol li i h1					{ width:420px; margin:1px 0 0 0; display:inline; overflow:hidden; float:left;}
 .list_left ol li i h1 b					{ vertical-align:top; font-size:14px; color:#000; line-height:20px; overflow:hidden;}
 .list_left ol li i h1 img				{ vertical-align:baseline; _vertical-align:baseline; display:inline; overflow:hidden;}
-.list_left ol li i h2					{ width:420px; padding:5px 0 0 0; color:#666666; line-height:20px; overflow:hidden; float:left;}
-.list_left ol li i h3					{ width:420px; padding:5px 0 0 0; color:#c23d64; line-height:20px; overflow:hidden; float:left;}
+.list_left ol li i h2					{ width:420px; padding:3px 0 0 0; color:#666666; line-height:20px; overflow:hidden; float:left;}
+.list_left ol li i h3					{ width:420px; padding:3px 0 0 0; color:#c23d64; line-height:20px; overflow:hidden; float:left;}
 .list_left ol li i h3 b					{ font-weight:normal; color:#999999;}
 .list_left ol li u						{ width:100px; height:24px; padding:2px 10px 0 0; font-family:"黑体"; color:#666666; overflow:hidden; float:right;}
 .list_left ol li u h1					{ display:inline; font-size:16px; font-weight:bold; color:#d22b70;}

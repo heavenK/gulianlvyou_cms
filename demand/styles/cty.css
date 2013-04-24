@@ -75,19 +75,19 @@
 .cty_xltj strong em a				{ color:#cccccc;}
 .cty_xltj strong em a:hover			{ color:#ff6633;}
 .cty_xltj strong i					{ height:34px; color:#cccccc; line-height:32px; overflow:hidden; float:right;}
-.cty_xltj i							{ width:696px; height:81px; padding:11px 0 0 5px; overflow:hidden; float:left;}
-.cty_xltj i p						{ width:108px; height:71px; overflow:hidden; float:left;}
+.cty_xltj i							{ width:696px; height:79px; padding:13px 0 0 10px; overflow:hidden; float:left;}
+.cty_xltj i p						{ width:106px; height:64px; border:1px solid #e6e6e6; overflow:hidden; float:left;}
 .cty_xltj i em						{ width:451px; height:71px; padding:0 0 0 22px; overflow:hidden; float:left;}
-.cty_xltj i em h1					{ width:451px; height:26px; line-height:24px; overflow:hidden; float:left;}
+.cty_xltj i em h1					{ width:451px; height:24px; line-height:24px; overflow:hidden; float:left;}
 .cty_xltj i em h1 a					{ font-size:14px; font-weight:bold; color:#333333;}
 .cty_xltj i em h1 a:hover			{ color:#ff6633;}
-.cty_xltj i em h2					{ width:451px; height:24px; color:#666666; line-height:24px; overflow:hidden; float:left;}
-.cty_xltj i em h3					{ width:451px; height:21px; color:#816e59; line-height:24px; overflow:hidden; float:left;}
+.cty_xltj i em h2					{ width:451px; height:21px; color:#666666; line-height:24px; overflow:hidden; float:left;}
+.cty_xltj i em h3					{ width:451px; height:19px; color:#816e59; line-height:24px; overflow:hidden; float:left;}
 .cty_xltj i em h3 b					{ color:#534134;}
-.cty_xltj i span					{ width:82px; height:64px; text-align:right; overflow:hidden; float:right;}
-.cty_xltj i span h3					{ width:82px; height:19px; font-family:"黑体"; color:#666666; line-height:24px; overflow:hidden; float:left;}
+.cty_xltj i span					{ width:80px; height:64px; text-align:right; overflow:hidden; float:right;}
+.cty_xltj i span h3					{ width:80px; height:19px; font-family:"黑体"; color:#666666; line-height:24px; overflow:hidden; float:left;}
 .cty_xltj i span h3 b				{ font-size:18px; color:#d22b70;}
-.cty_xltj i span pre				{ width:82px; height:22px; color:#676667; line-height:20px; overflow:hidden; float:left;}
+.cty_xltj i span pre				{ width:80px; height:22px; color:#676667; line-height:20px; overflow:hidden; float:left;}
 .cty_xltj i span a					{ width:80px; height:23px; background-position:-67px -186px; overflow:hidden; float:left;}
 .cty_xltj i span a:hover			{ background-position:-67px -209px;}
 .cty_xltj ul						{ width:697px; height:109px; padding:0 0 0 10px; overflow:hidden; float:left;}
