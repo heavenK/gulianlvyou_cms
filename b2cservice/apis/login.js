@@ -6,7 +6,7 @@
 var success_method = "";
 function judge(method) {
     success_method = method;
-	url = 'http://www.myerpcenter.com/index.php?s=/Server/getinfo';
+	url = server_url+'/index.php?s=/Server/getinfo';
 	jQuery.getJSON(url +"&jsoncallback=?", function(data){  
 		   if (data.uid > 0) {
 			   //ÒÑµÇÂ¼
