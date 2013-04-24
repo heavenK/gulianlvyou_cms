@@ -1,0 +1,63 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*通用背景*/
+.zxzf_jsxx span a	{ background:url(../images/all_bg.png) no-repeat;}
+
+/*主体*/
+.zxzf_box		{ width:100%; float:left;}
+.zxzf			{ width:980px; margin:0 auto; overflow:hidden;}
+
+.zxzf_mainbav							{ width:979px; height:32px; padding:0 0 0 1px; color:#ac3666; line-height:31px; overflow:hidden; float:left;}
+.zxzf_mainbav a							{ color:#333333;}
+.zxzf_mainbav a:hover					{ color:#ff6633;}
+.zxzf_lc								{ width:980px; height:40px; background:url(../images/zxzf_lc_bg.jpg) no-repeat; overflow:hidden; float:left;}
+
+/*订单详细信息*/
+.zxzf_ddxxxx							{ width:980px; margin:10px 0 0 0; display:inline; overflow:hidden; float:left;}
+.zxzf_ddxxxx em							{ width:980px; height:26px; border-bottom:1px solid #fba033; overflow:hidden; float:left;}
+.zxzf_ddxxxx em b						{ width:120px; height:26px; background:#fba033; text-align:center; font-size:16px; color:#FFF; line-height:27px; overflow:hidden; float:left;}
+.zxzf_ddxxxx span						{ width:958px; padding:24px 0 0 20px; border:1px solid #e1e1e1; border-top:none; overflow:hidden; float:left;}
+.zxzf_ddxxxx table td					{ font-size:14px; color:#333333;}
+.zxzf_ddxxxx i							{ width:915px; height:47px; padding:5px 0 0 0; text-align:right; color:#333333; overflow:hidden; float:left;}
+.zxzf_ddxxxx i u						{ font-family:"黑体"; font-size:24px; font-weight:bold; color:#fa741b;}
+.zxzf_ddxxxx i b						{ font-family:"黑体"; font-size:32px; color:#fa741b;}
+
+/*联系人信息*/
+.zxzf_lxrxx								{ width:980px; margin:10px 0 0 0; display:inline; overflow:hidden; float:left;}
+.zxzf_lxrxx dl							{ width:980px; height:26px; border-bottom:1px solid #fba033; overflow:hidden; float:left;}
+.zxzf_lxrxx dl dd						{ width:104px; height:26px; background:#fba033; text-align:center; font-size:16px; font-weight:bold; color:#FFF; line-height:27px; overflow:hidden; float:left;}
+.zxzf_lxrxx dl dt						{ height:26px; padding:0 0 0 9px; color:#333333; line-height:27px; overflow:hidden; float:left;}
+.zxzf_lxrxx dl dt a						{ color:#2e5483;}
+.zxzf_lxrxx dl dt a:hover				{ color:#ff6633;}
+.zxzf_lxrxx table						{ border-collapse:collapse; color:#343434;}
+.zxzf_lxrxx table th					{ border:1px solid #e1e1e1; border-top:none; font-weight:normal;}
+.zxzf_lxrxx table td					{ border:1px solid #e1e1e1; color:#333333; line-height:20px;}
+
+/*实际出游人详细信息*/
+.zxzf_sjcyrxxxx							{ width:980px; margin:10px 0 0 0; display:inline; overflow:hidden; float:left;}
+.zxzf_sjcyrxxxx dl						{ width:980px; height:26px; border-bottom:1px solid #fba033; overflow:hidden; float:left;}
+.zxzf_sjcyrxxxx dl dd					{ width:171px; height:26px; background:#fba033; text-align:center; font-size:16px; font-weight:bold; color:#FFF; line-height:27px; overflow:hidden; float:left;}
+.zxzf_sjcyrxxxx dl dt					{ height:26px; padding:0 0 0 9px; color:#333333; line-height:27px; overflow:hidden; float:left;}
+.zxzf_sjcyrxxxx dl dt a					{ color:#2e5483;}
+.zxzf_sjcyrxxxx dl dt a:hover			{ color:#ff6633;}
+.zxzf_sjcyrxxxx table					{ border-collapse:collapse; color:#343434;}
+.zxzf_sjcyrxxxx table th				{ border:1px solid #e1e1e1; border-top:none; font-weight:normal;}
+.zxzf_sjcyrxxxx table td				{ border:1px solid #e1e1e1; color:#333333; line-height:20px;}
+
+/*结算信息*/
+.zxzf_jsxx								{ width:980px; margin:10px 0 0 0; display:inline; overflow:hidden; float:left;}
+.zxzf_jsxx em							{ width:980px; height:26px; border-bottom:1px solid #fba033; overflow:hidden; float:left;}
+.zxzf_jsxx em b							{ width:86px; height:26px; background:#fba033; text-align:center; font-size:16px; color:#FFF; line-height:27px; overflow:hidden; float:left;}
+.zxzf_jsxx span							{ width:947px; padding:24px 0 31px 31px; border:1px solid #e1e1e1; overflow:hidden; float:left;}
+.zxzf_jsxx span p						{ width:912px; height:56px; color:#666666; line-height:20px; overflow:hidden; float:left;}
+.zxzf_jsxx span h1						{ width:912px; height:58px; font-family:"黑体"; font-size:32px; font-weight:bold; color:#fa741b; overflow:hidden; float:left;}
+.zxzf_jsxx span h1 b					{ font-family:"宋体"; font-size:16px; color:#000000;}
+.zxzf_jsxx span h1 strong				{ font-family:"黑体"; font-size:24px; color:#fa741b;}
+.zxzf_jsxx span a						{ width:113px; height:35px; background-position:0 -650px; overflow:hidden; float:left;}
+.zxzf_jsxx span a:hover					{ background-position:-113px -650px;}
+
+/*提交按钮*/
+.zxzf_sub								{ width:980px; height:35px; margin:30px 0 0 0; display:inline; padding:0 0 19px 0; overflow:hidden; float:left;}
+.zxzf_sub a								{ width:144px; height:35px; background-position:0 -580px; overflow:hidden; float:left;}
+.zxzf_sub a:hover						{ background-position:0 -615px;}
