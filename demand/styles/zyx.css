@@ -89,12 +89,12 @@
 .zyx_wzsj_zbzg dl dt i a:hover		{ color:#ff6633;}
 .zyx_wzsj_zbzg ul					{ width:694px; height:322px; padding:5px 0 0 10px; overflow:hidden; float:left;}
 .zyx_wzsj_zbzg ul li				{ width:694px; height:81px; border-bottom:1px dotted #dfdfdf; overflow:hidden; float:left;}
-.zyx_wzsj_zbzg ul li p				{ width:108px; height:71px; margin:5px 22px 0 0; display:inline; overflow:hidden; float:left;}
+.zyx_wzsj_zbzg ul li p				{ width:106px; height:64px; margin:8px 22px 0 0; display:inline; border:1px solid #e6e6e6; overflow:hidden; float:left;}
 .zyx_wzsj_zbzg ul li em				{ width:472px; height:71px; overflow:hidden; float:left;}
-.zyx_wzsj_zbzg ul li em h1			{ width:472px; height:26px; line-height:31px; overflow:hidden; float:left;}
+.zyx_wzsj_zbzg ul li em h1			{ width:472px; height:26px; line-height:37px; overflow:hidden; float:left;}
 .zyx_wzsj_zbzg ul li em h1 a		{ font-size:14px; font-weight:bold; color:#333333;}
 .zyx_wzsj_zbzg ul li em h1 a:hover	{ color:#ff6633;}
-.zyx_wzsj_zbzg ul li em h2			{ width:472px; height:24px; color:#666666; line-height:31px; overflow:hidden; float:left;}
+.zyx_wzsj_zbzg ul li em h2			{ width:472px; height:21px; color:#666666; line-height:31px; overflow:hidden; float:left;}
 .zyx_wzsj_zbzg ul li em h3			{ width:472px; height:21px; color:#816e59; line-height:31px; overflow:hidden; float:left;}
 .zyx_wzsj_zbzg ul li em h3 b		{ color:#534134;}
 .zyx_wzsj_zbzg ul li span			{ width:85px; height:64px; text-align:center; overflow:hidden; float:right;}
