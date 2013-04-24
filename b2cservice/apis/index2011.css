@@ -56,7 +56,7 @@
 .position_right .Calendar td.current .pro_state{ background-position:0 -71px; color:#FFF;}
 .position_right .Calendar td.current .pro_price em{ color:#fff;}
 .position_right .Calendar td.current .detail_data{ color:#fff;}
-.position_right .Calendar td.current{ background-color:#ac3666; color:#fff;}
+.position_right .Calendar td.current{ background-color:#fa9e30; color:#fff;}
 .position_right .select_02{ background-color:#f0efeb; padding:15px 0; margin-top:9px;}
 .position_right .select_02 .book_02{ display:block; width:80px; height:30px; margin-left:155px;}
 /**************»’¿˙±Ì£∫end*******************/
@@ -73,6 +73,8 @@
 #Popupbox .pro_table{ padding:10px 13px; text-align:center;}
 #Popupbox .stastics{ width:100%; text-align:center; color:#333333; overflow:hidden; float:left;}
 #Popupbox .nextstep{ width:100%; text-align:center; padding:25px 0 0 0; overflow:hidden; float:left;}
+#Popupbox .nextstep a{ width:113px; height:35px; display:inline-block; background:url(../../demand/images/all_bg.png) no-repeat 0 -685px; overflow:hidden;}
+#Popupbox .nextstep a:hover{ background:url(../../demand/images/all_bg.png) no-repeat -113px -685px;}
 #Popupbox ul{ width:100%; height:30px; overflow:hidden; float:left;}
 #Popupbox ul li{ line-height:22px; _line-height:23px; padding:0 23px 0 0; color:#666666; float:left;}
 #Popupbox ul li.pwidth{width:166px; text-align:right; padding:0; overflow:hidden; float:left;}
