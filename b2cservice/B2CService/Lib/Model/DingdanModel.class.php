@@ -4,7 +4,7 @@ class DingdanModel extends Model {
 	protected $trueTableName = 'b2cservice_member_dingdan';	
    // 自动验证设置 
     protected $_validate = array( 
-        array('erverdataID', 'require', 'erverdataID不能为空！', 1,'',1), 
+        array('serverdataID', 'require', 'serverdataID不能为空！', 1,'',1), 
         array('lxr_name', 'require', 'lxr_name不能为空！', 1,'',1), 
         array('lxr_telnum', 'require', 'lxr_telnum不能为空！', 1,'',1), 
         array('lxr_email', 'require', 'lxr_email不能为空！', 1,'',1), 

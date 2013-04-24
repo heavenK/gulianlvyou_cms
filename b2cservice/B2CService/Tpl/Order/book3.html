@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="<{:__PUBLIC__}>/gulian/styles/reset.css" type="text/css" rel="stylesheet" />
+<link href="<{:__PUBLIC__}>/gulian/styles/zxzf.css" type="text/css" rel="stylesheet" />
+<script src="<{:__PUBLIC__}>/gulian/js/jquery-1.4a2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+//头部导航下拉菜单
+$(document).ready(function(){
+	var itswidth = $("#mainbav_pull a").innerWidth();
+	$("#mainbav_pull ol li a").width(itswidth-2);
+	$("#mainbav_pull ol").width(itswidth);
+	$('#mainbav_pull').mousemove(function(){
+		$(this).find('ol').show();
+	});
+		$('#mainbav_pull').mouseleave(function(){
+			$(this).find('ol').hide();
+	});
+});
+</script>
+</head>
+
+<body>
+<div class="header_box"><!--头部-->
+	<dl>
+    	<dd><b><a href="#" style=" font-family:Arial;">ENGLISH</a>  |  <a href="#">日本語</a>  |  <a href="#" style=" font-family:Arial;">РУССКИЙ ЯЗЫК</a></b><i><u><a href="#">登录</a></u> | <a href="#">注册</a> | <a href="#">加入收藏</a></i><em>欢迎来到古莲旅游网！</em></dd>
+        <dt>
+        	<i><a href="#"><img src="<{:__PUBLIC__}>/gulian/images/logo.png" width="223" height="73" /></a></i>
+            <b>
+                <input type="text" class="header_search_text" name="text" value="搜索旅游目的地" onfocus="if (value =='搜索旅游目的地'){value =''}" onblur="if (value ==''){value='搜索旅游目的地'}"/>
+                <input type="submit" class="header_search_submit" name="submit" value="" />
+            </b>
+            <em>热门搜索：<a href="#">灵山大佛</a>  <a href="#">马尔代夫</a>  <a href="#">海南</a>  <a href="#">巴厘岛</a>  <a href="#">普吉岛</a>  <a href="#">迪斯尼乐园</a></em>
+        </dt>
+    </dl>
+    <div class="mainbav_box"><!--导航-->
+    	<ul>
+        	<li style=" background:none;"><a href="#"><span>首 页</span></a></li>
+            <li class="mainbav_on"><a href="#"><span>参团游</span></a></li>
+            <li><a href="#"><span>自由行</span></a></li>
+            <li><a href="#"><span>主题度假</span></a></li>
+            <li><a href="#"><span>个性定制</span></a></li>
+            <li><a href="#"><span>签 证</span></a></li>
+            <li id="mainbav_pull"><a href="#"><span>达人游记</span></a>
+            	<ol>
+                	<li><a href="#">精彩游记</a></li>
+                    <li><a href="#">贴&nbsp;&nbsp;&nbsp;&nbsp;图</a></li>
+                    <li><a href="#">视&nbsp;&nbsp;&nbsp;&nbsp;频</a></li>
+                </ol>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="zxzf_box"><!--主体-->
+    <div class="zxzf">
+        <div class="zxzf_mainbav"><a href="http://dede.we54.com/">主页</a> &gt; <a href="/a/webbase/">网页基础</a> &gt; Javascript/Ajax</div>
+        <div class="zxzf_lc"></div>
+        <div class="zxzf_ddxxxx"><!--订单详细信息-->
+        	<em><b>订单详细信息</b></em>
+            <span>
+            	<table width="938" cellpadding="0" cellspacing="0">
+                	<tr height="34">
+                    	<td width="431">产品名称：<b>翡翠时光－泰国普吉岛6日度假之旅</b></td>
+                        <td width="252">出发城市：<b>沈阳</b></td>
+                        <td width="255">出发时间：<b>2013-04-13</b></td>
+                    </tr>
+                    <tr height="34">
+                    	<td width="431">出团编号：<b>CAI2013-PEK0220PEK0220-1004769</b></td>
+                        <td width="252">行程天数：<b>6日</b></td>
+                        <td width="255"></td>
+                    </tr>
+                </table>
+                <i>出行人数： 成人 1 人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合计：<u>￥</u><b>4299</b></i>
+            </span>
+        </div>
+        <div class="zxzf_lxrxx"><!--联系人信息-->
+        	<dl><dd>联系人信息</dd><dt><a href="#">返回修改&gt;&gt;</a></dt></dl>
+            <table width="980" border="0" cellspacing="0" cellpadding="0">
+                <tr height="27" bgcolor="#eeeeee" align="center">
+                  <th width="66" scope="col">姓名</th>
+                  <th width="163" scope="col">电话</th>
+                  <th width="207" scope="col">邮箱</th>
+                  <th scope="col"></th>
+                </tr>
+                <tr height="40" align="center">
+                  <td>张三</td>
+                  <td>18640889938</td>
+                  <td>zhagnsan@163.com</td>
+                  <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="zxzf_sjcyrxxxx"><!--实际出游人详细信息-->
+        	<dl><dd>实际出游人详细信息</dd><dt><a href="#">返回修改&gt;&gt;</a></dt></dl>
+            <table width="980" border="0" cellspacing="0" cellpadding="0">
+                <tr height="27" bgcolor="#eeeeee" align="center">
+                  <th width="67" scope="col">姓名</th>
+                  <th width="128" scope="col">拼音</th>
+                  <th width="44" scope="col">性别</th>
+                  <th width="108" scope="col">生日</th>
+                  <th width="88" scope="col">证件类型</th>
+                  <th width="222" scope="col">证件号</th>
+                  <th width="157" scope="col">旅游证件号</th>
+                  <th width="67" scope="col">签发地</th>
+                  <th scope="col">有效期至</th>
+                </tr>
+                <tr height="40" align="center">
+                  <td>张三</td>
+                  <td>ZHANG SAN</td>
+                  <td>男</td>
+                  <td>1985-01-09</td>
+                  <td>身份证</td>
+                  <td>211111111111111111</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr height="40" align="center">
+                  <td>张三</td>
+                  <td>ZHANG SAN</td>
+                  <td>男</td>
+                  <td>1985-01-09</td>
+                  <td>身份证</td>
+                  <td>211111111111111111</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+            </table>
+        </div>
+        <div class="zxzf_jsxx"><!--结算信息-->
+        	<em><b>结算信息</b></em>
+            <span>
+            	<p>您的订单已提交，如果您没有立即支付，我们将按照您所指定的联系方式尽快回复您。但由于网上订单提交并未最终完成出团名额预订，因此为确保我们为您预留出团名额，请选择网上支付。</p>
+                <h1><b>应付金额：</b><strong>￥</strong>4299</h1>
+                <a href="#"></a>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="footer_box"><!--底部-->
+	<div class="footer">
+    	<i><a href="#" target="_blank">关于古莲</a> | <a href="#" target="_blank">加入古莲</a> | <a href="#" target="_blank">合作品牌</a> | <a href="#" target="_blank">友情链接</a> | <a href="#" target="_blank">法律声明</a> | <a href="#" target="_blank">营业网点</a> | <a href="#" target="_blank">联系我们</a> | <a href="#" target="_blank">网站地图</a></i>
+        <em>Copyright &copy; 2005-2011 gulianlvyou.com　All rights reserved   古莲旅游 版权所有<br />旅行社业务经营许可证编号：辽B2-20120096   大连ICP证031062号</em>
+    </div>
+</div>
+</body>
+</html>

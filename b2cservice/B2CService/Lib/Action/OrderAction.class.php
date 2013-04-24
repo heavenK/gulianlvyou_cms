@@ -101,7 +101,23 @@ class OrderAction extends Action{
 			}
 		}
 		$DingdanJoiner->commit();
+		redirect(SITE_INDEX."Order/book3/orderID/".$_REQUEST['orderID']);
 		
+	}
+	
+	
+    public function book3() {
+		//检查dataOM
+		$order = A("MethodService")->_getdingdan($_REQUEST['orderID']);
+		if(!$order){
+			echo "订单不存在！！";
+			exit;
+		}
+		$DingdanJoiner = D("DingdanJoiner");
+		$djall = $DingdanJoiner->where("`dingdanID` = '$order[id]'")->findall();
+		$this->assign("order",$order);
+		$this->assign("tuanyuanall",$djall);
+		$this->display();
 		
 	}
 	

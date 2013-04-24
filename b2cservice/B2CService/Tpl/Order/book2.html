@@ -79,7 +79,8 @@ $(document).ready(function(){
             </span>
         </div>
         <form name="form_book2" method="post" enctype="multipart/form-data" action="<{:SITE_INDEX}>Order/dopostbook2" >
-        <input type="hidden" name="dingdanID" value="<{$order[orderID]}>"/>
+        <input type="hidden" name="dingdanID" value="<{$order[id]}>"/>
+        <input type="hidden" name="orderID" value="<{$order[orderID]}>"/>
         
         <div class="tjdd_txlxrzl"><!--出行人信息-->
         	<dl><dd>出行人信息</dd><dt><i>*</i>为必填项</dt></dl>
