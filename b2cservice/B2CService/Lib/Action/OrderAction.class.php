@@ -8,8 +8,6 @@ class OrderAction extends Action{
 			echo "产品不存在或已经停止销售！！";
 			exit;
 		}
-		$zituan = str_replace('﻿','',$zituan);//未知原因数据序列化后多3个不可见字符问题，序列化失败解决办法。
-		$zituan = unserialize($zituan);
 		$xianlu = unserialize($zituan['xianlulist']['datatext']);
 		$zongjia = $zituan['adult_price']*$_REQUEST['chengrenshu']+$zituan['child_price']*$_REQUEST['ertongshu'];
 		$this->assign("zongjia",$zongjia);
@@ -24,8 +22,6 @@ class OrderAction extends Action{
 			echo "产品不存在或已经停止销售！！";
 			exit;
 		}
-		$chanpin = str_replace('﻿','',$chanpin);//未知原因数据序列化后多3个不可见字符问题，序列化失败解决办法。
-		$chanpin = unserialize($chanpin);
 		//提交到订单
 		$rows = $_REQUEST;
 		$rows['serverdataID'] = $_REQUEST['chanpinID'];
@@ -56,6 +52,9 @@ class OrderAction extends Action{
 			echo "订单不存在！！";
 			exit;
 		}
+		$DingdanJoiner = D("DingdanJoiner");
+		$joinerall = $DingdanJoiner->where("`dingdanID` = '$order[id]'")->findall();
+		$this->assign("joinerall",$joinerall);
 		$zituan = A("MethodService")->_checkchanpin($order['serverdataID']);
 		if(false === $zituan){
 			echo "产品不存在或已经停止销售！！";
@@ -70,7 +69,6 @@ class OrderAction extends Action{
 	
 	
     public function dopostbook2() {
-		//检查dataOM
 		$order = A("MethodService")->_getdingdan($_REQUEST['orderID']);
 		if(!$order){
 			echo "订单不存在！！";
@@ -105,7 +103,28 @@ class OrderAction extends Action{
 			}
 		}
 		$DingdanJoiner->commit();
+		redirect(SITE_INDEX."Order/book3/orderID/".$_REQUEST['orderID']);
 		
+	}
+	
+	
+    public function book3() {
+		$order = A("MethodService")->_getdingdan($_REQUEST['orderID']);
+		if(!$order){
+			echo "订单不存在！！";
+			exit;
+		}
+		$zituan = A("MethodService")->_checkchanpin($order['serverdataID']);
+		if(false === $zituan){
+			echo "产品不存在或已经停止销售！！";
+			exit;
+		}
+		$order['zongjia'] = $order['chengrenshu']*$zituan['adult_price']+$order['ertongshu']*$order['child_price'];
+		$DingdanJoiner = D("DingdanJoiner");
+		$joinerall = $DingdanJoiner->where("`dingdanID` = '$order[id]'")->findall();
+		$this->assign("order",$order);
+		$this->assign("joinerall",$joinerall);
+		$this->display();
 		
 	}
 	
