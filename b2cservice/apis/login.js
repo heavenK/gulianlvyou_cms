@@ -5,19 +5,18 @@
 
 var success_method = "";
 function judge(method) {
-//    success_method = method;
-//	url = loginsta_url;
-//	jQuery.getJSON(url +"&jsoncallback=?", function(data){  
-//		   if (data.uid < 0) {
-//			   //已登录
-//			   eval(method);
-//		   } else {
-//			   //显示  注册登录浮层
-//			   showlogregisdiv();
-//		   }
-//    });
-//	
+    success_method = method;
+	url = loginsta_url;
+	jQuery.getJSON(url +"&jsoncallback=?", function(data){  
+		   if (data.mid > 0) {
+			   //已登录
+			   eval(method);
+		   } else {
+			   //显示  注册登录浮层
 			   showlogregisdiv();
+		   }
+    });
+	
 		 
 }
 
