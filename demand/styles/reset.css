@@ -60,9 +60,10 @@ h1,h2,h3{ font-size:12px; font-weight:normal;}
 .footer em							{ width:980px; text-align:center; line-height:31px; color:#666666; overflow:hidden; float:left;}
 
 /*弹出登录框*/
-.login_tanchu	{ width:580px; height:302px; padding:10px; background:#FFF; overflow:hidden; display:block; position:absolute;}
+.login_tanchu	{ width:580px; height:302px; padding:10px; background:#FFF; overflow:hidden; display:block;}
 .login_tanchu span					{ width:580px; height:302px; background:#f1f1f1; overflow:hidden; float:left;}
-.login_tanchu span em				{ width:578px; height:25px; background:url(../images/cty_article_tanchu_close.png) no-repeat right 2px; overflow:hidden; float:left;}
+.login_tanchu span em				{ width:578px; height:23px; padding:2px 2px 0 0; overflow:hidden; float:left;}
+.login_tanchu span em a				{ width:55px; height:22px; background:url(../images/cty_article_tanchu_close.png) no-repeat; overflow:hidden; float:right;}
 .login_tanchu span h1				{ width:580px; height:51px; background:url(../images/login_tanchu_title.png) no-repeat 166px 0; overflow:hidden; float:left;}
 .login_tanchu span ul				{ width:580px; height:97px; overflow:hidden; float:left;}
 .login_tanchu span ul li			{ width:580px; height:34px; margin:0 0 12px 0; display:inline; overflow:hidden; float:left;}

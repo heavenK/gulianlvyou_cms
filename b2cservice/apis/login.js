@@ -28,7 +28,7 @@ function showlogregisdiv() {
         $('body').append(div);
 
 		var text = '<span>'
-			+ '<em></em>'
+			+ '<em><a href="javascript:closeDiv(\'logregisdiv\');"></a></em>'
 			+ '<h1></h1>'
 			+ '<ul>'
 			+ '<li><label for="username">账号</label><input type="text" id="username" /></li>'
