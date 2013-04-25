@@ -1,5 +1,5 @@
 /*
-* ÓÃÓÚµ¯³ö²ã ×¢²á¡¢µÇÂ¼
+* ç”¨äºå¼¹å‡ºå±‚ æ³¨å†Œã€ç™»å½•
 *
 */
 
@@ -9,10 +9,10 @@ function judge(method) {
 //	url = loginsta_url;
 //	jQuery.getJSON(url +"&jsoncallback=?", function(data){  
 //		   if (data.uid < 0) {
-//			   //ÒÑµÇÂ¼
+//			   //å·²ç™»å½•
 //			   eval(method);
 //		   } else {
-//			   //ÏÔÊ¾  ×¢²áµÇÂ¼¸¡²ã
+//			   //æ˜¾ç¤º  æ³¨å†Œç™»å½•æµ®å±‚
 //			   showlogregisdiv();
 //		   }
 //    });
@@ -27,23 +27,28 @@ function showlogregisdiv() {
         div = $('<div class="login_tanchu" id="logregisdiv"></div>');
         $('body').append(div);
 
-        var text = '<span>';
-         text += '<em></em>';
-         text += '<ul>';
-         text += '<em></em>';
-         text += '</span>';
-         text += '</span>';
-         text = '</div>'
+		var text = '<span>'
+			+ '<em></em>'
+			+ '<h1></h1>'
+			+ '<ul>'
+			+ '<li><label for="username">è´¦å·</label><input type="text" id="username" /></li>'
+			+ '<li><label for="password">å¯†ç </label><input type="text" id="password" /></li>'
+			+ '</ul>'
+			+ '<dl>'
+			+ '<dd><a href="#"></a></dd>'
+			+ '<dt><a href="#"></a></dt>'
+			+ '</dl>'
+			+ '</span>';
 					
 					
-//        var text = '<div class="Pop1" style="width:300px; height:300px; background:#000; float:left"><div class="Pop_title1"><span class="Pop_xx"><a href="javascript:closeDiv(\'logregisdiv\');">¹Ø±Õ</a></span></div>'
-//                    + '<div class="Pop_Content2">´ËÔ¤¶©·½Ê½½«ÎŞ·¨ÏíÊÜ<br>¿­Èö»áÔ±Ïà¹ØÓÅ»İ<a href="javascript:caissa_directorder()" class="Direct_booking">Ö±½ÓÔ¤¶©</a></div>'
+//        var text = '<div class="Pop1" style="width:300px; height:300px; background:#000; float:left"><div class="Pop_title1"><span class="Pop_xx"><a href="javascript:closeDiv(\'logregisdiv\');">å…³é—­</a></span></div>'
+//                    + '<div class="Pop_Content2">æ­¤é¢„è®¢æ–¹å¼å°†æ— æ³•äº«å—<br>å‡¯æ’’ä¼šå‘˜ç›¸å…³ä¼˜æƒ <a href="javascript:caissa_directorder()" class="Direct_booking">ç›´æ¥é¢„è®¢</a></div>'
 //                    + '<div class="zcdl_right"><table cellspacing="0" cellpadding="0" border="0" width="236" id="zcdl_bt2">'
-//                    + '<tr><td width="57">ÓÃ»§Ãû£º</td><td width="179"><input type="text" class="zcdl_x" id="loginName" name="loginName"></td></tr><tr><td>ÃÜ&nbsp;&nbsp;&nbsp;&nbsp;Âë£º</td>'
+//                    + '<tr><td width="57">ç”¨æˆ·åï¼š</td><td width="179"><input type="text" class="zcdl_x" id="loginName" name="loginName"></td></tr><tr><td>å¯†&nbsp;&nbsp;&nbsp;&nbsp;ç ï¼š</td>'
 //                    + '<td><input type="password" class="zcdl_x" id="loginPass" name="loginPass"></td></tr>'
-//                    + '</table><div style="margin:0 10px;"><div class="zcdl_right_an"><a href="javascript:caissa_login()">µÇÂ¼</a></div><em></em></div>'
-//                    + '<div class="zcdl_an"><a href="http://xxxxxxxxxx" target="_blank">×¢²á</a></div></div></div>';
-
+//                    + '</table><div style="margin:0 10px;"><div class="zcdl_right_an"><a href="javascript:caissa_login()">ç™»å½•</a></div><em></em></div>'
+//                    + '<div class="zcdl_an"><a href="http://xxxxxxxxxx" target="_blank">æ³¨å†Œ</a></div></div></div>';
+		center("#logregisdiv");
         div.html(text);
     }
 	
@@ -65,11 +70,11 @@ function caissa_login() {
     var email = $("#loginName").val();
     var psw = $("#loginPass").val();
     if (email == null || email == "") {
-        alert("ÇëÊäÈëÓÃ»§Ãû!");
+        alert("è¯·è¾“å…¥ç”¨æˆ·å!");
         return;
     }
     if (psw == null || psw == "") {
-        alert("ÇëÊäÈëÃÜÂë!");
+        alert("è¯·è¾“å…¥å¯†ç !");
         return;
     }
 
@@ -85,7 +90,7 @@ function caissa_login() {
                  }
                  eval(success_method);
              } else {
-                 alert("µÇÂ¼Ê§°Ü:ÇëÈ·±£ÓÃ»§ÃûÃÜÂëÕıÈ·£¡");
+                 alert("ç™»å½•å¤±è´¥:è¯·ç¡®ä¿ç”¨æˆ·åå¯†ç æ­£ç¡®ï¼");
                  $(".zcdl_right_an a").removeClass("no");
                  $(".zcdl_right_an a").attr("href", "javascript:caissa_login()");
              }
@@ -93,7 +98,7 @@ function caissa_login() {
    _gaq.push(['_trackEvent', 'Register_Login', 'button','btn_Login']);
 }
 
-//¸¡²ã
+//æµ®å±‚
 function floatDiv(showDivId) {
     var bg = $("#mybg");
     if (bg.length == 0) {
