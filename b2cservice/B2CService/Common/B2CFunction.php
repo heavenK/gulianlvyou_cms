@@ -9,7 +9,7 @@ function FileGetContents($url){
 
 
 function GetDEDEInfo($type){
-	$loginsta = file_get_contents(ET_URL."apis/info_collector.php?type=".$type);
+	$loginsta = FileGetContents(B2CSERVICE_URL."apis/info_collector.php?type=".$type);
 	return trim($loginsta);
 }
 
