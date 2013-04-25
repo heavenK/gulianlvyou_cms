@@ -1,10 +1,6 @@
 <?php
 
-class IndexAction extends Action{
-	
-    public function index() {
-		echo "test";
-    }
+class DEDEInfoAction extends Action{
 	
     public function ajax_loginsta() {
         $M_ID = GetNum(GetCookie("DedeUserID"));
@@ -33,8 +29,6 @@ class IndexAction extends Action{
 		}
 		echo $lgoinsta->MemberLogin['M_MbType'];
     }
-	
-	
 	
 	
 }

@@ -109,6 +109,7 @@ function centerDiv(obj) {
         center(obj);
     });
 }
+
 function center(obj) {
     var windowWidth = document.documentElement.clientWidth;
     var windowHeight = document.documentElement.clientHeight;
