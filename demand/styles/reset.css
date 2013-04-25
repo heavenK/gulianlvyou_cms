@@ -2,7 +2,9 @@
 /* CSS Document */
 
 /*通用背景*/
-.header_search_submit	{ background:url(../images/all_bg.png) no-repeat;}
+.header_search_submit,
+.login_tanchu span dl dd a,
+.login_tanchu span dl dt a	{ background:url(../images/all_bg.png) no-repeat;}
 
 /*通用样式*/
 *		{ margin:0; padding:0; border:none;}
@@ -56,3 +58,20 @@ h1,h2,h3{ font-size:12px; font-weight:normal;}
 .footer i a							{ color:#333333;}
 .footer i a:hover					{ color:#ff6633;}
 .footer em							{ width:980px; text-align:center; line-height:31px; color:#666666; overflow:hidden; float:left;}
+
+/*弹出登录框*/
+.login_tanchu	{ width:580px; height:302px; padding:10px; background:#FFF; overflow:hidden; display:block; position:absolute;}
+.login_tanchu span					{ width:580px; height:302px; background:#f1f1f1; overflow:hidden; float:left;}
+.login_tanchu span em				{ width:578px; height:25px; background:url(../images/cty_article_tanchu_close.png) no-repeat right 2px; overflow:hidden; float:left;}
+.login_tanchu span h1				{ width:580px; height:51px; background:url(../images/login_tanchu_title.png) no-repeat center 0; overflow:hidden; float:left;}
+.login_tanchu span ul				{ width:580px; height:97px; overflow:hidden; float:left;}
+.login_tanchu span ul li			{ width:580px; height:34px; margin:0 0 12px 0; display:inline; overflow:hidden; float:left;}
+.login_tanchu span ul li label		{ width:159px; height:34px; padding:0 8px 0 0; text-align:right; line-height:34px; _line-height:35px; overflow:hidden; float:left;}
+.login_tanchu span ul li input		{ width:240px; height:15px; padding:8px 5px 9px 5px; background:#FFF; border:1px solid #ced4dd; font-size:12px; color:#7a7a7a; overflow:hidden; float:left;}
+.login_tanchu span dl				{ width:580px; height:110px; overflow:hidden; float:left;}
+.login_tanchu span dl dd			{ width:400px; height:35px; margin:0 0 11px 167px; display:inline; overflow:hidden; float:left;}
+.login_tanchu span dl dt			{ width:400px; height:35px; margin:0 0 11px 167px; display:inline; overflow:hidden; float:left;}
+.login_tanchu span dl dd a			{ width:246px; height:35px; background-position:0 -720px; overflow:hidden; float:left;}
+.login_tanchu span dl dd a:hover	{ background-position:0 -755px;}
+.login_tanchu span dl dt a			{ width:246px; height:35px; background-position:0 -790px; overflow:hidden; float:left;}
+.login_tanchu span dl dt a:hover	{ background-position:0 -825px;}
