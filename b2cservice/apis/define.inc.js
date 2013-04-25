@@ -1,5 +1,5 @@
 
-	//服务器地址
-	server_url = 'http://www.myerpcenter.com/';
-	//本地地址
-	site_url = 'http://www.testgulianlvyou.com/';
+	//本地
+	site_url = 'http://www.gulianlvyou.com/';
+	//服务器
+	server_url = 'http://c.dlgulian.com/';
