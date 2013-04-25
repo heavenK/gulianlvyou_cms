@@ -8,7 +8,7 @@ function judge(method) {
     success_method = method;
 	url = loginsta_url;
 	jQuery.getJSON(url +"&jsoncallback=?", function(data){  
-		   if (data.uid > 0) {
+		   if (data.uid < 0) {
 			   //已登录
 			   eval(method);
 		   } else {
@@ -22,22 +22,33 @@ function judge(method) {
 }
 
 function showlogregisdiv() {
-	alert(46)
     var div = $("#logregisdiv");
     if (div.length == 0) {
-        div = $('<div class="logregisdiv" id="logregisdiv"></div>');
+        div = $('<div class="login_tanchu" id="logregisdiv"></div>');
         $('body').append(div);
 
-        var text = '<div class="Pop1" style="width:300px; height:300px; background:#000; float:left"><div class="Pop_title1"><span class="Pop_xx"><a href="javascript:closeDiv(\'logregisdiv\');">关闭</a></span></div>'
-                    + '<div class="Pop_Content2">此预订方式将无法享受<br>凯撒会员相关优惠<a href="javascript:caissa_directorder()" class="Direct_booking">直接预订</a></div>'
-                    + '<div class="zcdl_right"><table cellspacing="0" cellpadding="0" border="0" width="236" id="zcdl_bt2">'
-                    + '<tr><td width="57">用户名：</td><td width="179"><input type="text" class="zcdl_x" id="loginName" name="loginName"></td></tr><tr><td>密&nbsp;&nbsp;&nbsp;&nbsp;码：</td>'
-                    + '<td><input type="password" class="zcdl_x" id="loginPass" name="loginPass"></td></tr>'
-                    + '</table><div style="margin:0 10px;"><div class="zcdl_right_an"><a href="javascript:caissa_login()">登录</a></div><em></em></div>'
-                    + '<div class="zcdl_an"><a href="http://xxxxxxxxxx" target="_blank">注册</a></div></div></div>';
+        var text = '<span>';
+         text += '<em></em>';
+         text += '<ul>';
+         text += '<em></em>';
+         text += '</span>';
+         text += '</span>';
+         text = '</div>'
+					
+					
+//        var text = '<div class="Pop1" style="width:300px; height:300px; background:#000; float:left"><div class="Pop_title1"><span class="Pop_xx"><a href="javascript:closeDiv(\'logregisdiv\');">关闭</a></span></div>'
+//                    + '<div class="Pop_Content2">此预订方式将无法享受<br>凯撒会员相关优惠<a href="javascript:caissa_directorder()" class="Direct_booking">直接预订</a></div>'
+//                    + '<div class="zcdl_right"><table cellspacing="0" cellpadding="0" border="0" width="236" id="zcdl_bt2">'
+//                    + '<tr><td width="57">用户名：</td><td width="179"><input type="text" class="zcdl_x" id="loginName" name="loginName"></td></tr><tr><td>密&nbsp;&nbsp;&nbsp;&nbsp;码：</td>'
+//                    + '<td><input type="password" class="zcdl_x" id="loginPass" name="loginPass"></td></tr>'
+//                    + '</table><div style="margin:0 10px;"><div class="zcdl_right_an"><a href="javascript:caissa_login()">登录</a></div><em></em></div>'
+//                    + '<div class="zcdl_an"><a href="http://xxxxxxxxxx" target="_blank">注册</a></div></div></div>';
 
         div.html(text);
     }
+	
+	
+	
     $("#loginPass").bind(($.browser.opera ? "keypress" : "keydown"), function(event) { if (event.keyCode == 13) caissa_login(); });
 	//stat code
     _gaq.push(['_trackPageview','/virtual/loginorregist']);
