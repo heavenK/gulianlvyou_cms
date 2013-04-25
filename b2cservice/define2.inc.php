@@ -1,16 +1,16 @@
 <?php
 	require(dirname(__FILE__).'/define.inc.php');
 	//全局
-    define('B2CSERVICE_URL',ET_URL.'b2cservice/');
-    define('ORDER_URL',ET_URL.'b2cservice/IndexOrder/');
-    define('MY_URL',ET_URL.'b2cservice/IndexMy/');
+    define('B2CSERVICE_URL',SITE_URL.'b2cservice/');
+    define('ORDER_URL',SITE_URL.'b2cservice/IndexOrder/');
+    define('MY_URL',SITE_URL.'b2cservice/IndexMy/');
 	//常用定义
-    define('SITE_INDEX',ET_URL.'index.php?s=/');
-    define('SITE_DATA',ET_URL.'Data/');
+    define('SITE_INDEX',SITE_URL.'index.php?s=/');
+    define('SITE_DATA',SITE_URL.'Data/');
     define('SERVER_INDEX',SERVER_URL.'index.php?s=/');
-	define('SITE_PUBLIC',ET_URL.'demand/');
+	define('SITE_PUBLIC',SITE_URL.'demand/');
 	define('__PUBLIC__',B2CSERVICE_URL."Public");
-	define('SITE_URL',ET_URL);
+	define('SITE_URL',SITE_URL);
 	//配置
 	define('MODE_NAME','mycore');
 	define('THINK_PATH',dirname(__FILE__).'/../../ThinkPHP/');
