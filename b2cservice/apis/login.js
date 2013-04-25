@@ -5,19 +5,19 @@
 
 var success_method = "";
 function judge(method) {
-    success_method = method;
-	url = loginsta_url;
-	jQuery.getJSON(url +"&jsoncallback=?", function(data){  
-		   if (data.uid < 0) {
-			   //ÒÑµÇÂ¼
-			   eval(method);
-		   } else {
-			   //ÏÔÊ¾  ×¢²áµÇÂ¼¸¡²ã
+//    success_method = method;
+//	url = loginsta_url;
+//	jQuery.getJSON(url +"&jsoncallback=?", function(data){  
+//		   if (data.uid < 0) {
+//			   //ÒÑµÇÂ¼
+//			   eval(method);
+//		   } else {
+//			   //ÏÔÊ¾  ×¢²áµÇÂ¼¸¡²ã
+//			   showlogregisdiv();
+//		   }
+//    });
+//	
 			   showlogregisdiv();
-		   }
-    });
-	
-		 
 		 
 }
 
