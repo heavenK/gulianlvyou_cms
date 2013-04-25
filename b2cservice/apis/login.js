@@ -47,16 +47,15 @@ function showlogregisdiv() {
 //                    + '<td><input type="password" class="zcdl_x" id="loginPass" name="loginPass"></td></tr>'
 //                    + '</table><div style="margin:0 10px;"><div class="zcdl_right_an"><a href="javascript:caissa_login()">登录</a></div><em></em></div>'
 //                    + '<div class="zcdl_an"><a href="http://xxxxxxxxxx" target="_blank">注册</a></div></div></div>';
-		center("#logregisdiv");
         div.html(text);
     }
 	
 	
-	
+    floatDiv("logregisdiv");	
     $("#loginPass").bind(($.browser.opera ? "keypress" : "keydown"), function(event) { if (event.keyCode == 13) caissa_login(); });
 	//stat code
     _gaq.push(['_trackPageview','/virtual/loginorregist']);
-    floatDiv("logregisdiv");
+
 }
 
 
