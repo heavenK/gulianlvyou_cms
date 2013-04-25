@@ -42,7 +42,7 @@
 .tjdd_txlxrzl span em ul li .tjdd_text	{ width:210px; height:15px; padding:5px 3px; background:#FFF; border:1px solid #b3c3dd; overflow:hidden; float:left;}
 .tjdd_txlxrzl span em ul li u			{ *width:216px; *height:23px; *padding:2px 0 0 0; *background:#fff; *border:1px solid #b3c3dd; overflow:hidden; float:left;}
 .tjdd_txlxrzl span em ul li strong		{ *width:216px; *background:#fff; *overflow:hidden; *float:left;}
-.tjdd_txlxrzl span em ul li select		{ width:218px; height:27px; padding:3px 4px; *margin:-1px; display:inline; background:#FFF; border:1px solid #b3c3dd; line-height:22px; float:left;}
+.tjdd_txlxrzl span em ul li select		{ width:218px; height:27px; padding:3px 4px 3px 0; *margin:-1px; display:inline; background:#FFF; border:1px solid #b3c3dd; line-height:22px; float:left;}
 .tjdd_txlxrzl span em ul li b			{ height:27px; padding:0 0 0 5px; font-weight:normal; color:#ff0000; line-height:26px; _line-height:27px; overflow:hidden; float:left;}
 .tjdd_txlxrzl span em ul li h3			{ height:27px; margin:0 0 0 5px; padding:0 10px 0 24px; background:#fddfdf url(../images/tjdd_notice_bg.png) no-repeat 3px 6px; color:#333333; line-height:26px; _line-height:27px; overflow:hidden; float:left; display:none;}
 .tjdd_txlxrzl span em ol				{ width:895px; padding:0 0 0 81px; overflow:hidden; float:left;}
@@ -52,25 +52,26 @@
 .tjdd_txlxrzl span em ol li label		{ height:27px; margin:0 35px 0 0; display:inline; line-height:28px; overflow:hidden; float:left;}
 .tjdd_txlxrzl span em ol li u			{ *width:216px; *height:23px; *padding:2px 0 0 0; *background:#fff; *border:1px solid #b3c3dd; overflow:hidden; float:left;}
 .tjdd_txlxrzl span em ol li strong		{ *width:216px; *background:#fff; *overflow:hidden; *float:left;}
-.tjdd_txlxrzl span em ol li select		{ width:218px; height:27px; padding:3px 4px; *margin:-1px; display:inline; background:#FFF; border:1px solid #b3c3dd; line-height:22px; float:left;}
+.tjdd_txlxrzl span em ol li select		{ width:218px; height:27px; padding:3px 4px 3px 0; *margin:-1px; display:inline; background:#FFF; border:1px solid #b3c3dd; line-height:22px; float:left;}
 .tjdd_txlxrzl span em ol li b			{ height:27px; padding:0 0 0 5px; font-weight:normal; color:#ff0000; line-height:26px; _line-height:27px; overflow:hidden; float:left;}
-.tjdd_txlxrzl span i					{ width:730px; margin:10px 0 0 57px; border:1px solid #ffcb99; overflow:hidden; float:left; display:none;}
+.tjdd_txlxrzl span em ol li h3			{ height:27px; margin:0 0 0 5px; padding:0 10px 0 24px; background:#fddfdf url(../images/tjdd_notice_bg.png) no-repeat 3px 6px; color:#333333; line-height:26px; _line-height:27px; overflow:hidden; float:left; display:none;}
+.tjdd_txlxrzl span i					{ width:730px; margin:10px 0 0 57px; border:1px solid #ffcb99; overflow:hidden; float:left;}
 .tjdd_txlxrzl span i ul					{ width:333px; padding:10px 0 0 0; overflow:hidden; float:left;}
 .tjdd_txlxrzl span i ul li				{ width:333px; height:27px; margin:0 0 14px 0; display:inline; overflow:hidden; float:left;}
 .tjdd_txlxrzl span i ul li .tjdd_label	{ width:114px; height:27px; text-align:right; color:#333333; line-height:26px; _line-height:27px; overflow:hidden; float:left;}
 .tjdd_txlxrzl span i ul li .tjdd_text	{ width:210px; height:15px; padding:5px 3px; background:#FFF; border:1px solid #b3c3dd; overflow:hidden; float:left;}
 .tjdd_select_long						{ *width:216px; *height:23px; *padding:2px 0 0 0; *background:#fff; *border:1px solid #b3c3dd; overflow:hidden; float:left;}
 .tjdd_select_long strong				{ *width:216px; *background:#fff; *overflow:hidden; *float:left;}
-.tjdd_select_long select				{ width:218px; height:27px; padding:3px 4px; *margin:-1px; display:inline; background:#FFF; border:1px solid #b3c3dd; line-height:22px; float:left;}
+.tjdd_select_long select				{ width:218px; height:27px; padding:3px 4px 3px 0; *margin:-1px; display:inline; background:#FFF; border:1px solid #b3c3dd; line-height:22px; float:left;}
 .tjdd_select_short_f					{ *width:59px; *height:23px; margin:0 7px 0 2px; display:inline; *padding:2px 0 0 0; *background:#fff; *border:1px solid #b3c3dd; overflow:hidden; float:left;}
 .tjdd_select_short_f strong				{ *width:59px; *background:#fff; *overflow:hidden; *float:left;}
-.tjdd_select_short_f select				{ width:61px; height:27px; padding:3px 4px; *margin:-1px; display:inline; background:#FFF; border:1px solid #b3c3dd; line-height:22px; float:left;}
+.tjdd_select_short_f select				{ width:61px; height:27px; padding:3px 4px 3px 0; *margin:-1px; display:inline; background:#FFF; border:1px solid #b3c3dd; line-height:22px; float:left;}
 .tjdd_select_short_s					{ *width:85px; *height:23px; margin:0 7px 0 0; display:inline; *padding:2px 0 0 0; *background:#fff; *border:1px solid #b3c3dd; overflow:hidden; float:left;}
 .tjdd_select_short_s strong				{ *width:85px; *background:#fff; *overflow:hidden; *float:left;}
-.tjdd_select_short_s select				{ width:87px; height:27px; padding:3px 4px; *margin:-1px; display:inline; background:#FFF; border:1px solid #b3c3dd; line-height:22px; float:left;}
+.tjdd_select_short_s select				{ width:87px; height:27px; padding:3px 4px 3px 0; *margin:-1px; display:inline; background:#FFF; border:1px solid #b3c3dd; line-height:22px; float:left;}
 .tjdd_select_short_t					{ *width:45px; *height:23px; *padding:2px 0 0 0; *background:#fff; *border:1px solid #b3c3dd; overflow:hidden; float:left;}
 .tjdd_select_short_t strong				{ *width:45px; *background:#fff; *overflow:hidden; *float:left;}
-.tjdd_select_short_t select				{ width:47px; height:27px; padding:3px 4px; *margin:-1px; display:inline; background:#FFF; border:1px solid #b3c3dd; line-height:22px; float:left;}
+.tjdd_select_short_t select				{ width:47px; height:27px; padding:3px 4px 3px 0; *margin:-1px; display:inline; background:#FFF; border:1px solid #b3c3dd; line-height:22px; float:left;}
 .tjdd_txlxrzl span i b					{ width:255px; height:178px; margin:24px 25px 0 0; display:inline; background:url(../images/tjdd_certificate_pic_01.jpg) no-repeat; overflow:hidden; float:right;}
 
 /*提交按钮*/
