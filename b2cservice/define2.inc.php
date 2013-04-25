@@ -10,7 +10,6 @@
     define('SERVER_INDEX',SERVER_URL.'index.php?s=/');
 	define('SITE_PUBLIC',SITE_URL.'demand/');
 	define('__PUBLIC__',B2CSERVICE_URL."Public");
-	define('SITE_URL',SITE_URL);
 	//配置
 	define('MODE_NAME','mycore');
 	define('THINK_PATH',dirname(__FILE__).'/../../ThinkPHP/');
@@ -18,8 +17,6 @@
 	define('APP_PATH', dirname(__FILE__).'/B2CService/');
 	define('DEFAULT_TYPE','default');
 	define('APP_DEBUG', true);
-	
 	require(APP_PATH.'Common/Function.php');
 	require(APP_PATH.'Common/B2CFunction.php');
-	
 ?>
