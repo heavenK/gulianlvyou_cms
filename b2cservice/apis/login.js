@@ -6,9 +6,9 @@
 var success_method = "";
 function judge(method) {
     success_method = method;
-	url = server_url+'/index.php?s=/Server/getinfo';
+	url = loginsta_url;
 	jQuery.getJSON(url +"&jsoncallback=?", function(data){  
-		   if (data.uid > 0) {
+		   if (data.mid > 0) {
 			   //ÒÑµÇÂ¼
 			   eval(method);
 		   } else {
@@ -16,9 +16,6 @@ function judge(method) {
 			   showlogregisdiv();
 		   }
     });
-	
-		 
-		 
 }
 
 function showlogregisdiv() {
