@@ -108,7 +108,7 @@ function getNews(){
 function getNewsAll(posturl){
 	jQuery.ajax({
 		type:	"POST",
-		url:	ET_URL+posturl,
+		url:	SITE_URL+posturl,
 		data:	"",
 		success:	function(msg){
 				ThinkAjax.myAjaxResponse(msg,'',getnewsall_after);
@@ -240,7 +240,7 @@ function shenheshow_doit(chanpinID,obj){
 function getshenhemessage(posturl){
 	jQuery.ajax({
 		type:	"POST",
-		url:	ET_URL+posturl,
+		url:	SITE_URL+posturl,
 		data:	"",
 		success:	function(msg){
 				ThinkAjax.myAjaxResponse(msg,'',getshenhemessage_after);

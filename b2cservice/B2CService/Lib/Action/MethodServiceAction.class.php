@@ -72,7 +72,6 @@ class MethodServiceAction extends CommonAction{
 	//用户状态
     public function ajax_loginsta() {
         $M_ID = GetNum(GetCookie("DedeUserID"));
-        $M_LoginTime = GetCookie("DedeLoginTime");
         if(empty($M_ID))
         {
             return false;
