@@ -3,7 +3,7 @@
 class MethodServiceAction extends CommonAction{
 	
     public function _initialize() {
-		if($_REQUEST['_URL_'][0] == 'Method'){
+		if($_REQUEST['_URL_'][0] == 'MethodService'){
 			$this->display('Index:error');
 			exit;
 		}

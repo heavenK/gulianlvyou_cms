@@ -1,9 +1,16 @@
 
+	//全局
+	ROOT_URL = 'http://www.'+SITE_ROOT_NAME+'.com/';
+	SERVER_URL = 'http://www.'+SERVER_ROOT_NAME+'.com/';
+    B2CSERVICE_URL = ROOT_URL+"b2cservice/";
+    SITE_URL = ROOT_URL;
+	//常用定义
+	SERVER_INDEX = SERVER_URL+'index.php?s=/';
+	SITE_INDEX = B2CSERVICE_URL+'index.php?s=/';
+	SITE_DATA = B2CSERVICE_URL+'Data/';
+	SITE_PUBLIC = ROOT_URL+'demand/';
+	__PUBLIC__ = B2CSERVICE_URL+'Public/';
 	//获得服务器数据
-    server_xianlu_url = server_url+"index.php?s=/Server/getxianlubyID";
-	//本地服务地址
-    site_service_url = site_url+"b2cservice/index.php?s=/";
-	//用户登录信息验证地址
-    loginsta_url = site_service_url+"DEDEInfo/ajax_loginsta";
+    SERVER_GET_XIANLU = SERVER_INDEX+"Server/getxianlubyID";
 	//订单流程填写订单地址
-    dingdan_1_url = site_url+"b2cservice/index.php?s=/Order/book1";
+    BOOK_1_URL = SITE_INDEX+"Order/book1";

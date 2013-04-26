@@ -6,7 +6,7 @@
 var success_method = "";
 function judge(method) {
     success_method = method;
-	url = loginsta_url;
+	url = B2CSERVICE_URL+"DEDEInfo/ajax_loginsta";
 	jQuery.getJSON(url +"&jsoncallback=?", function(data){  
 		   if (data.mid > 0) {
 			   //已登录

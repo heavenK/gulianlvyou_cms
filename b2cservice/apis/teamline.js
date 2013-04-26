@@ -9,7 +9,7 @@ var nowgroup = null;
 var arrline = null;
 var otherdepture = null;
 function loadgroup(lineid) {
-	url = server_xianlu_url + '/erpxianluID/' + _lineid;
+	url = SERVER_GET_XIANLU + '/erpxianluID/' + _lineid;
 	jQuery.getJSON(url +"&jsoncallback=?", function(data){  
         if (data.status == 1) {
 			
@@ -310,7 +310,7 @@ function computeprice(ctrl, type) {
     $(text).insertAfter("#Popupbox ul:last");
 
     totalnum = pernum + childnum;
-	clickurl = dingdan_1_url + "/chanpinID/"+group.groupid+"/chengrenshu/"+pernum+"/ertongshu/"+childnum;
+	clickurl = BOOK_1_URL + "/chanpinID/"+group.groupid+"/chengrenshu/"+pernum+"/ertongshu/"+childnum;
 	
     if (totalnum > group.renshu || group.renshu == 0 || pernum == 0) {
         $("#Popupbox .nextstep input").attr("src", "/b2cservice/apis/xiayibu_gray.gif");
