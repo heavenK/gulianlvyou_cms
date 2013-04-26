@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*通用背景*/
+.center_dingdan_btn	{ background:url(../images/all_bg.png) no-repeat;}
+
+/*个人中心头部*/
+.center_header_box	{ width:100%; background:url(../images/center_top_bg.png) repeat-x; float:left;}
+.center_header_box dl				{ width:980px; margin:0 auto;}
+.center_header_box dl dd			{ width:980px; height:22px; padding:7px 0 0 0; overflow:hidden; float:left;}
+.center_header_box dl dd b			{ font-weight:normal; color:#cccccc; overflow:hidden; float:left;}
+.center_header_box dl dd i			{ color:#cccccc; overflow:hidden; float:right;}
+.center_header_box dl dd i u		{ color:#c12366;}
+.center_header_box dl dd i u a		{ text-decoration:none; color:#c12366;}
+.center_header_box dl dd i u a:hove	{ color:#ff6633;}
+.center_header_box dl dd em			{ padding:0 45px 0 0; color:#666666; overflow:hidden; float:right;}
+.center_header_box dl dt			{ width:980px; height:185px; overflow:hidden; float:left;}
+.center_header_box dl dt a			{ width:166px; height:44px; margin:42px 0 0 0; display:inline; background:url(../images/center_logo.png) no-repeat; overflow:hidden; float:left;}
+
+/*主体*/
+.center_box			{ width:100%; float:left;}
+.center								{ width:980px; margin:0 auto; overflow:hidden;}
+
+/*左半部*/
+.center_left		{ width:188px; padding:0 0 43px 0; background:#FFF; border:1px solid #e6e6e6; overflow:hidden; float:left;}
+.center_left b						{ width:158px; height:37px; padding:0 0 0 30px; background:#eaeaea; font-size:14px; color:#333333; line-height:36px; _line-height:37px; overflow:hidden; float:left;}
+.center_left ul						{ width:158px; padding:0 0 0 30px; overflow:hidden; float:left;}
+.center_left ul li					{ width:150px; height:16px; padding:19px 0 0 0; overflow:hidden; float:left;}
+.center_left ul li em				{ width:24px; height:16px; overflow:hidden; float:left;}
+.center_left ul li i				{ width:126px; height:16px; line-height:17px; overflow:hidden; float:left;}
+.center_left ul li i a				{ font-size:14px; color:#333333;}
+.center_left ul li i a:hover		{ color:#ff6633;}
+.center_bav_on a					{ font-weight:bold;}
+
+/*右半部*/
+.center_right		{ width:748px; margin:0 0 9px 0; display:inline; padding:0 15px; background:#FFF; border:1px solid #e6e6e6; overflow:hidden; float:right;}
+
+/*订单表格*/
+.center_dingdan						{ border-collapse:collapse;}
+.center_dingdan th					{ background:url(../images/center_dingdan_bav_bg.png) repeat-x; border:1px solid #e1e1e1; font-weight:normal; color:#666666;}
+.center_dingdan td					{ padding:17px 11px; border:1px solid #e1e1e1; color:#333333; line-height:20px;}
+.center_dingdan td em				{ color:#ff6600;}
+.center_dingdan td h1				{ text-align:left;}
+.center_dingdan td a				{ color:#30527f;}
+.center_dingdan td a:hover			{ color:#ac3666; text-decoration:underline;}
+.center_dingdan td h1 a:hover		{ color:#ff6633; text-decoration:underline;}
+.center_dingdan_btn					{ width:83px; height:28px; background-position:0 -860px; display:inline-block; overflow:hidden;}
+.center_dingdan_btn:hover			{ background-position:-83px -860px;}
