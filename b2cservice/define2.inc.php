@@ -6,6 +6,7 @@
     define('B2CSERVICE_URL',ROOT_URL.'b2cservice/');
     define('ORDER_URL','http://order.'.SITE_ROOT_NAME.'.com/');
     define('MY_URL','http://my.'.SITE_ROOT_NAME.'.com/');
+    define('BBS_URL','http://bbs.'.SITE_ROOT_NAME.'.com/');
 	//常用定义
     define('SERVER_INDEX',SERVER_URL.'index.php?s=/');
     define('SITE_DATA',B2CSERVICE_URL.'Data/');
