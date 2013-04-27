@@ -1,0 +1,17 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*通用背景*/
+.login_cont span b a	{ background:url(../images/all_bg.png) no-repeat;}
+
+.login_top							{ width:980px; height:139px; margin:0 auto; background:url(../images/login_top_bg.jpg) no-repeat;}
+.login_top a						{ margin:33px 0 0 0; display:inline; overflow:hidden; float:left;}
+.login_cont_box						{ width:100%; height:590px; background:url(../images/login_cont_bg.jpg) no-repeat center top; overflow:hidden; float:left;}
+.login_cont							{ width:980px; height:590px; margin:0 auto;}
+.login_cont span					{ width:392px; height:376px; margin:38px 75px 0 0; display:inline; padding:140px 0 0 0; background:url(../images/login_login_bg.jpg) no-repeat; overflow:hidden; float:right;}
+.login_cont span em					{ width:392px; height:34px; margin:0 0 12px 0; display:inline; overflow:hidden; float:left;}
+.login_cont span em label			{ width:76px; height:34px; padding:0 8px 0 0; text-align:right; line-height:34px; overflow:hidden; float:left;}
+.login_cont span em input			{ width:240px; height:15px; padding:8px 5px 9px 5px; background:#FFF; border:1px solid #ced4dd; font-size:12px; color:#7a7a7a; overflow:hidden; float:left;}
+.login_cont span b					{ width:308px; height:35px; padding:15px 0 0 84px; overflow:hidden; float:left;}
+.login_cont span b a				{ width:246px; height:35px; background-position:0 -720px; overflow:hidden; float:left;}
+.login_cont span b a:hover			{ background-position:0 -755px;}

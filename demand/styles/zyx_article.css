@@ -22,18 +22,18 @@
 .zyx_article_infos						{ width:980px; overflow:hidden; float:left;}
 .zyx_article_infos dl					{ width:980px; height:126px; overflow:hidden; float:left;}
 .zyx_article_infos dl dd				{ width:718px; height:116px; overflow:hidden; float:left;}
-.zyx_article_infos dl p					{ width:232px; height:116px; overflow:hidden; float:left;}
-.zyx_article_infos dl h2				{ width:289px; height:38px; padding:0 0 0 192px; overflow:hidden; float:left;}
+.zyx_article_infos dl p					{ width:232px; height:116px; margin:0 197px 0 0; display:inline; overflow:hidden; float:left;}
+.zyx_article_infos dl h2				{ width:289px; height:38px; overflow:hidden; float:left;}
 .zyx_article_infos dl h2 em				{ height:42px; padding:0 4px 0 0; font-family:Tahoma; color:#333333; letter-spacing:0.09em; overflow:hidden; float:left;}
 .zyx_article_infos dl h2 em span		{ font-size:28px; color:#fa741b;}
 .zyx_article_infos dl h2 em b			{ font-size:34px; font-weight:normal; color:#fa741b;}
 .zyx_article_infos dl h2 a				{ margin:0 0 0 15px; display:inline; color:#8b9f62; line-height:61px; overflow:hidden; float:left;}
 .zyx_article_infos dl h2 a:hover		{ color:#ff6633;}
-.zyx_article_infos dl h3				{ width:289px; height:36px; padding:0 0 0 197px; color:#666666; line-height:39px; overflow:hidden; float:left;}
+.zyx_article_infos dl h3				{ width:289px; height:36px; color:#666666; line-height:39px; overflow:hidden; float:left;}
 .zyx_article_infos dl h3 em				{ color:#333333;}
-.jiathis_style							{ padding:0 0 0 197px; color:#666666; overflow:hidden; float:left;}
+.jiathis_style							{ color:#666666; overflow:hidden; float:left;}
 .jiathis_txt							{ font-family:"宋体" !important;}
-.zyx_article_infos dl i					{ width:289px; height:26px; padding:0 0 0 197px; color:#666666; line-height:33px; overflow:hidden; float:left;}
+.zyx_article_infos dl i					{ width:289px; height:26px; color:#666666; line-height:33px; overflow:hidden; float:left;}
 .zyx_article_infos dl dt				{ width:254px; height:35px; margin:80px 0 0 0; display:inline; overflow:hidden; float:left;}
 .zyx_article_infos dl dt a				{ width:113px; height:35px; background-position:-135px -333px; overflow:hidden; float:left;}
 .zyx_article_infos dl dt a:hover		{ background-position:-135px -368px;}
