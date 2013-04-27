@@ -6,7 +6,7 @@ class CommonMyAction extends Action{
 		//用户未登录
 		$u = A("DEDEInfo")->ajax_loginsta('arrary');
         if (false === $u)
-            redirect(SITE_INDEX.'Index/index');
+            redirect(ROOT_URL.'member');
 		$this->_myinit();	
     }
 	
