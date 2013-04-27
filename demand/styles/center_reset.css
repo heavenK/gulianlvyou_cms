@@ -42,7 +42,7 @@
 .center_dingdan td em				{ color:#ff6600;}
 .center_dingdan td h1				{ text-align:left;}
 .center_dingdan td a				{ color:#30527f;}
-.center_dingdan td a:hover			{ color:#ac3666; text-decoration:underline;}
+.center_dingdan td a:hover			{ color:#ff0000; text-decoration:underline;}
 .center_dingdan td h1 a:hover		{ color:#ff6633; text-decoration:underline;}
 .center_dingdan_btn					{ width:83px; height:28px; background-position:0 -860px; display:inline-block; overflow:hidden;}
 .center_dingdan_btn:hover			{ background-position:-83px -860px;}

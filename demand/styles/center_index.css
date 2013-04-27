@@ -20,14 +20,14 @@
 /*首页订单*/
 .center_index_dingdan	{ width:748px; overflow:hidden; float:left;}
 .center_index_dingdan dl				{ width:743px; height:44px; padding:0 5px 0 0; line-height:54px; overflow:hidden; float:left;}
-.center_index_dingdan dl dd				{ height:44px; font-size:14px; font-weight:bold; color:#30527f; overflow:hidden; float:left;}
+.center_index_dingdan dl dd				{ height:44px; font-weight:bold; color:#333333; overflow:hidden; float:left;}
 .center_index_dingdan dl dt				{ height:44px; overflow:hidden; float:right;}
 .center_index_dingdan dl dt a			{ color:#30527f;}
 .center_index_dingdan dl dt a:hover		{ color:#ff6633;}
 
 /*热卖推荐*/
 .center_index_rmtj		{ width:748px; padding:0 0 30px 0; overflow:hidden; float:left;}
-.center_index_rmtj em					{ width:748px; height:44px; border-bottom:1px solid #e6e6e6; font-size:14px; font-weight:bold; color:#30527f; line-height:54px; overflow:hidden; float:left;}
+.center_index_rmtj em					{ width:748px; height:44px; border-bottom:1px solid #e6e6e6; font-weight:bold; color:#333333; line-height:54px; overflow:hidden; float:left;}
 .center_index_rmtj #container 			{ width:748px; position:relative; padding:13px 0 0 0; float:left;}
 .center_index_rmtj #loopedCarousel 		{ width:748px; position:relative; clear:both; float:left;}
 .center_index_rmtj .container 			{ height:161px; position:relative; overflow:hidden;}
