@@ -9,6 +9,9 @@
     define('BBS_URL','http://bbs.'.SITE_ROOT_NAME.'.com/');
 	//常用定义
     define('SERVER_INDEX',SERVER_URL.'index.php?s=/');
+    define('B2CSERVICE_INDEX',B2CSERVICE_URL.'index.php?s=/');
+    define('ORDER_INDEX',ORDER_URL.'index.php?s=/');
+    define('MY_INDEX',MY_URL.'index.php?s=/');
     define('SITE_DATA',B2CSERVICE_URL.'Data/');
 	define('SITE_PUBLIC',ROOT_URL.'demand/');
 	define('__PUBLIC__',B2CSERVICE_URL."Public");
