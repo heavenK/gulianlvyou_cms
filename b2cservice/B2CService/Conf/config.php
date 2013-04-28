@@ -1,6 +1,8 @@
 <?php
 //载入公共配置
-$config	=	require dirname(__FILE__).'/../../config.inc.php';
+$config	= require dirname(__FILE__).'/../../config.inc.php';
+$config2 = require 'config2.inc.php';
+$config	= array_merge($config,$config2);
 $config['VAR_PAGE'] =  'p';//分页配置
 //设定项目配置
 $array = array(
