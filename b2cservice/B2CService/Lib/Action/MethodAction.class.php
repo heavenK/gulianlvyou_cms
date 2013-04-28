@@ -361,8 +361,8 @@ class MethodAction extends CommonAction{
 	
     //字符串化条件数组
     public function _arraytostr_filter($where) {
-		$Chanpin = D("Chanpin");
-		$where = $Chanpin->parseWhere($where);
+		$Model = D("Model");
+		$where = $Model->parseWhere($where);
 		return $where;
 	}
 	

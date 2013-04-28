@@ -11,20 +11,31 @@ class MethodServiceAction extends CommonAction{
 	
 	//检查产品
     public function _listdata($datatype,$where,$pagenum = 20) {
+		
 		if($datatype == '订单'){
-			$class_name = 'Order';
-			$where['datatype'] = $datatype;
+			$class_name = 'Dingdan';
+			//$where['datatype'] = $datatype;
 			//处理搜索
 			if($where['start_time'] && $where['end_time']){
 				$where['time'] = array('between',"'".strtotime($where['start_time']).",".strtotime($where['end_time'])."'");
 			}
-			$where['title'] = array('like','%'.$where['title'].'%');
-			$where['lianxiren'] = array('like','%'.$where['lianxiren'].'%');
-			$where['owner'] = array('like','%'.$where['owner'].'%');
+			$where['title_copy'] = array('like','%'.$where['title_copy'].'%');
+			$where['lxr_name'] = array('like','%'.$where['lxr_name'].'%');
+			$where['lxr_telnum'] = array('like','%'.$where['lxr_telnum'].'%');
+			$where['lxr_email'] = array('like','%'.$where['lxr_email'].'%');
 			if($where['remark'])
 			$where['remark'] = array('like','%'.$where['remark'].'%');
 		}
-		$where = $this->_facade($class_name,$where);//过滤搜索项
+		
+		$where['status_system'] = '1';
+		
+		if(!$where['status'])
+		$where['status'] = array('exp',"is '准备中'");
+
+		$where = A("Method")->_facade($class_name,$where);//过滤搜索项
+		$where = A("Method")->_arraytostr_filter($where);//字符串化条件数组
+		
+		dump($where);
 		$DataOM = D($class_name);
         import("@.ORG.Page");
         C('PAGE_NUMBERS',10);
@@ -39,24 +50,7 @@ class MethodServiceAction extends CommonAction{
 		$redata['datalist'] = $chanpin;
 		return $redata;
 	}
-	
-	 //过滤字段
-     public function _facade($classname,$data) {
-		$class = D($classname);
-		$DbFields = $class->getDbFields();
-        // 检查非数据字段
-        if(!empty($DbFields)) {
-            foreach ($data as $key=>$val){
-                if(!in_array($key,$DbFields,true)){
-                    unset($data[$key]);
-                }elseif(C('DB_FIELDTYPE_CHECK') && is_scalar($val)) {
-                    // 字段类型检查
-                    $this->_parseType($class,$data,$key);
-                }
-            }
-        }
-        return $data;
-     }
+
 	
 	//检查产品
     public function _checkchanpin($chanpinID) {
