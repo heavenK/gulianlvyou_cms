@@ -270,9 +270,5 @@ function showuserinfo(){
 		});
 }
 
-//+加号转换
-function FixJqText(str) {
-    var tempstr = str.replace(/\+/g, "%2B");
-    tempstr = tempstr.replace(/\&/g, "%26");
-    return tempstr;
-}
+
+

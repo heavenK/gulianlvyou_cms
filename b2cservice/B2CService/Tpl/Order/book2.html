@@ -87,7 +87,7 @@ $(document).ready(function(){
         	<dl><dd>出行人信息</dd><dt><i>*</i>为必填项</dt></dl>
             <PHP>if($joinerall){</PHP>
             <PHP>$c=0;foreach($joinerall as $v){$i = $v['id'];$c++;</PHP>
-                    <input type="hidden" name="id[]" value="<{$v['id']}>"/>
+                    <input type="hidden" name="id<{$i}>" value="<{$v['id']}>"/>
                     <input type="hidden" name="manorchild<{$i}>" value="<{$v['manorchild']}>"/>
                     <span>
                         <p>第<u>1</u>位游客 <b>（标准 <{$v['manorchild']}>）</b></p>
@@ -128,7 +128,7 @@ $(document).ready(function(){
                     </span>
             <PHP>}</PHP>
             <PHP>}else{</PHP>
-            <PHP>for($i=0;$i<$order['chengrenshu']+$order['ertongshu'];$i++){</PHP>
+            <PHP>for($i=0;$i<$order['chengrenshu'];$i++){</PHP>
                     <input type="hidden" name="manorchild<{$i}>" value="成人"/>
                     <span>
                         <p>第<u><php>echo $i+1</php></u>位游客 <b>（标准 成人）</b></p>

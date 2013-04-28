@@ -9,7 +9,7 @@ var nowgroup = null;
 var arrline = null;
 var otherdepture = null;
 function loadgroup(lineid) {
-	url = SERVER_GET_XIANLU + '/erpxianluID/' + _lineid;
+	url = server_xianlu_url + '/erpxianluID/' + _lineid;
 	jQuery.getJSON(url +"&jsoncallback=?", function(data){  
         if (data.status == 1) {
 			
@@ -187,7 +187,7 @@ function adjustCalendar() {
 				strbody += "<td class='" + (groupday == nowgroup ? "current " : "") + "has_pro' use='group'>" + arrDay[i * 7 + j] + "<span class='pro_state'>剩余</span><span class='detail_data'>" + (groupday.renshu > 9 ? ">9" : groupday.renshu) + "</span><span class='pro_price'><em class='f5'>￥</em>" + groupday.adult_price + "</span></td>\n";
             	//默认所选日期
 				if(groupday == nowgroup){
-					$(".select_03 span").html("出发日期：" + nowgroup.date + "<br/>团队编号：" + nowgroup.erpno);
+					$(".select_03 i").html("出发日期：" + nowgroup.date + "&nbsp;团队编号：" + nowgroup.erpno);
 					$("a[rel='print']").attr("href", _lineid + "_trip.html?d=" + nowgroup.date + "&p=" + nowgroup.adult_price + "&g=" + nowgroup.erpno);
 				}
 			}
@@ -211,7 +211,7 @@ function adjustCalendar() {
         });
         $(this).addClass("current");
         nowgroup = getgroupbydate(arrgroup, getFullDate(nowYear, nowMonth, parseInt($(this).text())));
-        $(".select_03 span").html("出发日期：" + nowgroup.date + "<br/>团队编号：" + nowgroup.erpno);
+        $(".select_03 i").html("出发日期：" + nowgroup.date + "&nbsp;团队编号：" + nowgroup.erpno);
         $("a[rel='print']").attr("href", _lineid + "_trip.html?d=" + nowgroup.date + "&p=" + nowgroup.adult_price + "&g=" + nowgroup.erpno);
 		//点击预订
 		doselectyuding();
@@ -310,7 +310,7 @@ function computeprice(ctrl, type) {
     $(text).insertAfter("#Popupbox ul:last");
 
     totalnum = pernum + childnum;
-	clickurl = BOOK_1_URL + "/chanpinID/"+group.groupid+"/chengrenshu/"+pernum+"/ertongshu/"+childnum;
+	clickurl = dingdan_1_url + "/chanpinID/"+group.groupid+"/chengrenshu/"+pernum+"/ertongshu/"+childnum;
 	
     if (totalnum > group.renshu || group.renshu == 0 || pernum == 0) {
         $("#Popupbox .nextstep input").attr("src", "/b2cservice/apis/xiayibu_gray.gif");
