@@ -47,7 +47,7 @@ if(!defined('IN_UC'))
 
 	$timestamp = time();
 	if($timestamp - $get['time'] > 3600) {
-		exit('Authracation has expiried');
+		//exit('Authracation has expiried');
 	}
 	if(empty($get)) {
 		exit('Invalid Request');
