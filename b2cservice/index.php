@@ -8,6 +8,7 @@ define('DEFAULT_ACTION', 'My');
 require(THINK_PATH.'ThinkPHP.php');
 
 
+define('APP_DEBUG', true);		// Use debug 
 
 	
 	

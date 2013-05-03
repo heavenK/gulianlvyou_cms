@@ -345,7 +345,7 @@ else if($fmdo=='login')
             $cfg_ml->DelCache($cfg_ml->M_ID);
             if(empty($gourl) || preg_match("#action|_do#i", $gourl))
             {
-                ShowMsg("成功登录，5秒钟后转向系统主页...","index.php",0,2000);
+                ShowMsg("成功登录，5秒钟后转向系统主页...","index.php",0,112000);
             }
             else
             {
