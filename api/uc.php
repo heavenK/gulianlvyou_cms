@@ -34,7 +34,6 @@ if(!defined('IN_UC'))
 	defined('MAGIC_QUOTES_GPC') || define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
 
 	$_DCACHE = $get = $post = array();
-var_dump($get);
 	$code = @$_GET['code'];
 
 	parse_str(_authcode($code, 'DECODE', UC_KEY), $get);
@@ -43,8 +42,10 @@ var_dump($get);
 	{
 		$get = _stripslashes($get);
 	}
-
+var_dump($get);
+var_dump("<br>");
 	$timestamp = time();
+var_dump($timestamp);
 	if($timestamp - $get['time'] > 3600) {
 		//exit('Authracation has expiried');
 	}
