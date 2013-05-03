@@ -7,13 +7,19 @@
 /*个人中心头部*/
 .center_header_box	{ width:100%; background:url(../images/center_top_bg.png) repeat-x; float:left;}
 .center_header_box dl				{ width:980px; margin:0 auto;}
-.center_header_box dl dd			{ width:980px; height:22px; padding:7px 0 0 0; overflow:hidden; float:left;}
-.center_header_box dl dd b			{ font-weight:normal; color:#cccccc; overflow:hidden; float:left;}
-.center_header_box dl dd i			{ color:#cccccc; overflow:hidden; float:right;}
-.center_header_box dl dd i u		{ color:#c12366;}
-.center_header_box dl dd i u a		{ text-decoration:none; color:#c12366;}
-.center_header_box dl dd i u a:hove	{ color:#ff6633;}
-.center_header_box dl dd em			{ padding:0 45px 0 0; color:#666666; overflow:hidden; float:right;}
+.center_header_box dl dd			{ width:980px; height:29px; line-height:29px; overflow:hidden; float:left;}
+.center_header_box dl dd b			{ height:29px; font-weight:normal; color:#cccccc; overflow:hidden; float:left;}
+.center_header_box dl dd i			{ height:29px; padding:0 20px 0 0; color:#cccccc; overflow:hidden; float:right;}
+.center_header_box dl dd i a		{ color:#666666;}
+.center_header_box dl dd i a:hover	{ color:#ff6633;}
+.center_header_box dl dd em			{ height:29px; color:#cccccc; overflow:hidden; float:right;}
+.center_header_box dl dd em u		{ height:29px; padding:0 0 0 23px; background:url(../images/header_pic_01.png) no-repeat 0 5px; overflow:hidden; float:left;}
+.center_header_box dl dd em u a		{ color:#ff6600;}
+.center_header_box dl dd em u a:hover	{ text-decoration:underline;}
+.center_header_box dl dd em strong	{ padding:0 9px 0 8px; font-weight:normal; overflow:hidden; float:left;}
+.center_header_box dl dd em span	{ height:29px; padding:0 0 0 23px; background:url(../images/header_pic_02.png) no-repeat 0 5px; overflow:hidden; float:left;}
+.center_header_box dl dd em span a	{ color:#ff6600;}
+.center_header_box dl dd em span a:hover{ text-decoration:underline;}
 .center_header_box dl dt			{ width:980px; height:185px; overflow:hidden; float:left;}
 .center_header_box dl dt a			{ width:166px; height:44px; margin:42px 0 0 0; display:inline; background:url(../images/center_logo.png) no-repeat; overflow:hidden; float:left;}
 

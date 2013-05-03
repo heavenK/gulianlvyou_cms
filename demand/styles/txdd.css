@@ -35,7 +35,7 @@
 .txdd_txlxrzl ul li .txdd_text			{ width:210px; height:15px; padding:5px 3px; background:#FFF; border:1px solid #b3c3dd; overflow:hidden; float:left;}
 .txdd_txlxrzl ul li i					{ height:27px; padding:0 0 0 5px; color:#ff0000; line-height:26px; _line-height:27px; overflow:hidden; float:left;}
 .txdd_txlxrzl ul li .txdd_accept		{ width:14px; margin:0 0 0 114px; display:inline; vertical-align:middle;}
-.txdd_txlxrzl ul li .txdd_accept_label	{ display:inline; font-family:Tahoma; vertical-align:middle;}
+.txdd_txlxrzl ul li .txdd_accept_label	{ display:inline; font-family:Tahoma; vertical-align:middle; font-size:13px; _font-size:12px;}
 
 /*提交按钮*/
 .txdd_sub								{ width:980px; height:35px; margin:30px 0 0 0; display:inline; padding:0 0 19px 0; overflow:hidden; float:left;}

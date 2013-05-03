@@ -70,7 +70,7 @@
 /*线路推荐*/
 .cty_xltj			{ width:718px; height:237px; margin:10px 0 0 0; display:inline; border:1px solid #e1e1e1; overflow:hidden; float:left;}
 .cty_xltj strong					{ width:718px; height:34px; background:url(../images/index_son_bav_bg.png) repeat-x; font-weight:normal; overflow:hidden; float:left;}
-.cty_xltj strong b					{ width:122px; height:16px; margin:8px 0 0 10px; display:inline; overflow:hidden; float:left;}
+.cty_xltj strong b					{ height:16px; margin:8px 0 0 10px; display:inline; overflow:hidden; float:left;}
 .cty_xltj strong em					{ height:34px; padding:0 11px 0 26px; line-height:32px; overflow:hidden; float:right;}
 .cty_xltj strong em a				{ color:#cccccc;}
 .cty_xltj strong em a:hover			{ color:#ff6633;}
