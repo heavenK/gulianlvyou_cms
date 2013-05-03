@@ -25,7 +25,6 @@ define('API_RETURN_FAILED', '-1');
 define('API_RETURN_FORBIDDEN', '-2');
 
 define('UC_CLIENT_ROOT', DEDEROOT.'/uc_client');
-
 //note 普通的 http 通知方式
 if(!defined('IN_UC'))
 {
@@ -35,7 +34,7 @@ if(!defined('IN_UC'))
 	defined('MAGIC_QUOTES_GPC') || define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
 
 	$_DCACHE = $get = $post = array();
-
+var_dump($get);
 	$code = @$_GET['code'];
 
 	parse_str(_authcode($code, 'DECODE', UC_KEY), $get);
