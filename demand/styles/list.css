@@ -58,7 +58,6 @@
 
 /*右半部*/
 .list_right		{ width:250px; overflow:hidden; float:right;}
-.list_right								{ width:250px; float:right;}
 .list_right dl							{ width:248px; border:#e1e1e1 1px solid; margin:10px 0 0 0; display:inline; float:right;}
 .list_right dt							{ width:248px; height:30px; line-height:30px; text-align:left; font-size:14px; color:#FFFFFF; background-color:#ac3767; float:left;}
 .list_right dt span						{ width:36px; height:30px; background:url(../images/cty_rmlxtj_hot.png) no-repeat 4px 3px ; float:left;}

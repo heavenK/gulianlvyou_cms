@@ -56,9 +56,41 @@
 .zyx_article_jpxx table td u			{ color:#996633;}
 
 /*酒店信息*/
-.zyx_article_jdxx						{ width:980px; margin:15px 0 0 0; display:inline; overflow:hidden; float:left;}
+.zyx_article_jdxx						{ width:980px; margin:10px 0 0 0; display:inline; overflow:hidden; float:left;}
 .zyx_article_jdxx em					{ width:980px; height:26px; border-bottom:1px solid #ac3666; overflow:hidden; float:left;}
 .zyx_article_jdxx em b					{ width:120px; height:26px; background:#ac3666; text-align:center; font-size:16px; color:#FFF; line-height:27px; overflow:hidden; float:left;}
+.zyx_article_jdxx ul					{ width:980px; overflow:hidden; float:left;}
+.zyx_article_jdxx ul li					{ width:978px; padding:0 0 21px 0; border:1px solid #e1e1e1; border-top:none; overflow:hidden; float:left;}
+.zyx_article_jdxx_l						{ width:392px; padding:0 0 0 9px; overflow:hidden; float:left;}
+.zyx_article_jdxx_l h1					{ width:392px; height:38px; font-size:14px; font-weight:bold; color:#fa741b; line-height:38px; overflow:hidden; float:left;}
+.zyx_article_jdxx_l h1 b				{ color:#666666;}
+.zyx_article_jdxx_l table th,
+.zyx_article_jdxx_l table td			{ text-align:left;}
+.zyx_article_jdxx_l dl					{ width:379px; height:60px; margin:3px 0 0 0; display:inline; padding:0 0 0 11px; background:#f8f8f8; border:1px solid #e1e1e1; overflow:hidden; float:left;}
+.zyx_article_jdxx_l dl i				{ color:#666666;}
+.zyx_article_jdxx_l dl dd				{ width:368px; height:36px; color:#333333; line-height:36px; overflow:hidden; float:left;}
+.zyx_article_jdxx_l dl dt				{ width:368px; height:18px; color:#ffcc00; overflow:hidden; float:left;}
+.zyx_article_jdxx_l strong				{ width:384px; padding:9px 4px 0 4px; font-weight:normal; color:#666666; line-height:20px; overflow:hidden; float:left;}
+.zyx_article_jdxx_r						{ width:559px; height:300px; margin:36px 8px 0 0; display:inline; overflow:hidden; float:right;}
+.zyx_article_jdxx_r .mask				{ width:418px; height:298px; border:1px solid #cccccc; overflow:hidden; position:absolute;}
+.zyx_article_jdxx_r .mask i				{ position:absolute; color:#FFF;}
+.zyx_article_jdxx_r .mark_box			{ width:418px; position:absolute;}
+.zyx_article_jdxx_r .mark_box span		{ width:418px; height:298px; overflow:hidden; float:left;}
+.zyx_article_jdxx_r .thumbs_box			{ width:130px; height:246px; padding:26px 0; background:#fbfbfb; border:1px solid #dddddd; position:relative; overflow:hidden; float:right;}
+.zyx_article_jdxx_r .thumbs				{ width:130px; height:246px; display:inline-block; overflow:hidden;}
+.zyx_article_jdxx_r .thumbs div			{ width:104px; height:74px; margin:0 0 12px 0; display:inline; padding:0 13px; cursor:pointer; overflow:hidden; float:left;}
+.zyx_article_jdxx_r .thumbs_box a		{ position:absolute; left:56px;}
+.zyx_article_jdxx_r .thumbs_prev		{ width:21px; height:12px; background:url(../images/zyx_article_lunhuan.png) no-repeat 0 0; top:6px; cursor:pointer;}
+.zyx_article_jdxx_r .thumbs_prev:hover	{ background:url(../images/zyx_article_lunhuan.png) no-repeat -38px 0;}
+.zyx_article_jdxx_r .thumbs_next		{ width:21px; height:12px; background:url(../images/zyx_article_lunhuan.png) no-repeat 0 -43px; bottom:6px; cursor:pointer;}
+.zyx_article_jdxx_r .thumbs_next:hover	{ background:url(../images/zyx_article_lunhuan.png) no-repeat -38px -43px;}
+
+/*费用说明*/
+.zyx_article_fysm						{ width:980px; margin:10px 0 0 0; display:inline; overflow:hidden; float:left;}
+.zyx_article_fysm em					{ width:980px; height:26px; border-bottom:1px solid #ac3666; overflow:hidden; float:left;}
+.zyx_article_fysm em b					{ width:120px; height:26px; background:#ac3666; text-align:center; font-size:16px; color:#FFF; line-height:27px; overflow:hidden; float:left;}
+.zyx_article_fysm strong				{ width:942px; padding:10px 18px; border:1px solid #e1e1e1; border-top:none; font-weight:normal; color:#414141; line-height:26px; overflow:hidden; float:left;}
+
 
 .zyx_article_cont						{ width:980px; margin:15px 0 0 0; display:inline; overflow:hidden; float:left;}
 .zyx_article_cont em					{ width:979px; height:26px; padding:0 1px 0 0; border-bottom:1px solid #ac3666; overflow:hidden; float:left;}
