@@ -25,6 +25,7 @@ define('API_RETURN_FAILED', '-1');
 define('API_RETURN_FORBIDDEN', '-2');
 
 define('UC_CLIENT_ROOT', DEDEROOT.'/uc_client');
+
 //note 普通的 http 通知方式
 if(!defined('IN_UC'))
 {
@@ -34,6 +35,7 @@ if(!defined('IN_UC'))
 	defined('MAGIC_QUOTES_GPC') || define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
 
 	$_DCACHE = $get = $post = array();
+
 	$code = @$_GET['code'];
 
 	parse_str(_authcode($code, 'DECODE', UC_KEY), $get);
@@ -42,12 +44,10 @@ if(!defined('IN_UC'))
 	{
 		$get = _stripslashes($get);
 	}
-var_dump($get);
-var_dump("<br>");
+
 	$timestamp = time();
-var_dump($timestamp);
 	if($timestamp - $get['time'] > 3600) {
-		//exit('Authracation has expiried');
+		exit('Authracation has expiried');
 	}
 	if(empty($get)) {
 		exit('Invalid Request');

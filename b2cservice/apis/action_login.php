@@ -261,12 +261,16 @@ else if($fmdo=='login')
 //        }
         if(CheckUserID($userid,'',false)!='ok')
         {
-            ShowMsg("你输入的用户名 {$userid} 不合法！","-1");
+			$res['msg'] = "你输入的用户名 {$userid} 不合法！";
+			$res = json_encode($res);
+			echo  $_GET['jsoncallback'].'('.$res.')';
             exit();
         }
         if($pwd=='')
         {
-            ShowMsg("密码不能为空！","-1",0,2000);
+			$res['msg'] = "密码不能为空！";
+			$res = json_encode($res);
+			echo  $_GET['jsoncallback'].'('.$res.')';
             exit();
         }
 
@@ -325,44 +329,40 @@ else if($fmdo=='login')
                 $rs = -1;
             }
         }
-        #/aip}}        
-        $data['code'] = $ucsynlogin;
-		//echo '1';
-				$u = json_encode($data);
-		echo  $_GET['jsoncallback'].'('.$u.')';
-
-		//echo $ucsynlogin;
-		exit;
-		
+        #/aip}}
         if($rs==0)
         {
-            ShowMsg("用户名不存在！", "-1", 0, 2000);
+			$res['msg'] = "用户名不存在！";
+			$res = json_encode($res);
+			echo  $_GET['jsoncallback'].'('.$res.')';
             exit();
         }
         else if($rs==-1) {
-            ShowMsg("密码错误！", "-1", 0, 2000);
+			$res['msg'] = "密码错误！";
+			$res = json_encode($res);
+			echo  $_GET['jsoncallback'].'('.$res.')';
             exit();
         }
         else if($rs==-2) {
-            ShowMsg("管理员帐号不允许从前台登录！", "-1", 0, 2000);
+			$res['msg'] = "管理员帐号不允许从前台登录！";
+			$res = json_encode($res);
+			echo  $_GET['jsoncallback'].'('.$res.')';
             exit();
         }
         else
         {
+			$res['ucsynlogin'] = $ucsynlogin;
             // 清除会员缓存
             $cfg_ml->DelCache($cfg_ml->M_ID);
-            if(empty($gourl) || preg_match("#action|_do#i", $gourl))
-            {
-                ShowMsg("成功登录，5秒钟后转向系统主页...","index.php",0,2000);
-            }
-            else
-            {
-                $gourl = str_replace('^','&',$gourl);
-                ShowMsg("成功登录，现在转向指定页面...",$gourl,0,2000);
-            }
+			$res['msg'] = "管理员帐号不允许从前台登录！";
+			$res['suc'] = 1;
+			$res = json_encode($res);
+			echo  $_GET['jsoncallback'].'('.$res.')';
             exit();
         }
     }
+
+
 
     //退出登录
     else if($dopost=="exit")

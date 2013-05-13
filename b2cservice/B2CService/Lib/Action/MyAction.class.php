@@ -3,7 +3,6 @@
 class MyAction extends CommonMyAction{
 	
 	function index(){
-		
 		$this->assign("mark",'首页');
 		$u = A("DEDEInfo")->ajax_loginsta('arrary');
 		if(empty($u['face']))
