@@ -1,6 +1,6 @@
 <?php
 
-class OrderAction extends Action{
+class OrderAction extends CommonMyAction{
 	
 	function index(){
 		$this->assign("mark",'我的订单');
@@ -173,7 +173,11 @@ class OrderAction extends Action{
 	
 	
 	
-	
+    public function book3() {
+		
+		
+		
+	}
 	
 	
 }
