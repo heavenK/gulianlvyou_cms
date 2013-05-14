@@ -25,6 +25,7 @@ h1,h2,h3{ font-size:12px; font-weight:normal;}
 .header_box dl dd i					{ height:32px; padding:0 20px 0 0; color:#cccccc; overflow:hidden; float:right;}
 .header_box dl dd i a				{ color:#666666;}
 .header_box dl dd i a:hover			{ color:#ff6633;}
+.header_box dl dd i u				{ color:#666666;}
 .header_box dl dd em				{ height:32px; color:#cccccc; overflow:hidden; float:right;}
 .header_box dl dd em u				{ height:32px; padding:0 0 0 23px; background:url(../images/header_pic_01.png) no-repeat 0 7px; overflow:hidden; float:left;}
 .header_box dl dd em u a			{ color:#ac3666;}
