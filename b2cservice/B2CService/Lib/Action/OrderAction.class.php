@@ -173,11 +173,7 @@ class OrderAction extends CommonMyAction{
 	
 	
 	
-    public function book3() {
-		
-		
-		
-	}
+	
 	
 	
 }
