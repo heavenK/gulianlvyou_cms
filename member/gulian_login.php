@@ -15,4 +15,4 @@ $uid  = $cfg_ml->M_LoginID;
 !$cfg_ml->fields['face'] && $face = ($cfg_ml->fields['sex'] == '女')? 'dfgirl' : 'dfboy';
 $facepic = empty($face)? $cfg_ml->fields['face'] : $GLOBALS['cfg_memberurl'].'/templets/images/'.$face.'.png';
 ?>
-<i style=" color:#666666;"><?php echo $cfg_ml->M_UserName; ?>&nbsp;[<a href="<?php echo $cfg_memberurl; ?>/index_do.php?fmdo=login&dopost=exit">退出登录</a>]</i>
+<?php echo $cfg_ml->M_UserName; ?>&nbsp;[<a href="<?php echo $cfg_memberurl; ?>/index_do.php?fmdo=login&dopost=exit">退出登录</a>]
