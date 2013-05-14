@@ -1,4 +1,4 @@
-<div class="header_box" id="{dede:field name='indexname'/}"><!--头部-->
+<div class="header_box" id='{dede:field.typeid function="GetTopid(@me)"/}'><!--头部-->
 	<dl>
         <dd><b><a href="#" style=" font-family:Arial;">ENGLISH</a>  |  <a href="#">日本語</a>  |  <a href="#" style=" font-family:Arial;">РУССКИЙ ЯЗЫК</a></b><em><u><a href="#">个人中心</a></u><strong>|</strong><span><a href="#">我的订单</a></span></em><i id="_userlogin"><a href="/member/index.php">登录</a> | <a href="/member/index_do.php?fmdo=user&dopost=regnew">注册</a></i></dd>
         <script language="javascript" type="text/javascript">CheckLogin();</script>
@@ -13,12 +13,12 @@
     </dl>
     <div class="mainbav_box"><!--导航-->
     	<ul>
-        	<li class="mainbav_on" style=" background:none;"><a href="/"><span>首 页</span></a></li>
-            <li><a href="/gulian/cty"><span>参团游</span></a></li>
-            <li><a href="/gulian/zyx"><span>自由行</span></a></li>
-            <li><a href="/gulian/ztdj"><span>主题度假</span></a></li>
-            <li><a href="/gulian/gxdz"><span>个性定制</span></a></li>
-            <li><a href="/gulian/qianzheng"><span>签 证</span></a></li>
+        	<li id="mainbav_index" style=" background:none;"><a href="/"><span>首 页</span></a></li>
+            <li id="mainbav_cty"><a href="/gulian/cty"><span>参团游</span></a></li>
+            <li id="mainbav_zyx"><a href="/gulian/zyx"><span>自由行</span></a></li>
+            <li id="mainbav_ztdj"><a href="/gulian/ztdj"><span>主题度假</span></a></li>
+            <li id="mainbav_gxdz"><a href="/gulian/gxdz"><span>个性定制</span></a></li>
+            <li id="mainbav_qianzheng"><a href="/gulian/qianzheng"><span>签 证</span></a></li>
             <li id="mainbav_pull"><a href="/gulian/dryj"><span>达人游记</span></a>
             	<ol>
                 	<li><a href="/gulian/dryj/jcyj">精彩游记</a></li>
