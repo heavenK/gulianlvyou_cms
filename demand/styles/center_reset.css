@@ -14,11 +14,11 @@
 .center_header_box dl dd i a:hover	{ color:#ff6633;}
 .center_header_box dl dd em			{ height:29px; color:#cccccc; overflow:hidden; float:right;}
 .center_header_box dl dd em u		{ height:29px; padding:0 0 0 23px; background:url(../images/header_pic_01.png) no-repeat 0 5px; overflow:hidden; float:left;}
-.center_header_box dl dd em u a		{ color:#ff6600;}
+.center_header_box dl dd em u a		{ color:#ac3666;}
 .center_header_box dl dd em u a:hover	{ text-decoration:underline;}
 .center_header_box dl dd em strong	{ padding:0 9px 0 8px; font-weight:normal; overflow:hidden; float:left;}
 .center_header_box dl dd em span	{ height:29px; padding:0 0 0 23px; background:url(../images/header_pic_02.png) no-repeat 0 5px; overflow:hidden; float:left;}
-.center_header_box dl dd em span a	{ color:#ff6600;}
+.center_header_box dl dd em span a	{ color:#ac3666;}
 .center_header_box dl dd em span a:hover{ text-decoration:underline;}
 .center_header_box dl dt			{ width:980px; height:185px; overflow:hidden; float:left;}
 .center_header_box dl dt a			{ width:166px; height:44px; margin:42px 0 0 0; display:inline; background:url(../images/center_logo.png) no-repeat; overflow:hidden; float:left;}
