@@ -74,7 +74,7 @@
 .cty_xltj strong em					{ height:34px; padding:0 11px 0 26px; line-height:32px; overflow:hidden; float:right;}
 .cty_xltj strong em a				{ color:#cccccc;}
 .cty_xltj strong em a:hover			{ color:#ff6633;}
-.cty_xltj strong i					{ height:34px; color:#cccccc; line-height:32px; overflow:hidden; float:right;}
+.cty_xltj strong span				{ height:34px; color:#cccccc; line-height:32px; overflow:hidden; float:right;}
 .cty_xltj i							{ width:696px; height:79px; padding:13px 0 0 10px; overflow:hidden; float:left;}
 .cty_xltj i p						{ width:106px; height:64px; border:1px solid #e6e6e6; overflow:hidden; float:left;}
 .cty_xltj i em						{ width:451px; height:71px; padding:0 0 0 22px; overflow:hidden; float:left;}
