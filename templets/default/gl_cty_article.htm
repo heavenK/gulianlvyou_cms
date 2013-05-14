@@ -20,6 +20,46 @@
 	  DedeXHTTP = null;
 	}
 -->
+$(document).ready(function(){
+	var main_id = $(".header_box").attr("id");
+	switch(main_id){
+		case "":
+		$("#mainbav_index").addClass("mainbav_on");
+		break;
+		case "17":
+		$("#mainbav_cty").addClass("mainbav_on");
+		break;
+		case "18":
+		$("#mainbav_zyx").addClass("mainbav_on");
+		break;
+		case "16":
+		$("#mainbav_ztdj").addClass("mainbav_on");
+		break;
+		case "33":
+		$("#mainbav_gxdz").addClass("mainbav_on");
+		break;
+		case "34":
+		$("#mainbav_qianzheng").addClass("mainbav_on");
+		break;
+		case "10":
+		$("#mainbav_pull").addClass("mainbav_on");
+		break;
+	}
+});
+</script>
+<script type="text/javascript">
+//头部导航下拉菜单
+$(document).ready(function(){
+	var itswidth = $("#mainbav_pull a").innerWidth();
+	$("#mainbav_pull ol li a").width(itswidth-2);
+	$("#mainbav_pull ol").width(itswidth);
+	$('#mainbav_pull').mousemove(function(){
+		$(this).find('ol').show();
+	});
+		$('#mainbav_pull').mouseleave(function(){
+			$(this).find('ol').hide();
+	});
+});
 </script>
 </head>
 
@@ -214,35 +254,6 @@
 {dede:include filename="gl_footer.htm"/}
 </body>
 </html>
-<script type="text/javascript" language="javascript">
-//加入收藏           
-function AddFavorite(sURL, sTitle) {
-	sURL = encodeURI(sURL);
-	try{
-		window.external.addFavorite(sURL, sTitle);
-	}catch(e) {
-		try{
-			window.sidebar.addPanel(sTitle, sURL, "");
-		}catch (e) {
-			alert("加入收藏失败，请使用Ctrl+D进行添加,或手动在浏览器里进行设置.");
-		}
-	}
-}
-</script>
-<script type="text/javascript">
-//头部导航下拉菜单
-$(document).ready(function(){
-	var itswidth = $("#mainbav_pull a").innerWidth();
-	$("#mainbav_pull ol li a").width(itswidth-2);
-	$("#mainbav_pull ol").width(itswidth);
-	$('#mainbav_pull').mousemove(function(){
-		$(this).find('ol').show();
-	});
-		$('#mainbav_pull').mouseleave(function(){
-			$(this).find('ol').hide();
-	});
-});
-</script>
 <script language="javascript" type="text/javascript">
 //古莲公告&旅游资讯
 var jq = $;

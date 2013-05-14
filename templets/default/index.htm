@@ -21,6 +21,46 @@
 	  DedeXHTTP = null;
 	}
 -->
+$(document).ready(function(){
+	var main_id = $(".header_box").attr("id");
+	switch(main_id){
+		case "":
+		$("#mainbav_index").addClass("mainbav_on");
+		break;
+		case "17":
+		$("#mainbav_cty").addClass("mainbav_on");
+		break;
+		case "18":
+		$("#mainbav_zyx").addClass("mainbav_on");
+		break;
+		case "16":
+		$("#mainbav_ztdj").addClass("mainbav_on");
+		break;
+		case "33":
+		$("#mainbav_gxdz").addClass("mainbav_on");
+		break;
+		case "34":
+		$("#mainbav_qianzheng").addClass("mainbav_on");
+		break;
+		case "10":
+		$("#mainbav_pull").addClass("mainbav_on");
+		break;
+	}
+});
+</script>
+<script type="text/javascript">
+//头部导航下拉菜单
+$(document).ready(function(){
+	var itswidth = $("#mainbav_pull a").innerWidth();
+	$("#mainbav_pull ol li a").width(itswidth-2);
+	$("#mainbav_pull ol").width(itswidth);
+	$('#mainbav_pull').mousemove(function(){
+		$(this).find('ol').show();
+	});
+		$('#mainbav_pull').mouseleave(function(){
+			$(this).find('ol').hide();
+	});
+});
 </script>
 </head>
 
@@ -203,7 +243,7 @@
                         <dt><a href="#" target="_blank">参团游</a>  |  <a href="#" target="_blank">自由行</a>  |  <a href="#" target="_blank">主题游</a></dt>
                     </dl>
                     <ul>
-                    	{dede:arclist typeid=17 row=4 flag=c channelid=7 addfields=jiage}
+                    	{dede:arclist typeid=17 row=4 flag=c titlelen=150 channelid=7 addfields=jiage}
                     	<li>
                         	<p><a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" width="106" height="64" /></a></p>
                             <em><h1><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h1><span><b>￥[field:jiage/]</b>起</span></em>
@@ -296,14 +336,14 @@
                 	<div class="index_hlzyx_nav"><em></em></div>
                     <strong>
                     	<u>
-                            {dede:arclist typeid=18 row=1 flag=h titlelen=150 channelid=7 addfields=jiage}
+                            {dede:arclist typeid=18 row=1 flag=h titlelen=150 channelid=8 addfields=jiage}
                             <p><a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" width="106" height="64" /></a></p>
                             <em><h1><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h1><span><b>￥[field:jiage/]</b>起</span></em>
                             <i>[field:infos/]</i>
                             {/dede:arclist}
                         </u>
                         <ol>
-                            {dede:arclist typeid=18 row=5 noflag=h titlelen=150 channelid=7 addfields=jiage}
+                            {dede:arclist typeid=18 row=5 noflag=h titlelen=150 channelid=8 addfields=jiage}
                             <li>
                                 <em>[field:writer/]</em>
                                 <span><a href="[field:arcurl/]" target="_blank">[field:title/]</a></span>
@@ -421,35 +461,6 @@
 {dede:include filename="gl_footer.htm"/}
 </body>
 </html>
-<script type="text/javascript" language="javascript">
-//加入收藏           
-function AddFavorite(sURL, sTitle) {
-	sURL = encodeURI(sURL);
-	try{
-		window.external.addFavorite(sURL, sTitle);
-	}catch(e) {
-		try{
-			window.sidebar.addPanel(sTitle, sURL, "");
-		}catch (e) {
-			alert("加入收藏失败，请使用Ctrl+D进行添加,或手动在浏览器里进行设置.");
-		}
-	}
-}
-</script>
-<script type="text/javascript">
-//头部导航下拉菜单
-$(document).ready(function(){
-	var itswidth = $("#mainbav_pull a").innerWidth();
-	$("#mainbav_pull ol li a").width(itswidth-2);
-	$("#mainbav_pull ol").width(itswidth);
-	$('#mainbav_pull').mousemove(function(){
-		$(this).find('ol').show();
-	});
-		$('#mainbav_pull').mouseleave(function(){
-			$(this).find('ol').hide();
-	});
-});
-</script>
 <script type="text/javascript">
 //焦点大图
 $(function(){
