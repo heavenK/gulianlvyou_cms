@@ -19,6 +19,11 @@ $(document).ready(function(){
 			$(this).find('ol').hide();
 	});
 });
+
+
+	function submitFun() {
+		form1.submit() ;
+	}
 </script>
 </head>
 
@@ -123,34 +128,30 @@ $(document).ready(function(){
         </div>
         <div class="zxzf_jsxx"><!--结算信息-->
         
-<form name="form1" action='MerchantPayment.php' method='POST'>
+<form name="form1" action='http://www.dlgulian.com/nh/demo/MerchantPayment.php' method='POST'>
 <input type="hidden" name='OrderNo' value='<{$orderID}>'>
 <input type="hidden" name='ExpiredDate' value='30'>
-<input type="hidden" name='OrderDesc' value='Game Card Order'>
-<input type="hidden" name='OrderDate' value='<php>date("Y/m/d",time())</php>'>
-<input type="hidden" name='OrderTime' value='<php>date("H:i:s",time())</php>'>
+<input type="hidden" name='OrderDesc' value='<php> echo "线路：".$order[title_copy]."/团号：".$order[tuanhao]."/成人：".$order[chengrenshu]."/成人：".$order[ertongshu]</php>'>
+<input type="hidden" name='OrderDate' value='<php>echo date("Y/m/d",time())</php>'>
+<input type="hidden" name='OrderTime' value='<php>echo date("H:i:s",time())</php>'>
 <input type="hidden" name='OrderAmount' value='0.01'>
-<input type="hidden" name='OrderURL' value='xxxxx'>
+<input type="hidden" name='OrderURL' value='http://www.baidu.com'>
 <input type="hidden" name='BuyIP' value='<{$ip}>'>
 <input type="hidden" name='ProductType' value='1'>
 <input type="hidden" name='PaymentType' value='1'>
 <input type="hidden" name='PaymentLinkType' value='1'>
 <input type="hidden" name='NotifyType' value='0'>
-<input type="hidden" name='ResultNotifyURL' value='xxxxx'>
-<input type="hidden" name='MerchantRemarks' value='Hi!'>
-<input type="hidden" name='TotalCount' value='1' onKeyUp="addLine()">
+<input type="hidden" name='ResultNotifyURL' value='http://www.google.com'>
+<input type="hidden" name='MerchantRemarks' value=''>
+<input type="hidden" name='TotalCount' value="<php> echo $order['chengrenshu']+$order['ertongshu']</php>" >
 
 <php>foreach($joinerall as $v){</php>
-
 <input type="hidden" name='productid[]' value='<{$order[serverdataID]}>' >
-<input type="hidden" name='productname[]' value='<{$order[title_copy]}>/游客：<{$v[name]}>' >
-<input type="hidden" name='uniteprice[]' value="<php>if($v[manorchild] == '成人')</php>" >
+<input type="hidden" name='productname[]' value='游客：<{$v[name]}>/类型：<{$v[manorchild]}>' >
+<input type="hidden" name='uniteprice[]' value="<php>if($v[manorchild] == '成人') echo $chanpin[adult_price]; else echo $chanpin[child_price];</php>" >
 <input type="hidden" name='qty[]' value='1' >
+<php>}</php>
 
-<php></php>
-
-<input value='提交' name='payment' disabled="disabled" type='button' onClick="submitFun()">
-</form>
 
         	<em><b>结算信息</b></em>
             <span>
@@ -164,10 +165,10 @@ $(document).ready(function(){
                 <input type="radio" value="5" name="paytype" style=" height:40px; margin-right:20px;float:left" /><img style="float:left" src="<{:__PUBLIC__}>b2cservice/images/bank_ylzx.gif"  />
                 </div>
                 </h1>
-                <a href="#"></a>
+                <a href="javascript:submitFun()"></a>
             </span>
             
-            
+</form>
             
         </div>
     </div>

@@ -162,7 +162,6 @@ class OrderAction extends CommonMyAction{
 			echo "产品不存在或已经停止销售！！";
 			exit;
 		}
-		dump($chanpin);
 		$this->assign("chanpin",$chanpin);
 		$order['zongjia'] = $order['chengrenshu']*$chanpin['adult_price']+$order['ertongshu']*$order['child_price'];
 		$DingdanJoiner = D("DingdanJoiner");
@@ -170,10 +169,10 @@ class OrderAction extends CommonMyAction{
 		$this->assign("order",$order);
 		$this->assign("joinerall",$joinerall);
 		//ip
-		import('ORG.Net.IpLocation');
-		$ip=new Iplocation();
-		$ip=  $ip->get_client_ip();
-		$this->assign("ip",$ip);
+//		import('ORG.Net.IpLocation');
+//		$ip=new Iplocation();
+//		$ip=  $ip->get_client_ip();
+//		$this->assign("ip",$ip);
 		
 		$this->display();
 		
