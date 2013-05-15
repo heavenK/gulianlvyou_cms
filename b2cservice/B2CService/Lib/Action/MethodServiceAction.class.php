@@ -73,6 +73,8 @@ class MethodServiceAction extends CommonAction{
             $M_ID = intval($M_ID);
 			$DEDEMember = D("DEDEMember");
 			$member = $DEDEMember->where("`mid` = '$M_ID'")->find();
+			if(!$member)
+				return false;
 			//获得论坛用户uid
 			$DISCUZCommonMember = D("DISCUZCommonMember");
 			$uc = $DISCUZCommonMember->where("`username` = '$member[userid]'")->find();
