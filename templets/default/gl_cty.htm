@@ -142,16 +142,16 @@ $(document).ready(function(){
             <div class="cty_rmyj"><!--热门游记-->
             	<em></em>
                 <i>
-                	<p><a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="230" height="101" /></a></p>
-                    <h1><a href="#" target="_blank">最"游记：古老之"日本最最"游记：古老之"日本最古老古老</a></h1>
-                    <h2>最"游记：古老之"日本最古老最"游记：古老之"日本最古老最"游记：古老之"日本最古老最"游记：古老之"日本最古老最"游记：古老之"日本最古老最"游记：古老之"日本最古老最"游记：古老之"日本最古老</h2>
+                    {dede:arclist typeid=10 row=1 flag=h titlelen=150}
+                	<p><a href="[field:arcurl/]" target="_blank" title="[field:title/]"><img src="[field:litpic/]" width="230" height="101" /></a></p>
+                    <h1><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h1>
+                    <h2>[field:infos/]</h2>
+                    {/dede:arclist}
                 </i>
                 <ul>
-                	<li><a href="#" target="_blank">最"游记：古老之"日本最：古老之"日本最：古老之"日本最古老</a></li>
-                    <li><a href="#" target="_blank">最"游记：古老之"日本最古老</a></li>
-                    <li><a href="#" target="_blank">最"游记：古老之"日本最古老</a></li>
-                    <li><a href="#" target="_blank">最"游记：古老之"日本最古老</a></li>
-                    <li><a href="#" target="_blank">最"游记：古老之"日本最古老</a></li>
+                    {dede:arclist typeid=10 row=5 noflag=h titlelen=150}
+                	<li><a href="[field:arcurl/]" target="_blank">[field:title/]</a></li>
+                    {/dede:arclist}
                 </ul>
             </div>
             <div class="cty_wgl"><!--微攻略-->
@@ -162,56 +162,27 @@ $(document).ready(function(){
         <div class="cty_right"><!--右边部分-->
         	<div class="cty_right_focus"><!--右边焦点部分-->
             	<div id="KinSlideshow" style="visibility:hidden; float:left;">
-                    <a href="#" target="_blank"><img src="/demand/images/1.jpg" alt="" width="520" height="299" /></a>
-                    <a href="#" target="_blank"><img src="/demand/images/2.jpg" alt="" width="520" height="299" /></a>
-                    <a href="#" target="_blank"><img src="/demand/images/3.jpg" alt="" width="520" height="299" /></a>
-                    <a href="#" target="_blank"><img src="/demand/images/4.jpg" alt="" width="520" height="299" /></a>
-                    <a href="#" target="_blank"><img src="/demand/images/5.jpg" alt="" width="520" height="299" /></a>
-                    <a href="#" target="_blank"><img src="/demand/images/6.jpg" alt="" width="520" height="299" /></a>
+                    {dede:arclist typeid=27 flag=h}
+                    <a href="[field:arcurl/]" target="_blank" title="[field:title/]"><img src="[field:litpic/]" alt="" width="520" height="299" /></a>
+                    {/dede:arclist}
                 </div>
                 <div class="cty_rmlxtj"><!--热门路线推荐-->
                 	<em>热门路线推荐</em>
                     <ul>
+                    	{dede:arclist typeid=27 row=8 flag=a channelid=7 addfields=biaoji}
                     	<li>
-                        	<i><img src="/demand/images/cty_rmlxtj_tj.png" width="33" height="19" /></i>
-                            <h2><a href="#" target="_blank">加拿大西海岸8日赏花</a></h2>
+                        	<i><img src="/demand/images/cty_rmlxtj_[field:biaoji/].png" width="33" height="19" /></i>
+                            <h2><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h2>
                         </li>
-                        <li>
-                        	<i><img src="/demand/images/cty_rmlxtj_rm.png" width="33" height="19" /></i>
-                            <h2><a href="#" target="_blank">加拿大西海岸8日赏花</a></h2>
-                        </li>
-                        <li>
-                        	<i><img src="/demand/images/cty_rmlxtj_tj.png" width="33" height="19" /></i>
-                            <h2><a href="#" target="_blank">加拿大西海岸8日赏花</a></h2>
-                        </li>
-                        <li>
-                        	<i><img src="/demand/images/cty_rmlxtj_rm.png" width="33" height="19" /></i>
-                            <h2><a href="#" target="_blank">加拿大西海岸加拿大西海岸8日赏花</a></h2>
-                        </li>
-                        <li>
-                        	<i><img src="/demand/images/cty_rmlxtj_rm.png" width="33" height="19" /></i>
-                            <h2><a href="#" target="_blank">加拿大西海岸8日赏花</a></h2>
-                        </li>
-                        <li>
-                        	<i><img src="/demand/images/cty_rmlxtj_tj.png" width="33" height="19" /></i>
-                            <h2><a href="#" target="_blank">加拿大西海岸8日赏花</a></h2>
-                        </li>
-                        <li>
-                        	<i><img src="/demand/images/cty_rmlxtj_rm.png" width="33" height="19" /></i>
-                            <h2><a href="#" target="_blank">加拿大西海岸8日赏花</a></h2>
-                        </li>
-                        <li>
-                        	<i><img src="/demand/images/cty_rmlxtj_tj.png" width="33" height="19" /></i>
-                            <h2><a href="#" target="_blank">加拿大西海岸8日赏花</a></h2>
-                        </li>
+                        {/dede:arclist}
                     </ul>
                 </div>
             </div>
             <div class="cty_xltj"><!--线路推荐-->
                 <strong>
                 	<b><img src="/demand/images/cty_dbylxtj_bg.png" /></b>
-                	<em><a href="#" target="_blank">&gt;&gt;</a></em>
-                	<i><a href="#" target="_blank">韩国</a> | <a href="#" target="_blank">北海道</a> | <a href="#" target="_blank">东京</a> | <a href="#" target="_blank">名古屋</a> | <a href="#" target="_blank">大阪</a> | <a href="#" target="_blank">九州</a></i>
+                	<em><a href="/gulian/cty/cjy/dbyxltj" target="_blank">&gt;&gt;</a></em>
+                	<span>{dede:arclist typeid=37 row=1 titlelen=150}<a href="/plus/search.php?typeid=38&q=[field:title/]&starttime=-1&channeltype=0&orderby=sortrank&pagesize=10&kwtype=1&searchtype=title&%CB%D1%CB%F7=%CB%D1%CB%F7" target="_blank">[field:title/]</a>{/dede:arclist}{dede:arclist typeid=37 limit=1,10 titlelen=150} | <a href="/plus/search.php?typeid=38&q=[field:title/]&starttime=-1&channeltype=0&orderby=sortrank&pagesize=10&kwtype=1&searchtype=title&%CB%D1%CB%F7=%CB%D1%CB%F7" target="_blank">[field:title/]</a>{/dede:arclist}</span>
                 </strong>
                 <i>
                 	<p><a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="108" height="71" /></a></p>
@@ -253,7 +224,7 @@ $(document).ready(function(){
                 <strong>
                 	<b><img src="/demand/images/cty_dnylxtj_bg.png" /></b>
                 	<em><a href="#" target="_blank">&gt;&gt;</a></em>
-                	<i><a href="#" target="_blank">韩国</a> | <a href="#" target="_blank">北海道</a> | <a href="#" target="_blank">东京</a> | <a href="#" target="_blank">名古屋</a> | <a href="#" target="_blank">大阪</a> | <a href="#" target="_blank">九州</a></i>
+                	<span><a href="#" target="_blank">韩国</a> | <a href="#" target="_blank">北海道</a> | <a href="#" target="_blank">东京</a> | <a href="#" target="_blank">名古屋</a> | <a href="#" target="_blank">大阪</a> | <a href="#" target="_blank">九州</a></span>
                 </strong>
                 <i>
                 	<p><a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="106" height="64" /></a></p>
@@ -295,7 +266,7 @@ $(document).ready(function(){
                 <strong>
                 	<b><img src="/demand/images/cty_dlgaxltj_bg.png" /></b>
                 	<em><a href="#" target="_blank">&gt;&gt;</a></em>
-                	<i><a href="#" target="_blank">韩国</a> | <a href="#" target="_blank">北海道</a> | <a href="#" target="_blank">东京</a> | <a href="#" target="_blank">名古屋</a> | <a href="#" target="_blank">大阪</a> | <a href="#" target="_blank">九州</a></i>
+                	<span><a href="#" target="_blank">韩国</a> | <a href="#" target="_blank">北海道</a> | <a href="#" target="_blank">东京</a> | <a href="#" target="_blank">名古屋</a> | <a href="#" target="_blank">大阪</a> | <a href="#" target="_blank">九州</a></span>
                 </strong>
                 <i>
                 	<p><a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="106" height="64" /></a></p>
@@ -337,7 +308,7 @@ $(document).ready(function(){
                 <strong>
                 	<b><img src="/demand/images/cty_omjnaxltj_bg.png" /></b>
                 	<em><a href="#" target="_blank">&gt;&gt;</a></em>
-                	<i><a href="#" target="_blank">韩国</a> | <a href="#" target="_blank">北海道</a> | <a href="#" target="_blank">东京</a> | <a href="#" target="_blank">名古屋</a> | <a href="#" target="_blank">大阪</a> | <a href="#" target="_blank">九州</a></i>
+                	<span><a href="#" target="_blank">韩国</a> | <a href="#" target="_blank">北海道</a> | <a href="#" target="_blank">东京</a> | <a href="#" target="_blank">名古屋</a> | <a href="#" target="_blank">大阪</a> | <a href="#" target="_blank">九州</a></span>
                 </strong>
                 <i>
                 	<p><a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="106" height="64" /></a></p>
