@@ -162,22 +162,22 @@ class OrderAction extends CommonMyAction{
 			echo "产品不存在或已经停止销售！！";
 			exit;
 		}
+		$this->assign("chanpin",$chanpin);
 		$order['zongjia'] = $order['chengrenshu']*$chanpin['adult_price']+$order['ertongshu']*$order['child_price'];
 		$DingdanJoiner = D("DingdanJoiner");
 		$joinerall = $DingdanJoiner->where("`dingdanID` = '$order[id]'")->findall();
 		$this->assign("order",$order);
 		$this->assign("joinerall",$joinerall);
+		//ip
+		$this->assign("ip",real_ip());
+		
 		$this->display();
 		
 	}
 	
 	
 	
-    public function book3() {
-		
-		
-		
-	}
+	
 	
 	
 }

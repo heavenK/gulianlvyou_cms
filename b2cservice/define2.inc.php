@@ -14,7 +14,7 @@
     define('MY_INDEX',MY_URL.'index.php?s=/');
     define('SITE_DATA',B2CSERVICE_URL.'Data/');
 	define('SITE_PUBLIC',ROOT_URL.'demand/');
-	define('__PUBLIC__',B2CSERVICE_URL."Public");
+	define('__PUBLIC__',B2CSERVICE_URL."Public/");
 	//配置
 	define('MODE_NAME','mycore');
 	define('THINK_PATH',dirname(__FILE__).'/../../ThinkPHP/');

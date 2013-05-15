@@ -7,24 +7,22 @@ var arrgroup;
 var arrlinegroup = new Array();
 var nowgroup = null;
 var arrline = null;
-var otherdepture = null;
 function loadgroup(lineid) {
-	url = SERVER_GET_XIANLU + '/erpxianluID/' + _lineid;
+	url = SERVER_GET_XIANLU + '/erpxianluID/' + 24;
+	//url = SERVER_GET_XIANLU + '/erpxianluID/' + _lineid;
 	jQuery.getJSON(url +"&jsoncallback=?", function(data){  
-        if (data.status == 1) {
-			
-            arrgroup = data.data;
-            otherdepture = data.other;
-            arrline = data.line;
-			
-			arrlinegroup = arrgroup;
+        if (data.error != true) {
+            arrlinegroup = arrgroup = data.data;
 			nowgroup = arrlinegroup[0];
-
+            arrline = data.line;
             initcalendar();
-
         }
         else {
-            alert("该线路名额已满或已过报名截止日期，系统将自动跳转到首页!"); window.location.href = "http://xxx";
+			if(data.msg)
+				alert(data.msg+"，系统将自动跳转到首页!");
+			else
+				alert("该线路名额已满或已过报名截止日期，系统将自动跳转到首页!"); 
+			window.location.href = ROOT_URL;
         }
     });
 }
@@ -52,7 +50,7 @@ function getgroupbydate(group, date) {
 
 function getgroupbyid(group, id) {
     for (var i = 0; i < group.length; i++) {
-        if (group[i].groupid == id) {
+        if (group[i].chanpinID == id) {
             return group[i];
         }
     }
@@ -66,8 +64,8 @@ function initFloatDiv() {
     var tmp = "";
     $("#Popupbox select").empty();
     for (var i = 0; i < arrlinegroup.length; i++) {
-        tmp = "<option value='" + arrlinegroup[i].groupid + "'";
-        if (nowgroup.groupid == arrlinegroup[i].groupid) {
+        tmp = "<option value='" + arrlinegroup[i].chanpinID + "'";
+        if (nowgroup.chanpinID == arrlinegroup[i].chanpinID) {
             tmp += " selected='true'";
         }
         tmp += ">" + arrlinegroup[i].date + "出发　零售价：￥" + arrlinegroup[i].adult_price;
@@ -246,7 +244,6 @@ $(function() {
     css_width = (ScreenWidth - 600) / 2;
     css_height = (ScreenHeight - 350) / 2;
     //$("#Popupbox_bg").css({ "width": pageWidth, "height": pageHeight, "opacity": "0.8" });
-
     $(".book_03").click(function() {
 		doselectyuding();
     })
@@ -310,7 +307,7 @@ function computeprice(ctrl, type) {
     $(text).insertAfter("#Popupbox ul:last");
 
     totalnum = pernum + childnum;
-	clickurl = BOOK_1_URL + "/chanpinID/"+group.groupid+"/chengrenshu/"+pernum+"/ertongshu/"+childnum;
+	clickurl = BOOK_1_URL + "/chanpinID/"+group.chanpinID+"/chengrenshu/"+pernum+"/ertongshu/"+childnum;
 	
     if (totalnum > group.renshu || group.renshu == 0 || pernum == 0) {
         $("#Popupbox .nextstep input").attr("src", "/b2cservice/apis/xiayibu_gray.gif");
@@ -371,13 +368,5 @@ function getPageSize() {
     }
     arrayPageSize = new Array(pageWidth, pageHeight, windowWidth, windowHeight);
     return arrayPageSize;
-}
-
-function getentityUrl(id) {
-    for (var i = 0; i < arrline.length; i++) {
-        if (arrline[i].id == id)
-            return arrline[i].url;
-    }
-    return "";
 }
 

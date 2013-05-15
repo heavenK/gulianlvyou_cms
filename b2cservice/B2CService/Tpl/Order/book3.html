@@ -19,6 +19,16 @@ $(document).ready(function(){
 			$(this).find('ol').hide();
 	});
 });
+
+
+	function submitFun() {
+		var val=$('input:radio[name="PaymentType"]:checked').val();
+		if(val==null){
+			alert("请选择支付方式!");
+			return false;
+		}
+		form1.submit() ;
+	}
 </script>
 </head>
 
@@ -122,12 +132,48 @@ $(document).ready(function(){
             </table>
         </div>
         <div class="zxzf_jsxx"><!--结算信息-->
+        
+<form name="form1" action='http://www.dlgulian.com/nh/demo/MerchantPayment.php' method='POST' target="_blank">
+<input type="hidden" name='OrderNo' value='<{$orderID}>'>
+<input type="hidden" name='ExpiredDate' value='30'>
+<input type="hidden" name='OrderDesc' value='<php> echo "线路：".$order[title_copy]."/团号：".$order[tuanhao]."/成人：".$order[chengrenshu]."/成人：".$order[ertongshu]</php>'>
+<input type="hidden" name='OrderDate' value='<php>echo date("Y/m/d",time())</php>'>
+<input type="hidden" name='OrderTime' value='<php>echo date("H:i:s",time())</php>'>
+<input type="hidden" name='OrderAmount' value='0.01'>
+<input type="hidden" name='OrderURL' value='http://www.baidu.com'>
+<input type="hidden" name='BuyIP' value='<{$ip}>'>
+<input type="hidden" name='ProductType' value='1'>
+<input type="hidden" name='PaymentLinkType' value='1'>
+<input type="hidden" name='NotifyType' value='0'>
+<input type="hidden" name='ResultNotifyURL' value='http://www.google.com'>
+<input type="hidden" name='MerchantRemarks' value=''>
+<input type="hidden" name='TotalCount' value="<php> echo $order['chengrenshu']+$order['ertongshu']</php>" >
+
+<php>foreach($joinerall as $v){</php>
+<input type="hidden" name='productid[]' value='<{$order[serverdataID]}>' >
+<input type="hidden" name='productname[]' value='游客：<{$v[name]}>/类型：<{$v[manorchild]}>' >
+<input type="hidden" name='uniteprice[]' value="<php>if($v[manorchild] == '成人') echo $chanpin[adult_price]; else echo $chanpin[child_price];</php>" >
+<input type="hidden" name='qty[]' value='1' >
+<php>}</php>
+
+
         	<em><b>结算信息</b></em>
             <span>
             	<p>您的订单已提交，如果您没有立即支付，我们将按照您所指定的联系方式尽快回复您。但由于网上订单提交并未最终完成出团名额预订，因此为确保我们为您预留出团名额，请选择网上支付。</p>
                 <h1><b>应付金额：</b><strong>￥</strong><{$order['zongjia']}></h1>
-                <a href="#"></a>
+                <h1>
+                <div style="float:left;">
+                <input name='PaymentType' type="radio" value="1" style=" height:40px; margin-right:20px;float:left" /><img style="float:left" src="<{:__PUBLIC__}>b2cservice/images/bank_nyyh.gif"  />
+                </div>
+                <div style="float:left; margin-left:40px;">
+                <input name='PaymentType' type="radio" value="5" style=" height:40px; margin-right:20px;float:left" /><img style="float:left" src="<{:__PUBLIC__}>b2cservice/images/bank_ylzx.gif"  />
+                </div>
+                </h1>
+                <a href="javascript:submitFun()"></a>
             </span>
+            
+</form>
+            
         </div>
     </div>
 </div>
