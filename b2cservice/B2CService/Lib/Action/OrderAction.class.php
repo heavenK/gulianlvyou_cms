@@ -169,10 +169,7 @@ class OrderAction extends CommonMyAction{
 		$this->assign("order",$order);
 		$this->assign("joinerall",$joinerall);
 		//ip
-//		import('ORG.Net.IpLocation');
-//		$ip=new Iplocation();
-//		$ip=  $ip->get_client_ip();
-//		$this->assign("ip",$ip);
+		$this->assign("ip",real_ip());
 		
 		$this->display();
 		
