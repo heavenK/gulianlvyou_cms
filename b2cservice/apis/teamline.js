@@ -51,6 +51,7 @@ function getgroupbydate(group, date) {
 function getgroupbyid(group, id) {
     for (var i = 0; i < group.length; i++) {
         if (group[i].chanpinID == id) {
+			alert(group[i].child_price)
             return group[i];
         }
     }
@@ -284,6 +285,7 @@ var clickurl = "";
 var oldAgreevisa = false;
 function computeprice(ctrl, type) {
 alert(arrlinegroup[0].child_price)
+alert($("#Popupbox select").val())
     var group = getgroupbyid(arrlinegroup, $("#Popupbox select").val());
 alert(group.child_price)
     var pernum = 0;
