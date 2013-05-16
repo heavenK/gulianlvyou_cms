@@ -80,8 +80,12 @@ $(document).ready(function(){
                 	<p><img src="{dede:field.litpic/}" width="232" height="116" /></p>
                     <h2>
                     	<em><span>¥</span><b>{dede:field.jiage/}</b>起</em>
-                        <a href="#" target="_blank">起价说明</a>
-                        <a href="#" target="_blank">儿童价标准</a>
+                        <a href="javascript:void(0);" class="cty_article_infos_tanchu">起价说明
+                        	<span><b>{dede:field.qijiashuoming/}</b></span>
+                        </a>
+                        <a href="javascript:void(0);" class="cty_article_infos_tanchu">儿童价标准
+                        	<span><b>{dede:field.ertongjia/}</b></span>
+                        </a>
                     </h2>
                     <h3>提前报名：<em>{dede:field.tiqianbaoming/}</em></h3>
                     <div class="jiathis_style">
@@ -267,5 +271,11 @@ jq(function() {
 		scroller_head_current_text_color: '#FFF',
 		directory: 'images'
 	});
+});
+</script>
+<script language="javascript" type="text/javascript">
+//起价说明&儿童价标准
+$(document).ready(function(){
+	$(".cty_article_infos_tanchu").hover(function(){$(this).find("span").show();},function(){$(this).find("span").hide();});
 });
 </script>

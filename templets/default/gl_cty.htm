@@ -185,10 +185,11 @@ $(document).ready(function(){
                 	<span>{dede:arclist typeid=37 row=1 titlelen=150}<a href="/plus/search.php?typeid=38&q=[field:title/]&starttime=-1&channeltype=0&orderby=sortrank&pagesize=10&kwtype=1&searchtype=title&%CB%D1%CB%F7=%CB%D1%CB%F7" target="_blank">[field:title/]</a>{/dede:arclist}{dede:arclist typeid=37 limit=1,10 titlelen=150} | <a href="/plus/search.php?typeid=38&q=[field:title/]&starttime=-1&channeltype=0&orderby=sortrank&pagesize=10&kwtype=1&searchtype=title&%CB%D1%CB%F7=%CB%D1%CB%F7" target="_blank">[field:title/]</a>{/dede:arclist}</span>
                 </strong>
                 <i>
-                	<p><a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="108" height="71" /></a></p>
+                	{dede:arclist typeid=17 row=1 flag=c channelid=7 addfields=biaoji}
+                	<p><a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" width="108" height="71" /></a></p>
                     <em>
-                    	<h1><a href="#" target="_blank">[上海出发]皇家加勒比游轮"海洋绿洲号海洋绿洲号海洋绿洲号海洋绿洲号"西加勒比海14日之旅</a></h1>
-                        <h2>[端午]<香港-澳门4晚5日>海洋公园GO，专享优惠券，早定早优惠，早定早优惠，早定早优惠</h2>
+                    	<h1><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h1>
+                        <h2>[field:infos/]</h2>
                         <h3>出发日期：<b>05-11、05-18、05-20、05-21、05-29</b></h3>
                     </em>
                     <span>
@@ -196,6 +197,7 @@ $(document).ready(function(){
                         <pre>05-58出发&nbsp;</pre>
                         <a href="#" target="_blank"></a>
                     </span>
+                    {/dede:arclist}
                 </i>
                 <ul>
                 	<li>
