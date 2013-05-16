@@ -1,0 +1,180 @@
+<!--
+/*
+ * @(#)MerchantFundTransfer.html	V1.0.0	2004/10/15
+ *
+ * Project: BJP03004
+ *
+ * Description:
+ *    商户直接支付请求范例页面。
+ *
+ * Modify Information:
+ *    Author        Date        Description
+ *    ============  ==========  =======================================
+ *    HiTRUST       2004/10/15  V1.0 Release
+ *
+ * Copyright Notice:
+ *   Copyright (c) 2001-2004 Beijing HiTRUST Technology Co., Ltd.
+ *   1808 Room, Science & Technology Building, No. 9 South Street,
+ *   Zhong Guan Cun, Haidian District, Beijing ,100081, China
+ *   All rights reserved.
+ *
+ *   This software is the confidential and proprietary information of
+ *   HiTRUST.COM, Inc. ("Confidential Information"). You shall not
+ *   disclose such Confidential Information and shall use it only in
+ *   accordance with the terms of the license agreement you entered
+ *   into with HiTRUST.
+ */
+-->
+<HTML>
+<HEAD><TITLE>农行网上支付平台-商户接口范例-直接支付请求</TITLE></HEAD>
+<script language="javascript">
+	function formatIndex(index) {
+		if(index < 10)
+			return "00" + index ;
+		else if(index >= 10 && index < 100)
+			return "0" + index ;
+		else
+			return index ;
+	}
+	function addLine() {
+		var kc = event.keyCode;
+		if(kc != 13)
+			return false ;
+		var count = form1.TotalCount.value ;
+		if(isNaN(count)) {
+			alert("商品条目总数请输入数字！") ;
+			return false ;
+		}
+		count = parseInt(count) ;
+		for(var i = 1 ; i <= count ; i++) {
+			var index = formatIndex(i) ;
+			var row = bach.insertRow() ;
+			for(var j = 0 ; j < 5  ; j++) {
+				var col = row.insertCell() ;
+				switch(j) {
+				case 0 :
+					col.align = "left" ;
+					col.height = "30" ;
+					col.innerHTML = index ;
+					break ;
+				case 1 :
+					col.align = "center" ;
+					col.innerHTML = "<input type=\"text\" name=\"productid[]\" style=\"width:95%\" value=\"160605\">" ;
+					break ;
+				case 2 :
+					col.align = "center" ;
+					col.innerHTML = "<input type=\"text\" name=\"productname[]\" style=\"width:95%\" value=\"商品\">" ;
+					break ;
+				case 3 :
+					col.align = "center" ;
+					col.innerHTML = "<input type=\"text\" name=\"uniteprice[]\" style=\"width:95%\" value=\"0.01\">" ;
+					break ;
+				case 4 :
+					col.align = "center" ;
+					col.innerHTML = "<input type=\"text\" name=\"qty[]\" style=\"width:95%\" value=\"1\">" ;
+				}
+				
+			}			
+		}
+		//form1.payment.disabled = "" ;
+	}
+	function addLine2() {
+		var kc = event.keyCode ;
+		if(kc != 13)
+			return false ;
+		var count = form1.MemoCount.value ;
+		if(isNaN(count)) {
+			alert("备注条目总数请输入数字！") ;
+			return false ;
+		}
+		count = parseInt(count) ;
+		for(var i = 1 ; i <= count ; i++) {
+			var index = formatIndex(i) ;
+			var row = bach2.insertRow() ;
+			for(var j = 0 ; j < 5  ; j++) {
+				var col = row.insertCell() ;
+				switch(j) {
+				case 0 :
+					col.align = "left" ;
+					col.height = "30" ;
+					col.innerHTML = index ;
+					break ;
+				case 1 :
+					col.align = "center" ;
+					col.innerHTML = "<input type=\"text\" name=\"memoname[]\" style=\"width:95%\" value=\"合同号\">" ;
+					break ;
+				case 2 :
+					col.align = "center" ;
+					col.innerHTML = "<input type=\"text\" name=\"memocontent[]\" style=\"width:95%\" value=\"200900001\">" ;
+					break ;
+				}
+				
+			}			
+		}
+		form1.payment.disabled = "" ;
+	}
+	function submitFun() {
+		form1.submit() ;
+	}
+	function changeDisable()
+	{
+		form1.payment.disabled = "" ;
+	}
+</script>
+<CENTER>直接支付请求</CENTER><br>
+<BODY BGCOLOR='#FFFFFF' TEXT='#000000' LINK='#0000FF' VLINK='#0000FF' ALINK='#FF0000'>
+  <FORM name=form1 action='MerchantFundTransfer.php' method='POST'>
+    <TABLE>
+      <TR><TD>商户交易编号        </TD>
+          <TD><INPUT NAME='MerchantTrnxNo'         VALUE='20040427008'></TD></TR>
+      <TR><TD>交易日期            </TD>
+          <TD><INPUT NAME='TrnxDate'               VALUE='2003/11/12'>（YYYY/MM/DD）</TD></TR>    
+      <TR><TD>交易时间            </TD>
+          <TD><INPUT NAME='TrnxTime'               VALUE='23:55:30'>（HH:MM:SS）</TD></TR>
+      <TR><TD>交易金额            </TD>
+          <TD><INPUT NAME='TrnxAmount'             VALUE='10.00'></TD></TR>
+      <TR><TD>收款方账号          </TD>
+          <TD><INPUT NAME='AccountDBNo'            VALUE='321100000471'></TD></TR>
+      <TR><TD>收款方账户名        </TD>
+          <TD><INPUT NAME='AccountDBName'          VALUE='大连古莲国际旅行社有限公司'></TD></TR>
+      <TR><TD>收款方账户开户行联行号    </TD>
+          <TD><INPUT NAME='AccountDBBank'          VALUE='00110'>（默认为000000）</TD></TR>
+      <TR><TD>ResultNotifyURL</TD>
+          <TD><INPUT NAME='ResultNotifyURL'        VALUE='http://www.dlgulian.com:8080/axis_b2b/TrnxResult.jsp'></TD></TR>         
+      <TR><TD>MerchantRemarks     </TD>
+          <TD><INPUT NAME='MerchantRemarks'        VALUE='Hi!'></TD></TR>
+	  <TR><TD>操作员     </TD>
+          <TD><INPUT NAME='TrnxOpr'        VALUE='操作员1'></TD></TR>
+	  <TR>
+      	   <TD>TotalCount</TD>
+      	   <TD><input name='TotalCount' value='0' onKeyUp="addLine()"> *商品条目总数，必须</TD>
+      </TR>
+	  <TR>
+	      <TD colspan=2>
+	      	<table border="1" style="font-size: 17px;" width="100%" id="bach">
+	      		<TR>
+	      			<TD width="15%" align="center">批内序号</TD><TD width="15%" align="center">产品代码</TD><TD width="15%" align="center">产品名称</TD><TD width="15%" align="center">产品单价</TD><TD  align="center" width="15%">购买数量</TD>
+	      		<tr>
+	      	</table>
+	      </TD>
+      </TR>
+	  	  <TR>
+      	   <TD>MemoCount</TD>
+      	   <TD><input name='MemoCount' value='0' onKeyUp="addLine2()"> *备注条目总数，必须</TD>
+      </TR>
+	  <TR>
+	      <TD colspan=2>
+	      	<table border="1" style="font-size: 17px;" width="100%" id="bach2">
+	      		<TR>
+	      			<TD width="33%" align="center">条目序号</TD><TD width="33%" align="center">条目名</TD><TD width="33%" align="center">条目内容</TD>
+	      		<tr>
+	      	</table>
+	      </TD>
+      </TR>
+	  <TR><TD colspan=2><INPUT VALUE='不输入产品和备注详细信息' name='able' type='button' onClick="changeDisable()">
+      <TR><TD colspan=2><INPUT VALUE='提交' name='payment' disabled="disabled" type='button' onClick="submitFun()">
+    </TABLE>
+  </FORM>
+  <CENTER><a href='Merchant.html'>回商户首页</a></CENTER>
+</BODY>
+</HTML>

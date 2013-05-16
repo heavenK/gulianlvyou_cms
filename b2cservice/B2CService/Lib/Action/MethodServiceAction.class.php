@@ -118,8 +118,12 @@ class MethodServiceAction extends CommonAction{
 			return false;	
 		}
 	}
+	
 		
+    public function _change_orderID() {
 		
+		echo 'adf';
+	}
 	
 	
 	

@@ -540,5 +540,13 @@ if ( ! function_exists('utf82gb'))
 }
 
 
+/**更改订单号
+ */
+function API_change_orderID($orderID)
+{
+	A("MethodService")->_change_orderID();
+}
+
+
 
 ?>
