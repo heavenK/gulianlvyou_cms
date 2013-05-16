@@ -51,7 +51,6 @@ function getgroupbydate(group, date) {
 function getgroupbyid(group, id) {
     for (var i = 0; i < group.length; i++) {
         if (group[i].chanpinID == id) {
-			alert(group[i].child_price)
             return group[i];
         }
     }
@@ -72,6 +71,7 @@ function initFloatDiv() {
         tmp += ">" + arrlinegroup[i].date + "出发　零售价：￥" + arrlinegroup[i].adult_price;
         $("#Popupbox select").append(tmp);
     }
+	alert(tmp)
     initFloatPerson(nowgroup);
     $("#Popupbox select").bind("change", function() { initFloatPerson(arrlinegroup[$("#Popupbox select").get(0).selectedIndex]); });
 
@@ -205,13 +205,13 @@ function adjustCalendar() {
 
     //设置可点击 报名未满的单元格
     calen.find('td[use=group]').bind('click', function(evt) {
-        calen.find('td').each(function(i) {
-            $(this).removeClass("current");
-        });
-        $(this).addClass("current");
-        nowgroup = getgroupbydate(arrgroup, getFullDate(nowYear, nowMonth, parseInt($(this).text())));
-        $(".select_03 i").html("出发日期：" + nowgroup.date + "&nbsp;团队编号：" + nowgroup.erpno);
-        $("a[rel='print']").attr("href", _lineid + "_trip.html?d=" + nowgroup.date + "&p=" + nowgroup.adult_price + "&g=" + nowgroup.erpno);
+//        calen.find('td').each(function(i) {
+//            $(this).removeClass("current");
+//        });
+//        $(this).addClass("current");
+//        nowgroup = getgroupbydate(arrgroup, getFullDate(nowYear, nowMonth, parseInt($(this).text())));
+//        $(".select_03 i").html("出发日期：" + nowgroup.date + "&nbsp;团队编号：" + nowgroup.erpno);
+//        $("a[rel='print']").attr("href", _lineid + "_trip.html?d=" + nowgroup.date + "&p=" + nowgroup.adult_price + "&g=" + nowgroup.erpno);
 		//点击预订
 		doselectyuding();
     });
@@ -251,13 +251,13 @@ $(function() {
 })
 
 function doselectyuding(){
-	if (document.documentElement && document.documentElement.scrollTop) {
-		var scorll = document.documentElement.scrollTop;
-	} else if (document.body) {
-		var scorll = document.body.scrollTop;
-	}
-	var realheight = scorll + css_height;
-	$("#Popupbox").css({ "top": realheight, "left": css_width });
+//	if (document.documentElement && document.documentElement.scrollTop) {
+//		var scorll = document.documentElement.scrollTop;
+//	} else if (document.body) {
+//		var scorll = document.body.scrollTop;
+//	}
+//	var realheight = scorll + css_height;
+//	$("#Popupbox").css({ "top": realheight, "left": css_width });
 
 	showyudingdiv();
 }
@@ -284,10 +284,8 @@ var totalnum = 0;
 var clickurl = "";
 var oldAgreevisa = false;
 function computeprice(ctrl, type) {
-alert(arrlinegroup[0].child_price)
 alert($("#Popupbox select").val())
     var group = getgroupbyid(arrlinegroup, $("#Popupbox select").val());
-alert(group.child_price)
     var pernum = 0;
     var childnum = 0;
     var pernumVisa = 0;
