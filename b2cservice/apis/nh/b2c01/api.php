@@ -1,4 +1,7 @@
 <?php
+
+echo 123;
+
 /*
 MerchantPayment
 */

@@ -7,7 +7,6 @@
 <?php 
 	require("api.php");
 	require("../../../define2.inc.php");
-	require(APP_PATH."");
 
 	$add = "http://www.dlgulian.com:8080/axis/services/B2CWarpper?wsdl";
 	$tOrderNo = $_POST['OrderNo'];
@@ -49,12 +48,8 @@
 //		print("<br>Error Message:".iconv("GBK","UTF-8",$merchantPaymentResult->ErrorMessage)."</br>");
 		//易宝支付失败更改订单号
 		if($tPaymentType == 5){
-			
-			
+			API_change_orderID(1);
 		}
-			
-			
-			
 			
 
 	}
