@@ -81,10 +81,10 @@ $(document).ready(function(){
                     <h2>
                     	<em><span>¥</span><b>{dede:field.jiage/}</b>起</em>
                         <a href="javascript:void(0);" class="cty_article_infos_tanchu">起价说明
-                        	<span><b>{dede:field.qijiashuoming/}</b></span>
+                        	<span><b>1.2米以下儿童,仅含车位，用餐（半餐）及导游服务，其余自理。</b></span>
                         </a>
                         <a href="javascript:void(0);" class="cty_article_infos_tanchu">儿童价标准
-                        	<span><b>{dede:field.ertongjia/}</b></span>
+                        	<span><b>1.2米以下儿童,仅含车位，用餐（半餐）及导游服务，其余自理。</b></span>
                         </a>
                     </h2>
                     <h3>提前报名：<em>{dede:field.tiqianbaoming/}</em></h3>
@@ -272,10 +272,9 @@ jq(function() {
 		directory: 'images'
 	});
 });
-</script>
-<script language="javascript" type="text/javascript">
+
 //起价说明&儿童价标准
-$(document).ready(function(){
-	$(".cty_article_infos_tanchu").hover(function(){$(this).find("span").show();},function(){$(this).find("span").hide();});
+jq(document).ready(function(){
+	jq(".cty_article_infos_tanchu").hover(function(){jq(this).find("span").show();},function(){jq(this).find("span").hide();});
 });
 </script>
