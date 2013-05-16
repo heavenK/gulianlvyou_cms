@@ -132,8 +132,8 @@ $(document).ready(function(){
             </table>
         </div>
         <div class="zxzf_jsxx"><!--结算信息-->
-        
-<form name="form1" action='http://www.dlgulian.com/nh/demo/MerchantPayment.php' method='POST' target="_blank">
+        <{:B2CSERVICE_URL}>apis/nh/b2c01/MerchantPayment.php
+<form name="form1" action='<{:ORDER_INDEX}>Order/MerchantPaymant' method='POST' target="_blank">
 <input type="hidden" name='OrderNo' value='<{$orderID}>'>
 <input type="hidden" name='ExpiredDate' value='30'>
 <input type="hidden" name='OrderDesc' value='<php> echo "线路：".$order[title_copy]."/团号：".$order[tuanhao]."/成人：".$order[chengrenshu]."/成人：".$order[ertongshu]</php>'>

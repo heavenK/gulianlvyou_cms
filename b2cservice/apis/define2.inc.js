@@ -2,7 +2,6 @@
 	//全局
 	ROOT_URL = 'http://www.'+SITE_ROOT_NAME+'.com/';
 //	SERVER_URL = 'http://www.'+SERVER_ROOT_NAME+'.com/';
-	B2CSERVICE_URL = 'http://www.'+SITE_ROOT_NAME+'.com/b2cservice/';
 	ORDER_URL = 'http://order.'+SITE_ROOT_NAME+'.com/';
 	MY_URL = 'http://my.'+SITE_ROOT_NAME+'.com/';
 	BBS_URL = 'http://bbs.'+SITE_ROOT_NAME+'.com/';

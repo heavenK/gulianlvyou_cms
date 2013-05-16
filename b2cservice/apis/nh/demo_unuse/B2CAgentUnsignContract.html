@@ -1,0 +1,98 @@
+<html>
+<head>
+    <title>农行网上支付平台-商户接口范例-委托扣款解约</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000' link='#0000FF' vlink='#0000FF' alink='#FF0000'>
+    <center>
+        委托扣款解约</center>
+    <form name='form1' action='B2CAgentUnsignContract.php' method='POST'>
+        <table>
+            <tr>
+                <td>
+                    订单编号</td>
+                <td>
+                    <input name='OrderNo' value='ON200905080001'>
+                    *必须</td>
+            </tr>
+            <tr>
+                <td>
+                    请求日期</td>
+                <td>
+                    <input name='RequestDate' value='2009/05/08'>
+                    *必须，格式要求为YYYY/MM/DD</td>
+            </tr>
+            <tr>
+                <td>
+                    请求时间</td>
+                <td>
+                    <input name='RequestTime' value='09:10:10'>
+                    *必须，格式为HH:MM:SS</td>
+            </tr>
+            <tr>
+                <td>
+                    证件类型</td>
+                <td>
+                    <select name="CertificateType">
+                        <option value="I">公民身份证</option>
+                        <!--   					
+					<option value=P>中国护照</option>
+					<option value=S>军人身份证</option>
+					<option value=J>警官证</option>
+					<option value=K>户口簿</option>
+					<option value=T>临时身份证</option>
+					<option value=F>外国护照</option>
+					<option value=D>港澳通行证</option>
+					<option value=W>台胞通行证</option>
+					<option value=R>离休干部荣誉证</option>
+					<option value=B>军官退休证</option>
+					<option value=A>文职干部退休证</option>
+					<option value=C>军事院校学员证</option>
+					<option value=E>武装警察身份证</option>
+					<option value=G>军官证</option>
+					<option value=H>文职干部证</option>
+					<option value=L>军人士兵证</option>
+					<option value=M>武警士兵证</option>
+					<option value=U>其他证件</option>
+ -->
+                    </select>
+                    *必须，目前只支持公民身份证
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    证件号码</td>
+                <td>
+                    <input name='CertificateNo' value='340121198403084619'>
+                    *必须</td>
+            </tr>
+            <tr>
+                <td>
+                    签约协议号</td>
+                <td>
+                    <input name='AgentSignNo' value='No200905150001'>
+                    *必须</td>
+            </tr>
+            <tr>
+                <td>
+                    NotifyType
+                </td>
+                <td>
+                    <input name='NotifyType' value='1'>0：URL页面通知 1：服务器通知</td>
+            </tr>
+            <tr>
+                <td>
+                    结果接收URL</td>
+                <td>
+                    <input name='ResultNotifyURL' value='http://127.0.0.1:9080/b2cclient/B2CAgentSignResult.jsp'><strong
+                        style="color: #ff0000">*必须</strong></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type='submit' value='委托扣款解约'></td>
+            </tr>
+        </table>
+    </form>
+    <center>
+        <a href='Merchant.html'>回商户首页</a></center>
+</body>
+</html>

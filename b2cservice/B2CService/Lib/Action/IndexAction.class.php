@@ -3,20 +3,18 @@
 class IndexAction extends Action{
 	
     public function index() {
-		$this->assign("datatitle","欢迎使用GULIANERP系统");
 		$this->toadmin();
 		$this->display('login');
 		
     }
 	
     private function toadmin() {
-		if($this->user){
-			redirect(SITE_INDEX."Message/index/datatype/公告");
+		if(A("MethodService")->ajax_loginsta()){
+			redirect(MY_URL);
 		}
     }
 	
     public function login() {
-		$this->assign("datatitle","欢迎使用GULIANERP系统");
 		$this->display('login');
 		
     }

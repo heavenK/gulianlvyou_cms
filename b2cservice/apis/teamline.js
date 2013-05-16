@@ -284,7 +284,6 @@ var clickurl = "";
 var oldAgreevisa = false;
 function computeprice(ctrl, type) {
     var group = getgroupbyid(arrlinegroup, $("#Popupbox select").val());
-
     var pernum = 0;
     var childnum = 0;
     var pernumVisa = 0;
