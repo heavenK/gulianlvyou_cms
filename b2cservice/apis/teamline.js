@@ -60,7 +60,8 @@ function getgroupbyid(group, id) {
 //初始化弹出预订窗口信息
 function initFloatDiv() {
     if (arrgroup == null || arrgroup.length == 0) { alert("该线路暂无出团，请选择其它产品"); return; }
-
+	alert(arrlinegroup[i].chanpinID)
+	alert(nowgroup.chanpinID)
     var tmp = "";
     $("#Popupbox select").empty();
     for (var i = 0; i < arrlinegroup.length; i++) {
