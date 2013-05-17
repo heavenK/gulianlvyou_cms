@@ -9,6 +9,7 @@
 <link href="/demand/styles/cty.css" type="text/css" rel="stylesheet" />
 <script src="/demand/js/jquery-1.4a2.min.js" type="text/javascript"></script>
 <script src="/demand/js/jquery_focus.min.js" type="text/javascript"></script>
+<script src="/demand/js/php.min.js" type="text/javascript"></script>
 <script language="javascript" type="text/javascript" src="{dede:global.cfg_cmsurl/}/include/dedeajax2.js"></script>
 <script language="javascript" type="text/javascript">
 <!--
@@ -162,7 +163,7 @@ $(document).ready(function(){
         <div class="cty_right"><!--右边部分-->
         	<div class="cty_right_focus"><!--右边焦点部分-->
             	<div id="KinSlideshow" style="visibility:hidden; float:left;">
-                    {dede:arclist typeid=27 flag=h}
+                    {dede:arclist typeid=27}
                     <a href="[field:arcurl/]" target="_blank" title="[field:title/]"><img src="[field:litpic/]" alt="" width="520" height="299" /></a>
                     {/dede:arclist}
                 </div>
@@ -178,174 +179,128 @@ $(document).ready(function(){
                     </ul>
                 </div>
             </div>
-            <div class="cty_xltj"><!--线路推荐-->
+            <div class="cty_xltj cty_xltj_dby"><!--线路推荐-->
                 <strong>
                 	<b><img src="/demand/images/cty_dbylxtj_bg.png" /></b>
                 	<em><a href="/gulian/cty/cjy/dbyxltj" target="_blank">&gt;&gt;</a></em>
                 	<span>{dede:arclist typeid=37 row=1 titlelen=150}<a href="/plus/search.php?typeid=38&q=[field:title/]&starttime=-1&channeltype=0&orderby=sortrank&pagesize=10&kwtype=1&searchtype=title&%CB%D1%CB%F7=%CB%D1%CB%F7" target="_blank">[field:title/]</a>{/dede:arclist}{dede:arclist typeid=37 limit=1,10 titlelen=150} | <a href="/plus/search.php?typeid=38&q=[field:title/]&starttime=-1&channeltype=0&orderby=sortrank&pagesize=10&kwtype=1&searchtype=title&%CB%D1%CB%F7=%CB%D1%CB%F7" target="_blank">[field:title/]</a>{/dede:arclist}</span>
                 </strong>
                 <i>
-                	{dede:arclist typeid=17 row=1 flag=c channelid=7 addfields=biaoji}
+                	{dede:arclist typeid=38 row=1 flag=c titlelen=150 channelid=7 addfields=chufariqi,jiage}
                 	<p><a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" width="108" height="71" /></a></p>
                     <em>
                     	<h1><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h1>
                         <h2>[field:infos/]</h2>
-                        <h3>出发日期：<b>05-11、05-18、05-20、05-21、05-29</b></h3>
+                        <h3>出发日期：<b>[field:chufariqi/]</b></h3>
                     </em>
                     <span>
-                        <h3><b>￥4299</b>起</h3>
-                        <pre>05-58出发&nbsp;</pre>
-                        <a href="#" target="_blank"></a>
+                        <h3><b>￥[field:jiage/]</b>起</h3>
+                        <pre></pre>
+                        <a href="[field:arcurl/]" target="_blank"></a>
                     </span>
                     {/dede:arclist}
                 </i>
                 <ul>
+                	{dede:arclist typeid=38 row=5 noflag=h,c titlelen=150 channelid=7 addfields=jiage}
                 	<li>
-                    	<span>热恋之夏</span>
-                        <em><a href="#" target="_blank">紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草紫色迷情薰衣草～</a></em>
-                        <h3><b>￥123,900</b>起</h3>
+                    	<span>[field:writer/]</span>
+                        <em><a href="[field:arcurl/]" target="_blank">[field:title/]</a></em>
+                        <h3><b>￥[field:jiage/]</b>起</h3>
                     </li>
-                    <li>
-                    	<span>热恋之夏</span>
-                        <em><a href="#" target="_blank">紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草紫色迷情薰衣草～</a></em>
-                        <h3><b>￥123,900</b>起</h3>
-                    </li>
-                    <li>
-                    	<span>热恋之夏</span>
-                        <em><a href="#" target="_blank">紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草紫色迷情薰衣草～</a></em>
-                        <h3><b>￥123,900</b>起</h3>
-                    </li>
-                    <li>
-                    	<span>热恋之夏</span>
-                        <em><a href="#" target="_blank">紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草紫色迷情薰衣草～</a></em>
-                        <h3><b>￥123,900</b>起</h3>
-                    </li>
+                    {/dede:arclist}
                 </ul>
             </div>
-            <div class="cty_xltj"><!--线路推荐-->
+            <div class="cty_xltj cty_xltj_dny"><!--线路推荐-->
                 <strong>
                 	<b><img src="/demand/images/cty_dnylxtj_bg.png" /></b>
                 	<em><a href="#" target="_blank">&gt;&gt;</a></em>
-                	<span><a href="#" target="_blank">韩国</a> | <a href="#" target="_blank">北海道</a> | <a href="#" target="_blank">东京</a> | <a href="#" target="_blank">名古屋</a> | <a href="#" target="_blank">大阪</a> | <a href="#" target="_blank">九州</a></span>
+                	<span>{dede:arclist typeid=39 row=1 titlelen=150}<a href="/plus/search.php?typeid=40&q=[field:title/]&starttime=-1&channeltype=0&orderby=sortrank&pagesize=10&kwtype=1&searchtype=title&%CB%D1%CB%F7=%CB%D1%CB%F7" target="_blank">[field:title/]</a>{/dede:arclist}{dede:arclist typeid=39 limit=1,10 titlelen=150} | <a href="/plus/search.php?typeid=40&q=[field:title/]&starttime=-1&channeltype=0&orderby=sortrank&pagesize=10&kwtype=1&searchtype=title&%CB%D1%CB%F7=%CB%D1%CB%F7" target="_blank">[field:title/]</a>{/dede:arclist}</span>
                 </strong>
                 <i>
-                	<p><a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="106" height="64" /></a></p>
+                	{dede:arclist typeid=40 row=1 flag=c titlelen=150 channelid=7 addfields=chufariqi,jiage}
+                	<p><a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" width="108" height="71" /></a></p>
                     <em>
-                    	<h1><a href="#" target="_blank">[上海出发]皇家加勒比游轮"海洋绿洲号海洋绿洲号海洋绿洲号海洋绿洲号"西加勒比海14日之旅</a></h1>
-                        <h2>[端午]<香港-澳门4晚5日>海洋公园GO，专享优惠券，早定早优惠，早定早优惠，早定早优惠</h2>
-                        <h3>出发日期：<b>05-11、05-18、05-20、05-21、05-29</b></h3>
+                    	<h1><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h1>
+                        <h2>[field:infos/]</h2>
+                        <h3>出发日期：<b>[field:chufariqi/]</b></h3>
                     </em>
                     <span>
-                        <h3><b>￥4299</b>起</h3>
-                        <pre>05-58出发&nbsp;</pre>
-                        <a href="#" target="_blank"></a>
+                        <h3><b>￥[field:jiage/]</b>起</h3>
+                        <pre></pre>
+                        <a href="[field:arcurl/]" target="_blank"></a>
                     </span>
+                    {/dede:arclist}
                 </i>
                 <ul>
+                	{dede:arclist typeid=40 row=5 noflag=h,c titlelen=150 channelid=7 addfields=jiage}
                 	<li>
-                    	<span>热恋之夏</span>
-                        <em><a href="#" target="_blank">紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草紫色迷情薰衣草～</a></em>
-                        <h3><b>￥123,900</b>起</h3>
+                    	<span>[field:writer/]</span>
+                        <em><a href="[field:arcurl/]" target="_blank">[field:title/]</a></em>
+                        <h3><b>￥[field:jiage/]</b>起</h3>
                     </li>
-                    <li>
-                    	<span>热恋之夏</span>
-                        <em><a href="#" target="_blank">紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草紫色迷情薰衣草～</a></em>
-                        <h3><b>￥123,900</b>起</h3>
-                    </li>
-                    <li>
-                    	<span>热恋之夏</span>
-                        <em><a href="#" target="_blank">紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草紫色迷情薰衣草～</a></em>
-                        <h3><b>￥123,900</b>起</h3>
-                    </li>
-                    <li>
-                    	<span>热恋之夏</span>
-                        <em><a href="#" target="_blank">紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草紫色迷情薰衣草～</a></em>
-                        <h3><b>￥123,900</b>起</h3>
-                    </li>
+                    {/dede:arclist}
                 </ul>
             </div>
-            <div class="cty_xltj"><!--线路推荐-->
+            <div class="cty_xltj cty_xltj_dlga"><!--线路推荐-->
                 <strong>
                 	<b><img src="/demand/images/cty_dlgaxltj_bg.png" /></b>
                 	<em><a href="#" target="_blank">&gt;&gt;</a></em>
-                	<span><a href="#" target="_blank">韩国</a> | <a href="#" target="_blank">北海道</a> | <a href="#" target="_blank">东京</a> | <a href="#" target="_blank">名古屋</a> | <a href="#" target="_blank">大阪</a> | <a href="#" target="_blank">九州</a></span>
+                	<span>{dede:arclist typeid=41 row=1 titlelen=150}<a href="/plus/search.php?typeid=42&q=[field:title/]&starttime=-1&channeltype=0&orderby=sortrank&pagesize=10&kwtype=1&searchtype=title&%CB%D1%CB%F7=%CB%D1%CB%F7" target="_blank">[field:title/]</a>{/dede:arclist}{dede:arclist typeid=41 limit=1,10 titlelen=150} | <a href="/plus/search.php?typeid=42&q=[field:title/]&starttime=-1&channeltype=0&orderby=sortrank&pagesize=10&kwtype=1&searchtype=title&%CB%D1%CB%F7=%CB%D1%CB%F7" target="_blank">[field:title/]</a>{/dede:arclist}</span>
                 </strong>
                 <i>
-                	<p><a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="106" height="64" /></a></p>
+                	{dede:arclist typeid=42 row=1 flag=c titlelen=150 channelid=7 addfields=chufariqi,jiage}
+                	<p><a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" width="108" height="71" /></a></p>
                     <em>
-                    	<h1><a href="#" target="_blank">[上海出发]皇家加勒比游轮"海洋绿洲号海洋绿洲号海洋绿洲号海洋绿洲号"西加勒比海14日之旅</a></h1>
-                        <h2>[端午]<香港-澳门4晚5日>海洋公园GO，专享优惠券，早定早优惠，早定早优惠，早定早优惠</h2>
-                        <h3>出发日期：<b>05-11、05-18、05-20、05-21、05-29</b></h3>
+                    	<h1><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h1>
+                        <h2>[field:infos/]</h2>
+                        <h3>出发日期：<b>[field:chufariqi/]</b></h3>
                     </em>
                     <span>
-                        <h3><b>￥4299</b>起</h3>
-                        <pre>05-58出发&nbsp;</pre>
-                        <a href="#" target="_blank"></a>
+                        <h3><b>￥[field:jiage/]</b>起</h3>
+                        <pre></pre>
+                        <a href="[field:arcurl/]" target="_blank"></a>
                     </span>
+                    {/dede:arclist}
                 </i>
                 <ul>
+                	{dede:arclist typeid=42 row=5 noflag=h,c titlelen=150 channelid=7 addfields=jiage}
                 	<li>
-                    	<span>热恋之夏</span>
-                        <em><a href="#" target="_blank">紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草紫色迷情薰衣草～</a></em>
-                        <h3><b>￥123,900</b>起</h3>
+                    	<span>[field:writer/]</span>
+                        <em><a href="[field:arcurl/]" target="_blank">[field:title/]</a></em>
+                        <h3><b>￥[field:jiage/]</b>起</h3>
                     </li>
-                    <li>
-                    	<span>热恋之夏</span>
-                        <em><a href="#" target="_blank">紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草紫色迷情薰衣草～</a></em>
-                        <h3><b>￥123,900</b>起</h3>
-                    </li>
-                    <li>
-                    	<span>热恋之夏</span>
-                        <em><a href="#" target="_blank">紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草紫色迷情薰衣草～</a></em>
-                        <h3><b>￥123,900</b>起</h3>
-                    </li>
-                    <li>
-                    	<span>热恋之夏</span>
-                        <em><a href="#" target="_blank">紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草紫色迷情薰衣草～</a></em>
-                        <h3><b>￥123,900</b>起</h3>
-                    </li>
+                    {/dede:arclist}
                 </ul>
             </div>
-            <div class="cty_xltj"><!--线路推荐-->
+            <div class="cty_xltj cty_xltj_omjna"><!--线路推荐-->
                 <strong>
                 	<b><img src="/demand/images/cty_omjnaxltj_bg.png" /></b>
                 	<em><a href="#" target="_blank">&gt;&gt;</a></em>
-                	<span><a href="#" target="_blank">韩国</a> | <a href="#" target="_blank">北海道</a> | <a href="#" target="_blank">东京</a> | <a href="#" target="_blank">名古屋</a> | <a href="#" target="_blank">大阪</a> | <a href="#" target="_blank">九州</a></span>
+                	<span>{dede:arclist typeid=43 row=1 titlelen=150}<a href="/plus/search.php?typeid=44&q=[field:title/]&starttime=-1&channeltype=0&orderby=sortrank&pagesize=10&kwtype=1&searchtype=title&%CB%D1%CB%F7=%CB%D1%CB%F7" target="_blank">[field:title/]</a>{/dede:arclist}{dede:arclist typeid=43 limit=1,10 titlelen=150} | <a href="/plus/search.php?typeid=44&q=[field:title/]&starttime=-1&channeltype=0&orderby=sortrank&pagesize=10&kwtype=1&searchtype=title&%CB%D1%CB%F7=%CB%D1%CB%F7" target="_blank">[field:title/]</a>{/dede:arclist}</span>
                 </strong>
                 <i>
-                	<p><a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="106" height="64" /></a></p>
+                	{dede:arclist typeid=44 row=1 flag=c titlelen=150 channelid=7 addfields=chufariqi,jiage}
+                	<p><a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" width="108" height="71" /></a></p>
                     <em>
-                    	<h1><a href="#" target="_blank">[上海出发]皇家加勒比游轮"海洋绿洲号海洋绿洲号海洋绿洲号海洋绿洲号"西加勒比海14日之旅</a></h1>
-                        <h2>[端午]<香港-澳门4晚5日>海洋公园GO，专享优惠券，早定早优惠，早定早优惠，早定早优惠</h2>
-                        <h3>出发日期：<b>05-11、05-18、05-20、05-21、05-29</b></h3>
+                    	<h1><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h1>
+                        <h2>[field:infos/]</h2>
+                        <h3>出发日期：<b>[field:chufariqi/]</b></h3>
                     </em>
                     <span>
-                        <h3><b>￥4299</b>起</h3>
-                        <pre>05-58出发&nbsp;</pre>
-                        <a href="#" target="_blank"></a>
+                        <h3><b>￥[field:jiage/]</b>起</h3>
+                        <pre></pre>
+                        <a href="[field:arcurl/]" target="_blank"></a>
                     </span>
+                    {/dede:arclist}
                 </i>
                 <ul>
+                	{dede:arclist typeid=44 row=5 noflag=h,c titlelen=150 channelid=7 addfields=jiage}
                 	<li>
-                    	<span>热恋之夏</span>
-                        <em><a href="#" target="_blank">紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草紫色迷情薰衣草～</a></em>
-                        <h3><b>￥123,900</b>起</h3>
+                    	<span>[field:writer/]</span>
+                        <em><a href="[field:arcurl/]" target="_blank">[field:title/]</a></em>
+                        <h3><b>￥[field:jiage/]</b>起</h3>
                     </li>
-                    <li>
-                    	<span>热恋之夏</span>
-                        <em><a href="#" target="_blank">紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草紫色迷情薰衣草～</a></em>
-                        <h3><b>￥123,900</b>起</h3>
-                    </li>
-                    <li>
-                    	<span>热恋之夏</span>
-                        <em><a href="#" target="_blank">紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草紫色迷情薰衣草～</a></em>
-                        <h3><b>￥123,900</b>起</h3>
-                    </li>
-                    <li>
-                    	<span>热恋之夏</span>
-                        <em><a href="#" target="_blank">紫色迷情薰衣草～2012南法普羅旺斯10日紫色迷情薰衣草紫色迷情薰衣草～</a></em>
-                        <h3><b>￥123,900</b>起</h3>
-                    </li>
+                    {/dede:arclist}
                 </ul>
             </div>
         </div>
@@ -354,7 +309,7 @@ $(document).ready(function(){
 {dede:include filename="gl_footer.htm"/}
 </body>
 </html>
-<script type="text/javascript">
+<script language="javascript" type="text/javascript">
 //焦点大图
 $(function(){
 	$("#KinSlideshow").KinSlideshow({
@@ -363,4 +318,43 @@ $(function(){
 			btn:{btn_bgColor:"#ffffff",btn_bgHoverColor:"#666666",btn_borderColor:"#666666",btn_borderHoverColor:"#666666",btn_borderWidth:1,btn_bgAlpha:0.6}
 	});
 })
+</script>
+<script language="javascript" type="text/javascript">
+//出发日期
+$(document).ready(function(){
+	cty_chufariqi(".cty_xltj_dby i em h3 b",".cty_xltj_dby i span pre");
+	cty_chufariqi(".cty_xltj_dny i em h3 b",".cty_xltj_dny i span pre");
+	cty_chufariqi(".cty_xltj_dlga i em h3 b",".cty_xltj_dlga i span pre");
+	cty_chufariqi(".cty_xltj_omjna i em h3 b",".cty_xltj_omjna i span pre");
+}); 
+
+function cty_chufariqi(f_class,s_class) {
+    var dby_chufariqi = $(f_class).text();
+	var arr1 = dby_chufariqi.split("、");//按照顿号分割
+	
+	var firstdate = '';
+	var datelist = new Array();
+	var litedatelist = new Array();
+	var alldate = "";
+	arr1 = sort(arr1);
+	for(i = 0,j=0; i<arr1.length;i++){
+		if(strtotime(arr1[i]) >= parseInt(time()/86400)*86400){
+			datelist[j] = arr1[i];
+			j++;
+		}
+	}
+	var totle = datelist.length<5?datelist.length:5;
+	for(i=0;i<totle;i++){
+		var riqi = datelist[i].split("-");//按照顿号分割
+		litedatelist[i] = riqi[1]+'-'+riqi[2];
+		if(!alldate){
+			alldate = litedatelist[i];
+		}else{
+			alldate += "、"+litedatelist[i];
+		}
+	}
+	firstdate = litedatelist[0];
+	$(f_class).text(alldate);
+	$(s_class).text(firstdate+"出发 ");
+}  
 </script>

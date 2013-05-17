@@ -71,8 +71,6 @@ $(document).ready(function(){
         <div class="cty_article_lc"></div>
         <div class="cty_article_title">
         	<h1>{dede:field.title/}</h1>
-            <img src="/demand/images/cty_rmlxtj_tj.png" width="33" height="19" />
-            <img src="/demand/images/cty_rmlxtj_rm.png" width="33" height="19" />
         </div>
         <dl class="cty_article_infos">
         	<dd>
@@ -81,24 +79,28 @@ $(document).ready(function(){
                     <h2>
                     	<em><span>¥</span><b>{dede:field.jiage/}</b>起</em>
                         <a href="javascript:void(0);" class="cty_article_infos_tanchu">起价说明
-                        	<span><b>{dede:field.qijiashuoming/}</b></span>
+                        	<span><b>1.2米以下儿童,仅含车位，用餐（半餐）及导游服务，其余自理。</b></span>
                         </a>
                         <a href="javascript:void(0);" class="cty_article_infos_tanchu">儿童价标准
-                        	<span><b>{dede:field.ertongjia/}</b></span>
+                        	<span><b>1.2米以下儿童,仅含车位，用餐（半餐）及导游服务，其余自理。</b></span>
                         </a>
                     </h2>
                     <h3>提前报名：<em>{dede:field.tiqianbaoming/}</em></h3>
-                    <div class="jiathis_style">
-                        <span class="jiathis_txt">分享到：</span>
-                        <a class="jiathis_button_qzone"></a>
-                        <a class="jiathis_button_tsina"></a>
-                        <a class="jiathis_button_tqq"></a>
-                        <a class="jiathis_button_renren"></a>
-                        <a class="jiathis_button_kaixin001"></a>
-                        <a class="jiathis_button_douban"></a>
-                        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+                    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+                    	<em>分享到：</em>
+                        <a class="bds_tsina"></a>
+                        <a class="bds_qzone"></a>
+                        <a class="bds_tqq"></a>
+                        <a class="bds_renren"></a>
+                        <a class="bds_kaixin001"></a>
+                        <a class="bds_douban"></a>
+                        <span class="bds_more"></span>
                     </div>
-                    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1346902774817806" charset="utf-8"></script>
+                    <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=122404" ></script>
+                    <script type="text/javascript" id="bdshell_js"></script>
+                    <script type="text/javascript">
+                    	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+                    </script>
                 </i>
                 <ul>
                 	<em><i>推荐理由</i></em>
@@ -272,10 +274,16 @@ jq(function() {
 		directory: 'images'
 	});
 });
-</script>
-<script language="javascript" type="text/javascript">
+
 //起价说明&儿童价标准
-$(document).ready(function(){
-	$(".cty_article_infos_tanchu").hover(function(){$(this).find("span").show();},function(){$(this).find("span").hide();});
+jq(document).ready(function(){
+	jq(".cty_article_infos_tanchu").hover(function(){jq(this).find("span").show();},function(){jq(this).find("span").hide();});
 });
+
+//特价&热卖
+//<img src="/demand/images/cty_rmlxtj_{dede:field name='biaoji'/}.png" width="33" height="19" />
+var tj_rm = "{dede:field name='biaoji'/}";
+if(tj_rm){
+	jq(".cty_article_title").append('<img src="/demand/images/cty_rmlxtj_'+tj_rm+'.png" width="33" height="19" />');
+}
 </script>

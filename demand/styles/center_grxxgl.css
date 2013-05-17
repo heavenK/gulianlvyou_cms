@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*通用背景*/
+.center_right b a		{ background:url(../images/all_bg.png) no-repeat;}
+
+.center_right span		{ width:748px; height:80px; padding:15px 0 0 0; border-bottom:1px solid #e6e6e6; overflow:hidden; float:left;}
+.center_right span p						{ width:58px; height:58px; margin:0 20px 0 0; display:inline; border:1px solid #eaeaea; overflow:hidden; float:left;}
+.center_right span h1						{ width:550px; height:30px; font-size:14px; font-weight:bold; color:#343434; line-height:30px; overflow:hidden; float:left;}
+.center_right span em						{ width:550px; height:22px; line-height:22px; overflow:hidden; float:left;}
+.center_right span em i						{ height:22px; margin:0 20px 0 0; display:inline; color:#30507f; overflow:hidden; float:left;}
+.center_right span em i a					{ color:#30507f;}
+.center_right span em i a:hover				{ color:#ff6633;}
+.center_right dl		{ width:748px; overflow:hidden; float:left;}
+.center_right dl dd							{ width:748px; height:40px; font-weight:bold; line-height:50px; overflow:hidden; float:left;}
+.center_right dl dt							{ width:748px; height:29px; margin:0 0 14px 0; display:inline; line-height:29px; overflow:hidden; float:left;}
+.center_right dl dt .label_long				{ width:96px; height:29px; text-align:right; color:#333333; line-height:29px; overflow:hidden; float:left;}
+.center_right dl dt .label_long em			{ color:#ff0000;}
+.center_right dl dt .text_input				{ width:158px; height:15px; padding:6px 3px; background:#FFF; border:1px solid #b3c3dd; font-size:12px; color:#333333; overflow:hidden; float:left;}
+.center_right dl dt .checkbox_input			{ width:14px; margin:8px 5px 0 100px; _margin:4px 5px 0 100px; display:inline; background:#FFF; float:left;}
+.center_right dl dt .label_short			{ height:29px; margin:0 25px 0 0; display:inline; overflow:hidden; float:left;}
+.center_right dl dt .radio_input			{ width:14px; margin:8px 5px 0 0; _margin:4px 5px 0 0; display:inline; overflow:hidden; float:left;}
+.center_right dl dt .text_input_long		{ width:428px; height:15px; padding:6px 3px; background:#FFF; border:1px solid #b3c3dd; font-size:12px; color:#333333; overflow:hidden; float:left;}
+.center_right b								{ width:652px; height:27px; padding:6px 0 68px 96px; overflow:hidden; float:left;}
+.center_right b a							{ width:74px; height:27px; background-position:-166px -860px; overflow:hidden; float:left;}
+.center_right b a:hover						{ background-position:-148px -888px;}

@@ -17,7 +17,7 @@
 .cty_article_mainbav a:hover			{ color:#ff6633;}
 .cty_article_lc							{ width:980px; height:40px; background:url(../images/cty_article_lc_bg.jpg) no-repeat; overflow:hidden; float:left;}
 .cty_article_title						{ width:547px; height:49px; background:url(../images/cty_article_title_bg.png) no-repeat 0 16px; overflow:hidden; float:left;}
-.cty_article_title h1					{ width:380px; height:49px; padding:0 3px 0 55px; font-size:18px; font-weight:bold; color:#333333; line-height:52px; _line-height:54px; overflow:hidden; float:left;}
+.cty_article_title h1					{ height:49px; padding:0 3px 0 55px; font-size:18px; font-weight:bold; color:#333333; line-height:52px; _line-height:54px; overflow:hidden; float:left;}
 .cty_article_title img					{ width:33px; height:19px; margin:16px 0 0 12px; display:inline; overflow:hidden; float:left;}
 .cty_article_infos						{ width:980px; padding:0 0 19px 0; overflow:hidden; float:left;}
 .cty_article_infos dd					{ width:578px; float:left;}
@@ -31,10 +31,10 @@
 .cty_article_infos dd i h2 a:hover		{ color:#ff6633;}
 .cty_article_infos dd i h2 a span		{ width:332px; padding:5px 0 0 0; background:url(../images/cty_zyx_article_tanchu_bg.png) no-repeat; position:absolute; top:18px; left:-5px; z-index:999; overflow:hidden; display:none;}
 .cty_article_infos dd i h2 a span b		{ width:300px; padding:15px; background:#feffe9; border:1px solid #ffcc00; border-top:none; font-weight:normal; color:#333333; line-height:20px; overflow:hidden; float:left;}
-.cty_article_infos dd i h3				{ width:317px; height:38px; padding:0 0 0 12px; color:#666666; line-height:39px; overflow:hidden; float:left;}
+.cty_article_infos dd i h3				{ width:317px; height:32px; padding:0 0 0 12px; color:#666666; line-height:32px; overflow:hidden; float:left;}
 .cty_article_infos dd i h3 em			{ color:#333333;}
-.jiathis_style							{ padding:0 0 0 12px; color:#666666; overflow:hidden; float:left;}
-.jiathis_txt							{ font-family:"宋体" !important;}
+.bdshare_t								{ padding:0 0 0 12px; color:#666666; overflow:hidden; float:left;}
+.bdshare_t em							{ line-height:26px; _line-height:27px; overflow:hidden; float:left;}
 .cty_article_infos dd ul				{ width:561px; padding:0 0 8px 0; overflow:hidden; float:left;}
 .cty_article_infos dd ul em				{ width:561px; height:26px; margin:0 0 6px 0; display:inline; border-bottom:1px solid #ac3666; overflow:hidden; float:left;}
 .cty_article_infos dd ul em i			{ width:120px; height:26px; background:#ac3666; text-align:center; font-family:"微软雅黑"; font-size:14px; color:#FFF; line-height:25px; overflow:hidden; float:left;}
