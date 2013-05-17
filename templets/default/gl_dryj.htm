@@ -70,50 +70,27 @@ $(document).ready(function(){
 		<div class="dryj_search_focus"><!--搜索&游记-->
         	<dl>
             	<dd>
-                	<input type="text" class="dryj_search_text" name="text" value="请输入游记名称" onfocus="if (value =='请输入游记名称'){value =''}" onblur="if (value ==''){value='请输入游记名称'}" />
-                    <input type="button" class="dryj_search_sub" name="submit" value="搜索" />
+                    <form  name="formsearch" action="{dede:global.cfg_cmsurl/}/plus/search.php">
+                    	<input type="hidden" name="typeid" value="35" />
+                        <input type="hidden" name="kwtype" value="1" />
+                        <input type="hidden" name="searchtype" value="title" />
+                        <input type="text" class="dryj_search_text" id="search-keyword" name="q" value="请输入游记名称" onfocus="if (value =='请输入游记名称'){value =''}" onblur="if (value ==''){value='请输入游记名称'}" />
+                    	<input type="submit" class="dryj_search_sub" value="搜索" />
+                    </form>
                 </dd>
                 <dt>
                 	<ul>
                     	<li>
                         	<h1>国内旅游</h1>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
+                            {dede:arclist typeid=48 titlelen=150}
+                            <i><a href="/plus/search.php?typeid=49&q=[field:title/]&kwtype=1&searchtype=title" target="_blank">[field:title/]</a></i>
+                            {/dede:arclist}
                         </li>
                         <li>
                         	<h1>国外旅游</h1>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
-                            <i><a href="#" target="_blank">丽江</a></i>
+                            {dede:arclist typeid=50 titlelen=150}
+                            <i><a href="/plus/search.php?typeid=51&q=[field:title/]&kwtype=1&searchtype=title" target="_blank">[field:title/]</a></i>
+                            {/dede:arclist}
                         </li>
                     </ul>
                     <em><a href="#" target="_blank"></a></em>
@@ -121,27 +98,34 @@ $(document).ready(function(){
             </dl>
             <div class="dryj_focus">
                 <ul class="slide-pic">
-                  <li class="cur"><a href="#" target="_blank"><img src="/demand/images/pic_01.jpg" width="666" height="353" /></a></li> 
-                  <li class="cur"><a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="666" height="353" /></a></li>
-                  <li class="cur"><a href="#" target="_blank"><img src="/demand/images/pic_01.jpg" width="666" height="353" /></a></li>
+                	{dede:arclist typeid=32 row=1 titlelen=150}
+                    <li class="cur"><a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" width="666" height="353" alt="[field:title/]" /></a></li>
+                    {/dede:arclist}
+                    {dede:arclist typeid=32 limit=1,2 titlelen=150}
+                    <li><a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" width="666" height="353" alt="[field:title/]" /></a></li>
+                    {/dede:arclist}
                 </ul>
                 <ul class="slide-li slide-txt">
-                  <li class="cur"><a href="javascript:;">北国哈尔滨——与你冰天雪地</a></li>
-                  <li><a href="javascript:;">去中国最北的小镇，漠河</a></li>
-                  <li><a href="javascript:;">面朝洱海，春暖花开</a></li>
+                	{dede:arclist typeid=32 row=1 titlelen=36}
+                    <li class="cur"><a href="javascript:;">[field:title/]</a></li>
+                    {/dede:arclist}
+                    {dede:arclist typeid=32 limit=1,2 titlelen=36}
+                    <li><a href="javascript:;">[field:title/]</a></li>
+                    {/dede:arclist}
                 </ul>
             </div>
         </div>
         <div class="dryj_jcyj"><!--精彩游记-->
         	<em><i>精彩游记</i><a href="#" target="_blank">更多 &gt;&gt;</a></em>
             <ul>
+            	{dede:arclist typeid=49,51 row=4 titlelen=150 infolen=500}
             	<li>
-                	<p><a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="175" height="115" /></a></p>
+                	<p><a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" width="175" height="115" /></a></p>
                     <span>
-                    	<h1><a href="#" target="_blank">夏日悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间</a></h1>
-                        <h2>作者：<b>丢丢</b>&nbsp;<b>丢丢</b></h2>
-                        <h2>标签：<b>丢丢</b></h2>
-                        <h3>夏日悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间夏日悠悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间<b>[<a href="#" target="_blank">详细</a>]</b></h3>
+                    	<h1><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h1>
+                        <h2>作者：<b>[field:writer/]</b></h2>
+                        <h2>标签：<b>[field:shorttitle/]</b></h2>
+                        <h3>[field:infos/]<b>[<a href="[field:arcurl/]" target="_blank">详细</a>]</b></h3>
                     </span>
                     <ol>
                     	<li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>:&nbsp;夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山</h1></li>
@@ -149,69 +133,32 @@ $(document).ready(function(){
                         <li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>:&nbsp;夏日悠游漓江山</h1></li>
                     </ol>
                 </li>
-                <li>
-                	<p><a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="175" height="115" /></a></p>
-                    <span>
-                    	<h1><a href="#" target="_blank">夏日悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间</a></h1>
-                        <h2>作者：<b>丢丢</b>&nbsp;<b>丢丢</b></h2>
-                        <h2>标签：<b>丢丢</b></h2>
-                        <h3>夏日悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间夏日悠悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间<b>[<a href="#" target="_blank">详细</a>]</b></h3>
-                    </span>
-                    <ol>
-                    	<li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>:&nbsp;夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山</h1></li>
-                        <li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>:&nbsp;夏日悠游漓江山</h1></li>
-                        <li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>:&nbsp;夏日悠游漓江山</h1></li>
-                    </ol>
-                </li>
-                <li>
-                	<p><a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="175" height="115" /></a></p>
-                    <span>
-                    	<h1><a href="#" target="_blank">夏日悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间</a></h1>
-                        <h2>作者：<b>丢丢</b>&nbsp;<b>丢丢</b></h2>
-                        <h2>标签：<b>丢丢</b></h2>
-                        <h3>夏日悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间夏日悠悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间<b>[<a href="#" target="_blank">详细</a>]</b></h3>
-                    </span>
-                    <ol>
-                    	<li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>:&nbsp;夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山</h1></li>
-                        <li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>:&nbsp;夏日悠游漓江山</h1></li>
-                        <li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>:&nbsp;夏日悠游漓江山</h1></li>
-                    </ol>
-                </li>
-                <li>
-                	<p><a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="175" height="115" /></a></p>
-                    <span>
-                    	<h1><a href="#" target="_blank">夏日悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间</a></h1>
-                        <h2>作者：<b>丢丢</b>&nbsp;<b>丢丢</b></h2>
-                        <h2>标签：<b>丢丢</b></h2>
-                        <h3>夏日悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间夏日悠悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间<b>[<a href="#" target="_blank">详细</a>]</b></h3>
-                    </span>
-                    <ol>
-                    	<li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>:&nbsp;夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山</h1></li>
-                        <li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>:&nbsp;夏日悠游漓江山</h1></li>
-                        <li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>:&nbsp;夏日悠游漓江山</h1></li>
-                    </ol>
-                </li>
+                {/dede:arclist}
             </ul>
         </div>
         <div class="dryj_mtxx"><!--美图秀秀-->
         	<em><i>美图秀秀</i><a href="#" target="_blank">更多 &gt;&gt;</a></em>
             <span>
             	<h1>
-                	<a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="270" height="140" /></a>
-               		<a href="#" target="_blank"><img src="/demand/images/pic_01.jpg" width="270" height="140" /></a>
-                	<a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="270" height="140" /></a>
+                	{dede:arclist typeid=52 row=3 titlelen=150}
+                	<a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" width="270" height="140" /></a>
+                    {/dede:arclist}
                 </h1>
             	<h2>
-                	<a href="#" target="_blank"><img src="/demand/images/pic_01.jpg" width="290" height="290" /></a>
-                	<a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="140" height="140" /></a>
-                	<a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="140" height="140" /></a>
+                	{dede:arclist typeid=52 limit=3,1 titlelen=150}
+                	<a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" width="290" height="290" /></a>
+                    {/dede:arclist}
+                    {dede:arclist typeid=52 limit=4,2 titlelen=150}
+                	<a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" width="140" height="140" /></a>
+                	{/dede:arclist}
                 </h2>
                 <h3>
-                	<a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="180" height="140" /></a>
-                	<a href="#" target="_blank"><img src="/demand/images/pic_01.jpg" width="180" height="140" /></a>
-                	<a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="180" height="140" /></a>
+                	{dede:arclist typeid=52 limit=6,3 titlelen=150}
+                	<a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" width="180" height="140" /></a>
+                	{/dede:arclist}
                 </h3>
-                <a href="#" target="_blank"><img src="/demand/images/pic_01.jpg" width="190" height="440" /></a>
+                {dede:arclist typeid=52 limit=9,1 titlelen=150}
+                <a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" width="190" height="440" /></a>
             </span>
         </div>
         <div class="dryj_sp"><!--视频-->

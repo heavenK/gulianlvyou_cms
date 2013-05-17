@@ -19,7 +19,7 @@
 .dryj_search_focus dl dt ul					{ width:263px; height:264px; padding:15px 0 0 10px; overflow:hidden; float:left;}
 .dryj_search_focus dl dt ul li				{ width:252px; padding:0 0 8px 0; overflow:hidden; float:left;}
 .dryj_search_focus dl dt ul li h1			{ width:252px; height:22px; font-size:14px; font-weight:bold; color:#ac3666; overflow:hidden; float:left;}
-.dryj_search_focus dl dt ul li i			{ width:42px; height:28px; line-height:28px; overflow:hidden; float:left;}
+.dryj_search_focus dl dt ul li i			{ height:28px; padding:0 18px 0 0; line-height:28px; overflow:hidden; float:left;}
 .dryj_search_focus dl dt ul li i a			{ color:#666666;}
 .dryj_search_focus dl dt ul li i a:hover	{ color:#ff6633;}
 .dryj_search_focus dl dt em					{ width:272px; height:64px; margin:0 1px; display:inline; background:#f2f2f2; overflow:hidden; float:left;}
