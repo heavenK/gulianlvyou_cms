@@ -29,11 +29,11 @@
 .zyx_article_infos dl h2 em b			{ font-size:34px; font-weight:normal; color:#fa741b;}
 .zyx_article_infos dl h2 a				{ margin:0 0 0 15px; display:inline; color:#8b9f62; line-height:61px; overflow:hidden; float:left;}
 .zyx_article_infos dl h2 a:hover		{ color:#ff6633;}
-.zyx_article_infos dl h3				{ width:289px; height:36px; color:#666666; line-height:39px; overflow:hidden; float:left;}
+.zyx_article_infos dl h3				{ width:289px; height:32px; color:#666666; line-height:32px; overflow:hidden; float:left;}
 .zyx_article_infos dl h3 em				{ color:#333333;}
-.jiathis_style							{ color:#666666; overflow:hidden; float:left;}
-.jiathis_txt							{ font-family:"宋体" !important;}
-.zyx_article_infos dl i					{ width:289px; height:26px; color:#666666; line-height:33px; overflow:hidden; float:left;}
+.bdshare_t								{ color:#666666; overflow:hidden; float:left;}
+.bdshare_t em							{ line-height:26px; _line-height:27px; overflow:hidden; float:left;}
+.zyx_article_infos dl i					{ width:289px; height:18px; color:#666666; line-height:18px; overflow:hidden; float:left;}
 .zyx_article_infos dl dt				{ width:254px; height:35px; margin:80px 0 0 0; display:inline; overflow:hidden; float:left;}
 .zyx_article_infos dl dt a				{ width:113px; height:35px; background-position:-135px -333px; overflow:hidden; float:left;}
 .zyx_article_infos dl dt a:hover		{ background-position:-135px -368px;}
@@ -90,8 +90,6 @@
 .zyx_article_fysm em					{ width:980px; height:26px; border-bottom:1px solid #ac3666; overflow:hidden; float:left;}
 .zyx_article_fysm em b					{ width:120px; height:26px; background:#ac3666; text-align:center; font-size:16px; color:#FFF; line-height:27px; overflow:hidden; float:left;}
 .zyx_article_fysm strong				{ width:942px; padding:10px 18px; border:1px solid #e1e1e1; border-top:none; font-weight:normal; color:#414141; line-height:26px; overflow:hidden; float:left;}
-
-
 .zyx_article_cont						{ width:980px; margin:15px 0 0 0; display:inline; overflow:hidden; float:left;}
 .zyx_article_cont em					{ width:979px; height:26px; padding:0 1px 0 0; border-bottom:1px solid #ac3666; overflow:hidden; float:left;}
 .zyx_article_cont em b					{ width:120px; height:26px; background:#ac3666; text-align:center; font-size:16px; color:#FFF; line-height:27px; overflow:hidden; float:left;}

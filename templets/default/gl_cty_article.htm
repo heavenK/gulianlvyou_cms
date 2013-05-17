@@ -88,16 +88,21 @@ $(document).ready(function(){
                         </a>
                     </h2>
                     <h3>提前报名：<em>{dede:field.tiqianbaoming/}</em></h3>
-                    <div class="jiathis_style">
-                        <span class="jiathis_txt">分享到：</span>
-                        <a class="jiathis_button_qzone"></a>
-                        <a class="jiathis_button_tsina"></a>
-                        <a class="jiathis_button_tqq"></a>
-                        <a class="jiathis_button_renren"></a>
-                        <a class="jiathis_button_kaixin001"></a>
-                        <a class="jiathis_button_douban"></a>
-                        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+                    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+                    	<em>分享到：</em>
+                        <a class="bds_tsina"></a>
+                        <a class="bds_qzone"></a>
+                        <a class="bds_tqq"></a>
+                        <a class="bds_renren"></a>
+                        <a class="bds_kaixin001"></a>
+                        <a class="bds_douban"></a>
+                        <span class="bds_more"></span>
                     </div>
+                    <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=122404" ></script>
+                    <script type="text/javascript" id="bdshell_js"></script>
+                    <script type="text/javascript">
+                    	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+                    </script>
                 </i>
                 <ul>
                 	<em><i>推荐理由</i></em>
@@ -277,4 +282,3 @@ jq(document).ready(function(){
 	jq(".cty_article_infos_tanchu").hover(function(){jq(this).find("span").show();},function(){jq(this).find("span").hide();});
 });
 </script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1346902774817806" charset="utf-8"></script>
