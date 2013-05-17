@@ -120,16 +120,30 @@ class MethodServiceAction extends CommonAction{
 	}
 	
 		
-    public function _change_orderID() {
-		
-		echo 'adf';
+    public function _change_orderID($orderID) {
+		$dingdan = $this->_getdingdan($orderID);
+		if(!$dingdan)
+			return false;
+		$dingdan['orderID'] = MakeOrders($dingdan['serverdataID']);
+		$Dingdan = D("Dingdan");
+		if($Dingdan->save($dingdan))
+		return $dingdan['orderID'];
 	}
 	
 	
-	
-	
-	
-	
+    public function _check_dingdan_valid($orderID) {
+		$order = A("MethodService")->_getdingdan($orderID);
+		if(!$order){
+			return false;
+		}
+		$chanpin = A("MethodService")->_checkchanpin($order['serverdataID']);
+		if(false === $chanpin){
+			return false;
+		}
+		$datalist['order'] = $order;
+		$datalist['chanpin'] = $chanpin;
+		return $datalist;
+	}
 	
 	
 	

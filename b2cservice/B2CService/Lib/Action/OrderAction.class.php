@@ -154,12 +154,16 @@ class OrderAction extends CommonMyAction{
     public function book3() {
 		$order = A("MethodService")->_getdingdan($_REQUEST['orderID']);
 		if(!$order){
-			echo "订单不存在！！";
+			redirect(ORDER_URL);
+			echo "order is not find";
+//			echo "订单不存在！！";
 			exit;
 		}
 		$chanpin = A("MethodService")->_checkchanpin($order['serverdataID']);
 		if(false === $chanpin){
-			echo "产品不存在或已经停止销售！！";
+			redirect(ORDER_URL);
+			echo "product is not selling or out exist";
+//			echo "产品不存在或已经停止销售！！";
 			exit;
 		}
 		$this->assign("chanpin",$chanpin);
@@ -168,44 +172,68 @@ class OrderAction extends CommonMyAction{
 		$joinerall = $DingdanJoiner->where("`dingdanID` = '$order[id]'")->findall();
 		$this->assign("order",$order);
 		$this->assign("joinerall",$joinerall);
-		//ip
-		$this->assign("ip",real_ip());
 		
 		$this->display();
 		
 	}
 	
 	
+	
+	function test(){
+		dump($_REQUEST);
+	}
+	
+	
+	
 	function MerchantPaymant(){
-		require(B2CSERVICE_URL."apis/nh/b2c01/api.php");
+		require_once(B2CSERVICE_PATH."/apis/nh/b2c01/api.php");
 		$add = "http://www.dlgulian.com:8080/axis/services/B2CWarpper?wsdl";
-		$tOrderNo = $_POST['OrderNo'];
-		$tExpiredDate = $_POST['ExpiredDate'];
-		$tOrderDesc = $_POST['OrderDesc'];
-		$tOrderDate = $_POST['OrderDate'];
-		$tOrderTime = $_POST['OrderTime'];
-		$tOrderAmountStr = $_POST['OrderAmount'];
-		$tOrderURL = $_POST['OrderURL'];
-		$tBuyIP = $_POST['BuyIP'];
-		$tProductType = $_POST['ProductType'];
-		$tPaymentType = $_POST['PaymentType'];
-		$tNotifyType = $_POST['NotifyType'];
-		$tResultNotifyURL = $_POST['ResultNotifyURL'];
-		$tMerchantRemarks = $_POST['MerchantRemarks'];
-		$tPaymentLinkType = $_POST['PaymentLinkType'];
-		$tTotalCount = $_POST['TotalCount'];
-		
-		$tOrderItems=array();
-		for($i=0;$i<$tTotalCount;$i++)
-		{
-	//		print("<br>".$_POST['productname'][$i]."</br>");
-			$tOrderItems[]=array($_POST['productid'][$i], $_POST['productname'][$i], $_POST['uniteprice'][$i], $_POST['qty'][$i]);
+		//检查订单
+		$info = A("MethodService")->_check_dingdan_valid($_POST['OrderNo']);
+		if(false === $info){
+			$_REQUEST['msg'] = '订单已失效或产品已下架';
+			$this->ajaxReturn($_REQUEST, '操作失败123！', 0);
 		}
-		
+		else{
+			$order = $info['order'];
+			$chanpin = $info['chanpin'];
+			if($order['status'] != '等待支付'){
+				$_REQUEST['msg'] = '此订单不允许再支付';
+				$this->ajaxReturn($_REQUEST, '操作失败234！', 0);
+			}
+		}
+		//数据填充
+		$tOrderNo = $_POST['OrderNo'];
+		$tExpiredDate = 30;
+		$tOrderDesc = "线路：".$order['title_copy']."/团号：".$order['tuanhao']."/成人：".$order['chengrenshu']."/儿童：".$order['ertongshu'];
+		$tOrderDate = date("Y/m/d",time());
+		$tOrderTime = date("H:i:s",time());
+		$tOrderAmountStr = 0.01;
+//		$tOrderAmountStr = $order['price'];
+		$tOrderURL = ORDER_INDEX.'Order/book3/orderID/'.$tOrderNo;
+		$tBuyIP = real_ip();
+		$tProductType = 1;
+		$tPaymentType = $_POST['PaymentType'];
+		$tNotifyType = 0;//设定支付结果通知方式（必要信息）
+//		$tResultNotifyURL = ORDER_INDEX.'Order/test';
+		$tResultNotifyURL = ORDER_INDEX.'Order/test';
+		$tMerchantRemarks = '';//商户备注信息
+		$tPaymentLinkType = 1;//设定支付接入方式（必要信息） 注意：目前支持三种接入方式，Internet网络接入，Mobile网络接入，数字电视网络接入，不同的支付方式会返回不同的支付处理页面。
+		$tTotalCount = $order['chengrenshu']+$order['ertongshu'];
+		$tOrderItems=array();
+		$DingdanJoiner = D("DingdanJoiner");
+		$joinerall = $DingdanJoiner->where("`dingdanID` = '$order[id]'")->findall();
+		foreach($joinerall as $v){
+			if($v['manorchild'] == '儿童') 
+				$itemprice = $chanpin['child_price'];
+			else 
+				$itemprice = $chanpin['adult_price']; 
+			$tOrderItems[]=array($order['serverdataID'], $order['title_copy'], $itemprice, '1');
+		}
+		//通信
 		$merchantPaymentRequest = new MerchantPaymentRequest($tOrderNo,$tExpiredDate,$tOrderDesc,$tOrderDate,$tOrderTime,$tOrderAmountStr,$tOrderURL,$tBuyIP,$tProductType,$tPaymentType,$tNotifyType,$tResultNotifyURL,$tMerchantRemarks,$tPaymentLinkType,$tOrderItems);
 		$merchantPayment = new MerchantPayment($add,$merchantPaymentRequest);
 		$merchantPaymentResult = $merchantPayment->invoke();
-		
 		//显示结果
 		if($merchantPaymentResult->isSucess==TRUE)
 		{
@@ -213,31 +241,25 @@ class OrderAction extends CommonMyAction{
 		}
 		else
 		{
-	//		print("<br>Failed!!!"."</br>");
-	//		print("<br>return code:".$merchantPaymentResult->returnCode."</br>"); 
-	//		print("<br>Error Message:".iconv("GBK","UTF-8",$merchantPaymentResult->ErrorMessage)."</br>");
-			//易宝支付失败更改订单号
-			if($tPaymentType == 5){
-				API_change_orderID(1);
-			}
-				
-	
-		}
-	
-/*	
-		<script language=javascript>
-		//	支付请求页面跳转
-			var redirectURL="<?=$PaymentURL?>";
-			if(redirectURL!=null&&redirectURL!="")
+			//检查订单合法性
+			$newID = API_change_orderID($tOrderNo);
+			$tOrderNo = $newID;
+			$merchantPaymentRequest = new MerchantPaymentRequest($tOrderNo,$tExpiredDate,$tOrderDesc,$tOrderDate,$tOrderTime,$tOrderAmountStr,$tOrderURL,$tBuyIP,$tProductType,$tPaymentType,$tNotifyType,$tResultNotifyURL,$tMerchantRemarks,$tPaymentLinkType,$tOrderItems);
+			$merchantPayment = new MerchantPayment($add,$merchantPaymentRequest);
+			$merchantPaymentResult = $merchantPayment->invoke();
+			if($merchantPaymentResult->isSucess==TRUE)
 			{
-				location.href='<?=$PaymentURL?>';
+				$PaymentURL = $merchantPaymentResult->paymentURL;
+				$_REQUEST['OrderNo'] = $newID;
 			}
-		</script> 
-        
-*/        
+			else{
+				$_REQUEST['msg'] = iconv("GBK","UTF-8",$merchantPaymentResult->ErrorMessage);
+				$this->ajaxReturn($_REQUEST, '操作失败345！', 0);
+			}
+		}
+		$_REQUEST['PaymentURL'] = $PaymentURL;
+		$this->ajaxReturn($_REQUEST, '保存成功！', 1);
 	}
-	
-	
 	
 	
 	

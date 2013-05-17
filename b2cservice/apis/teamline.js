@@ -105,7 +105,7 @@ function initFloatPerson(group) {
     var arrenddate = group.enddate.split('-');
     if (arrenddate[0] == now.getFullYear() && parseInt(arrenddate[1]) == now.getMonth() + 1 && parseInt(arrenddate[2]) == now.getDate() && now.getHours() > 10) {//当天10点前
         $(".pro_table th:eq(1)").html("<em class='getred_bg'>报名资料截止日期</em><div>"
-                + "<b>对不起，你已经错过最佳报名时间，请选择其他出发日期团组，如您持有自备签证，可选择继续报名。详情请咨询010-85906636。</b>"
+                + "<b>对不起，你已经错过最佳报名时间，请选择其他出发日期团组，如您持有自备签证，可选择继续报名。</b>"
                 + "</div>");
 
     } else {

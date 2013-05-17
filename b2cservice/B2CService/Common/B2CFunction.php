@@ -544,7 +544,7 @@ if ( ! function_exists('utf82gb'))
  */
 function API_change_orderID($orderID)
 {
-	A("MethodService")->_change_orderID();
+	return A("MethodService")->_change_orderID($orderID);
 }
 
 

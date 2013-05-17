@@ -15,11 +15,13 @@
     define('SITE_DATA',B2CSERVICE_URL.'Data/');
 	define('SITE_PUBLIC',ROOT_URL.'demand/');
 	define('__PUBLIC__',B2CSERVICE_URL."Public/");
+	define('B2CSERVICE_PUBLIC',B2CSERVICE_URL."Public/");
 	//配置
 	define('MODE_NAME','mycore');
 	define('THINK_PATH',dirname(__FILE__).'/../../ThinkPHP/');
 	define('APP_NAME', 'b2cservice');
 	define('APP_PATH', dirname(__FILE__).'/B2CService/');
+	define('B2CSERVICE_PATH', dirname(__FILE__));
 	//define('DEFAULT_TYPE','default');
 	define('APP_DEBUG', true);
 	require(APP_PATH.'Common/Function.php');
