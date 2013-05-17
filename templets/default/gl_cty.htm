@@ -338,7 +338,7 @@ function cty_chufariqi(f_class,s_class) {
 	var alldate = "";
 	arr1 = sort(arr1);
 	for(i = 0,j=0; i<arr1.length;i++){
-		if(strtotime(arr1[i]) > time()){
+		if(strtotime(arr1[i]) >= time()){
 			datelist[j] = arr1[i];
 			j++;
 		}
