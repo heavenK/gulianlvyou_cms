@@ -59,21 +59,23 @@ function StrLenW2($str){
     return (strlen($str)+mb_strlen($str,'UTF8'))/2;
 }
 
-function daddslashes($string) {
-    $string=str_replace("'",'"',$string);
-    !defined('MAGIC_QUOTES_GPC') && define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
-    if(!MAGIC_QUOTES_GPC) {
-        if(is_array($string)) {
-            foreach($string as $key => $val) {
-                $string[$key] = daddslashes($val);
-            }
-        } else {
-            $string = addslashes($string);
-        }
-    }
-	return $string;
+if ( ! function_exists('daddslashes'))
+{
+	function daddslashes($string) {
+		$string=str_replace("'",'"',$string);
+		!defined('MAGIC_QUOTES_GPC') && define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
+		if(!MAGIC_QUOTES_GPC) {
+			if(is_array($string)) {
+				foreach($string as $key => $val) {
+					$string[$key] = daddslashes($val);
+				}
+			} else {
+				$string = addslashes($string);
+			}
+		}
+		return $string;
+	}
 }
-
 function sethead($head) {
     //ucenter头像
     if (ET_UC==TRUE) {
