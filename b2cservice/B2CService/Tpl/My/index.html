@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="<{:SITE_PUBLIC}>/styles/reset.css" type="text/css" rel="stylesheet" />
+<link href="<{:SITE_PUBLIC}>/styles/center_reset.css" type="text/css" rel="stylesheet" />
+<link href="<{:SITE_PUBLIC}>/styles/center_index.css" type="text/css" rel="stylesheet" />
+<script src="<{:SITE_PUBLIC}>/js/jquery-1.4a2.min.js" type="text/javascript"></script>
+<script src="<{:SITE_PUBLIC}>/js/center_index_rmtj.js" type="text/javascript"></script>
+</head>
+
+<body style=" background:#FFF url(<{:SITE_PUBLIC}>/images/center_bg.jpg) no-repeat center top;">
+<div class="center_header_box"><!--头部-->
+	<dl>
+    	<dd><b><a href="#" style=" font-family:Arial;">首 页</a>  |  <a href="#">参团游</a>  |  <a href="#">自由行</a><a href="#">主题度假</a>  |  <a href="#">个性定制</a>  |  <a href="#">签 证</a>  |  <a href="#">达人游记</a></b><i><u><a href="#">登录</a></u> | <a href="#">注册</a> | <a href="#">加入收藏</a></i><em>欢迎来到古莲旅游网！</em></dd>
+        <dt><a href="#"></a></dt>
+    </dl>
+    
+</div>
+<div class="center_box"><!--主体-->
+    <div class="center">
+    
+        <include file="My:left" />
+    
+        <div class="center_right"><!--右半部-->
+        	<dl class="center_index_data"><!--首页个人资料-->
+            	<dd><img src="<{:BBS_URL}>uc_server/avatar.php?uid=<{$user[uc][uid]}>" width="100" height="100" /></dd>
+                <dt>
+                	<h1><b><{$user[userid]}>，</b>欢迎来到古莲旅游！</h1>
+                    <h2><em>登录邮箱：</em><i><{$user[email]}></i><em style=" padding:0 0 0 43px;">积 分：</em><i><{$user[scores]}></i></h2>
+                    <h2><em>手 机 号：</em><i>未绑定</i><a href="#"></a></h2>
+                    <h2><em>交易提醒：</em><i>待支付订单</i><u>（0）</u></h2>
+                </dt>
+            </dl>
+            <div class="center_index_dingdan"><!--首页订单-->
+            	<dl>
+                	<dd>我的最新订单</dd>
+                    <dt><a href="<{:SITE_INDEX}>My/orderlist">我的全部订单&gt;&gt;</a></dt>
+                </dl>
+                <table width="748" border="0" cellspacing="0" cellpadding="0" class="center_dingdan">
+                    <tr height="27" align="center">
+                      <th width="168" scope="col">订单编号</th>
+                      <th width="222" scope="col" style=" text-align:center;">产品信息</th>
+                      <th width="101" scope="col">订单时间</th>
+                      <th width="108" scope="col">订单状态</th>
+                      <th width="144" scope="col">操作</th>
+                    </tr>
+                    <PHP>if($orderall){foreach($orderall as $v){</PHP>
+                    <tr align="center" valign="top">
+                      <td><b><{$v['orderID']}></b> <em>(<{$v['status']}>)</em></td>
+                      <td><h1><a href="#" target="_blank"><{$v['title_copy']}></a></h1></td>
+                      <td><{$v['chutuanriqi_copy']}></td>
+                      <td>总金额：<em>¥<{$v['price']}></em><br />待支付：<em>¥<{$v['price']}></em></td>
+                      <td><a href="#" target="_blank">查看订单</a>&nbsp;&nbsp;<a href="#" target="_blank">查看合同</a><br /><br /><a href="<{:ORDER_INDEX}>Order/book3/orderID/<{$v[orderID]}>" class="center_dingdan_btn"></a></td>
+                    </tr>
+                    <PHP>}}else{</PHP>
+                    <tr align="center">
+                      <td colspan="5"><img src="<{:SITE_PUBLIC}>/images/center_dingdan_no.png" /></td>
+                    </tr>
+                    <PHP>}</PHP>
+                </table>
+            </div>
+            <div class="center_index_rmtj"><!--热卖推荐-->
+            	<em>热卖推荐</em>
+                <div id="container">
+                    <div id="loopedCarousel">
+                        <div class="container">
+                            <ul class="slides">
+                                <li>
+                                    <span><a href="#" target="_blank"><img src="<{:SITE_PUBLIC}>/images/pic_01.jpg" width="232" height="116" /></a></span>
+                                    <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
+                                    <h2><b>¥4999</b>起</h2>
+                                </li>
+                                <li>
+                                    <span><a href="#" target="_blank"><img src="<{:SITE_PUBLIC}>/images/pic_02.jpg" width="232" height="116" /></a></span>
+                                    <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
+                                    <h2><b>¥4999</b>起</h2>
+                                </li>
+                                <li>
+                                    <span><a href="#" target="_blank"><img src="<{:SITE_PUBLIC}>/images/pic_01.jpg" width="232" height="116" /></a></span>
+                                    <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
+                                    <h2><b>¥4999</b>起</h2>
+                                </li>
+                                <li>
+                                    <span><a href="#" target="_blank"><img src="<{:SITE_PUBLIC}>/images/pic_02.jpg" width="232" height="116" /></a></span>
+                                    <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
+                                    <h2><b>¥4999</b>起</h2>
+                                </li>
+                                <li>
+                                    <span><a href="#" target="_blank"><img src="<{:SITE_PUBLIC}>/images/pic_01.jpg" width="232" height="116" /></a></span>
+                                    <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
+                                    <h2><b>¥4999</b>起</h2>
+                                </li>
+                                <li>
+                                    <span><a href="#" target="_blank"><img src="<{:SITE_PUBLIC}>/images/pic_02.jpg" width="232" height="116" /></a></span>
+                                    <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
+                                    <h2><b>¥4999</b>起</h2>
+                                </li>
+                                <li>
+                                    <span><a href="#" target="_blank"><img src="<{:SITE_PUBLIC}>/images/pic_01.jpg" width="232" height="116" /></a></span>
+                                    <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
+                                    <h2><b>¥4999</b>起</h2>
+                                </li>
+                                <li>
+                                    <span><a href="#" target="_blank"><img src="<{:SITE_PUBLIC}>/images/pic_02.jpg" width="232" height="116" /></a></span>
+                                    <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
+                                    <h2><b>¥4999</b>起</h2>
+                                </li>
+                                <li>
+                                    <span><a href="#" target="_blank"><img src="<{:SITE_PUBLIC}>/images/pic_01.jpg" width="232" height="116" /></a></span>
+                                    <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
+                                    <h2><b>¥4999</b>起</h2>
+                                </li>
+                            </ul>
+                        </div>	
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer_box"><!--底部-->
+	<div class="footer">
+    	<i><a href="#" target="_blank">关于古莲</a> | <a href="#" target="_blank">加入古莲</a> | <a href="#" target="_blank">合作品牌</a> | <a href="#" target="_blank">友情链接</a> | <a href="#" target="_blank">法律声明</a> | <a href="#" target="_blank">营业网点</a> | <a href="#" target="_blank">联系我们</a> | <a href="#" target="_blank">网站地图</a></i>
+        <em>Copyright &copy; 2005-2011 gulianlvyou.com　All rights reserved   古莲旅游 版权所有<br />旅行社业务经营许可证编号：辽B2-20120096   大连ICP证031062号</em>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript" charset="utf-8">
+	$(function(){
+		$('#loopedCarousel').loopedCarousel({
+			autoStart: 3000, 
+			slidespeed: 300, 
+			fadespeed: 0, 
+			items: 3,
+			padding: 0
+		});
+	});
+</script>
