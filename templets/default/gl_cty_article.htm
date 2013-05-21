@@ -283,7 +283,7 @@ jq(document).ready(function(){
 //特价&热卖
 //<img src="/demand/images/cty_rmlxtj_{dede:field name='biaoji'/}.png" width="33" height="19" />
 var tj_rm = "{dede:field name='biaoji'/}";
-if(tj_rm){
+if(tj_rm != "wu"){
 	jq(".cty_article_title").append('<img src="/demand/images/cty_rmlxtj_'+tj_rm+'.png" width="33" height="19" />');
 }
 </script>
