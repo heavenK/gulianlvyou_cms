@@ -7,6 +7,10 @@ require_once(dirname(__FILE__).'/../../include/common.inc.php');
 require_once(dirname(__FILE__)."/../../member/config.php");
 if($data['type'] == 'cfg_cookie_encode')
 echo serialize($cfg_cookie_encode);
+
+var_dump($cfg_cookie_encode);
+
+
 if($data['type'] == 'DE_ItemEcode')
 echo serialize(DE_ItemEcode);
 if($data['type'] == 'cfg_mb_notallow')
