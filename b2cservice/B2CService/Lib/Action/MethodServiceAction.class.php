@@ -68,6 +68,10 @@ class MethodServiceAction extends CommonAction{
         $M_ID = GetNum(GetCookie("DedeUserID"));
 		else
 		$M_ID = $mid;
+		
+		var_dump($M_ID);
+		exit;
+		
         if(empty($M_ID))
         {
             return false;
