@@ -6,7 +6,11 @@ class CommonMyAction extends Action{
 	
     public function _initialize() {
 		
-		dump($_COOKIE);
+        $M_ID = GetNum(GetCookie("DedeUserID"));
+		
+		$cfg_cookie_encode = GetDEDEInfo('cfg_cookie_encode');
+		dump($M_ID);
+		dump($cfg_cookie_encode);
 		
 		//用户未登录
 		$this->loginsta = A("DEDEInfo")->ajax_loginsta('arrary');
