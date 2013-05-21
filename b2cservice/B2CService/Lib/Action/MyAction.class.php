@@ -12,9 +12,6 @@ class MyAction extends CommonMyAction{
 		$Dingdan = D("Dingdan");
 		$orderall = $Dingdan->where("`mid` = '$u[mid]' AND `status_system` = '1'")->order("time desc")->limit('0,2')->findall();
 		$this->assign("orderall",$orderall);
-		
-		dump(22222222);
-		
 		$this->display();
 	}
 	
