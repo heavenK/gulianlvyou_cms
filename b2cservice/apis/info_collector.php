@@ -5,6 +5,9 @@ unset($_GET);
 define("DE_ItemEcode",'Shop_De_');//识别购物车Cookie前缀,非开发人员请不要随意更改!
 require_once(dirname(__FILE__).'/../../include/common.inc.php');
 require_once(dirname(__FILE__)."/../../member/config.php");
+
+var_dump($data);
+exit;
 if($data['type'] == 'cfg_cookie_encode')
 echo serialize($cfg_cookie_encode);
 if($data['type'] == 'DE_ItemEcode')
