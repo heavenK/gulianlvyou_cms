@@ -17,6 +17,9 @@ if ( ! function_exists('GetCookie'))
 {
 	function GetCookie($key)
 	{
+		
+		
+		var_dump(345345345);exit;
 		$cfg_cookie_encode = GetDEDEInfo('cfg_cookie_encode');
 		if( !isset($_COOKIE[$key]) || !isset($_COOKIE[$key.'__ckMd5']) )
 		{

@@ -7,8 +7,8 @@ class CommonMyAction extends Action{
     public function _initialize() {
 		//用户未登录
 		$this->loginsta = A("DEDEInfo")->ajax_loginsta('arrary');
-        if (false === $this->loginsta)
-            redirect(ROOT_URL.'member');
+//        if (false === $this->loginsta)
+//            redirect(ROOT_URL.'member');
 		$this->_myinit();	
     }
 	
