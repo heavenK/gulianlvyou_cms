@@ -178,13 +178,6 @@ class OrderAction extends CommonMyAction{
 	}
 	
 	
-	
-	function test(){
-		dump($_REQUEST);
-	}
-	
-	
-	
 	function MerchantPaymant(){
 		require_once(B2CSERVICE_PATH."/apis/nh/b2c01/api.php");
 		$add = "http://www.dlgulian.com:8080/axis/services/B2CWarpper?wsdl";

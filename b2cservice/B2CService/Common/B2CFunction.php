@@ -13,23 +13,25 @@ function GetDEDEInfo($type){
 	return trim($loginsta);
 }
 
-
-function GetCookie($key)
+if ( ! function_exists('GetCookie'))
 {
-	$cfg_cookie_encode = GetDEDEInfo('cfg_cookie_encode');
-	if( !isset($_COOKIE[$key]) || !isset($_COOKIE[$key.'__ckMd5']) )
+	function GetCookie($key)
 	{
-		return '';
-	}
-	else
-	{
-		if($_COOKIE[$key.'__ckMd5']!=substr(md5($cfg_cookie_encode.$_COOKIE[$key]),0,16))
+		$cfg_cookie_encode = GetDEDEInfo('cfg_cookie_encode');
+		if( !isset($_COOKIE[$key]) || !isset($_COOKIE[$key.'__ckMd5']) )
 		{
 			return '';
 		}
 		else
 		{
-			return $_COOKIE[$key];
+			if($_COOKIE[$key.'__ckMd5']!=substr(md5($cfg_cookie_encode.$_COOKIE[$key]),0,16))
+			{
+				return '';
+			}
+			else
+			{
+				return $_COOKIE[$key];
+			}
 		}
 	}
 }
@@ -41,11 +43,13 @@ function GetCookie($key)
 	 * @param     string  $fnum  处理的数值
 	 * @return    string
 	 */
+if ( ! function_exists('GetNum'))
+{
 	function GetNum($fnum){
 		$fnum = preg_replace("/[^0-9\.]/", '', $fnum);
 		return $fnum;
 	}
-
+}
 
     /**
      *  添加一个商品编号及信息
@@ -73,8 +77,11 @@ function GetCookie($key)
         deCrypt(saveCookie("OrdersId_".$id,$OrdersId));
         return $OrdersId;
     }
+	
 
     //解密接口字符串
+if ( ! function_exists('deCrypt'))
+{
     function deCrypt($txt)
     {
         $txt = setKey(base64_decode($txt));
@@ -85,8 +92,12 @@ function GetCookie($key)
         }
         return $tmp;
     }
+}
+	
 
 	//创建加密的_cookie
+if ( ! function_exists('saveCookie'))
+{
 	function saveCookie($key,$value)
 	{
 		if(is_array($value))
@@ -99,8 +110,11 @@ function GetCookie($key)
 		}
 		setcookie($key,$value,time()+36000,'/');
 	}
+}
 	
     //加密接口字符
+if ( ! function_exists('enCrypt'))
+{
     function enCrypt($txt)
     {
         srand((double)microtime() * 1000000);
@@ -114,8 +128,11 @@ function GetCookie($key)
         }
         return base64_encode(setKey($tmp));
     }
+}
 
     //串行化数组
+if ( ! function_exists('enCode'))
+{
     function enCode($array)
     {
         $arrayenc = array();
@@ -125,8 +142,11 @@ function GetCookie($key)
         }
         return implode('&', $arrayenc);
     }
+}
 
     //处理加密数据
+if ( ! function_exists('setKey'))
+{
     function setKey($txt)
     {
 		$cfg_cookie_encode = GetDEDEInfo('cfg_cookie_encode');
@@ -140,7 +160,7 @@ function GetCookie($key)
         }
         return $tmp;
     }
-
+}
     /**
      *  得到订单记录
      *

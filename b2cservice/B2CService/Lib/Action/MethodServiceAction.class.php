@@ -35,7 +35,6 @@ class MethodServiceAction extends CommonAction{
 		$where = A("Method")->_facade($class_name,$where);//过滤搜索项
 		$where = A("Method")->_arraytostr_filter($where);//字符串化条件数组
 		
-		dump($where);
 		$DataOM = D($class_name);
         import("@.ORG.Page");
         C('PAGE_NUMBERS',10);
@@ -64,8 +63,11 @@ class MethodServiceAction extends CommonAction{
 	
 	
 	//用户状态
-    public function ajax_loginsta() {
+    public function ajax_loginsta($mid='') {
+		if(!$mid)
         $M_ID = GetNum(GetCookie("DedeUserID"));
+		else
+		$M_ID = $mid;
         if(empty($M_ID))
         {
             return false;

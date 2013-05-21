@@ -30,6 +30,38 @@ class MyAction extends CommonMyAction{
 	}
 	
 	
+	function personinfo(){
+		$this->assign("mark",'个人信息管理');
+		$u = A("DEDEInfo")->ajax_loginsta('arrary');
+		if(empty($u['face']))
+			$u['face']=($u['sex']=='女')? 'templets/images/dfgirl.png' : 'templets/images/dfboy.png';
+		$this->assign("user",$u);
+		$MemberExtand = D("MemberExtand");
+		$p = $MemberExtand->where("`mid` = '$u[mid]'")->find();
+		$this->assign("extand",$p);
+		
+		$this->display();
+	}
+	
+	
+	function dopostPersoninfo(){
+		C('TOKEN_ON',false);
+		$data = $_REQUEST;
+		$MemberExtand = D("MemberExtand");
+		$MemberExtand->mycreate($data);
+		$redirect_rul = MY_INDEX.'My/personinfo';
+		redirect($redirect_rul);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

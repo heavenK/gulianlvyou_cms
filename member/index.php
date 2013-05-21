@@ -8,6 +8,16 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 
+//跳转
+require_once(dirname(__FILE__)."/../b2cservice/define2.inc.php");
+if($cfg_ml->IsLogin()){
+	include(MY_URL);
+}else{
+	include(APP_PATH."Tpl/Index/login.html");
+}
+
+exit;
+
 $uid=empty($uid)? "" : RemoveXSS($uid); 
 if(empty($action)) $action = '';
 if(empty($aid)) $aid = '';

@@ -2,8 +2,8 @@
 
 class DEDEInfoAction extends Action{
 	//检查用户登录
-    public function ajax_loginsta($returntype) {
-		$u = A("MethodService")->ajax_loginsta();
+    public function ajax_loginsta($returntype,$mid='') {
+		$u = A("MethodService")->ajax_loginsta($mid);
 		if($returntype == 'arrary')
 			return $u;
 		$u = json_encode($u);
