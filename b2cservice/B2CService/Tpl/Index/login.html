@@ -28,7 +28,8 @@ function do_login() {
 	jQuery.getJSON(B2CSERVICE_URL+"apis/action_login.php?userid="+userid+"&pwd="+pwd+"&fmdo="+fmdo+"&dopost="+dopost+"&keeptime="+keeptime+"&jsoncallback=?", function(data){
 		if(data.suc == 1){
 			$("head").append(""+data.code);
-			window.location = MY_URL;
+			alert(MY_URL)
+			//window.location = MY_URL;
 		}
 		else{
 			alert("登录失败:"+data.msg);
