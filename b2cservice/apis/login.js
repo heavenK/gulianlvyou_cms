@@ -68,7 +68,7 @@ function do_login() {
         alert("请输入密码!");
         return;
     }
-	jQuery.getJSON(B2CSERVICE_URL+"apis/action_login.php?userid="+userid+"&pwd="+pwd+"&fmdo="+fmdo+"&dopost="+dopost+"&keeptime="+keeptime+"&jsoncallback=?", function(data){
+	jQuery.getJSON(B2CSERVICE_URL+"apis/action_index_do.php?userid="+userid+"&pwd="+pwd+"&fmdo="+fmdo+"&dopost="+dopost+"&keeptime="+keeptime+"&jsoncallback=?", function(data){
 		if(data.suc == 1){
 			$("head").append(""+data.code);
 			eval(success_method);

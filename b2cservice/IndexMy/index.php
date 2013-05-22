@@ -1,6 +1,6 @@
 <?php
 
-require(dirname(__FILE__).'/../define2.inc.php');
+require(dirname(__FILE__).'/../define3.inc.php');
 define('SITE_INDEX',MY_URL.'index.php?s=/');
 define('SITE_URL',MY_URL);
 define('__T_PUBLIC__',MY_URL.'Public');

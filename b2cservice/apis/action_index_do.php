@@ -6,8 +6,11 @@
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
- 
 require_once(dirname(__FILE__)."/../../member/config.php");
+//自定义
+require_once("define3.inc.php");
+//end
+
 if(empty($dopost)) $dopost = '';
 if(empty($fmdo)) $fmdo = '';
 
@@ -273,10 +276,8 @@ else if($fmdo=='login')
 			echo  $_GET['jsoncallback'].'('.$res.')';
             exit();
         }
-
         //检查帐号
         $rs = $cfg_ml->CheckUser($userid,$pwd);  
-	
         #api{{
         if(defined('UC_API') && @include_once DEDEROOT.'/uc_client/client.php')
         {
@@ -374,7 +375,8 @@ else if($fmdo=='login')
             $ucsynlogin = uc_user_synlogout();
         }
         #/aip}}
-        ShowMsg("成功退出登录！","index.php",0,2000);
+		my_redirect(ROOT_URL);
+        //ShowMsg("成功退出登录！","index.php",0,2000);
         exit();
     }
 }

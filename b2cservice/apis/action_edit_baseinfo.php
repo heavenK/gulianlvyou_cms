@@ -8,8 +8,7 @@
  */
 require_once(dirname(__FILE__)."/../../member/config.php");
 //自定义
-require_once("define2.inc.php");
-require_once(APP_PATH."Common/B2CFunction.php");
+require_once("define3.inc.php");
 $mark = '个人信息管理';
 //end
 

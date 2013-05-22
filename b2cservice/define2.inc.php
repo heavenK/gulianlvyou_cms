@@ -16,27 +16,11 @@
 	define('SITE_PUBLIC',ROOT_URL.'demand/');
 	define('__PUBLIC__',B2CSERVICE_URL."Public/");
 	define('B2CSERVICE_PUBLIC',B2CSERVICE_URL."Public/");
+	define('B2CSERVICE_APIS',B2CSERVICE_URL."apis/");
 	//配置
-	define('MODE_NAME','mycore');
-	define('THINK_PATH',dirname(__FILE__).'/../../ThinkPHP/');
-	define('APP_NAME', 'b2cservice');
-	define('APP_PATH', dirname(__FILE__).'/B2CService/');
 	define('B2CSERVICE_PATH', dirname(__FILE__));
-	//define('DEFAULT_TYPE','default');
-	define('APP_DEBUG', true);
-	require(APP_PATH.'Common/Function.php');
+	define('APP_PATH', B2CSERVICE_PATH.'/B2CService/');
+	require(APP_PATH.'Common/LitteFunction.php');
 	require(APP_PATH.'Common/B2CFunction.php');
-	//UC配置
-	define('DATABASE_PREFIX', 'glly_');
-	define('UC_API', 1);
-	define('UC_ROOT', ROOT_URL.'uc_client');
-	define('IN_UC', TRUE);
-	define('UC_CLIENT_VERSION', '1.5.0');
-	define('UC_CLIENT_RELEASE', '20090121');
-	define('UC_DATADIR', UC_ROOT.'./data/');
-	define('UC_DATAURL', UC_API.'/data');
-	define('UC_CONNECT', 'mysql');
-	define('UC_API_FUNC', UC_CONNECT == 'mysql' ? 'uc_api_mysql' : 'uc_api_post');
-	
 	
 ?>
