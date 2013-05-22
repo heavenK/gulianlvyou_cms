@@ -18,6 +18,10 @@ if ( ! function_exists('GetCookie'))
 	function GetCookie($key)
 	{
 		$cfg_cookie_encode = GetDEDEInfo('cfg_cookie_encode');
+		dump("<pre>");
+		dump($cfg_cookie_encode);
+		dump($_COOKIE[$key]);
+		dump($_COOKIE);
 		if( !isset($_COOKIE[$key]) || !isset($_COOKIE[$key.'__ckMd5']) )
 		{
 			return '';
