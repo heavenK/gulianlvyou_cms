@@ -9,8 +9,8 @@ class CommonMyAction extends Action{
 		$cfg_cookie_encode = GetDEDEInfo('cfg_cookie_encode');
 		//用户未登录
 		$this->loginsta = A("DEDEInfo")->ajax_loginsta('arrary');
-//        if (false === $this->loginsta)
-//            redirect(ROOT_URL.'member');
+        if (false === $this->loginsta)
+            redirect(ROOT_URL.'member');
 		$this->_myinit();	
     }
 	
