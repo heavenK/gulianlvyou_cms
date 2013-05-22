@@ -7,6 +7,10 @@
  * @link           http://www.dedecms.com
  */
 require_once(dirname(__FILE__)."/config.php");
+
+var_dump($cfg_cookie_encode);
+exit;
+
 //跳转
 require_once(dirname(__FILE__)."/../b2cservice/define2.inc.php");
 if($cfg_ml->IsLogin()){
