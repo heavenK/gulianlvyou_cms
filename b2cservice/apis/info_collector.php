@@ -8,7 +8,7 @@ require_once(dirname(__FILE__)."/../../member/config.php");
 if($data['type'] == 'cfg_cookie_encode')
 echo serialize($cfg_cookie_encode);
 
-var_dump("<pre>");
+		echo("<pre>");
 var_dump($_COOKIE);
 
 if($data['type'] == 'DE_ItemEcode')
