@@ -7,7 +7,7 @@
  * @link           http://www.dedecms.com
  */
 require_once(dirname(__FILE__)."/config.php");
-
+var_dump($_COOKIE);
 var_dump($cfg_cookie_encode);
 exit;
 
