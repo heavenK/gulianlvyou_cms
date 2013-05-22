@@ -29,8 +29,6 @@ if($data['type'] == 'DEDEDATA')
 echo serialize(DEDEDATA);
 
 
-
-
 ?>
 
 
