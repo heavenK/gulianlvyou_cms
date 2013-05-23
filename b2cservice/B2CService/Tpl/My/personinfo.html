@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="<{:SITE_PUBLIC}>/styles/reset.css" type="text/css" rel="stylesheet" />
+<link href="<{:SITE_PUBLIC}>/styles/center_reset.css" type="text/css" rel="stylesheet" />
+<link href="<{:SITE_PUBLIC}>/styles/center_grxxgl.css" type="text/css" rel="stylesheet" />
+<script src="<{:SITE_PUBLIC}>/js/jquery-1.4a2.min.js" type="text/javascript"></script>
+</head>
+
+<body style=" background:#FFF url(<{:SITE_PUBLIC}>/images/center_bg.jpg) no-repeat center top;">
+<div class="center_header_box"><!--头部-->
+  <dl>
+    <dd><b><a href="#" style=" font-family:Arial;">首 页</a> | <a href="#">参团游</a> | <a href="#">自由行</a><a href="#">主题度假</a> | <a href="#">个性定制</a> | <a href="#">签 证</a> | <a href="#">达人游记</a></b><i><u><a href="#">登录</a></u> | <a href="#">注册</a> | <a href="#">加入收藏</a></i><em>欢迎来到古莲旅游网！</em></dd>
+    <dt><a href="#"></a></dt>
+  </dl>
+</div>
+<div class="center_box"><!--主体-->
+  <div class="center"> <include file="My:left" />
+    <div class="center_right"><!--右半部--> 
+      <span>
+      <p><img src="<{:BBS_URL}>uc_server/avatar.php?uid=<{$user[uc][uid]}>" width="58" height="58" /></p>
+      <h1><{$user[userid]}></h1>
+      <em><i>[<a href="<{:B2CSERVICE_URL}>apis/action_edit_face.php">修改头像</a>]</i><i>[<a href="<{:B2CSERVICE_URL}>apis/action_edit_baseinfo.php">修改密码</a>]</i></em> </span>
+      <dl>
+        <!--用户基本资料-->
+        
+        <form name="form1" id="form1" method="post" action="<{:MY_INDEX}>My/dopostPersoninfo">
+        <input type="hidden" name="mid" value="<{$user[mid]}>" />
+        <dd>用户基本资料</dd>
+        <dt>
+          <label for="phone" class="label_long">手机号：</label>
+          <input type="text" id="phone" class="text_input" name="tel" value="<{$extand[tel]}>" />
+          <i>
+          <input type="checkbox" id="accept_phone" class="checkbox_input" onFocus="this.blur()" name="telrecive" value="1" <php>if($extand[telrecive] == 1){</php> checked="checked" <php>}</php> />
+          <label for="accept_phone">接收手机优惠信息</label>
+          </i></dt>
+        <dt>
+          <label for="email" class="label_long">邮箱：</label>
+          <input type="text" id="email" class="text_input" name="email" value="<{$extand[email]}>" />
+          <i>
+          <input type="checkbox" id="accept_email" class="checkbox_input" onFocus="this.blur()" name="emailrecive" value="1" <php>if($extand[emailrecive] == 1){</php> checked="checked" <php>}</php> />
+          <label for="accept_email">接收邮件优惠信息</label>
+          </i></dt>
+      </dl>
+      <dl>
+        <!--个人基本资料-->
+        <dd>个人基本资料</dd>
+        <dt>
+          <label for="nickname" class="label_long"><em>*</em>&nbsp;昵称：</label>
+          <input type="text" id="nickname" class="text_input" name="nickname" value="<{$extand[nickname]}>" />
+        </dt>
+        <dt>
+          <label for="name" class="label_long">真实姓名：</label>
+          <input type="text" id="name" class="text_input" name="realname" value="<{$extand[realname]}>" />
+        </dt>
+        <dt><i class="label_long">性别：</i>
+          <input type="radio" id="man" name="sex" class="radio_input"  onFocus="this.blur()" name="sex" value="男" <php>if($extand[sex] == '男'){</php> checked="checked" <php>}</php>/>
+          <label for="man" class="label_short">男</label>
+          <input type="radio" id="woman" name="sex" class="radio_input" onFocus="this.blur()" name="sex" value="女" <php>if($extand[sex] == '女'){</php> checked="checked" <php>}</php> />
+          <label for="woman" class="label_short">女</label>
+        </dt>
+        <dt>
+          <label for="address" class="label_long">联系地址：</label>
+          <input type="text" id="address" class="text_input_long" name="address" value="<{$extand[address]}>" />
+        </dt>
+        <dt>
+          <label for="postcode" class="label_long">邮编：</label>
+          <input type="text" id="postcode" class="text_input" name="postal" value="<{$extand[postal]}>" />
+        </dt>
+        </form>
+        
+      </dl>
+      <b><a href="javascript:dosubmit()"></a></b> </div>
+  </div>
+</div>
+<div class="footer_box"><!--底部-->
+  <div class="footer"> <i><a href="#" target="_blank">关于古莲</a> | <a href="#" target="_blank">加入古莲</a> | <a href="#" target="_blank">合作品牌</a> | <a href="#" target="_blank">友情链接</a> | <a href="#" target="_blank">法律声明</a> | <a href="#" target="_blank">营业网点</a> | <a href="#" target="_blank">联系我们</a> | <a href="#" target="_blank">网站地图</a></i> <em>Copyright &copy; 2005-2011 gulianlvyou.com　All rights reserved   古莲旅游 版权所有<br />
+    旅行社业务经营许可证编号：辽B2-20120096   大连ICP证031062号</em> </div>
+</div>
+</body>
+</html>
+
+<script>
+function dosubmit(){
+	$("#form1").submit();
+}
+
+</script>
+
