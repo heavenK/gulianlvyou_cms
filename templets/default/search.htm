@@ -114,8 +114,9 @@ function cty_chufariqi(f_class) {
                 <u><a href="#" class="list_rank_off">热卖</a></u>
                 <u><a href="#" class="list_rank_off">特价</a></u>
                 <ul class="pagelist">
-                	{dede:pagelist listitem='pre,next'/}
+                	{dede:pagelistlong listitem='pre,next'/}
                 </ul>
+                {dede:pagelistlong listitem='info'/}
             </span>
             <ol>
             	{dede:list perpage='8' titlelen='150'}
@@ -132,7 +133,7 @@ function cty_chufariqi(f_class) {
                 {/dede:list}
             </ol>
             <ul class="pagelist pagelist_bottom">
-                {dede:pagelist listitem='pre'/}
+                {dede:pagelistlong listitem='pre,pageno,next'/}
              </ul>
         </div>
         <div class="list_right"><!--右半部-->
