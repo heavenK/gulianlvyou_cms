@@ -877,7 +877,7 @@ class ListView
                     }
                     if(preg_match('/c/', $row['flag']))
                     {
-                        $row['title'] = "<b>".$row['title']."</b>";
+                        //$row['title'] = "<b>".$row['title']."</b>";
                     }
                     $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
                     $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];

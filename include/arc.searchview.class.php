@@ -345,7 +345,7 @@ class SearchView
                 continue;
             }
             // 这里不区分大小写进行关键词替换
-            $fstr = str_ireplace($k, "<font color='red'>$k</font>", $fstr);
+            $fstr = str_ireplace($k, "$k", $fstr);
             // 速度更快,效率更高
             //$fstr = str_replace($k, "<font color='red'>$k</font>", $fstr);
         }
@@ -527,6 +527,34 @@ class SearchView
                 }
                 $this->dtp->Assign($tagid,$this->GetPageListDM($list_len));
             }
+			//add by ks
+			else if($tagname=="pagelistlong")
+            {
+                $list_len = trim($ctag->GetAtt("listsize"));
+                $ctag->GetAtt("listitem")=="" ? $listitem="index,pre,pageno,next,end,option" : $listitem=$ctag->GetAtt("listitem");
+                if($list_len=="")
+                {
+                    $list_len = 3;
+                }
+                if($ismake==0)
+                {
+                    $this->dtp->Assign($tagid,$this->GetPageListDM($list_len,$listitem));
+                }
+                else
+                {
+                    $this->dtp->Assign($tagid,$this->GetPageListST($list_len,$listitem));
+                }
+            }
+			else if($tagname=="pagelistshort")
+            {
+                $list_len = trim($ctag->GetAtt("listsize"));
+                if($list_len=="")
+                {
+                    $list_len = 3;
+                }
+                $this->dtp->Assign($tagid,$this->GetPageListDMshort($list_len));
+            }
+			//end add
             else if($tagname=="likewords")
             {
                 $this->dtp->Assign($tagid,$this->GetLikeWords($ctag->GetAtt('num')));
@@ -643,7 +671,7 @@ class SearchView
             $this->sphinx->SetLimits($limitstart, (int)$row, ($row>1000) ? $row : 1000);
             $res = array();
             $res = AutoCharset($this->sphinx->Query($this->Keywords, 'mysql, delta'), 'utf-8', 'gbk');
-            
+			
             foreach ($res['words'] as $k => $v) {
                 $this->Keywords .= " $k";
             }
@@ -687,12 +715,24 @@ class SearchView
                     $ordersql=" ORDER BY arc.sortrank desc";
                 }
             }
-
+			
             //搜索
-            $query = "SELECT arc.*,act.typedir,act.typename,act.isdefault,act.defaultname,act.namerule,
+			//add by ks
+			if($this->ChannelType = 7){
+				$query = "SELECT arc.*,act.*
+            FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
+            WHERE arc.{$this->AddSql} $ordersql LIMIT $limitstart,$row";
+			}else{
+				$query = "SELECT arc.*,act.typedir,act.typename,act.isdefault,act.defaultname,act.namerule,
             act.namerule2,act.ispart,act.moresite,act.siteurl,act.sitepath
             FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` act ON arc.typeid=act.id
             WHERE {$this->AddSql} $ordersql LIMIT $limitstart,$row";
+			}
+			//end add
+			/*$query = "SELECT arc.*,act.typedir,act.typename,act.isdefault,act.defaultname,act.namerule,
+            act.namerule2,act.ispart,act.moresite,act.siteurl,act.sitepath
+            FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` act ON arc.typeid=act.id
+            WHERE {$this->AddSql} $ordersql LIMIT $limitstart,$row";*/
         }
         
         $this->dsql->SetQuery($query);
@@ -741,7 +781,7 @@ class SearchView
                     }
                     $row['picname'] = $row['litpic'];
                     $row["typeurl"] = GetTypeUrl($row["typeid"],$row["typedir"],$row["isdefault"],$row["defaultname"],$row["ispart"],$row["namerule2"],$row["moresite"],$row["siteurl"],$row["sitepath"]);
-                    $row["info"] = $row["description"];
+                    $row["infos"] = $row["description"];
                     $row["filename"] = $row["arcurl"];
                     $row["stime"] = GetDateMK($row["pubdate"]);
                     $row["textlink"] = "<a href='".$row["filename"]."'>".$row["title"]."</a>";
@@ -916,6 +956,232 @@ class SearchView
         $plist .= "</form>\r\n</tr>\r\n</table>\r\n";
         return $plist;
     }
+	
+	//add by ks
+	function GetPageListDMlong($list_len)
+    {
+        global $oldkeyword;
+        $prepage="";
+        $nextpage="";
+        $prepagenum = $this->PageNo - 1;
+        $nextpagenum = $this->PageNo + 1;
+        if($list_len=="" || preg_match("/[^0-9]/", $list_len))
+        {
+            $list_len=3;
+        }
+        $totalpage = ceil($this->TotalResult / $this->PageSize);
+        if($totalpage<=1 && $this->TotalResult>0)
+        {
+            return "共1页/".$this->TotalResult."条记录";
+        }
+        if($this->TotalResult == 0)
+        {
+            return "共0页/".$this->TotalResult."条记录";
+        }
+        $purl = $this->GetCurUrl();
+        
+        $oldkeyword = (empty($oldkeyword) ? $this->Keyword : $oldkeyword);
+
+        //当结果超过限制时，重设结果页数
+        if($this->TotalResult > $this->SearchMaxRc)
+        {
+            $totalpage = ceil($this->SearchMaxRc/$this->PageSize);
+        }
+        $infos = "<td>共找到<b>".$this->TotalResult."</b>条记录/最大显示<b>{$totalpage}</b>页 </td>\r\n";
+        $geturl = "keyword=".urlencode($oldkeyword)."&searchtype=".$this->SearchType;
+        $hidenform = "<input type='hidden' name='keyword' value='".rawurldecode($oldkeyword)."'>\r\n";
+        $geturl .= "&channeltype=".$this->ChannelType."&orderby=".$this->OrderBy;
+        $hidenform .= "<input type='hidden' name='channeltype' value='".$this->ChannelType."'>\r\n";
+        $hidenform .= "<input type='hidden' name='orderby' value='".$this->OrderBy."'>\r\n";
+        $geturl .= "&kwtype=".$this->KType."&pagesize=".$this->PageSize;
+        $hidenform .= "<input type='hidden' name='kwtype' value='".$this->KType."'>\r\n";
+        $hidenform .= "<input type='hidden' name='pagesize' value='".$this->PageSize."'>\r\n";
+        $geturl .= "&typeid=".$this->TypeID."&TotalResult=".$this->TotalResult."&";
+        $hidenform .= "<input type='hidden' name='typeid' value='".$this->TypeID."'>\r\n";
+        $hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."'>\r\n";
+        $purl .= "?".$geturl;
+
+        //获得上一页和下一页的链接
+        if($this->PageNo != 1)
+        {
+            $prepage.="<td width='50'><a href='".$purl."PageNo=$prepagenum'>上一页</a></td>\r\n";
+            $indexpage="<td width='30'><a href='".$purl."PageNo=1'>首页</a></td>\r\n";
+        }
+        else
+        {
+            $indexpage="<td width='30'>首页</td>\r\n";
+        }
+        if($this->PageNo!=$totalpage && $totalpage>1)
+        {
+            $nextpage.="<td width='50'><a href='".$purl."PageNo=$nextpagenum'>下一页</a></td>\r\n";
+            $endpage="<td width='30'><a href='".$purl."PageNo=$totalpage'>末页</a></td>\r\n";
+        }
+        else
+        {
+            $endpage="<td width='30'>末页</td>\r\n";
+        }
+
+        //获得数字链接
+        $listdd="";
+        $total_list = $list_len * 2 + 1;
+        if($this->PageNo >= $total_list)
+        {
+            $j = $this->PageNo - $list_len;
+            $total_list = $this->PageNo + $list_len;
+            if($total_list > $totalpage)
+            {
+                $total_list = $totalpage;
+            }
+        }
+        else
+        {
+            $j=1;
+            if($total_list > $totalpage)
+            {
+                $total_list = $totalpage;
+            }
+        }
+        for($j; $j<=$total_list; $j++)
+        {
+            if($j == $this->PageNo)
+            {
+                $listdd.= "<td>$j&nbsp;</td>\r\n";
+            }
+            else
+            {
+                $listdd.="<td><a href='".$purl."PageNo=$j'>[".$j."]</a>&nbsp;</td>\r\n";
+            }
+        }
+        $plist  =  "<table border='0' cellpadding='0' cellspacing='0'>\r\n";
+        $plist .= "<tr align='center' style='font-size:10pt'>\r\n";
+        $plist .= "<form name='pagelist' action='".$this->GetCurUrl()."'>$hidenform";
+        $plist .= $infos;
+        $plist .= $indexpage;
+        $plist .= $prepage;
+        $plist .= $listdd;
+        $plist .= $nextpage;
+        $plist .= $endpage;
+        if($totalpage>$total_list)
+        {
+            $plist.="<td width='38'><input type='text' name='PageNo' style='width:28px;height:14px' value='".$this->PageNo."' /></td>\r\n";
+            $plist.="<td width='30'><input type='submit' name='plistgo' value='GO' style='width:30px;height:22px;font-size:9pt' /></td>\r\n";
+        }
+        $plist .= "</form>\r\n</tr>\r\n</table>\r\n";
+        return $plist;
+    }
+	
+	function GetPageListDMshort($list_len)
+    {
+        global $oldkeyword;
+        $prepage="";
+        $nextpage="";
+        $prepagenum = $this->PageNo - 1;
+        $nextpagenum = $this->PageNo + 1;
+        if($list_len=="" || preg_match("/[^0-9]/", $list_len))
+        {
+            $list_len=3;
+        }
+        $totalpage = ceil($this->TotalResult / $this->PageSize);
+        if($totalpage<=1 && $this->TotalResult>0)
+        {
+            return "共1页/".$this->TotalResult."条记录";
+        }
+        if($this->TotalResult == 0)
+        {
+            return "共0页/".$this->TotalResult."条记录";
+        }
+        $purl = $this->GetCurUrl();
+        
+        $oldkeyword = (empty($oldkeyword) ? $this->Keyword : $oldkeyword);
+
+        //当结果超过限制时，重设结果页数
+        if($this->TotalResult > $this->SearchMaxRc)
+        {
+            $totalpage = ceil($this->SearchMaxRc/$this->PageSize);
+        }
+        $infos = "<td>共找到<b>".$this->TotalResult."</b>条记录/最大显示<b>{$totalpage}</b>页 </td>\r\n";
+        $geturl = "keyword=".urlencode($oldkeyword)."&searchtype=".$this->SearchType;
+        $hidenform = "<input type='hidden' name='keyword' value='".rawurldecode($oldkeyword)."'>\r\n";
+        $geturl .= "&channeltype=".$this->ChannelType."&orderby=".$this->OrderBy;
+        $hidenform .= "<input type='hidden' name='channeltype' value='".$this->ChannelType."'>\r\n";
+        $hidenform .= "<input type='hidden' name='orderby' value='".$this->OrderBy."'>\r\n";
+        $geturl .= "&kwtype=".$this->KType."&pagesize=".$this->PageSize;
+        $hidenform .= "<input type='hidden' name='kwtype' value='".$this->KType."'>\r\n";
+        $hidenform .= "<input type='hidden' name='pagesize' value='".$this->PageSize."'>\r\n";
+        $geturl .= "&typeid=".$this->TypeID."&TotalResult=".$this->TotalResult."&";
+        $hidenform .= "<input type='hidden' name='typeid' value='".$this->TypeID."'>\r\n";
+        $hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."'>\r\n";
+        $purl .= "?".$geturl;
+
+        //获得上一页和下一页的链接
+        if($this->PageNo != 1)
+        {
+            $prepage.="<td width='50'><a href='".$purl."PageNo=$prepagenum'>上一页</a></td>\r\n";
+            $indexpage="<td width='30'><a href='".$purl."PageNo=1'>首页</a></td>\r\n";
+        }
+        else
+        {
+            $indexpage="<td width='30'>首页</td>\r\n";
+        }
+        if($this->PageNo!=$totalpage && $totalpage>1)
+        {
+            $nextpage.="<td width='50'><a href='".$purl."PageNo=$nextpagenum'>下一页</a></td>\r\n";
+            $endpage="<td width='30'><a href='".$purl."PageNo=$totalpage'>末页</a></td>\r\n";
+        }
+        else
+        {
+            $endpage="<td width='30'>末页</td>\r\n";
+        }
+
+        //获得数字链接
+        $listdd="";
+        $total_list = $list_len * 2 + 1;
+        if($this->PageNo >= $total_list)
+        {
+            $j = $this->PageNo - $list_len;
+            $total_list = $this->PageNo + $list_len;
+            if($total_list > $totalpage)
+            {
+                $total_list = $totalpage;
+            }
+        }
+        else
+        {
+            $j=1;
+            if($total_list > $totalpage)
+            {
+                $total_list = $totalpage;
+            }
+        }
+        for($j; $j<=$total_list; $j++)
+        {
+            if($j == $this->PageNo)
+            {
+                $listdd.= "<td>$j&nbsp;</td>\r\n";
+            }
+            else
+            {
+                $listdd.="<td><a href='".$purl."PageNo=$j'>[".$j."]</a>&nbsp;</td>\r\n";
+            }
+        }
+        $plist  =  "<table border='0' cellpadding='0' cellspacing='0'>\r\n";
+        $plist .= "<tr align='center' style='font-size:10pt'>\r\n";
+        $plist .= "<form name='pagelist' action='".$this->GetCurUrl()."'>$hidenform";
+        $plist .= $infos;
+        $plist .= $indexpage;
+        $plist .= $prepage;
+        $plist .= $listdd;
+        $plist .= $nextpage;
+        $plist .= $endpage;
+        if($totalpage>$total_list)
+        {
+            $plist.="<td width='38'><input type='text' name='PageNo' style='width:28px;height:14px' value='".$this->PageNo."' /></td>\r\n";
+            $plist.="<td width='30'><input type='submit' name='plistgo' value='GO' style='width:30px;height:22px;font-size:9pt' /></td>\r\n";
+        }
+        $plist .= "</form>\r\n</tr>\r\n</table>\r\n";
+        return $plist;
+    }
+	//end add
 
     /**
      *  获得当前的页面文件的url

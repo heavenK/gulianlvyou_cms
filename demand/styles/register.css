@@ -4,3 +4,31 @@
 /*主体*/
 .register_box			{ width:100%; float:left;}
 .register								{ width:980px; margin:0 auto; overflow:hidden;}
+.register span							{ width:349px; height:37px; margin:19px 0 0 116px; display:inline; background:url(../images/register_sonbav_bg.png) no-repeat; overflow:hidden; float:left;}
+.register ul							{ width:860px; padding:32px 0 0 116px; overflow:hidden; float:left;}
+.register ul li							{ width:860px; height:27px; margin:0 0 16px 0; display:inline; color:#999999; line-height:27px; overflow:hidden; float:left;}
+.register ul li label					{ width:73px; height:27px; color:#010101; overflow:hidden; float:left;}
+.register ul li input.intxt				{ width:264px; height:15px; padding:5px; background:#FFF; border:1px solid #ced4dd; font-size:12px; color:#7a7a7a; overflow:hidden; float:left;}
+.register ul li em						{ height:27px; padding:0 0 0 15px; color:#999999; overflow:hidden; float:left;}
+.register ul li em b					{ color:#ff0000;}
+.register ul li .rank 					{ width:145px; height:27px; margin:4px 0 0 0; display:inline; background:url(../images/register_rank.gif) no-repeat; cursor:default; overflow:hidden; float:left;}
+.register ul li .r0 					{ background-position:0 0; }
+.register ul li .r1 					{ background-position:0 -21px; }
+.register ul li .r2 					{ background-position:0 -42px; }
+.register ul li .r3 					{ background-position:0 -63px; }
+.register ul li .r4 					{ background-position:0 -84px; }
+.register ul li .r5 					{ background-position:0 -105px; }
+.register ul li .r6 					{ background-position:0 -126px; }
+.register ul li .r7 					{ background-position:0 -147px; }
+.register ul li img						{ width:77px; height:27px; margin:0 5px; display:inline; overflow:hidden; float:left;}
+.register ul li a						{ color:#0d0d8f;}
+.register ul li a:hover					{ color:#ff6633;}
+.register ol							{ width:860px; padding:11px 0 0 116px; overflow:hidden; float:left;}
+.register ol li							{ width:860px; height:21px; line-height:21px; overflow:hidden; float:left;}
+.register ol li input					{ width:14px; height:21px; overflow:hidden; float:left;}
+.register ol li label					{ height:21px; margin:0 0 0 3px; display:inline; color:#000000; overflow:hidden; float:left;}
+.register ol li a						{ color:#0a376b; overflow:hidden; float:left;}
+.register ol li a:hover					{ color:#ff6633;}
+.register u								{ width:860px; height:49px; padding:20px 0 77px 116px; overflow:hidden; float:left;}
+.register u a							{ width:348px; height:49px; background:url(../images/register_sunmit_bg.png) no-repeat 0 0; overflow:hidden; float:left;}
+.register u a:hover						{ background:url(../images/register_sunmit_bg.png) no-repeat 0 -49px;}

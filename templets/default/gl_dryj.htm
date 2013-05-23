@@ -70,7 +70,7 @@ $(document).ready(function(){
 		<div class="dryj_search_focus"><!--搜索&游记-->
         	<dl>
             	<dd>
-                    <form  name="formsearch" action="{dede:global.cfg_cmsurl/}/plus/search.php">
+                    <form  name="formsearch" action="{dede:global.cfg_cmsurl/}/plus/gl_list.php">
                     	<input type="hidden" name="typeid" value="35" />
                         <input type="hidden" name="kwtype" value="1" />
                         <input type="hidden" name="searchtype" value="title" />
@@ -83,13 +83,13 @@ $(document).ready(function(){
                     	<li>
                         	<h1>国内旅游</h1>
                             {dede:arclist typeid=48 row=20 titlelen=150}
-                            <i><a href="/plus/search.php?typeid=49&q=[field:title/]&kwtype=1&searchtype=title" target="_blank">[field:title/]</a></i>
+                            <i><a href="/plus/gl_list.php?typeid=49&q=[field:title/]&kwtype=1&searchtype=title" target="_blank">[field:title/]</a></i>
                             {/dede:arclist}
                         </li>
                         <li>
                         	<h1>国外旅游</h1>
                             {dede:arclist typeid=50 row=20 titlelen=150}
-                            <i><a href="/plus/search.php?typeid=51&q=[field:title/]&kwtype=1&searchtype=title" target="_blank">[field:title/]</a></i>
+                            <i><a href="/plus/gl_list.php?typeid=51&q=[field:title/]&kwtype=1&searchtype=title" target="_blank">[field:title/]</a></i>
                             {/dede:arclist}
                         </li>
                     </ul>
