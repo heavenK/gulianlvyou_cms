@@ -195,7 +195,8 @@ else if($fmdo=='user')
     else if($dopost=="regnew")
     {
         $step = empty($step)? 1 : intval(preg_replace("/[^\d]/",'', $step));
-        require_once(dirname(__FILE__)."/reg_new.php");
+//        require_once(dirname(__FILE__)."/reg_new.php");
+		include(APP_PATH."Tpl/Index/register.html");
         exit();
     }
   /***************************

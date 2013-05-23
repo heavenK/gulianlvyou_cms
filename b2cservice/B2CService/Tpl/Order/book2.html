@@ -24,177 +24,340 @@ $(document).ready(function(){
 
 <body>
 <div class="header_box"><!--头部-->
-	<dl>
-    	<dd><b><a href="#" style=" font-family:Arial;">ENGLISH</a>  |  <a href="#">日本語</a>  |  <a href="#" style=" font-family:Arial;">РУССКИЙ ЯЗЫК</a></b><i><u><a href="#">登录</a></u> | <a href="#">注册</a> | <a href="#">加入收藏</a></i><em>欢迎来到古莲旅游网！</em></dd>
-        <dt>
-        	<i><a href="#"><img src="<{:SITE_PUBLIC}>images/logo.png" width="223" height="73" /></a></i>
-            <b>
-                <input type="text" class="header_search_text" name="text" value="搜索旅游目的地" onfocus="if (value =='搜索旅游目的地'){value =''}" onblur="if (value ==''){value='搜索旅游目的地'}"/>
-                <input type="submit" class="header_search_submit" name="submit" value="" />
-            </b>
-            <em>热门搜索：<a href="#">灵山大佛</a>  <a href="#">马尔代夫</a>  <a href="#">海南</a>  <a href="#">巴厘岛</a>  <a href="#">普吉岛</a>  <a href="#">迪斯尼乐园</a></em>
-        </dt>
-    </dl>
-    <div class="mainbav_box"><!--导航-->
-    	<ul>
-        	<li style=" background:none;"><a href="#"><span>首 页</span></a></li>
-            <li class="mainbav_on"><a href="#"><span>参团游</span></a></li>
-            <li><a href="#"><span>自由行</span></a></li>
-            <li><a href="#"><span>主题度假</span></a></li>
-            <li><a href="#"><span>个性定制</span></a></li>
-            <li><a href="#"><span>签 证</span></a></li>
-            <li id="mainbav_pull"><a href="#"><span>达人游记</span></a>
-            	<ol>
-                	<li><a href="#">精彩游记</a></li>
-                    <li><a href="#">贴&nbsp;&nbsp;&nbsp;&nbsp;图</a></li>
-                    <li><a href="#">视&nbsp;&nbsp;&nbsp;&nbsp;频</a></li>
-                </ol>
-            </li>
-        </ul>
-    </div>
+  <dl>
+    <dd><b><a href="#" style=" font-family:Arial;">ENGLISH</a> | <a href="#">日本語</a> | <a href="#" style=" font-family:Arial;">РУССКИЙ ЯЗЫК</a></b><i><u><a href="#">登录</a></u> | <a href="#">注册</a> | <a href="#">加入收藏</a></i><em>欢迎来到古莲旅游网！</em></dd>
+    <dt> <i><a href="#"><img src="<{:SITE_PUBLIC}>images/logo.png" width="223" height="73" /></a></i> <b>
+      <input type="text" class="header_search_text" name="text" value="搜索旅游目的地" onfocus="if (value =='搜索旅游目的地'){value =''}" onblur="if (value ==''){value='搜索旅游目的地'}"/>
+      <input type="submit" class="header_search_submit" name="submit" value="" />
+      </b> <em>热门搜索：<a href="#">灵山大佛</a> <a href="#">马尔代夫</a> <a href="#">海南</a> <a href="#">巴厘岛</a> <a href="#">普吉岛</a> <a href="#">迪斯尼乐园</a></em> </dt>
+  </dl>
+  <div class="mainbav_box"><!--导航-->
+    <ul>
+      <li style=" background:none;"><a href="#"><span>首 页</span></a></li>
+      <li class="mainbav_on"><a href="#"><span>参团游</span></a></li>
+      <li><a href="#"><span>自由行</span></a></li>
+      <li><a href="#"><span>主题度假</span></a></li>
+      <li><a href="#"><span>个性定制</span></a></li>
+      <li><a href="#"><span>签 证</span></a></li>
+      <li id="mainbav_pull"><a href="#"><span>达人游记</span></a>
+        <ol>
+          <li><a href="#">精彩游记</a></li>
+          <li><a href="#">贴&nbsp;&nbsp;&nbsp;&nbsp;图</a></li>
+          <li><a href="#">视&nbsp;&nbsp;&nbsp;&nbsp;频</a></li>
+        </ol>
+      </li>
+    </ul>
+  </div>
 </div>
 <div class="tjdd_box"><!--主体-->
-    <div class="tjdd">
-        <div class="tjdd_mainbav"><a href="http://dede.we54.com/">主页</a> &gt; <a href="/a/webbase/">网页基础</a> &gt; Javascript/Ajax</div>
-        <div class="tjdd_lc"></div>
-        <div class="tjdd_ddxxxx"><!--订单详细信息-->
-        	<em><b>订单详细信息</b></em>
-            <span>
-            	<p>
-                	<b>尊敬的客人：</b><br />您好，您的订单申请已提交，订单号：<strong style="color:red"><{$order['orderID']}></strong>！<br />感谢您关注古莲旅游网最新产品信息！如有疑问，您可以直接致电010—85906636咨询相关事宜。
-                </p>
-            	<table width="938" cellpadding="0" cellspacing="0">
-                	<tr height="34">
-                    	<td width="431">产品名称：<b><{$order['title_copy']}></b></td>
-                        <td width="252">出发城市：<b><{$order['chufadi_copy']}></b></td>
-                        <td width="255">出发时间：<b><{$order['chutuanriqi_copy']}></b></td>
-                    </tr>
-                    <tr height="34">
-                    	<td width="431">出团编号：<b><{$order['tuanhao_copy']}></b></td>
-                        <td width="252">行程天数：<b><{$order['tianshu_copy']}>日</b></td>
-                        <td width="255"></td>
-                    </tr>
-                </table>
-                <i>出行人数： 成人 <{$order['chengrenshu']}> 人&nbsp;，&nbsp;儿童 <{$order['ertonghsu']}> 人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合计：<u>￥</u><b><{$order['zongjia']}></b></i>
-            </span>
-        </div>
-        
-        <form name="form_book2" method="post" enctype="multipart/form-data" action="<{:SITE_INDEX}>Order/dopostbook2" >
-        <input type="hidden" name="dingdanID" value="<{$order[id]}>"/>
-        <input type="hidden" name="orderID" value="<{$order[orderID]}>"/>
-        
-        <div class="tjdd_txlxrzl"><!--出行人信息-->
-        	<dl><dd>出行人信息</dd><dt><i>*</i>为必填项</dt></dl>
-            <PHP>if($joinerall){</PHP>
-            <PHP>$c=0;foreach($joinerall as $v){$i = $v['id'];$c++;</PHP>
-                    <input type="hidden" name="id[]" value="<{$v['id']}>"/>
-                    <input type="hidden" name="manorchild<{$i}>" value="<{$v['manorchild']}>"/>
-                    <span>
-                        <p>第<u>1</u>位游客 <b>（标准 <{$v['manorchild']}>）</b></p>
-                        <em>
-                            <ul>
-                                <li><label for="name" class="tjdd_label">姓&nbsp;&nbsp;&nbsp;&nbsp;名：</label><input type="text" id="name<{$i}>" name="name<{$i}>" class="tjdd_text" value="<{$v['name']}>" /><b>*</b></li>
-                                <li><label for="name_py" class="tjdd_label">拼&nbsp;&nbsp;&nbsp;&nbsp;音：</label><input type="text" id="pinyin<{$i}>" name="pinyin<{$i}>" class="tjdd_text" value="<{$v['pinyin']}>" /><b>*</b></li>
-                                <li><label class="tjdd_label">证件类型：</label><u><strong>
-                                <select name="zhengjiantype<{$i}>">
-                                <option value="<{$v['zhengjiantype']}>"><{$v['zhengjiantype']}></option>
-                                <option disabled="disabled">------------</option>
-                                <option value="身份证">身份证</option>
-                                <option value="军官证">军官证</option>
-                                </select>
-                                </strong></u><b>*</b></li>
-                                <li><label for="number" class="tjdd_label">证件号码：</label><input type="text" id="zhengjianhaoma<{$i}>" name="zhengjianhaoma<{$i}>" class="tjdd_text" value="<{$v['zhengjianhaoma']}>" /><b>*</b></li>
-                                <li><label for="phone" class="tjdd_label">联系电话：</label><input type="text" id="telnum<{$i}>" name="telnum<{$i}>" class="tjdd_text" value="<{$v['telnum']}>" /></li>
-                                <li><label for="birthday" class="tjdd_label">出生日期：</label><input type="text" id="birthday<{$i}>" name="birthday<{$i}>" class="tjdd_text" value="<{$v['birthday']}>" /><b>*</b></li>
-                            </ul>
-                            <ol>
-                                <li><big>性&nbsp;&nbsp;&nbsp;&nbsp;别：</big>
-                                <input type="radio" id="sex<{$i}>" name="sex<{$i}>" value="男" onFocus="this.blur()" <php>if($v['sex']){</php>checked="checked"<php>}</php> /><label for="man">男</label>
-                                <input type="radio" id="sex<{$i}>" name="sex<{$i}>" value="女" onFocus="this.blur()" /><label for="woman">女</label></li>
-                                <li><label class="tjdd_label" style=" margin:0;">户 籍 地：</label><u><strong><select><option>身份证</option><option>军官证</option></select></strong></u><b>*</b></li>
-                                <li><big>旅游证件信息：</big><input type="radio" id="yes" name="certificate" onFocus="this.blur()" onclick="hashuzhao(1)" /><label for="yes">我有护照</label><input type="radio" id="no" checked="checked" name="certificate" onFocus="this.blur()" onclick="hashuzhao(2)" /><label for="no">没有护照</label></li>
-                            </ol>
-                        </em>
-                        <i>
-                            <ul>
-                                <li><label class="tjdd_label">证件类型：</label><u class="tjdd_select_long"><strong><select onchange="checkhuzhao(1)"><option value="6">因私护照（P）</option><option value="9">因公护照（I）</option><option value="12">外交护照（D）</option><option value="7">港澳通行证</option><option value="8">台湾通行证</option><option value="15">签证身份书</option><option value="0">其他</option></select></strong></u></li>
-                                <li><label for="certificate_number" class="tjdd_label">证件号码：</label><input type="text" id="certificate_number" class="tjdd_text" onclick="checkhuzhao(1)" /></li>
-                                <li><label class="tjdd_label">签发日期：</label><u class="tjdd_select_short_f"><strong><select onclick="checkhuzhao(4)"><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_s"><strong><select><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_t"><strong><select><option>身份证</option><option>军官证</option></select></strong></u></li>
-                                <li><label class="tjdd_label">有效期至：</label><u class="tjdd_select_short_f"><strong><select onclick="checkhuzhao(2)"><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_s"><strong><select><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_t"><strong><select><option>身份证</option><option>军官证</option></select></strong></u></li>
-                                <li><label class="tjdd_label">签发地：</label><u class="tjdd_select_long"><strong><select onclick="checkhuzhao(3)"><option>身份证</option><option>军官证</option></select></strong></u></li>
-                            </ul>
-                            <b></b>
-                        </i>
-                    </span>
-            <PHP>}</PHP>
-            <PHP>}else{</PHP>
-            <PHP>for($i=0;$i<$order['chengrenshu']+$order['ertongshu'];$i++){</PHP>
-                    <input type="hidden" name="manorchild<{$i}>" value="成人"/>
-                    <span>
-                        <p>第<u><php>echo $i+1</php></u>位游客 <b>（标准 成人）</b></p>
-                        <em>
-                            <ul>
-                                <li><label for="name" class="tjdd_label">姓&nbsp;&nbsp;&nbsp;&nbsp;名：</label><input type="text" class="tjdd_text" onblur="checkname()" id="name<{$i}>" name="name<{$i}>" value="2222"  /><b>*</b><h3>请填写真实姓名</h3></li>
-                                <li><label for="name_py" class="tjdd_label">拼&nbsp;&nbsp;&nbsp;&nbsp;音：</label><input type="text" class="tjdd_text" onblur="checkpinyin()" id="pinyin<{$i}>" name="pinyin<{$i}>" value="sadfasfd" /><b>*</b><h3>请正确填写拼音</h3></li>
-                                <li><label class="tjdd_label">证件类型：</label><u><strong>
-                                <select name="zhengjiantype<{$i}>">
-                                <option value="身份证">身份证</option>
-                                <option value="军官证">军官证</option>
-                                </select>
-                                </strong></u><b>*</b></li>
-                                <li><label for="number" class="tjdd_label">证件号码：</label><input type="text" id="zhengjianhaoma<{$i}>" name="zhengjianhaoma<{$i}>" class="tjdd_text" value="555555" /><b>*</b></li>
-                                <li><label for="phone" class="tjdd_label">联系电话：</label><input type="text" id="telnum<{$i}>" name="telnum<{$i}>" class="tjdd_text" value="66666" /></li>
-                                <li><label for="birthday" class="tjdd_label">出生日期：</label><input type="text" id="birthday<{$i}>" name="birthday<{$i}>" class="tjdd_text" value="111111" /><b>*</b></li>
-                            </ul>
-                            <ol>
-                                <li><big>性&nbsp;&nbsp;&nbsp;&nbsp;别：</big>
-                                <input type="radio" id="sex<{$i}>" name="sex<{$i}>" value="男" onFocus="this.blur()" checked="checked" /><label for="man">男</label>
-                                <input type="radio" id="sex<{$i}>" name="sex<{$i}>" value="女" onFocus="this.blur()" /><label for="woman">女</label></li>
-                                <li><label class="tjdd_label" style=" margin:0;">户 籍 地：</label><u><strong><select><option>身份证</option><option>军官证</option></select></strong></u><b>*</b></li>
-                                <li><big>旅游证件信息：</big><input type="radio" id="yes" name="certificate" onFocus="this.blur()" onclick="hashuzhao(1)" /><label for="yes">我有护照</label><input type="radio" id="no" checked="checked" name="certificate" onFocus="this.blur()" onclick="hashuzhao(2)" /><label for="no">没有护照</label></li>
-                            </ol>
-                        </em>
-                        <i>
-                            <ul>
-                                <li><label class="tjdd_label">证件类型：</label><u class="tjdd_select_long"><strong><select onchange="checkhuzhao(1)"><option value="6">因私护照（P）</option><option value="9">因公护照（I）</option><option value="12">外交护照（D）</option><option value="7">港澳通行证</option><option value="8">台湾通行证</option><option value="15">签证身份书</option><option value="0">其他</option></select></strong></u></li>
-                                <li><label for="certificate_number" class="tjdd_label">证件号码：</label><input type="text" id="certificate_number" class="tjdd_text" onclick="checkhuzhao(1)" /></li>
-                                <li><label class="tjdd_label">签发日期：</label><u class="tjdd_select_short_f"><strong><select onclick="checkhuzhao(4)"><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_s"><strong><select><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_t"><strong><select><option>身份证</option><option>军官证</option></select></strong></u></li>
-                                <li><label class="tjdd_label">有效期至：</label><u class="tjdd_select_short_f"><strong><select onclick="checkhuzhao(2)"><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_s"><strong><select><option>身份证</option><option>军官证</option></select></strong></u><u class="tjdd_select_short_t"><strong><select><option>身份证</option><option>军官证</option></select></strong></u></li>
-                                <li><label class="tjdd_label">签发地：</label><u class="tjdd_select_long"><strong><select onclick="checkhuzhao(3)"><option>身份证</option><option>军官证</option></select></strong></u></li>
-                            </ul>
-                            <b></b>
-                        </i>
-                    </span>
-            <PHP>}</PHP>
-            <PHP>}</PHP>
-            
-            
-        </div>
-        
-        </form>
-        
-        <div class="tjdd_sub"><!--提交按钮-->
-        	<a onclick="Submit();" style="cursor: pointer"></a>
-        </div>
-    </div>
+  <div class="tjdd">
+    <div class="tjdd_mainbav"><a href="http://dede.we54.com/">主页</a> &gt; <a href="/a/webbase/">网页基础</a> &gt; Javascript/Ajax</div>
+    <div class="tjdd_lc"></div>
+    <div class="tjdd_ddxxxx"><!--订单详细信息--> 
+      <em><b>订单详细信息</b></em> <span>
+      <p> <b>尊敬的客人：</b><br />
+        您好，您的订单申请已提交，订单号：<strong style="color:red"><{$order['orderID']}></strong>！<br />
+        感谢您关注古莲旅游网最新产品信息！如有疑问，您可以直接致电010—85906636咨询相关事宜。 </p>
+      <table width="938" cellpadding="0" cellspacing="0">
+        <tr height="34">
+          <td width="431">产品名称：<b><{$order['title_copy']}></b></td>
+          <td width="252">出发城市：<b><{$order['chufadi_copy']}></b></td>
+          <td width="255">出发时间：<b><{$order['chutuanriqi_copy']}></b></td>
+        </tr>
+        <tr height="34">
+          <td width="431">出团编号：<b><{$order['tuanhao_copy']}></b></td>
+          <td width="252">行程天数：<b><{$order['tianshu_copy']}>日</b></td>
+          <td width="255"></td>
+        </tr>
+      </table>
+      <i>出行人数： 成人 <{$order['chengrenshu']}> 人&nbsp;，&nbsp;儿童 <{$order['ertonghsu']}> 人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合计：<u>￥</u><b><{$order['zongjia']}></b></i> </span> </div>
+    <form name="form_book2" method="post" enctype="multipart/form-data" action="<{:SITE_INDEX}>Order/dopostbook2" >
+      <input type="hidden" name="dingdanID" value="<{$order[id]}>"/>
+      <input type="hidden" name="orderID" value="<{$order[orderID]}>"/>
+      <div class="tjdd_txlxrzl"><!--出行人信息-->
+        <dl>
+          <dd>出行人信息</dd>
+          <dt><i>*</i>为必填项</dt>
+        </dl>
+        <PHP>if($joinerall){</PHP>
+        <PHP>$c=0;foreach($joinerall as $v){$i = $v['id'];$c++;</PHP>
+        <input type="hidden" name="id[]" value="<{$v['id']}>"/>
+        <input type="hidden" name="manorchild<{$i}>" value="<{$v['manorchild']}>"/>
+        <span>
+        <p>第<u>1</u>位游客 <b>（标准 <{$v['manorchild']}>）</b></p>
+        <em>
+        <ul>
+          <li>
+            <label for="name" class="tjdd_label">姓&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
+            <input type="text" id="name<{$i}>" name="name<{$i}>" class="tjdd_text" value="<{$v['name']}>" />
+            <b>*</b></li>
+          <li>
+            <label for="name_py" class="tjdd_label">拼&nbsp;&nbsp;&nbsp;&nbsp;音：</label>
+            <input type="text" id="pinyin<{$i}>" name="pinyin<{$i}>" class="tjdd_text" value="<{$v['pinyin']}>" />
+            <b>*</b></li>
+          <li>
+            <label class="tjdd_label">证件类型：</label>
+            <u><strong>
+            <select name="zhengjiantype<{$i}>">
+              <option value="<{$v['zhengjiantype']}>"><{$v['zhengjiantype']}></option>
+              <option disabled="disabled">------------</option>
+              <option value="身份证">身份证</option>
+              <option value="军官证">军官证</option>
+            </select>
+            </strong></u><b>*</b></li>
+          <li>
+            <label for="number" class="tjdd_label">证件号码：</label>
+            <input type="text" id="zhengjianhaoma<{$i}>" name="zhengjianhaoma<{$i}>" class="tjdd_text" value="<{$v['zhengjianhaoma']}>" />
+            <b>*</b></li>
+          <li>
+            <label for="phone" class="tjdd_label">联系电话：</label>
+            <input type="text" id="telnum<{$i}>" name="telnum<{$i}>" class="tjdd_text" value="<{$v['telnum']}>" />
+          </li>
+          <li>
+            <label for="birthday" class="tjdd_label">出生日期：</label>
+            <input type="text" id="birthday<{$i}>" name="birthday<{$i}>" class="tjdd_text" value="<{$v['birthday']}>" />
+            <b>*</b></li>
+        </ul>
+        <ol>
+          <li><big>性&nbsp;&nbsp;&nbsp;&nbsp;别：</big> <input type="radio" id="sex<{$i}>" name="sex<{$i}>" value="男" onFocus="this.blur()" 
+            <php>if($v['sex']){</php>
+            checked="checked"
+            <php>}</php>
+            />
+            <label for="man">男</label>
+            <input type="radio" id="sex<{$i}>" name="sex<{$i}>" value="女" onFocus="this.blur()" />
+            <label for="woman">女</label>
+          </li>
+          <li>
+            <label class="tjdd_label" style=" margin:0;">户 籍 地：</label>
+            <u><strong>
+            <select>
+              <option>身份证</option>
+              <option>军官证</option>
+            </select>
+            </strong></u><b>*</b></li>
+          <li><big>旅游证件信息：</big>
+            <input type="radio" id="yes" name="certificate" onFocus="this.blur()" onclick="hashuzhao(1)" />
+            <label for="yes">我有护照</label>
+            <input type="radio" id="no" checked="checked" name="certificate" onFocus="this.blur()" onclick="hashuzhao(2)" />
+            <label for="no">没有护照</label>
+          </li>
+        </ol>
+        </em> <i>
+        <ul>
+          <li>
+            <label class="tjdd_label">证件类型：</label>
+            <u class="tjdd_select_long"><strong>
+            <select onchange="checkhuzhao(1)">
+              <option value="6">因私护照（P）</option>
+              <option value="9">因公护照（I）</option>
+              <option value="12">外交护照（D）</option>
+              <option value="7">港澳通行证</option>
+              <option value="8">台湾通行证</option>
+              <option value="15">签证身份书</option>
+              <option value="0">其他</option>
+            </select>
+            </strong></u></li>
+          <li>
+            <label for="certificate_number" class="tjdd_label">证件号码：</label>
+            <input type="text" id="certificate_number" class="tjdd_text" onclick="checkhuzhao(1)" />
+          </li>
+          <li>
+            <label class="tjdd_label">签发日期：</label>
+            <u class="tjdd_select_short_f"><strong>
+            <select onclick="checkhuzhao(4)">
+              <option>身份证</option>
+              <option>军官证</option>
+            </select>
+            </strong></u><u class="tjdd_select_short_s"><strong>
+            <select>
+              <option>身份证</option>
+              <option>军官证</option>
+            </select>
+            </strong></u><u class="tjdd_select_short_t"><strong>
+            <select>
+              <option>身份证</option>
+              <option>军官证</option>
+            </select>
+            </strong></u></li>
+          <li>
+            <label class="tjdd_label">有效期至：</label>
+            <u class="tjdd_select_short_f"><strong>
+            <select onclick="checkhuzhao(2)">
+              <option>身份证</option>
+              <option>军官证</option>
+            </select>
+            </strong></u><u class="tjdd_select_short_s"><strong>
+            <select>
+              <option>身份证</option>
+              <option>军官证</option>
+            </select>
+            </strong></u><u class="tjdd_select_short_t"><strong>
+            <select>
+              <option>身份证</option>
+              <option>军官证</option>
+            </select>
+            </strong></u></li>
+          <li>
+            <label class="tjdd_label">签发地：</label>
+            <u class="tjdd_select_long"><strong>
+            <select onclick="checkhuzhao(3)">
+              <option>身份证</option>
+              <option>军官证</option>
+            </select>
+            </strong></u></li>
+        </ul>
+        <b></b> </i> </span>
+        <PHP>}</PHP>
+        <PHP>}else{</PHP>
+        <PHP>for($i=0;$i<$order['chengrenshu']+$order['ertongshu'];$i++){</PHP>
+        <input type="hidden" name="manorchild<{$i}>" value="成人"/>
+        <span>
+        <p>第<u>
+          <php>echo $i+1</php>
+          </u>位游客 <b>（标准 成人）</b></p>
+        <em>
+        <ul>
+          <li>
+            <label for="name" class="tjdd_label">姓&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
+            <input type="text" class="tjdd_text" onblur="checkname()" id="name<{$i}>" name="name<{$i}>" value="2222"  />
+            <b>*</b>
+            <h3>请填写真实姓名</h3>
+          </li>
+          <li>
+            <label for="name_py" class="tjdd_label">拼&nbsp;&nbsp;&nbsp;&nbsp;音：</label>
+            <input type="text" class="tjdd_text" onblur="checkpinyin()" id="pinyin<{$i}>" name="pinyin<{$i}>" value="sadfasfd" />
+            <b>*</b>
+            <h3>请正确填写拼音</h3>
+          </li>
+          <li>
+            <label class="tjdd_label">证件类型：</label>
+            <u><strong>
+            <select name="zhengjiantype<{$i}>">
+              <option value="身份证">身份证</option>
+              <option value="军官证">军官证</option>
+            </select>
+            </strong></u><b>*</b></li>
+          <li>
+            <label for="number" class="tjdd_label">证件号码：</label>
+            <input type="text" id="zhengjianhaoma<{$i}>" name="zhengjianhaoma<{$i}>" class="tjdd_text" value="555555" />
+            <b>*</b></li>
+          <li>
+            <label for="phone" class="tjdd_label">联系电话：</label>
+            <input type="text" id="telnum<{$i}>" name="telnum<{$i}>" class="tjdd_text" value="66666" />
+          </li>
+          <li>
+            <label for="birthday" class="tjdd_label">出生日期：</label>
+            <input type="text" id="birthday<{$i}>" name="birthday<{$i}>" class="tjdd_text" value="111111" />
+            <b>*</b></li>
+        </ul>
+        <ol>
+          <li><big>性&nbsp;&nbsp;&nbsp;&nbsp;别：</big>
+            <input type="radio" id="sex<{$i}>" name="sex<{$i}>" value="男" onFocus="this.blur()" checked="checked" />
+            <label for="man">男</label>
+            <input type="radio" id="sex<{$i}>" name="sex<{$i}>" value="女" onFocus="this.blur()" />
+            <label for="woman">女</label>
+          </li>
+          <li>
+            <label class="tjdd_label" style=" margin:0;">户 籍 地：</label>
+            <u><strong>
+            <select name="hujidi">
+              <option value="1">身份证</option>
+              <option>军官证</option>
+            </select>
+            </strong></u><b>*</b></li>
+          <li><big>旅游证件信息：</big>
+            <input type="radio" id="yes" name="certificate" onFocus="this.blur()" onclick="hashuzhao(1)" />
+            <label for="yes">我有护照</label>
+            <input type="radio" id="no" checked="checked" name="certificate" onFocus="this.blur()" onclick="hashuzhao(2)" />
+            <label for="no">没有护照</label>
+          </li>
+        </ol>
+        </em> <i>
+        <ul>
+          <li>
+            <label class="tjdd_label">证件类型：</label>
+            <u class="tjdd_select_long"><strong>
+            <select onchange="checkhuzhao(1)">
+              <option value="6">因私护照（P）</option>
+              <option value="9">因公护照（I）</option>
+              <option value="12">外交护照（D）</option>
+              <option value="7">港澳通行证</option>
+              <option value="8">台湾通行证</option>
+              <option value="15">签证身份书</option>
+              <option value="0">其他</option>
+            </select>
+            </strong></u></li>
+          <li>
+            <label for="certificate_number" class="tjdd_label">证件号码：</label>
+            <input type="text" id="certificate_number" class="tjdd_text" onclick="checkhuzhao(1)" />
+          </li>
+          <li>
+            <label class="tjdd_label">签发日期：</label>
+            <u class="tjdd_select_short_f"><strong>
+            <select onclick="checkhuzhao(4)">
+              <option>身份证</option>
+              <option>军官证</option>
+            </select>
+            </strong></u><u class="tjdd_select_short_s"><strong>
+            <select>
+              <option>身份证</option>
+              <option>军官证</option>
+            </select>
+            </strong></u><u class="tjdd_select_short_t"><strong>
+            <select>
+              <option>身份证</option>
+              <option>军官证</option>
+            </select>
+            </strong></u></li>
+          <li>
+            <label class="tjdd_label">有效期至：</label>
+            <u class="tjdd_select_short_f"><strong>
+            <select onclick="checkhuzhao(2)">
+              <option>身份证</option>
+              <option>军官证</option>
+            </select>
+            </strong></u><u class="tjdd_select_short_s"><strong>
+            <select>
+              <option>身份证</option>
+              <option>军官证</option>
+            </select>
+            </strong></u><u class="tjdd_select_short_t"><strong>
+            <select>
+              <option>身份证</option>
+              <option>军官证</option>
+            </select>
+            </strong></u></li>
+          <li>
+            <label class="tjdd_label">签发地：</label>
+            <u class="tjdd_select_long"><strong>
+            <select onclick="checkhuzhao(3)">
+              <option>身份证</option>
+              <option>军官证</option>
+            </select>
+            </strong></u></li>
+        </ul>
+        <b></b> </i> </span>
+        <PHP>}</PHP>
+        <PHP>}</PHP>
+      </div>
+    </form>
+    <div class="tjdd_sub"><!--提交按钮--> 
+      <a onclick="Submit();" style="cursor: pointer"></a> </div>
+  </div>
 </div>
 <div class="footer_box"><!--底部-->
-	<div class="footer">
-    	<i><a href="#" target="_blank">关于古莲</a> | <a href="#" target="_blank">加入古莲</a> | <a href="#" target="_blank">合作品牌</a> | <a href="#" target="_blank">友情链接</a> | <a href="#" target="_blank">法律声明</a> | <a href="#" target="_blank">营业网点</a> | <a href="#" target="_blank">联系我们</a> | <a href="#" target="_blank">网站地图</a></i>
-        <em>Copyright &copy; 2005-2011 gulianlvyou.com　All rights reserved   古莲旅游 版权所有<br />旅行社业务经营许可证编号：辽B2-20120096   大连ICP证031062号</em>
-    </div>
+  <div class="footer"> <i><a href="#" target="_blank">关于古莲</a> | <a href="#" target="_blank">加入古莲</a> | <a href="#" target="_blank">合作品牌</a> | <a href="#" target="_blank">友情链接</a> | <a href="#" target="_blank">法律声明</a> | <a href="#" target="_blank">营业网点</a> | <a href="#" target="_blank">联系我们</a> | <a href="#" target="_blank">网站地图</a></i> <em>Copyright &copy; 2005-2011 gulianlvyou.com　All rights reserved   古莲旅游 版权所有<br />
+    旅行社业务经营许可证编号：辽B2-20120096   大连ICP证031062号</em> </div>
 </div>
 </body>
 </html>
-
-	<script language="javascript" type="text/javascript">
+<script language="javascript" type="text/javascript">
         function Submit() {
                 document.forms[0].submit();
         }
 
-	</script> 
-
-
+	</script>
 <script type="text/javascript">
 //检验姓名
 function checkname(){ 
