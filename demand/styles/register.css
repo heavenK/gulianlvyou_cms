@@ -10,7 +10,6 @@
 .register ul li label					{ width:73px; height:27px; color:#010101; overflow:hidden; float:left;}
 .register ul li input.intxt				{ width:264px; height:15px; padding:5px; background:#FFF; border:1px solid #ced4dd; font-size:12px; color:#7a7a7a; overflow:hidden; float:left;}
 .register ul li em						{ height:27px; padding:0 0 0 15px; color:#999999; overflow:hidden; float:left;}
-.register ul li em b					{ color:#ff0000;}
 .register ul li .rank 					{ width:145px; height:27px; margin:4px 0 0 0; display:inline; background:url(../images/register_rank.gif) no-repeat; cursor:default; overflow:hidden; float:left;}
 .register ul li .r0 					{ background-position:0 0; }
 .register ul li .r1 					{ background-position:0 -21px; }
