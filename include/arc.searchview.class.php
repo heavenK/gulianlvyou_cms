@@ -53,6 +53,7 @@ class SearchView
     var $RsFields;
     var $Sphinx;
 	var $xianlu;
+	var $chufadi;
 
     /**
      *  php5构造函数
@@ -70,7 +71,7 @@ class SearchView
      * @return    string
      */
     function __construct($typeid,$keyword,$orderby,$achanneltype="all",
-    $searchtype='',$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$xianlu)
+    $searchtype='',$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$xianlu,$chufadi)
     {
         global $cfg_search_max,$cfg_search_maxrc,$cfg_search_time,$cfg_sphinx_article;
         if(empty($upagesize))
@@ -98,9 +99,24 @@ class SearchView
         $this->dtp2->SetNameSpace("field","[","]");
         $this->TypeLink = new TypeLink($typeid);
 		$this->xianlu = $xianlu;
+		$this->chufadi = $chufadi;
         // 通过分词获取关键词
         $this->Keywords = $this->GetKeywords($keyword);
-
+		
+		//add by ks
+		function ips($ip){ 
+			$str = file_get_contents("http://int.dpool.sina.com.cn/iplookup/iplookup.php?ip={$ip}"); 
+			$str = iconv("GBK", "UTF-8", $str);
+			//preg_match("/<ul class=\"ul1\">(.*)<\/ul>/",$str,$m); 
+			//$pstr=str_replace("","",$m[1]); 
+			$arr = explode("	",$str); 
+			//array_shift($arr);
+			//$address = iconv("GBK", "UTF-8", $arr[0]);
+			return $arr;
+		}
+		$user_address = ips("218.24.144.80");
+		//var_dump($user_address);
+		//end add
         //设置一些全局参数的值
 		//edit by ks
         /*if($this->TypeID=="0"){
@@ -160,9 +176,9 @@ class SearchView
 
     //php4构造函数
     function SearchView($typeid,$keyword,$orderby,$achanneltype="all",
-    $searchtype="",$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$xianlu)
+    $searchtype="",$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$xianlu,$chufadi)
     {
-        $this->__construct($typeid,$keyword,$orderby,$achanneltype,$searchtype,$starttime,$upagesize,$kwtype,$mid,$xianlu);
+        $this->__construct($typeid,$keyword,$orderby,$achanneltype,$searchtype,$starttime,$upagesize,$kwtype,$mid,$xianlu,$chufadi);
     }
 
     //关闭相关资源
@@ -440,6 +456,10 @@ class SearchView
         {
             $ksqls[] = " arc.mid = '".$this->mid."'";
         }
+		/*if(strstr($user_address, $this->chufadi))
+        {
+            $ksqls[] = " act.chufadi = '".$this->chufadi."'";
+        }*/
         $ksqls[] = " arc.arcrank > -1 ";
         $this->AddSql = ($ksql=='' ? join(' AND ',$ksqls) : join(' AND ',$ksqls)." AND ($ksql)" );
         if($this->ChannelType < 0 || $this->ChannelTypeid< 0){
@@ -711,8 +731,9 @@ class SearchView
             //搜索
 			//add by ks
 			if($this->ChannelType = 7){
-				$query = "SELECT arc.*,act.*
-            FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
+				$query = "SELECT arc.*,act.*,ack.typedir,ack.typename,ack.isdefault,ack.defaultname,ack.namerule,
+            ack.namerule2,ack.ispart,ack.moresite,ack.siteurl,ack.sitepath
+            FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid LEFT JOIN `#@__arctype` ack ON arc.typeid=ack.id
             WHERE arc.{$this->AddSql} $ordersql LIMIT $limitstart,$row";
 			}else{
 				$query = "SELECT arc.*,act.typedir,act.typename,act.isdefault,act.defaultname,act.namerule,
@@ -732,7 +753,7 @@ class SearchView
         
         $this->dsql->SetQuery($query);
         $this->dsql->Execute("al");
-		//var_dump($this->dsql->GetArray("al"));
+		//var_dump($this->AddSql);
         $artlist = "";
         if($col>1)
         {
@@ -762,9 +783,9 @@ class SearchView
                         $row["pubdate"]=empty($row["pubdate  "])? $row["senddate"] : $row["pubdate"];
                     }
                     //处理一些特殊字段
+					$row["namerule"] = 
                     $row["arcurl"] = GetFileUrl($row["id"],$row["typeid"],$row["senddate"],$row["title"],
                     $row["ismake"],$row["arcrank"],$row["namerule"],$row["typedir"],$row["money"],$row['filename'],$row["moresite"],$row["siteurl"],$row["sitepath"]);
-					var_dump($row["id"]);
                     $row["description"] = $this->GetRedKeyWord(cn_substr($row["description"],$infolen));
                     $row["title"] = $this->GetRedKeyWord(cn_substr($row["title"],$titlelen));
                     $row["id"] =  $row["id"];
@@ -1098,4 +1119,5 @@ class SearchView
         }
         return $nowurl;
     }
+	
 }//End Class
