@@ -73,7 +73,7 @@ $(document).ready(function()
 			$('#_email').html("<font color='#e56131'><b>×Email格式不正确</b></font>");
 			$('#email').focus();
 		}else{
-			$.ajax({type: reMethod,url: "index_do.php",
+			$.ajax({type: reMethod,url: B2CSERVICE_APIS+"action_index_do.php",
 			data: "dopost=checkmail&fmdo=user&email="+$("#email").val(),
 			dataType: 'html',
 			success: function(result){$("#_email").html(result);}}); 
