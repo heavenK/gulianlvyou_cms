@@ -108,7 +108,7 @@ else
 
 $t1 = ExecTime();
 
-$sp = new SearchView($typeid,$keyword,$orderby,$channeltype,$searchtype,$starttime,$pagesize,$kwtype,$mid);
+$sp = new SearchView($typeid,$keyword,$orderby,$channeltype,$searchtype,$starttime,$pagesize,$kwtype,$mid,$xianlu);
 $keyword = $oldkeyword;
 $sp->Display();
 

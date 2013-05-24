@@ -51,7 +51,7 @@ $(document).ready(function()
 	
 	//AJAX changChickValue
 	$("#txtUsername").change( function() {
-		$.ajax({type: reMethod,url: "index_do.php",
+		$.ajax({type: reMethod,url: B2CSERVICE_APIS+"action_index_do.php",
 		data: "dopost=checkuser&fmdo=user&cktype=1&uid="+$("#txtUsername").val(),
 		dataType: 'html',
 		success: function(result){$("#_userid").html(result);}}); 
@@ -83,19 +83,11 @@ $(document).ready(function()
 	$('#txtPassword').change( function(){
 		if($('#txtPassword').val().length < pwdmin)
 		{
-			$('#_userpwdok').html("<font color='#e56131'><b>×密码不能小于"+pwdmin+"位</b></font>");
-		}
-		else if($('#userpwdok').val()!=$('txtPassword').val())
-		{
-			$('#_userpwdok').html("<font color='#e56131'><b>×两次输入密码不一致</b></font>");
-		}
-		else if($('#userpwdok').val().length < pwdmin)
-		{
-			$('#_userpwdok').html("<font color='#e56131'><b>×密码不能小于"+pwdmin+"位</b></font>");
+			$('#_txtPassword').html("<font color='#e56131'><b>×密码不能小于"+pwdmin+"位</b></font>");
 		}
 		else
 		{
-			$('#_userpwdok').html("<font color='#8aa823'><b>√填写正确</b></font>");
+			$('#_txtPassword').html("<font color='#8aa823'><b>√填写正确</b></font>");
 		}
 	});
 	

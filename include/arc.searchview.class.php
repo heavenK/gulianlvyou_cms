@@ -52,6 +52,7 @@ class SearchView
     var $AddSql;
     var $RsFields;
     var $Sphinx;
+	var $xianlu;
 
     /**
      *  php5构造函数
@@ -69,7 +70,7 @@ class SearchView
      * @return    string
      */
     function __construct($typeid,$keyword,$orderby,$achanneltype="all",
-    $searchtype='',$starttime=0,$upagesize=20,$kwtype=1,$mid=0)
+    $searchtype='',$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$xianlu)
     {
         global $cfg_search_max,$cfg_search_maxrc,$cfg_search_time,$cfg_sphinx_article;
         if(empty($upagesize))
@@ -96,16 +97,24 @@ class SearchView
         $this->dtp2 = new DedeTagParse();
         $this->dtp2->SetNameSpace("field","[","]");
         $this->TypeLink = new TypeLink($typeid);
+		$this->xianlu = $xianlu;
         // 通过分词获取关键词
         $this->Keywords = $this->GetKeywords($keyword);
 
         //设置一些全局参数的值
-        if($this->TypeID=="0"){
+		//edit by ks
+        /*if($this->TypeID=="0"){
             $this->ChannelTypeid=1;
         }else{
             $row =$this->dsql->GetOne("SELECT channeltype FROM `#@__arctype` WHERE id={$this->TypeID}");
             $this->ChannelTypeid=$row['channeltype'];
-        }
+        }*/
+		//end edit
+		//add by ks
+		//var_dump($xianlu);
+		$row =$this->dsql->GetOne("SELECT channeltype FROM `#@__arctype` WHERE id IN ({$this->xianlu})");
+        $this->ChannelTypeid=$row['channeltype'];
+		//end add
         foreach($GLOBALS['PubFields'] as $k=>$v)
         {
             $this->Fields[$k] = $v;
@@ -151,9 +160,9 @@ class SearchView
 
     //php4构造函数
     function SearchView($typeid,$keyword,$orderby,$achanneltype="all",
-    $searchtype="",$starttime=0,$upagesize=20,$kwtype=1,$mid=0)
+    $searchtype="",$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$xianlu)
     {
-        $this->__construct($typeid,$keyword,$orderby,$achanneltype,$searchtype,$starttime,$upagesize,$kwtype,$mid);
+        $this->__construct($typeid,$keyword,$orderby,$achanneltype,$searchtype,$starttime,$upagesize,$kwtype,$mid,$xianlu);
     }
 
     //关闭相关资源
@@ -374,9 +383,9 @@ class SearchView
         {
             $this->sphinx->SetFilterRange('senddate', $this->StartTime, time(), false);
         }
-        if($this->TypeID > 0)
+        if($this->xianlu > 0)
         {
-            $this->sphinx->SetFilter('typeid', GetSonIds($this->TypeID));
+            $this->sphinx->SetFilter('typeid', GetSonIds($this->xianlu));
         }
         $this->sphinx->SetFilter('channel', array(1));
         if($this->mid > 0)
@@ -419,9 +428,9 @@ class SearchView
         {
             $ksqls[] = " arc.senddate>'".$this->StartTime."' ";
         }
-        if($this->TypeID > 0)
+        if($this->xianlu > 0)
         {
-            $ksqls[] = " typeid IN (".GetSonIds($this->TypeID).") ";
+            $ksqls[] = " typeid IN (".GetSonIds($this->xianlu).") ";
         }
         if($this->ChannelType > 0)
         {
@@ -755,6 +764,7 @@ class SearchView
                     //处理一些特殊字段
                     $row["arcurl"] = GetFileUrl($row["id"],$row["typeid"],$row["senddate"],$row["title"],
                     $row["ismake"],$row["arcrank"],$row["namerule"],$row["typedir"],$row["money"],$row['filename'],$row["moresite"],$row["siteurl"],$row["sitepath"]);
+					var_dump($row["id"]);
                     $row["description"] = $this->GetRedKeyWord(cn_substr($row["description"],$infolen));
                     $row["title"] = $this->GetRedKeyWord(cn_substr($row["title"],$titlelen));
                     $row["id"] =  $row["id"];
@@ -990,8 +1000,8 @@ class SearchView
         $geturl .= "&kwtype=".$this->KType;
         $hidenform .= "<input type='hidden' name='kwtype' value='".$this->KType."'>\r\n";
         //$hidenform .= "<input type='hidden' name='pagesize' value='".$this->PageSize."'>\r\n";
-        $geturl .= "&typeid=".$this->TypeID;
-        $hidenform .= "<input type='hidden' name='typeid' value='".$this->TypeID."'>\r\n";
+        $geturl .= "&xianlu=".$this->xianlu;
+        $hidenform .= "<input type='hidden' name='xianlu' value='".$this->xianlu."'>\r\n";
         //$hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."'>\r\n";
         $purl .= "?".$geturl;
 		$optionlist = '';
