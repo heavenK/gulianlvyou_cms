@@ -764,6 +764,7 @@ class SearchView
                     //处理一些特殊字段
                     $row["arcurl"] = GetFileUrl($row["id"],$row["typeid"],$row["senddate"],$row["title"],
                     $row["ismake"],$row["arcrank"],$row["namerule"],$row["typedir"],$row["money"],$row['filename'],$row["moresite"],$row["siteurl"],$row["sitepath"]);
+					var_dump($row["id"]);
                     $row["description"] = $this->GetRedKeyWord(cn_substr($row["description"],$infolen));
                     $row["title"] = $this->GetRedKeyWord(cn_substr($row["title"],$titlelen));
                     $row["id"] =  $row["id"];

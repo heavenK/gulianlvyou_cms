@@ -16,6 +16,8 @@
 	SITE_DATA = B2CSERVICE_URL+'Data/';
 	SITE_PUBLIC = ROOT_URL+'demand/';
 	__PUBLIC__ = B2CSERVICE_URL+'Public/';
+	B2CSERVICE_PUBLIC = B2CSERVICE_URL+'Public/';
+	B2CSERVICE_APIS = B2CSERVICE_URL+'apis/';
 	//获得服务器数据
     SERVER_GET_XIANLU = SERVER_INDEX+"Server/getxianlubyID";
 	//订单流程填写订单地址
