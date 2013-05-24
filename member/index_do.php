@@ -9,6 +9,19 @@
 require_once(dirname(__FILE__)."/config.php");
 require_once(dirname(__FILE__)."/../b2cservice/apis/define3.inc.php");
 if($cfg_ml->IsLogin()){
+	
+    if($dopost=="exit")
+    {
+        $cfg_ml->ExitCookie();
+        #api{{
+        if(defined('UC_API') && @include_once DEDEROOT.'/uc_client/client.php')
+        {
+            $ucsynlogin = uc_user_synlogout();
+        }
+        #/aip}}
+        exit();
+    }
+	
 	//跳转
 	my_redirect(MY_URL);
 }else{
