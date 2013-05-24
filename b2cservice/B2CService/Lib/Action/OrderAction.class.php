@@ -122,6 +122,10 @@ class OrderAction extends CommonMyAction{
 			echo "订单不存在！！";
 			exit;
 		}
+		if($_REQUEST['name'] || $_REQUEST['pinyin'] || $_REQUEST['zhengjianhaoma'] || $_REQUEST['birthday'] || $_REQUEST['hujidi'] || $_REQUEST['sex']){
+			echo "信息不全！！";
+			exit;
+		}
 		$DingdanJoiner = D("DingdanJoiner");
 		 // 手动进行令牌验证
 		 if (!$DingdanJoiner->autoCheckToken($_REQUEST)){
@@ -146,6 +150,7 @@ class OrderAction extends CommonMyAction{
 		$order['status'] = '等待支付'; 
 		$Dingdan->save($order);
 		//保存到常用联系人
+		//A("MethodService")->_createUserJoiner($order);
 		redirect(ORDER_INDEX."Order/book3/orderID/".$_REQUEST['orderID']);
 		
 	}
@@ -209,7 +214,7 @@ class OrderAction extends CommonMyAction{
 		$tPaymentType = $_POST['PaymentType'];
 		$tNotifyType = 0;//设定支付结果通知方式（必要信息）
 //		$tResultNotifyURL = ORDER_INDEX.'Order/test';
-		$tResultNotifyURL = ORDER_INDEX.'Order/test';
+		$tResultNotifyURL = B2CSERVICE_INDEX.'Index/test';
 		$tMerchantRemarks = '';//商户备注信息
 		$tPaymentLinkType = 1;//设定支付接入方式（必要信息） 注意：目前支持三种接入方式，Internet网络接入，Mobile网络接入，数字电视网络接入，不同的支付方式会返回不同的支付处理页面。
 		$tTotalCount = $order['chengrenshu']+$order['ertongshu'];

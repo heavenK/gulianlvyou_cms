@@ -148,6 +148,57 @@ class MethodServiceAction extends CommonAction{
 	}
 	
 	
+    public function _createUserJoiner($order) {
+		$DingdanJoiner = D("DingdanJoiner");
+		$joinerall = $DingdanJoiner->where("`dingdanID` = '$order[id]'")->findall();
+		$Joiner = D("Joiner");
+		foreach($joinerall as $v){
+			$j = $v;
+			unset($j['id']);
+			if($v['has_lyzj']){
+				if($v['lyzj_type'] == '因私护照（P）' || $v['lyzj_type'] == '因公护照（I）' || $v['lyzj_type'] == '外交护照（D）'){
+					$j['hz_haoma'] = $v['lyzj_haoma'];
+					$j['hz_qianfadi'] = $v['lyzj_qianfadi'];
+					$j['hz_qianfariqi'] = $v['lyzj_qianfariqi'];
+					$j['hz_youxiaoriqi'] = $v['lyzj_youxiaoriqi'];
+				}
+				if($v['lyzj_type'] == '港澳通行证' || $v['lyzj_type'] == '台湾通行证'){
+					$j['txz_haoma'] = $v['lyzj_haoma'];
+					$j['txz_qianfadi'] = $v['lyzj_qianfadi'];
+					$j['txz_qianfariqi'] = $v['lyzj_qianfariqi'];
+					$j['txz_youxiaoriqi'] = $v['lyzj_youxiaoriqi'];
+				}
+			}
+			if($v['zhengjiantype'] == '身份证'){
+				$j['sfz_haoma'] = $v['zhengjianhaoma'];
+			}
+			if($j['hz_haoma'])
+				$where['hz_haoma'] = $j['hz_haoma'];
+			if($j['hz_haoma'])
+				$where['txz_haoma'] = $j['txz_haoma'];
+			if($j['sfz_haoma'])
+				$where['sfz_haoma'] = $j['sfz_haoma'];
+			$ishas = $Joiner->where($where)->find();
+			if(!$ishas){
+				$j['mid'] = $order['mid'];
+				$j['chushengriqi'] = $v['birthday'];
+				$j['datatext'] =  serialize($j);
+				if(!$Joiner->mycreate($j)){
+					dump($Joiner);
+					echo 'error';
+					exit;
+				}
+			}
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

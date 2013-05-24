@@ -7,6 +7,16 @@
  * @link           http://www.dedecms.com
  */
 require_once(dirname(__FILE__)."/config.php");
+require_once(dirname(__FILE__)."/../b2cservice/apis/define3.inc.php");
+if($cfg_ml->IsLogin()){
+	//跳转
+	my_redirect(MY_URL);
+}else{
+	include(APP_PATH."Tpl/Index/register.html");
+}
+exit;
+
+
 if(empty($dopost)) $dopost = '';
 if(empty($fmdo)) $fmdo = '';
 
