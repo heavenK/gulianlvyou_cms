@@ -70,7 +70,7 @@ $(document).ready(function()
 		var sEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
 		if(!sEmail.exec($("#email").val()))
 		{
-			$('#_email').html("<font color='#e56131'><b>×Email格式不正确</b></font>");
+			$('#_email').html("<font color='red'><b>×Email格式不正确</b></font>");
 			$('#email').focus();
 		}else{
 			$.ajax({type: reMethod,url: B2CSERVICE_APIS+"action_index_do.php",
@@ -83,18 +83,18 @@ $(document).ready(function()
 	$('#txtPassword').change( function(){
 		if($('#txtPassword').val().length < pwdmin)
 		{
-			$('#_txtPassword').html("<font color='#e56131'><b>×密码不能小于"+pwdmin+"位</b></font>");
+			$('#_txtPassword').html("<font color='red'><b>×密码不能小于"+pwdmin+"位</b></font>");
 		}
 		else
 		{
-			$('#_txtPassword').html("<font color='#8aa823'><b>√填写正确</b></font>");
+			$('#_txtPassword').html("<font color='#4E7504'><b>√填写正确</b></font>");
 		}
 	});
 	
 	$('#userpwdok').change( function(){
 		if($('#txtPassword').val().length < pwdmin)
 		{
-			$('#_userpwdok').html("<font color='#e56131'><b>×密码不能小于"+pwdmin+"位</b></font>");
+			$('#_userpwdok').html("<font color='red'><b>×密码不能小于"+pwdmin+"位</b></font>");
 		}
 		else if($('#userpwdok').val()=='')
 		{
@@ -102,11 +102,11 @@ $(document).ready(function()
 		}
 		else if($('#userpwdok').val()!=$('#txtPassword').val())
 		{
-			$('#_userpwdok').html("<font color='#e56131'><b>×两次输入密码不一致</b></font>");
+			$('#_userpwdok').html("<font color='red'><b>×两次输入密码不一致</b></font>");
 		}
 		else
 		{
-			$('#_userpwdok').html("<font color='#8aa823'><b>√填写正确</b></font>");
+			$('#_userpwdok').html("<font color='#4E7504'><b>√填写正确</b></font>");
 		}
 	});
 	
