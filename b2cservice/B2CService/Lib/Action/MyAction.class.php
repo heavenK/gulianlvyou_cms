@@ -54,6 +54,11 @@ class MyAction extends CommonMyAction{
 	}
 	
 	
+	function joinerlist(){
+		$this->display();
+	}
+	
+	
 	
 	
 	
