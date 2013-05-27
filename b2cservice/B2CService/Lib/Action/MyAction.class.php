@@ -55,6 +55,22 @@ class MyAction extends CommonMyAction{
 	
 	
 	function joinerlist(){
+		$this->assign("mark",'常用游客信息');
+		$Joiner = D("Joiner");
+		$u = A("DEDEInfo")->ajax_loginsta('arrary');
+		$joinerall = $Joiner->where("`mid` = '$u[mid]'")->findall();
+		$this->assign("joinerall",$joinerall);
+		$this->display();
+	}
+	
+	
+	function joiner(){
+		$this->assign("mark",'常用游客信息');
+		$id = $_REQUEST['id'];
+		$Joiner = D("Joiner");
+		$joiner = $Joiner->where("`id` = '$id'")->find();
+		$joiner = unserialize($joiner['datatext']);
+		$this->assign("joiner",$joiner);
 		$this->display();
 	}
 	

@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="<{:SITE_PUBLIC}>styles/reset.css" type="text/css" rel="stylesheet" />
+<link href="<{:SITE_PUBLIC}>styles/center_reset.css" type="text/css" rel="stylesheet" />
+<link href="<{:SITE_PUBLIC}>styles/center_cyykxx.css" type="text/css" rel="stylesheet" />
+<script src="js/jquery-1.4a2.min.js" type="text/javascript"></script>
+</head>
+
+<body style=" background:#FFF url(<{:SITE_PUBLIC}>images/center_bg.jpg) no-repeat center top;">
+<div class="center_header_box"><!--头部-->
+  <dl>
+    <dd><b><a href="#" style=" font-family:Arial;">首 页</a> | <a href="#">参团游</a> | <a href="#">自由行</a><a href="#">主题度假</a> | <a href="#">个性定制</a> | <a href="#">签 证</a> | <a href="#">达人游记</a></b><em><u><a href="#">个人中心</a></u><strong>|</strong><span><a href="#">我的订单</a></span></em><i><a href="#">登录</a> | <a href="#">注册</a></i><i style=" color:#666666; display:none;"><a href="#">小鱼快跑</a> [<a href="#">退出登录</a>]</i></dd>
+    <dt><a href="#"></a></dt>
+  </dl>
+</div>
+<div class="center_box"><!--主体-->
+  <div class="center"> <include file="My:left" />
+    <div class="center_right"><!--右半部-->
+      
+      <div class="tjdd_txlxrzl"><!--增加游客-->
+        <p>常用游客管理</p>
+        <span> <em>
+        <ul>
+          <li>
+            <label for="name" class="tjdd_label">姓&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
+            <input type="text" id="name" class="tjdd_text" onblur="checkname()" value="<{$joiner[name]}>" />
+            <b>*</b>
+            <h3>请填写真实姓名</h3>
+          </li>
+          <li>
+            <label for="name_py" class="tjdd_label">拼&nbsp;&nbsp;&nbsp;&nbsp;音：</label>
+            <input type="text" id="name_py" class="tjdd_text" onblur="checkpinyin()" value="<{$joiner[pinyin]}>" />
+            <b>*</b>
+            <h3>请正确填写拼音</h3>
+          </li>
+          <li>
+            <label class="tjdd_label">证件类型：</label>
+            <u><strong>
+            <select>
+              <option>身份证</option>
+              <option>军官证</option>
+            </select>
+            </strong></u><b>*</b></li>
+          <li>
+            <label for="number" class="tjdd_label">证件号码：</label>
+            <input type="text" id="number" class="tjdd_text" onblur="checknumber()" value="<{$joiner[sfz_haoma]}>" />
+            <b>*</b>
+            <h3>请填写正确号码</h3>
+          </li>
+          <li>
+            <label for="phone" class="tjdd_label">联系电话：</label>
+            <input type="text" id="phone" class="tjdd_text" value="<{$joiner[tel]}>" />
+          </li>
+          <li>
+            <label for="birthday" class="tjdd_label">出生日期：</label>
+            <input type="text" id="birthday" class="tjdd_text" onblur="checkbirthday()" value="<{$joiner[chushengriqi]}>" />
+            <b>*</b>
+            <h3>格式：1983-01-01</h3>
+          </li>
+        </ul>
+        <ol>
+          <li><big>性&nbsp;&nbsp;&nbsp;&nbsp;别：</big>
+            <input type="radio" id="man" checked="checked" name="sex" onFocus="this.blur()" />
+            <label for="man" <php>if($joiner[sex] == '男'){</php> checked="checked" <php>}</php> >男</label>
+            <input type="radio" id="woman"  name="sex"onFocus="this.blur()" />
+            <label for="woman" <php>if($joiner[sex] == '女'){</php> checked="checked" <php>}</php> >女</label>
+          </li>
+          <li>
+            <label class="tjdd_label" style=" margin:0;">户 籍 地：</label>
+            <u><strong>
+            <select id="registration" onblur="checkhujidi()">
+            </select>
+            </strong></u><b>*</b>
+            <h3>请选择户籍地</h3>
+          </li>
+          <li><big>旅游证件信息：</big>
+            <input type="radio" id="yes" name="certificate" onFocus="this.blur()" onclick="hashuzhao(1)" checked="checked" />
+            <label for="yes">我有护照</label>
+            <input type="radio" id="no" name="certificate" onFocus="this.blur()" onclick="hashuzhao(2)" />
+            <label for="no">没有护照</label>
+          </li>
+        </ol>
+        </em> <i>
+        <ul>
+          <li>
+            <label class="tjdd_label">证件类型：</label>
+            <u class="tjdd_select_long"><strong>
+            <select onchange="checkhuzhao(1)">
+            <php>if($joiner[zhengjiantype]){</php>
+              <option value="因私护照（P）">因私护照（P）</option>
+              <option disabled="disabled">------------</option>
+            <php>}</php>
+              <option value="因私护照（P）">因私护照（P）</option>
+              <option value="因公护照（I）">因公护照（I）</option>
+              <option value="外交护照（D）">外交护照（D）</option>
+              <option value="港澳通行证">港澳通行证</option>
+              <option value="台湾通行证">台湾通行证</option>
+              <option value="签证身份书">签证身份书</option>
+              <option value="其他">其他</option>
+            </select>
+            </strong></u></li>
+          <li>
+            <label for="certificate_number" class="tjdd_label">证件号码：</label>
+            <input type="text" id="certificate_number" class="tjdd_text" onclick="checkhuzhao(1)" value="<{$joiner[zhengjanhaoma]}>" />
+          </li>
+          <li>
+            <label class="tjdd_label">签发日期：</label>
+            <u class="tjdd_select_short_f"><strong>
+            <select onclick="checkhuzhao(4)" id="issued_year" value="<{$joiner[qianfariqi]}>" />
+            </select>
+            </strong></u><u class="tjdd_select_short_s"><strong>
+            <select id="issued_month">
+            </select>
+            </strong></u><u class="tjdd_select_short_t"><strong>
+            <select id="issued_day">
+            </select>
+            </strong></u></li>
+          <li>
+            <label class="tjdd_label">有效期至：</label>
+            <u class="tjdd_select_short_f"><strong>
+            <select onclick="checkhuzhao(2)" id="validity_year" value="<{$joiner[youxiaoqi]}>" />
+            </select>
+            </strong></u><u class="tjdd_select_short_s"><strong>
+            <select id="validity_month">
+            </select>
+            </strong></u><u class="tjdd_select_short_t"><strong>
+            <select id="validity_day">
+            </select>
+            </strong></u></li>
+          <li>
+            <label class="tjdd_label">签发地：</label>
+            <u class="tjdd_select_long"><strong>
+            <input type="text" id="issued_address" onclick="checkhuzhao(3)" class="tjdd_text" value="<{$joiner[qianfadi]}>" />
+            </select>
+            </strong></u></li>
+        </ul>
+        <b></b> </i> </span> <a href="#" target="_blank" class="center_tjdd_txlxrzl_sub"></a> </div>
+    </div>
+  </div>
+</div>
+<div class="footer_box"><!--底部-->
+  <div class="footer"> <i><a href="#" target="_blank">关于古莲</a> | <a href="#" target="_blank">加入古莲</a> | <a href="#" target="_blank">合作品牌</a> | <a href="#" target="_blank">友情链接</a> | <a href="#" target="_blank">法律声明</a> | <a href="#" target="_blank">营业网点</a> | <a href="#" target="_blank">联系我们</a> | <a href="#" target="_blank">网站地图</a></i> <em>Copyright &copy; 2005-2011 gulianlvyou.com　All rights reserved   古莲旅游 版权所有<br />
+    旅行社业务经营许可证编号：辽B2-20120096   大连ICP证031062号</em> </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+//检验姓名
+function checkname(){ 
+var str =  $("#name").val();
+var re1 =  /^\s*[\u4e00-\u9fa5]{2,15}\s*$/; 
+if (!re1.exec(str)){ 
+	$("#name").siblings("h3").show();
+	$("#name").siblings("b").hide();
+	return false; 
+} 
+	$("#name").siblings("h3").hide();
+	$("#name").siblings("b").show();
+	return true; 
+}
+
+//检验拼音
+function checkpinyin(){ 
+var str =  $("#name_py").val();
+var re1 = /^\s*[a-zA-Z]{4,16}\s*$/; 
+if (!re1.exec(str)){ 
+	$("#name_py").siblings("h3").show();
+	$("#name_py").siblings("b").hide();
+	return false; 
+} 
+	$("#name_py").siblings("h3").hide();
+	$("#name_py").siblings("b").show();
+	return true; 
+}
+
+//检验证件号码
+function checknumber(){ 
+var str =  $("#number").val();
+var re1 = /^\s*\d{15}\s*$/;
+var re2 = /^\s*\d{16}[\dxX]{2}\s*$/;
+if (!re1.exec(str) && !re2.exec(str)){ 
+	$("#number").siblings("h3").show();
+	$("#number").siblings("b").hide();
+	return false; 
+} 
+	$("#number").siblings("h3").hide();
+	$("#number").siblings("b").show();
+	return true; 
+}
+
+//检验出生日期
+function checkbirthday(){ 
+var str =  $("#birthday").val();
+var re1 = /^\s*[0-9]{4}-[0-9]{2}-[0-9]{2}\s*$/;
+if (!re1.exec(str)){ 
+	$("#birthday").siblings("h3").show();
+	$("#birthday").siblings("b").hide();
+	return false; 
+} 
+	$("#birthday").siblings("h3").hide();
+	$("#birthday").siblings("b").show();
+	return true; 
+}
+
+//检验户籍地
+function checkhujidi(){
+	var str =  $("#registration").val();
+	if(str == "0"){
+		$("#registration").parent("strong").parent("u").siblings("h3").show();
+		$("#registration").parent("strong").parent("u").siblings("b").hide();
+	}else{
+		$("#registration").parent("strong").parent("u").siblings("h3").hide();
+		$("#registration").parent("strong").parent("u").siblings("b").show();
+	}
+}
+
+//是否有护照
+function hashuzhao(s){
+	if(s == 1){
+		$(".tjdd_txlxrzl span i").show();
+	}else{
+		$(".tjdd_txlxrzl span i").hide();
+	}
+}
+
+//选择护照
+function checkhuzhao(x){
+	var huzhao = $(".tjdd_select_long select").val();
+	if(huzhao != '0'){
+		var s = huzhao%3;
+		$(".tjdd_txlxrzl span i b").css("background-image","url(<{:SITE_PUBLIC}>images/tjdd_certificate_pic_"+s+x+".jpg)");
+	}else{
+		$(".tjdd_txlxrzl span i b").css("background-image","none");
+	}
+}
+
+$(document).ready(function(){
+	var myDate = new Date();
+	var thisYear = myDate.getFullYear();
+	for(var i=0;i<16;i++){
+		var validity_year = thisYear+i;
+		var issued_year = thisYear-i;
+		$("#validity_year").append("<option>"+validity_year+"</option>");
+		$("#issued_year").append("<option>"+issued_year+"</option>");
+	}
+	$("#registration,#issued_address").append('<option value="0">请选择</option><option value="10">安徽省</option><option value="761">澳门</option><option value="1">北京</option><option value="11">福建省</option><option value="27">甘肃省</option><option value="19">广东省</option><option value="20">广西</option><option value="23">贵州省</option><option value="21">海南省</option><option value="3">河北省</option><option value="14">河南省</option><option value="16">黑龙江省</option><option value="17">湖北省</option><option value="18">湖南省</option><option value="6">吉林</option><option value="8">江苏省</option><option value="12">江西省</option><option value="5">辽宁省</option><option value="15">内蒙古</option><option value="29">宁夏</option><option value="28">青海省</option><option value="13">山东省</option><option value="4">山西省</option><option value="26">陕西省</option><option value="7">上海市</option><option value="22">四川省</option><option value="762">台湾</option><option value="2">天津市</option><option value="25">西藏</option><option value="760">香港</option><option value="30">新疆</option><option value="24">云南省</option><option value="9">浙江省</option><option value="31">重庆市</option><option value="1266">其他</option>');
+	$("#issued_month,#validity_month").append('<option value="1">JAN&lt;1&gt;</option><option value="2">FEB&lt;2&gt;</option><option value="3">MAR&lt;3&gt;</option><option value="4">APR&lt;4&gt;</option><option value="5">MAY&lt;5&gt;</option><option value="6">JUN&lt;6&gt;</option><option value="7">JUL&lt;7&gt;</option><option value="8">AUG&lt;8&gt;</option><option value="9">SEP&lt;9&gt;</option><option value="10">OCT&lt;10&gt;</option><option value="11">NOV&lt;11&gt;</option><option value="12">DEC&lt;12&gt;</option>');
+	for(var i=1;i<32;i++){
+		$("#issued_day,#validity_day").append('<option value="i">'+i+'</option>');
+	}
+});
+</script>

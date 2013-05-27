@@ -20,6 +20,7 @@
 <div class="center_box"><!--主体-->
   <div class="center"> <include file="My:left" />
         <div class="center_right"><!--右半部-->
+        
         	<div class="center_cyykxx_yyykxx"><!--已有游客信息-->
             	<span>已有游客信息</span>
                 <table width="748" border="0" cellspacing="0" cellpadding="0" class="center_youke">
@@ -32,17 +33,20 @@
                       <th width="210" scope="col">证件号</th>
                       <th width="96" scope="col">操作</th>
                     </tr>
-                    <tr align="center">
-                      <td>青旅的</td>
-                      <td>QING LVDE</td>
-                      <td>男</td>
-                      <td>1985-11-11</td>
-                      <td>身份证</td>
-                      <td>132111111111111111</td>
-                      <td><a href="#" target="_blank">修改</a><br /><a href="#" target="_blank">删除</a></td>
-                    </tr>
+                    <php>foreach($joinerall as $v){</php>
+                        <tr align="center">
+                          <td><{$v[name]}></td>
+                          <td><{$v[pinyin]}></td>
+                          <td><{$v[sex]}></td>
+                          <td><{$v[chushengriqi]}></td>
+                          <td>身份证</td>
+                          <td><{$v[sfz_haoma]}></td>
+                          <td><a href="<{:MY_INDEX}>My/joiner/id/<{$v[id]}>">修改</a><br /><a href="#">删除</a></td>
+                        </tr>
+                    <php>}</php>
                 </table>
             </div>
+            
             <div class="tjdd_txlxrzl"><!--增加游客-->
             	<p>+增加游客</p>
                 <span>
