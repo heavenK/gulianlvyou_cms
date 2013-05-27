@@ -19,6 +19,7 @@ if($cfg_ml->IsLogin()){
             $ucsynlogin = uc_user_synlogout();
         }
         #/aip}}
+		my_redirect(ROOT_URL);
         exit();
     }
 	
