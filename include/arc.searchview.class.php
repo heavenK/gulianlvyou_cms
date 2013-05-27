@@ -52,8 +52,8 @@ class SearchView
     var $AddSql;
     var $RsFields;
     var $Sphinx;
-	var $xianlu;
-	var $chufadi;
+	var $xianlu;//add
+	var $mudidi;//add
 
     /**
      *  php5构造函数
@@ -71,7 +71,7 @@ class SearchView
      * @return    string
      */
     function __construct($typeid,$keyword,$orderby,$achanneltype="all",
-    $searchtype='',$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$xianlu,$chufadi)
+    $searchtype='',$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$xianlu,$mudidi)//add $xianlu,$mudidi
     {
         global $cfg_search_max,$cfg_search_maxrc,$cfg_search_time,$cfg_sphinx_article;
         if(empty($upagesize))
@@ -98,8 +98,10 @@ class SearchView
         $this->dtp2 = new DedeTagParse();
         $this->dtp2->SetNameSpace("field","[","]");
         $this->TypeLink = new TypeLink($typeid);
+		//add by ks
 		$this->xianlu = $xianlu;
-		$this->chufadi = $chufadi;
+		$this->mudidi = $mudidi;
+		//end add
         // 通过分词获取关键词
         $this->Keywords = $this->GetKeywords($keyword);
 		
@@ -107,15 +109,12 @@ class SearchView
 		function ips($ip){ 
 			$str = file_get_contents("http://int.dpool.sina.com.cn/iplookup/iplookup.php?ip={$ip}"); 
 			$str = iconv("GBK", "UTF-8", $str);
-			//preg_match("/<ul class=\"ul1\">(.*)<\/ul>/",$str,$m); 
-			//$pstr=str_replace("","",$m[1]); 
 			$arr = explode("	",$str); 
-			//array_shift($arr);
-			//$address = iconv("GBK", "UTF-8", $arr[0]);
 			return $arr;
 		}
 		$user_address = ips("218.24.144.80");
-		//var_dump($user_address);
+		$this->chufadi = $user_address[5];
+		//var_dump($this->chufadi);
 		//end add
         //设置一些全局参数的值
 		//edit by ks
@@ -176,9 +175,9 @@ class SearchView
 
     //php4构造函数
     function SearchView($typeid,$keyword,$orderby,$achanneltype="all",
-    $searchtype="",$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$xianlu,$chufadi)
+    $searchtype="",$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$xianlu,$mudidi)//add $xianlu,$mudidi
     {
-        $this->__construct($typeid,$keyword,$orderby,$achanneltype,$searchtype,$starttime,$upagesize,$kwtype,$mid,$xianlu,$chufadi);
+        $this->__construct($typeid,$keyword,$orderby,$achanneltype,$searchtype,$starttime,$upagesize,$kwtype,$mid,$xianlu,$mudidi);//add $xianlu,$mudidi
     }
 
     //关闭相关资源
@@ -399,6 +398,10 @@ class SearchView
         {
             $this->sphinx->SetFilterRange('senddate', $this->StartTime, time(), false);
         }
+		/*if($this->TypeID > 0)
+        {
+            $this->sphinx->SetFilter('typeid', GetSonIds($this->TypeID));
+        }*/
         if($this->xianlu > 0)
         {
             $this->sphinx->SetFilter('typeid', GetSonIds($this->xianlu));
@@ -444,6 +447,10 @@ class SearchView
         {
             $ksqls[] = " arc.senddate>'".$this->StartTime."' ";
         }
+		/*if($this->TypeID > 0)
+        {
+            $ksqls[] = " typeid IN (".GetSonIds($this->TypeID).") ";
+        }*/
         if($this->xianlu > 0)
         {
             $ksqls[] = " typeid IN (".GetSonIds($this->xianlu).") ";
