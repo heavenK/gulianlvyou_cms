@@ -54,7 +54,7 @@ function do_login() {
             <em><label for="password">密码</label><input type="password" id="txtPassword" name="pwd"/></em>
             <b><a href="javascript:do_login()"></a></b>
             <i><input type="checkbox" id="remLoginStatus" onFocus="this.blur()" /><label for="remLoginStatus">&nbsp;保存登录信息 两周内免登陆</label></i>
-            <u><a href="#">找回密码</a> | <a href="<{:B2CSERVICE_URL}>">免费注册</a></u>
+            <u><a href="resetpassword.php">找回密码</a> | <a href="<?php echo B2CSERVICE_URL ?>apis/action_index_do.php?fmdo=user&dopost=regnew">免费注册</a></u>
         </span>
     </div>
     
