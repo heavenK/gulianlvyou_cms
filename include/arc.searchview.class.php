@@ -13,6 +13,12 @@ require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/splitword.class.php");
 require_once(DEDEINC."/taglib/hotwords.lib.php");
 require_once(DEDEINC."/taglib/channel.lib.php");
+require_once(DEDEINC."/taglib/arclist.lib.php");
+require_once(DEDEINC."/taglib/channelartlist.lib.php");
+require_once(DEDEINC."/taglib/myad.lib.php");
+require_once(DEDEINC."/taglib/php.lib.php");
+require_once(DEDEINC."/taglib/sql.lib.php");
+require_once(DEDEINC."/taglib/channel.lib.php");
 
 @set_time_limit(0);
 @ini_set('memory_limit', '512M');
@@ -54,6 +60,7 @@ class SearchView
     var $Sphinx;
 	var $xianlu;//add
 	var $mudidi;//add
+	var $cty_num;//add
 
     /**
      *  php5构造函数
@@ -71,7 +78,7 @@ class SearchView
      * @return    string
      */
     function __construct($typeid,$keyword,$orderby,$achanneltype="all",
-    $searchtype='',$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$xianlu,$mudidi)//add $xianlu,$mudidi
+    $searchtype='',$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$xianlu,$mudidi,$cty_num)//add $xianlu,$mudidi
     {
         global $cfg_search_max,$cfg_search_maxrc,$cfg_search_time,$cfg_sphinx_article;
         if(empty($upagesize))
@@ -112,8 +119,10 @@ class SearchView
 			$arr = explode("	",$str); 
 			return $arr;
 		}
-		$user_address = ips("218.24.144.80");
-		$this->chufadi = $user_address[5];
+		$user_address = ips(GetIP);
+		$this->chufachengshi = $user_address[5];
+		//var_dump($this->chufachengshi);
+		//var_dump($ks_chufachengshi);
 		//var_dump($this->chufadi);
 		//end add
         //设置一些全局参数的值
@@ -463,12 +472,14 @@ class SearchView
         {
             $ksqls[] = " arc.mid = '".$this->mid."'";
         }
-		/*if(strstr($user_address, $this->chufadi))
+		if($this->chufachengshi && $this->dsql->GetOne("SELECT * FROM `cty_addon7` WHERE chufachengshi='".$this->chufachengshi."'"))
         {
-            $ksqls[] = " act.chufadi = '".$this->chufadi."'";
-        }*/
+            $ksqls[] = " act.chufachengshi = '".$this->chufachengshi."'";
+        }else{
+			$ksqls[] = " act.chufachengshi = '大连'";
+		}
         $ksqls[] = " arc.arcrank > -1 ";
-        $this->AddSql = ($ksql=='' ? join(' AND ',$ksqls) : join(' AND ',$ksqls)." AND ($ksql)" );
+        $this->AddSql = ($ksql=='' ? join(' AND ',$ksqls) : join(' AND ',$ksqls)." AND (".$ksql.")" );
         if($this->ChannelType < 0 || $this->ChannelTypeid< 0){
             if($this->ChannelType=="0") $id=$this->ChannelTypeid;
             else $id=$this->ChannelType;
@@ -573,6 +584,11 @@ class SearchView
                 }
                 $this->dtp->Assign($tagid,$this->GetPageListDMlong($list_len,$listitem));
             }
+			else if($tagname=="ks_ziduan")
+            {
+                $ctag->GetAtt("listitem")=="" ? $listitem="chufachengshi" : $listitem=$ctag->GetAtt("listitem");
+                $this->dtp->Assign($tagid,$this->ks_ziduan($listitem));
+            }
 			//end add
             else if($tagname=="likewords")
             {
@@ -582,6 +598,26 @@ class SearchView
             {
                 $this->dtp->Assign($tagid,lib_hotwords($ctag,$this));
             }
+			else if($tagname=="arclist")
+			{
+			$this->dtp->Assign($tagid,lib_arclist($ctag,$this));
+			}
+			else if($tagname=="channelartlist")
+			{
+			$this->dtp->Assign($tagid,lib_channelartlist($ctag,$this));
+			}
+			else if($tagname=="myad")
+			{
+			$this->dtp->Assign($tagid,lib_myad($ctag,$this));
+			} 
+			else if($tagname=="php")
+			{
+			$this->dtp->Assign($tagid,lib_php($ctag,$this));
+			}
+			else if($tagname=="sql")
+			{
+			$this->dtp->Assign($tagid,lib_sql($ctag,$this));
+			}
             else if($tagname=="field")
             {
                 //类别的指定字段
@@ -758,6 +794,7 @@ class SearchView
 			//end edit
         }
         
+		$this->cty_num = $this->dsql->ExecuteNoneQuery2($query);
         $this->dsql->SetQuery($query);
         $this->dsql->Execute("al");
 		//var_dump($this->AddSql);
@@ -1003,7 +1040,12 @@ class SearchView
             return "<li><span class=\"pageinfo\">共 0 页/".$this->TotalResult." 条记录</span></li>\r\n";
         }*/
         //$maininfo = "<li><span class=\"pageinfo\">共 <strong>{$totalpage}</strong>页<strong>".$this->TotalResult."</strong>条</span></li>\r\n";
-		$maininfo = "<b>".$this->PageNo."/{$totalpage}</b>";
+		if($totalpage == 0){
+			$maininfo = "<b>".$this->PageNo."/1</b>";
+		}else{
+			$maininfo = "<b>".$this->PageNo."/{$totalpage}</b>";
+		}
+		
         
         $purl = $this->GetCurUrl();
         // 如果开启为静态,则对规则进行替换
@@ -1104,6 +1146,24 @@ class SearchView
         
         return $plist;
     }
+	
+	function ks_ziduan($listitem="chufachengshi"){
+		global $cfg_rewrite;
+		if($this->chufachengshi){
+			$chufachengshi = $this->chufachengshi;
+		}else{
+			$chufachengshi = "大连";
+		}
+		$plist = '';
+		if(preg_match('/chufachengshi/i', $listitem)) $plist = $chufachengshi;
+		//$chufachengshi = $this->dsql->GetOne("SELECT * FROM `cty_addon7` WHERE chufachengshi='".$this->chufachengshi."'");
+		return $plist;
+	}
+	
+	function ks_return(){
+		$this->GetArcList();
+		$this->cty_num = $this->cty_num;
+	}
 	//end add
 
     /**

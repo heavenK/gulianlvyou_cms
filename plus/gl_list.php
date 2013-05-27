@@ -28,9 +28,7 @@ if(!isset($keyword)){
     if(!isset($q)) $q = '';
     $keyword=$q;
 }
-
 $oldkeyword = $keyword = FilterSearch(stripslashes($keyword));
-
 
 //查找栏目信息
 if(empty($typeid))
@@ -110,6 +108,7 @@ $t1 = ExecTime();
 
 $sp = new SearchView($typeid,$keyword,$orderby,$channeltype,$searchtype,$starttime,$pagesize,$kwtype,$mid,$xianlu,$mudidi);
 $keyword = $oldkeyword;
+$cty_num = $sp->ks_return();
 $sp->Display();
 
 
