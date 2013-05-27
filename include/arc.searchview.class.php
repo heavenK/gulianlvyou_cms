@@ -794,7 +794,7 @@ class SearchView
 			//end edit
         }
         
-		$this->cty_num = $this->dsql->ExecuteNoneQuery2($query);
+		$cty_num = $this->dsql->ExecuteNoneQuery2($query);
         $this->dsql->SetQuery($query);
         $this->dsql->Execute("al");
 		//var_dump($this->AddSql);
@@ -1161,8 +1161,17 @@ class SearchView
 	}
 	
 	function ks_return(){
-		$this->GetArcList();
-		$this->cty_num = $this->cty_num;
+		$cty_query = "SELECT arc.*
+            FROM `{$this->AddTable}` arc
+            WHERE arc.typeid IN (38,40,42,44) AND arc.channel='7'";
+		$cty_num = $this->dsql->ExecuteNoneQuery2($cty_query);
+		$this->cty_num = $cty_num;
+		
+		$zyx_query = "SELECT arc.*
+            FROM `{$this->AddTable}` arc
+            WHERE arc.typeid IN (18) AND arc.channel='7'";
+		$zyx_num = $this->dsql->ExecuteNoneQuery2($zyx_query);
+		$this->zyx_num = $zyx_num;
 	}
 	//end add
 
