@@ -2,7 +2,8 @@
 /* CSS Document */
 
 /*通用背景*/
-.center_dingdan_btn	{ background:url(../images/all_bg.png) no-repeat;}
+.center_dingdan_btn,
+.center_submit	{ background:url(../images/all_bg.png) no-repeat;}
 
 /*个人中心头部*/
 .center_header_box	{ width:100%; background:url(../images/center_top_bg.png) repeat-x; float:left;}
@@ -52,3 +53,6 @@
 .center_dingdan td h1 a:hover		{ color:#ff6633; text-decoration:underline;}
 .center_dingdan_btn					{ width:83px; height:28px; background-position:0 -860px; display:inline-block; overflow:hidden;}
 .center_dingdan_btn:hover			{ background-position:-83px -860px;}
+
+.center_submit								{ width:74px; height:27px; background-position:-166px -860px; overflow:hidden; float:left;}
+.center_submit:hover						{ background-position:-148px -888px;}
