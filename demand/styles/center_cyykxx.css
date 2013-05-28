@@ -60,5 +60,5 @@
 .tjdd_select_short_t strong					{ *width:45px; *background:#fff; *overflow:hidden; *float:left;}
 .tjdd_select_short_t select					{ width:47px; height:27px; padding:3px 4px 3px 0; *margin:-1px; display:inline; background:#FFF; border:1px solid #b3c3dd; line-height:22px; float:left;}
 .tjdd_txlxrzl span i b						{ width:255px; height:178px; margin:22px 25px 0 0; display:inline; background:url(../images/tjdd_certificate_pic_01.jpg) no-repeat; overflow:hidden; float:right;}
-.center_tjdd_txlxrzl_sub					{ width:74px; height:27px; margin:20px 0 0 12px; display:inline; background-position:0 -888px; overflow:hidden; float:left;}
-.center_tjdd_txlxrzl_sub:hover				{ background-position:-74px -888px;}
+.center_tjdd_txlxrzl_sub					{ width:74px; height:27px; margin:20px 0 0 12px; display:inline; background-position:-166px -860px; overflow:hidden; float:left;}
+.center_tjdd_txlxrzl_sub:hover				{ background-position:-148px -888px;}
