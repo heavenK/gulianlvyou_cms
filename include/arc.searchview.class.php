@@ -60,7 +60,7 @@ class SearchView
     var $Sphinx;
 	var $xianlu;//add
 	var $mudidi;//add
-	var $cty_num;//add
+	var $chufadi;//add
 
     /**
      *  php5构造函数
@@ -78,7 +78,7 @@ class SearchView
      * @return    string
      */
     function __construct($typeid,$keyword,$orderby,$achanneltype="all",
-    $searchtype='',$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$xianlu,$mudidi,$cty_num)//add $xianlu,$mudidi
+    $searchtype='',$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$xianlu,$mudidi)//add $xianlu,$mudidi
     {
         global $cfg_search_max,$cfg_search_maxrc,$cfg_search_time,$cfg_sphinx_article;
         if(empty($upagesize))
@@ -119,10 +119,31 @@ class SearchView
 			$arr = explode("	",$str); 
 			return $arr;
 		}
-		$user_address = ips(GetIP);
-		$this->chufachengshi = $user_address[5];
-		//var_dump($this->chufachengshi);
-		//var_dump($ks_chufachengshi);
+		$user_address = ips("218.24.144.80");
+		$this->chufadi = $user_address[5];
+		if($this->chufadi){
+			$mudidi_chufadi = $this->chufadi;
+		}else{
+			$mudidi_chufadi = "大连";
+		}
+		$mudidi_text = "";
+		$mudidi_query = "SELECT title,description FROM `#@__archives` WHERE typeid=54";
+        $this->dsql->SetQuery($mudidi_query);
+        $this->dsql->Execute();
+		while($mudidi_row = $this->dsql->getarray()){
+			if(strstr($mudidi_row['description'],$mudidi_chufadi)){
+				$mudidi_query = "SELECT arc.*
+					FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
+					WHERE arc.typeid IN (17,18) AND arc.channel='7' AND act.chufachengshi='".$chufachengshi."' AND act.chufachengshi='".$this->mudidi."'";
+				$mudidi_num = $this->dsql->ExecuteNoneQuery2($zyx_query);
+				if($mudidi_row['title'] == $mudidi){
+					$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&xianlu='.$xianlu.'&mudidi='.$mudidi_row['title'].'" class="list_term_btn">'.$mudidi_row['title'].'（'.$mudidi_num.'）</a>';
+				}else{
+					$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&xianlu='.$xianlu.'&mudidi='.$mudidi_row['title'].'">'.$mudidi_row['title'].'（'.$mudidi_num.'）</a>';
+				}
+			}
+		}	
+		//var_dump($this->mudidi_text);
 		//var_dump($this->chufadi);
 		//end add
         //设置一些全局参数的值
@@ -184,9 +205,9 @@ class SearchView
 
     //php4构造函数
     function SearchView($typeid,$keyword,$orderby,$achanneltype="all",
-    $searchtype="",$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$xianlu,$mudidi)//add $xianlu,$mudidi
+    $searchtype="",$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$xianlu)//add $xianlu,$mudidi
     {
-        $this->__construct($typeid,$keyword,$orderby,$achanneltype,$searchtype,$starttime,$upagesize,$kwtype,$mid,$xianlu,$mudidi);//add $xianlu,$mudidi
+        $this->__construct($typeid,$keyword,$orderby,$achanneltype,$searchtype,$starttime,$upagesize,$kwtype,$mid,$xianlu);//add $xianlu,$mudidi
     }
 
     //关闭相关资源
@@ -472,12 +493,16 @@ class SearchView
         {
             $ksqls[] = " arc.mid = '".$this->mid."'";
         }
-		if($this->chufachengshi && $this->dsql->GetOne("SELECT * FROM `cty_addon7` WHERE chufachengshi='".$this->chufachengshi."'"))
+		if($this->chufadi && $this->dsql->GetOne("SELECT * FROM `cty_addon7` WHERE chufachengshi='".$this->chufadi."'"))
         {
-            $ksqls[] = " act.chufachengshi = '".$this->chufachengshi."'";
+            $ksqls[] = " act.chufachengshi = '".$this->chufadi."'";
         }else{
 			$ksqls[] = " act.chufachengshi = '大连'";
 		}
+		if($this->mudidi)
+        {
+            $ksqls[] = " act.mudidi = '".$this->mudidi."'";
+        }
         $ksqls[] = " arc.arcrank > -1 ";
         $this->AddSql = ($ksql=='' ? join(' AND ',$ksqls) : join(' AND ',$ksqls)." AND (".$ksql.")" );
         if($this->ChannelType < 0 || $this->ChannelTypeid< 0){
@@ -797,7 +822,7 @@ class SearchView
 		$cty_num = $this->dsql->ExecuteNoneQuery2($query);
         $this->dsql->SetQuery($query);
         $this->dsql->Execute("al");
-		//var_dump($this->AddSql);
+		var_dump($cty_num);
         $artlist = "";
         if($col>1)
         {
@@ -1070,9 +1095,9 @@ class SearchView
         $geturl .= "&kwtype=".$this->KType;
         $hidenform .= "<input type='hidden' name='kwtype' value='".$this->KType."'>\r\n";
         //$hidenform .= "<input type='hidden' name='pagesize' value='".$this->PageSize."'>\r\n";
-        $geturl .= "&xianlu=".$this->xianlu;
+        $geturl .= "&xianlu=".$this->xianlu."&mudidi=".$this->mudidi;
         $hidenform .= "<input type='hidden' name='xianlu' value='".$this->xianlu."'>\r\n";
-        //$hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."'>\r\n";
+        $hidenform .= "<input type='hidden' name='mudidi' value='".$this->mudidi."'>\r\n";
         $purl .= "?".$geturl;
 		$optionlist = '';
 
@@ -1149,29 +1174,39 @@ class SearchView
 	
 	function ks_ziduan($listitem="chufachengshi"){
 		global $cfg_rewrite;
-		if($this->chufachengshi){
-			$chufachengshi = $this->chufachengshi;
+		if($this->chufadi){
+			$chufachengshi = $this->chufadi;
 		}else{
 			$chufachengshi = "大连";
 		}
 		$plist = '';
 		if(preg_match('/chufachengshi/i', $listitem)) $plist = $chufachengshi;
-		//$chufachengshi = $this->dsql->GetOne("SELECT * FROM `cty_addon7` WHERE chufachengshi='".$this->chufachengshi."'");
+		//$chufachengshi = $this->dsql->GetOne("SELECT * FROM `cty_addon7` WHERE chufachengshi='".$this->chufadi."'");
 		return $plist;
 	}
 	
 	function ks_return(){
+		if($this->chufadi){
+			$chufachengshi = $this->chufadi;
+		}else{
+			$chufachengshi = "大连";
+		}
+		/*$query = "SELECT arc.*,act.*,ack.typedir,ack.typename,ack.isdefault,ack.defaultname,ack.namerule,
+            ack.namerule2,ack.ispart,ack.moresite,ack.siteurl,ack.sitepath
+            FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid LEFT JOIN `#@__arctype` ack ON arc.typeid=ack.id
+            WHERE arc.{$this->AddSql} $ordersql LIMIT $limitstart,$row";*/
 		$cty_query = "SELECT arc.*
-            FROM `{$this->AddTable}` arc
-            WHERE arc.typeid IN (38,40,42,44) AND arc.channel='7'";
+            FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
+            WHERE arc.typeid IN (38,40,42,44) AND arc.channel='7' AND act.chufachengshi='".$chufachengshi."'";
 		$cty_num = $this->dsql->ExecuteNoneQuery2($cty_query);
 		$this->cty_num = $cty_num;
 		
 		$zyx_query = "SELECT arc.*
-            FROM `{$this->AddTable}` arc
-            WHERE arc.typeid IN (18) AND arc.channel='7'";
+            FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
+            WHERE arc.typeid IN (18) AND arc.channel='7' AND act.chufachengshi='".$chufachengshi."'";
 		$zyx_num = $this->dsql->ExecuteNoneQuery2($zyx_query);
 		$this->zyx_num = $zyx_num;
+		
 	}
 	//end add
 
