@@ -69,9 +69,25 @@ class MyAction extends CommonMyAction{
 		$id = $_REQUEST['id'];
 		$Joiner = D("Joiner");
 		$joiner = $Joiner->where("`id` = '$id'")->find();
-		$joiner = unserialize($joiner['datatext']);
-		$this->assign("joiner",$joiner);
+		$d = $joiner['datatext'];
+//		$d = str_replace('﻿','',$d);//未知原因数据序列化后多3个不可见字符问题，序列化失败解决办法。
+		$d = unserialize($d);
+//		dump($d);
+		$this->assign("joiner",$d);
 		$this->display();
+	}
+	
+	
+	function dopostjoiner(){
+		$data = $_REQUEST;
+		$data['datatext'] = serialize($data);
+		$Joiner = D("Joiner");
+		if(false === $Joiner->mycreate($data)){
+			echo 'error';
+			exit;
+		}
+		$redirect_rul = MY_INDEX.'My/joinerlist';
+		redirect($redirect_rul);
 	}
 	
 	
