@@ -103,12 +103,11 @@
               <option value="港澳通行证">港澳通行证</option>
               <option value="台湾通行证">台湾通行证</option>
               <option value="签证身份书">签证身份书</option>
-              <option value="其他">其他</option>
             </select>
             </strong></u></li>
           <li>
             <label for="certificate_number" class="tjdd_label">证件号码：</label>
-            <input type="text" id="certificate_number" class="tjdd_text" onclick="checkhuzhao(1)" name="zhengjianhaoma" value="<{$joiner[zhengjanhaoma]}>" />
+            <input type="text" id="certificate_number" class="tjdd_text" onclick="checkhuzhao(1)" name="zhengjianhaoma" value="<{$joiner[zhengjianhaoma]}>" />
           </li>
           <li>
             <label class="tjdd_label">签发日期：</label>
@@ -144,7 +143,6 @@
         <b></b> </i> </span> <a href="javascript:dosubmit()" class="center_submit"></a> </div>
         
         </form>
-        
     </div>
   </div>
 </div>
@@ -154,6 +152,7 @@
 </div>
 </body>
 </html>
+
 <script type="text/javascript">
 //检验姓名
 function checkname(){ 
@@ -215,12 +214,14 @@ if (!re1.exec(str)){
 //检验户籍地
 function checkhujidi(){
 	var str =  $("#registration").val();
-	if(str == "0"){
+	if(str == ""){
 		$("#registration").parent("strong").parent("u").siblings("h3").show();
 		$("#registration").parent("strong").parent("u").siblings("b").hide();
+		return false;
 	}else{
 		$("#registration").parent("strong").parent("u").siblings("h3").hide();
 		$("#registration").parent("strong").parent("u").siblings("b").show();
+		return true; 
 	}
 }
 
@@ -258,7 +259,7 @@ $(document).ready(function(){
 		$("#validity_year").append("<option>"+validity_year+"</option>");
 		$("#issued_year").append("<option>"+issued_year+"</option>");
 	}
-	$("#registration,#issued_address").append('<option value="0">请选择</option><option value="10">安徽省</option><option value="761">澳门</option><option value="1">北京</option><option value="11">福建省</option><option value="27">甘肃省</option><option value="19">广东省</option><option value="20">广西</option><option value="23">贵州省</option><option value="21">海南省</option><option value="3">河北省</option><option value="14">河南省</option><option value="16">黑龙江省</option><option value="17">湖北省</option><option value="18">湖南省</option><option value="6">吉林</option><option value="8">江苏省</option><option value="12">江西省</option><option value="5">辽宁省</option><option value="15">内蒙古</option><option value="29">宁夏</option><option value="28">青海省</option><option value="13">山东省</option><option value="4">山西省</option><option value="26">陕西省</option><option value="7">上海市</option><option value="22">四川省</option><option value="762">台湾</option><option value="2">天津市</option><option value="25">西藏</option><option value="760">香港</option><option value="30">新疆</option><option value="24">云南省</option><option value="9">浙江省</option><option value="31">重庆市</option><option value="1266">其他</option>');
+	$("#registration,#issued_address").append('<option value="">请选择</option><option value="安徽省">安徽省</option><option value="澳门">澳门</option><option value="北京">北京</option><option value="福建省">福建省</option><option value="甘肃省">甘肃省</option><option value="广东省">广东省</option><option value="广西">广西</option><option value="贵州省">贵州省</option><option value="海南省">海南省</option><option value="河北省">河北省</option><option value="河南省">河南省</option><option value="黑龙江省">黑龙江省</option><option value="湖北省">湖北省</option><option value="湖南省">湖南省</option><option value="吉林">吉林</option><option value="江苏省">江苏省</option><option value="江西省">江西省</option><option value="辽宁省">辽宁省</option><option value="内蒙古">内蒙古</option><option value="宁夏">宁夏</option><option value="青海省">青海省</option><option value="山东省">山东省</option><option value="山西省">山西省</option><option value="陕西省">陕西省</option><option value="上海市">上海市</option><option value="四川省">四川省</option><option value="台湾">台湾</option><option value="天津市">天津市</option><option value="西藏">西藏</option><option value="香港">香港</option><option value="新疆">新疆</option><option value="云南省">云南省</option><option value="浙江省">浙江省</option><option value="重庆市">重庆市</option><option value="其他">其他</option>');
 	$("#issued_month,#validity_month").append('<option value="1">JAN&lt;1&gt;</option><option value="2">FEB&lt;2&gt;</option><option value="3">MAR&lt;3&gt;</option><option value="4">APR&lt;4&gt;</option><option value="5">MAY&lt;5&gt;</option><option value="6">JUN&lt;6&gt;</option><option value="7">JUL&lt;7&gt;</option><option value="8">AUG&lt;8&gt;</option><option value="9">SEP&lt;9&gt;</option><option value="10">OCT&lt;10&gt;</option><option value="11">NOV&lt;11&gt;</option><option value="12">DEC&lt;12&gt;</option>');
 	for(var i=1;i<32;i++){
 		$("#issued_day,#validity_day").append('<option value="i">'+i+'</option>');
@@ -266,6 +267,7 @@ $(document).ready(function(){
 });
 
 function dosubmit(){
+	if(checkname() && checkpinyin() && checknumber() && checkbirthday() && checkhujidi() )
 	$("#form1").submit();
 }
 

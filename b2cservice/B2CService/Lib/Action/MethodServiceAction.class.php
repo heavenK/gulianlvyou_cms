@@ -85,12 +85,14 @@ class MethodServiceAction extends CommonAction{
 		}
     }
 	
+	
 	//获得订单
     public function _getdingdan($orderID) {
 		$Dingdan = D("Dingdan");
 		$dingdan = $Dingdan->where("`orderID` = '$orderID'")->find();
 		return $dingdan;
     }
+	
 	
 	//团员生成
     public function _createDingdanJoiner($DingdanJoiner,$_REQUEST,$id) {
@@ -113,6 +115,12 @@ class MethodServiceAction extends CommonAction{
 		$cus['lyzj_qianfariqi'] = $_REQUEST['lyzj_qianfariqi'.$id];
 		$cus['lyzj_youxiaoqi'] = $_REQUEST['lyzj_youxiaoqi'.$id];
 		$cus['lyzj_qianfadi'] = $_REQUEST['lyzj_qianfadi'.$id];
+		
+		if(!isChineseName($cus['name']))
+			ShowMsg("请使用中文");
+		if(!isIdCard($cus['zhengjianhaoma']))
+			ShowMsg("身份证号错误");
+		
 		if(false !== $DingdanJoiner->mycreate($cus))
 			return true;
 		else{

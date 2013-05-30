@@ -58,6 +58,7 @@ class MyAction extends CommonMyAction{
 		$this->assign("mark",'常用游客信息');
 		$Joiner = D("Joiner");
 		$u = A("DEDEInfo")->ajax_loginsta('arrary');
+		$this->assign("user",$u);
 		$joinerall = $Joiner->where("`mid` = '$u[mid]'")->findall();
 		$this->assign("joinerall",$joinerall);
 		$this->display();
@@ -72,18 +73,29 @@ class MyAction extends CommonMyAction{
 		$d = $joiner['datatext'];
 //		$d = str_replace('﻿','',$d);//未知原因数据序列化后多3个不可见字符问题，序列化失败解决办法。
 		$d = unserialize($d);
-//		dump($d);
 		$this->assign("joiner",$d);
 		$this->display();
 	}
 	
 	
 	function dopostjoiner(){
+		if(!isChineseName($_REQUEST['name']))
+			ShowMsg("请使用中文");
+		if(!isIdCard($_REQUEST['sfz_haoma']))
+			ShowMsg("身份证号错误");
 		$data = $_REQUEST;
+		if($data['zhengjiantype'] == '港澳通行证' || $data['zhengjiantype'] == '台湾通行证'){
+			$data['txz_type'] = $data['zhengjiantype'];
+			$data['txz_haoma'] = $data['zhengjianhaoma'];
+		}
+		else{
+			$data['hz_type'] = $data['zhengjiantype'];
+			$data['hz_haoma'] = $data['zhengjianhaoma'];
+		}
 		$data['datatext'] = serialize($data);
 		$Joiner = D("Joiner");
 		if(false === $Joiner->mycreate($data)){
-			echo 'error';
+			ShowMsg("发生错误");
 			exit;
 		}
 		$redirect_rul = MY_INDEX.'My/joinerlist';
@@ -91,6 +103,17 @@ class MyAction extends CommonMyAction{
 	}
 	
 	
+	function joinerdelete(){
+		$id = $_REQUEST['id'];
+		$Joiner = D("Joiner");
+		if(false === $Joiner->where("`id` = '$id'")->delete()){
+			ShowMsg("发生错误");
+			exit;
+		}
+		$redirect_rul = MY_INDEX.'My/joinerlist';
+		redirect($redirect_rul);
+		
+	}
 	
 	
 	
