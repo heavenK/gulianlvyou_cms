@@ -80,7 +80,7 @@ $(document).ready(function(){
           <dt><i>*</i>为必填项</dt>
         </dl>
         <PHP>if($joinerall){</PHP>
-        <PHP>$c=0;foreach($joinerall as $v){$i = $v['id'];$c++;</PHP>
+        <PHP>$i=0;foreach($joinerall as $v){$i++;</PHP>
                     <input type="hidden" name="id[]" value="<{$v['id']}>"/>
                     <input type="hidden" name="manorchild<{$i}>" value="<{$v['manorchild']}>"/>
                     <span>
