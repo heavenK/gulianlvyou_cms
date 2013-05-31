@@ -6,7 +6,7 @@
 <link href="<{:SITE_PUBLIC}>styles/reset.css" type="text/css" rel="stylesheet" />
 <link href="<{:SITE_PUBLIC}>styles/center_reset.css" type="text/css" rel="stylesheet" />
 <link href="<{:SITE_PUBLIC}>styles/center_cyykxx.css" type="text/css" rel="stylesheet" />
-<script src="js/jquery-1.4a2.min.js" type="text/javascript"></script>
+<script src="<{:SITE_PUBLIC}>js/jquery-1.4a2.min.js" type="text/javascript"></script>
 </head>
 
 <body style=" background:#FFF url(<{:SITE_PUBLIC}>images/center_bg.jpg) no-repeat center top;">
@@ -20,19 +20,23 @@
   <div class="center"> <include file="My:left" />
     <div class="center_right"><!--右半部-->
       
+      
+      <form name="form1" id="form1" method="post" action="<{:MY_INDEX}>My/dopostjoiner">
+      <input type="hidden" name="id" value="<{$joiner[id]}>" />
+      
       <div class="tjdd_txlxrzl"><!--增加游客-->
         <p>常用游客管理</p>
         <span> <em>
         <ul>
           <li>
             <label for="name" class="tjdd_label">姓&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
-            <input type="text" id="name" class="tjdd_text" onblur="checkname()" value="<{$joiner[name]}>" />
+            <input type="text" id="name" class="tjdd_text" onblur="checkname()" name="name" value="<{$joiner[name]}>" />
             <b>*</b>
             <h3>请填写真实姓名</h3>
           </li>
           <li>
             <label for="name_py" class="tjdd_label">拼&nbsp;&nbsp;&nbsp;&nbsp;音：</label>
-            <input type="text" id="name_py" class="tjdd_text" onblur="checkpinyin()" value="<{$joiner[pinyin]}>" />
+            <input type="text" id="name_py" class="tjdd_text" onblur="checkpinyin()" name="pinyin" value="<{$joiner[pinyin]}>" />
             <b>*</b>
             <h3>请正确填写拼音</h3>
           </li>
@@ -46,26 +50,26 @@
             </strong></u><b>*</b></li>
           <li>
             <label for="number" class="tjdd_label">证件号码：</label>
-            <input type="text" id="number" class="tjdd_text" onblur="checknumber()" value="<{$joiner[sfz_haoma]}>" />
+            <input type="text" id="number" class="tjdd_text" onblur="checknumber()" name="sfz_haoma" value="<{$joiner[sfz_haoma]}>" />
             <b>*</b>
             <h3>请填写正确号码</h3>
           </li>
           <li>
             <label for="phone" class="tjdd_label">联系电话：</label>
-            <input type="text" id="phone" class="tjdd_text" value="<{$joiner[tel]}>" />
+            <input type="text" id="phone" class="tjdd_text" name="tel" value="<{$joiner[tel]}>" />
           </li>
           <li>
             <label for="birthday" class="tjdd_label">出生日期：</label>
-            <input type="text" id="birthday" class="tjdd_text" onblur="checkbirthday()" value="<{$joiner[chushengriqi]}>" />
+            <input type="text" id="birthday" class="tjdd_text" onblur="checkbirthday()" name="chushengriqi" value="<{$joiner[chushengriqi]}>" />
             <b>*</b>
             <h3>格式：1983-01-01</h3>
           </li>
         </ul>
         <ol>
           <li><big>性&nbsp;&nbsp;&nbsp;&nbsp;别：</big>
-            <input type="radio" id="man" checked="checked" name="sex" onFocus="this.blur()" />
+            <input type="radio" id="man" checked="checked" name="sex" onFocus="this.blur()" value="男" />
             <label for="man" <php>if($joiner[sex] == '男'){</php> checked="checked" <php>}</php> >男</label>
-            <input type="radio" id="woman"  name="sex"onFocus="this.blur()" />
+            <input type="radio" id="woman"  name="sex"onFocus="this.blur()" value="女" />
             <label for="woman" <php>if($joiner[sex] == '女'){</php> checked="checked" <php>}</php> >女</label>
           </li>
           <li>
@@ -77,9 +81,9 @@
             <h3>请选择户籍地</h3>
           </li>
           <li><big>旅游证件信息：</big>
-            <input type="radio" id="yes" name="certificate" onFocus="this.blur()" onclick="hashuzhao(1)" checked="checked" />
+            <input type="radio" id="yes" onFocus="this.blur()" onclick="hashuzhao(1)" name="if_huzhao" checked="checked" />
             <label for="yes">我有护照</label>
-            <input type="radio" id="no" name="certificate" onFocus="this.blur()" onclick="hashuzhao(2)" />
+            <input type="radio" id="no" onFocus="this.blur()" name="if_huzhao" onclick="hashuzhao(2)" />
             <label for="no">没有护照</label>
           </li>
         </ol>
@@ -88,7 +92,7 @@
           <li>
             <label class="tjdd_label">证件类型：</label>
             <u class="tjdd_select_long"><strong>
-            <select onchange="checkhuzhao(1)">
+            <select onchange="checkhuzhao(1)" name="zhengjiantype">
             <php>if($joiner[zhengjiantype]){</php>
               <option value="因私护照（P）">因私护照（P）</option>
               <option disabled="disabled">------------</option>
@@ -99,17 +103,16 @@
               <option value="港澳通行证">港澳通行证</option>
               <option value="台湾通行证">台湾通行证</option>
               <option value="签证身份书">签证身份书</option>
-              <option value="其他">其他</option>
             </select>
             </strong></u></li>
           <li>
             <label for="certificate_number" class="tjdd_label">证件号码：</label>
-            <input type="text" id="certificate_number" class="tjdd_text" onclick="checkhuzhao(1)" value="<{$joiner[zhengjanhaoma]}>" />
+            <input type="text" id="certificate_number" class="tjdd_text" onclick="checkhuzhao(1)" name="zhengjianhaoma" value="<{$joiner[zhengjianhaoma]}>" />
           </li>
           <li>
             <label class="tjdd_label">签发日期：</label>
             <u class="tjdd_select_short_f"><strong>
-            <select onclick="checkhuzhao(4)" id="issued_year" value="<{$joiner[qianfariqi]}>" />
+            <select onclick="checkhuzhao(4)" id="issued_year" name="qianfariqi" value="<{$joiner[qianfariqi]}>" />
             </select>
             </strong></u><u class="tjdd_select_short_s"><strong>
             <select id="issued_month">
@@ -121,7 +124,7 @@
           <li>
             <label class="tjdd_label">有效期至：</label>
             <u class="tjdd_select_short_f"><strong>
-            <select onclick="checkhuzhao(2)" id="validity_year" value="<{$joiner[youxiaoqi]}>" />
+            <select onclick="checkhuzhao(2)" id="validity_year" name="youxiaoqi" value="<{$joiner[youxiaoqi]}>" />
             </select>
             </strong></u><u class="tjdd_select_short_s"><strong>
             <select id="validity_month">
@@ -133,11 +136,13 @@
           <li>
             <label class="tjdd_label">签发地：</label>
             <u class="tjdd_select_long"><strong>
-            <input type="text" id="issued_address" onclick="checkhuzhao(3)" class="tjdd_text" value="<{$joiner[qianfadi]}>" />
+            <select onclick="checkhuzhao(3)" id="issued_address" name="qianfadi" value="<{$joiner[qianfadi]}>" />
             </select>
             </strong></u></li>
         </ul>
-        <b></b> </i> </span> <a href="#" target="_blank" class="center_tjdd_txlxrzl_sub"></a> </div>
+        <b></b> </i> </span> <a href="javascript:dosubmit()" class="center_submit"></a> </div>
+        
+        </form>
     </div>
   </div>
 </div>
@@ -147,6 +152,7 @@
 </div>
 </body>
 </html>
+
 <script type="text/javascript">
 //检验姓名
 function checkname(){ 
@@ -208,12 +214,14 @@ if (!re1.exec(str)){
 //检验户籍地
 function checkhujidi(){
 	var str =  $("#registration").val();
-	if(str == "0"){
+	if(str == ""){
 		$("#registration").parent("strong").parent("u").siblings("h3").show();
 		$("#registration").parent("strong").parent("u").siblings("b").hide();
+		return false;
 	}else{
 		$("#registration").parent("strong").parent("u").siblings("h3").hide();
 		$("#registration").parent("strong").parent("u").siblings("b").show();
+		return true; 
 	}
 }
 
@@ -229,8 +237,13 @@ function hashuzhao(s){
 //选择护照
 function checkhuzhao(x){
 	var huzhao = $(".tjdd_select_long select").val();
-	if(huzhao != '0'){
-		var s = huzhao%3;
+	if(huzhao == '港澳通行证')
+		var s = 1;
+	else if(huzhao == '台湾通行证')
+		var s = 2;
+	else
+		var s = 0;
+	if(huzhao){
 		$(".tjdd_txlxrzl span i b").css("background-image","url(<{:SITE_PUBLIC}>images/tjdd_certificate_pic_"+s+x+".jpg)");
 	}else{
 		$(".tjdd_txlxrzl span i b").css("background-image","none");
@@ -246,10 +259,17 @@ $(document).ready(function(){
 		$("#validity_year").append("<option>"+validity_year+"</option>");
 		$("#issued_year").append("<option>"+issued_year+"</option>");
 	}
-	$("#registration,#issued_address").append('<option value="0">请选择</option><option value="10">安徽省</option><option value="761">澳门</option><option value="1">北京</option><option value="11">福建省</option><option value="27">甘肃省</option><option value="19">广东省</option><option value="20">广西</option><option value="23">贵州省</option><option value="21">海南省</option><option value="3">河北省</option><option value="14">河南省</option><option value="16">黑龙江省</option><option value="17">湖北省</option><option value="18">湖南省</option><option value="6">吉林</option><option value="8">江苏省</option><option value="12">江西省</option><option value="5">辽宁省</option><option value="15">内蒙古</option><option value="29">宁夏</option><option value="28">青海省</option><option value="13">山东省</option><option value="4">山西省</option><option value="26">陕西省</option><option value="7">上海市</option><option value="22">四川省</option><option value="762">台湾</option><option value="2">天津市</option><option value="25">西藏</option><option value="760">香港</option><option value="30">新疆</option><option value="24">云南省</option><option value="9">浙江省</option><option value="31">重庆市</option><option value="1266">其他</option>');
+	$("#registration,#issued_address").append('<option value="">请选择</option><option value="安徽省">安徽省</option><option value="澳门">澳门</option><option value="北京">北京</option><option value="福建省">福建省</option><option value="甘肃省">甘肃省</option><option value="广东省">广东省</option><option value="广西">广西</option><option value="贵州省">贵州省</option><option value="海南省">海南省</option><option value="河北省">河北省</option><option value="河南省">河南省</option><option value="黑龙江省">黑龙江省</option><option value="湖北省">湖北省</option><option value="湖南省">湖南省</option><option value="吉林">吉林</option><option value="江苏省">江苏省</option><option value="江西省">江西省</option><option value="辽宁省">辽宁省</option><option value="内蒙古">内蒙古</option><option value="宁夏">宁夏</option><option value="青海省">青海省</option><option value="山东省">山东省</option><option value="山西省">山西省</option><option value="陕西省">陕西省</option><option value="上海市">上海市</option><option value="四川省">四川省</option><option value="台湾">台湾</option><option value="天津市">天津市</option><option value="西藏">西藏</option><option value="香港">香港</option><option value="新疆">新疆</option><option value="云南省">云南省</option><option value="浙江省">浙江省</option><option value="重庆市">重庆市</option><option value="其他">其他</option>');
 	$("#issued_month,#validity_month").append('<option value="1">JAN&lt;1&gt;</option><option value="2">FEB&lt;2&gt;</option><option value="3">MAR&lt;3&gt;</option><option value="4">APR&lt;4&gt;</option><option value="5">MAY&lt;5&gt;</option><option value="6">JUN&lt;6&gt;</option><option value="7">JUL&lt;7&gt;</option><option value="8">AUG&lt;8&gt;</option><option value="9">SEP&lt;9&gt;</option><option value="10">OCT&lt;10&gt;</option><option value="11">NOV&lt;11&gt;</option><option value="12">DEC&lt;12&gt;</option>');
 	for(var i=1;i<32;i++){
 		$("#issued_day,#validity_day").append('<option value="i">'+i+'</option>');
 	}
 });
+
+function dosubmit(){
+	if(checkname() && checkpinyin() && checknumber() && checkbirthday() && checkhujidi() )
+	$("#form1").submit();
+}
+
+
 </script>

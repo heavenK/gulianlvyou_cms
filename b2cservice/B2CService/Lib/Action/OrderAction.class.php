@@ -119,11 +119,7 @@ class OrderAction extends CommonMyAction{
     public function dopostbook2() {
 		$order = A("MethodService")->_getdingdan($_REQUEST['orderID']);
 		if(!$order){
-			echo "订单不存在！！";
-			exit;
-		}
-		if($_REQUEST['name'] || $_REQUEST['pinyin'] || $_REQUEST['zhengjianhaoma'] || $_REQUEST['birthday'] || $_REQUEST['hujidi'] || $_REQUEST['sex']){
-			echo "信息不全！！";
+			ShowMsg("订单不存在");
 			exit;
 		}
 		$DingdanJoiner = D("DingdanJoiner");
@@ -131,7 +127,7 @@ class OrderAction extends CommonMyAction{
 		 if (!$DingdanJoiner->autoCheckToken($_REQUEST)){
 			 // 令牌验证错误
 			echo "token error!!!";
-			return false;
+			exit;
 		 }
 		 else{
 			C('TOKEN_ON',false);
@@ -141,7 +137,7 @@ class OrderAction extends CommonMyAction{
 			if(false === A("MethodService")->_createDingdanJoiner($DingdanJoiner,$_REQUEST,$i)){
 				$DingdanJoiner->rollback();
 				echo "error!!!";
-				return false;
+				exit;
 			}
 		}
 		$DingdanJoiner->commit();
@@ -150,9 +146,8 @@ class OrderAction extends CommonMyAction{
 		$order['status'] = '等待支付'; 
 		$Dingdan->save($order);
 		//保存到常用联系人
-		//A("MethodService")->_createUserJoiner($order);
+		A("MethodService")->_createUserJoiner($order);
 		redirect(ORDER_INDEX."Order/book3/orderID/".$_REQUEST['orderID']);
-		
 	}
 	
 	

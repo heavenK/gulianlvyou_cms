@@ -567,10 +567,11 @@ if ( ! function_exists('ShowMsg'))
 {
     function ShowMsg($word,$url="",$target="self")
 	{
-		if(!$url)
-			$url = "$target.location='$url';";
+		if($url==""){
+			$url = $_SERVER['HTTP_REFERER'];
+		}
 		echo "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\"><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /><title>$word</title><script type=\"text/javascript\" >alert('$word');$url</script>
+<html xmlns=\"http://www.w3.org/1999/xhtml\"><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /><title>$word</title><script type=\"text/javascript\" >alert('$word');$target.location='$url';</script>
 </head><body></body></html>";
 		exit;
 	}
@@ -631,4 +632,45 @@ if ( ! function_exists('my_redirect'))
 		}
 	}
 }
+
+
+
+function isChineseName($name){
+	if (preg_match('/^([\xe4-\xe9][\x80-\xbf]{2}){2,4}$/', $name)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
+function isIdCard($number) {
+    //加权因子 
+    $wi = array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2);
+    //校验码串 
+    $ai = array('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2');
+    //按顺序循环处理前17位 
+    for ($i = 0;$i < 17;$i++) { 
+        //提取前17位的其中一位，并将变量类型转为实数 
+        $b = (int) $number{$i}; 
+ 
+        //提取相应的加权因子 
+        $w = $wi[$i]; 
+ 
+        //把从身份证号码中提取的一位数字和加权因子相乘，并累加 
+        $sigma += $b * $w; 
+    }
+    //计算序号 
+    $snumber = $sigma % 11; 
+ 
+    //按照序号从校验码串中提取相应的字符。 
+    $check_number = $ai[$snumber];
+ 
+    if ($number{17} == $check_number) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 ?>
