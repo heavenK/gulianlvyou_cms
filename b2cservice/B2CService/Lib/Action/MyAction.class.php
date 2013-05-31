@@ -66,14 +66,18 @@ class MyAction extends CommonMyAction{
 	
 	
 	function joiner(){
+		
+		
 		$this->assign("mark",'常用游客信息');
 		$id = $_REQUEST['id'];
 		$Joiner = D("Joiner");
 		$joiner = $Joiner->where("`id` = '$id'")->find();
-		$d = $joiner['datatext'];
-//		$d = str_replace('﻿','',$d);//未知原因数据序列化后多3个不可见字符问题，序列化失败解决办法。
-		$d = unserialize($d);
-		$this->assign("joiner",$d);
+		$datatext = unserialize($joiner['datatext']);
+		foreach($datatext as $key => $val){
+			if($val)
+			$joiner[$key] = $val;
+		}
+		$this->assign("joiner",$joiner);
 		$this->display();
 	}
 	
@@ -95,7 +99,8 @@ class MyAction extends CommonMyAction{
 		$data['datatext'] = serialize($data);
 		$Joiner = D("Joiner");
 		if(false === $Joiner->mycreate($data)){
-			ShowMsg("发生错误");
+			dump($Joiner);
+			//ShowMsg("发生错误");
 			exit;
 		}
 		$redirect_rul = MY_INDEX.'My/joinerlist';
