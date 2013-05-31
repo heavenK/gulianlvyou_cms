@@ -3,10 +3,14 @@
 
 /*通用背景*/
 .list_left em,
+.list_rank_moren_on,
+.list_rank_moren_off,
 .list_rank_tuijian_on,
 .list_rank_tuijian_off,
-.list_rank_on,
-.list_rank_off	{ background:url(../images/all_bg.png) no-repeat;}
+.list_rank_top_on,
+.list_rank_top_off,
+.list_rank_bottom_on,
+.list_rank_bottom_off	{ background:url(../images/all_bg.png) no-repeat;}
 
 /*主体*/
 .list_box	{ width:100%; float:left;}
@@ -26,12 +30,18 @@
 .list_left span							{ width:698px; height:32px; margin:20px 0 0 0; display:inline; background:#f5f5f5; border:1px solid #e8e8e8; overflow:hidden; float:left;}
 .list_left span i						{ width:48px; height:32px; padding:0 13px 0 0; text-align:right; line-height:32px; _line-height:33px; overflow:hidden; float:left;}
 .list_left span u a						{ height:24px; margin:4px 15px 0 0; display:inline; overflow:hidden; float:left;}
+.list_rank_moren_on						{ width:37px; background-position:-148px -915px;}
+.list_rank_moren_off					{ width:37px; background-position:-185px -915px;}		
 .list_rank_tuijian_on					{ width:51px; background-position:0 -401px;}
 .list_rank_tuijian_off					{ width:51px; background-position:-51px -401px;}
-.list_rank_on							{ width:47px; padding:0 0 0 10px; background-position:0 -425px; color:#FFF; line-height:24px; _line-height:25px;}
-.list_rank_on:hover						{ color:#FFF;}
-.list_rank_off							{ width:47px; padding:0 0 0 10px; background-position:-57px -425px; color:#333333; line-height:24px; _line-height:25px;}
-.list_rank_off:hover					{ color:#333333;}
+.list_rank_top_on						{ width:47px; padding:0 0 0 10px; background-position:0 -425px; color:#FFF; line-height:24px; _line-height:25px;}
+.list_rank_top_on:hover					{ color:#FFF;}
+.list_rank_top_off						{ width:47px; padding:0 0 0 10px; background-position:-57px -425px; color:#333333; line-height:24px; _line-height:25px;}
+.list_rank_top_off:hover				{ color:#333333;}
+.list_rank_bottom_on					{ width:47px; padding:0 0 0 10px; background-position:0 -449px; color:#FFF; line-height:24px; _line-height:25px;}
+.list_rank_bottom_on:hover				{ color:#FFF;}
+.list_rank_bottom_off					{ width:47px; padding:0 0 0 10px; background-position:-57px -449px; color:#333333; line-height:24px; _line-height:25px;}
+.list_rank_bottom_off:hover				{ color:#333333;}
 .list_left span .pagelist				{ width:126px; height:24px; margin:4px 6px 0 17px; display:inline; padding:5px 0; overflow:hidden; float:right;}
 .list_left span .pagelist li			{ margin:0 8px 0 0; _margin:0 5px 0 0; display:inline; color:#FFF; overflow:hidden;}
 .list_left span .pagelist li a			{ padding:3px 7px; background-color:#f6f6f6; border:#cccccc 1px solid; color:#00306d;}	

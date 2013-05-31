@@ -83,13 +83,13 @@ $(document).ready(function(){
                     	<li>
                         	<h1>国内旅游</h1>
                             {dede:arclist typeid=48 row=20 titlelen=150}
-                            <i><a href="/plus/gl_list.php?typeid=49&q=[field:title/]&kwtype=1&searchtype=title" target="_blank">[field:title/]</a></i>
+                            <i><a href="#" target="_blank">[field:title/]</a></i>
                             {/dede:arclist}
                         </li>
                         <li>
                         	<h1>国外旅游</h1>
                             {dede:arclist typeid=50 row=20 titlelen=150}
-                            <i><a href="/plus/gl_list.php?typeid=51&q=[field:title/]&kwtype=1&searchtype=title" target="_blank">[field:title/]</a></i>
+                            <i><a href="#" target="_blank">[field:title/]</a></i>
                             {/dede:arclist}
                         </li>
                     </ul>
@@ -165,24 +165,14 @@ $(document).ready(function(){
         <div class="dryj_sp"><!--视频-->
         	<em><i>视&nbsp;&nbsp;频</i><a href="#" target="_blank">更多 &gt;&gt;</a></em>
             <ul>
+            	{dede:arclist typeid=36 row=3 titlelen=150 infolen=54}
             	<li>
-                	<p><a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="175" height="115" /></a></p>
-                    <h1><a href="#" target="_blank">云南 丽江</a></h1>
-                    <h2><b>上传者：</b><a href="#" target="_blank">菜菜行走手记</a></h2>
-                    <h3><b>描述：</b>夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山</h3>
+                	<p><a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" width="175" height="115" /></a></p>
+                    <h1><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h1>
+                    <h2><b>上传者：</b><a href="#" target="_blank">[field:writer/]</a></h2>
+                    <h3><b>描述：</b>[field:infos/]</h3>
                 </li>
-                <li>
-                	<p><a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="175" height="115" /></a></p>
-                    <h1><a href="#" target="_blank">云南 丽江</a></h1>
-                    <h2><b>上传者：</b><a href="#" target="_blank">菜菜行走手记</a></h2>
-                    <h3><b>描述：</b>夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山</h3>
-                </li>
-                <li>
-                	<p><a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="175" height="115" /></a></p>
-                    <h1><a href="#" target="_blank">云南 丽江</a></h1>
-                    <h2><b>上传者：</b><a href="#" target="_blank">菜菜行走手记</a></h2>
-                    <h3><b>描述：</b>夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山</h3>
-                </li>
+                {/dede:arclist}
             </ul>
         </div>
         <div class="dryj_wgl"><!--微攻略-->
