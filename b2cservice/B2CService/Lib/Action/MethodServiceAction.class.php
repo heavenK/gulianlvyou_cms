@@ -96,11 +96,11 @@ class MethodServiceAction extends CommonAction{
 	
 	//团员生成
     public function _createDingdanJoiner($DingdanJoiner,$_REQUEST,$id) {
-		if($_REQUEST['id'][$id]){
-			$id = $_REQUEST['id'][$id];
-			$cus['id'] = $id;
-		}
-		$cus['dingdanID'] = $_REQUEST['dingdanID'];
+		if($_REQUEST['id'])
+			$cus['id'] = $_REQUEST['id'][$id];
+		else
+			$cus['dingdanID'] = $_REQUEST['dingdanID'];
+			
 		$cus['name'] = $_REQUEST['name'.$id];
 		$cus['manorchild'] = $_REQUEST['manorchild'.$id];
 		$cus['sex'] = $_REQUEST['sex'.$id];
@@ -110,6 +110,7 @@ class MethodServiceAction extends CommonAction{
 		$cus['pinyin'] = $_REQUEST['pinyin'.$id];
 		$cus['birthday'] = $_REQUEST['birthday'.$id];
 		$cus['hujidi'] = $_REQUEST['hujidi'.$id];
+		$cus['has_lyzj'] = $_REQUEST['has_lyzj'.$id];
 		$cus['lyzj_type'] = $_REQUEST['lyzj_type'.$id];
 		$cus['lyzj_haoma'] = $_REQUEST['lyzj_haoma'.$id];
 		$cus['lyzj_qianfariqi'] = $_REQUEST['lyzj_qianfariqi'.$id];

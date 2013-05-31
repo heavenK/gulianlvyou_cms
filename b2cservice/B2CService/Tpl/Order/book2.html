@@ -80,7 +80,7 @@ $(document).ready(function(){
           <dt><i>*</i>为必填项</dt>
         </dl>
         <PHP>if($joinerall){</PHP>
-        <PHP>$i=0;foreach($joinerall as $v){$i++;</PHP>
+        <PHP>$i=0;foreach($joinerall as $v){</PHP>
                     <input type="hidden" name="id[]" value="<{$v['id']}>"/>
                     <input type="hidden" name="manorchild<{$i}>" value="<{$v['manorchild']}>"/>
                     <span>
@@ -143,22 +143,20 @@ $(document).ready(function(){
                         <h3>请选择户籍地</h3>
                       </li>
                       <li><big>旅游证件信息：</big>
-                        <input type="radio" id="yes" onFocus="this.blur()" onclick="hashuzhao(1,<{$i}>)" name="if_huzhao" checked="checked" />
+                        <input type="radio" id="yes" onFocus="this.blur()" onclick="hashuzhao(1,<{$i}>)" name="has_lyzj<{$i}>" value='1' <php>if($v[has_lyzj]){</php> checked="checked" <php>}</php> />
                         <label for="yes">我有护照</label>
-                        <input type="radio" id="no" onFocus="this.blur()" name="if_huzhao" onclick="hashuzhao(2,<{$i}>)" />
+                        <input type="radio" id="no" onFocus="this.blur()" onclick="hashuzhao(2,<{$i}>)" name="has_lyzj<{$i}>" value='0' <php>if(!$v[has_lyzj]){</php> checked="checked" <php>}</php> />
                         <label for="no">没有护照</label>
                       </li>
                     </ol>
-                    </em> <i id="lvyouzhengjiandiv<{$i}>">
+                    </em> <i id="lvyouzhengjiandiv<{$i}>" <php>if(!$v[has_lyzj]){</php> style="display:none" <php>}</php>>
                     <ul>
                       <li>
                         <label class="tjdd_label">证件类型：</label>
                         <u class="tjdd_select_long"><strong>
-                        <select onchange="checkhuzhao(1,<{$i}>)" name="zhengjiantype" id="zhengjiantype<{$i}>">
-                        <php>if($v[zhengjiantype]){</php>
-                          <option value="<{$v[zhengjiantype]}>"><{$v[zhengjiantype]}></option>
+                        <select onchange="checkhuzhao(1,<{$i}>)" id="zhengjiantype<{$i}>" name="lyzj_type<{$i}>">
+                          <option value="<{$v['lyzj_type']}>"><{$v['lyzj_type']}></option>
                           <option disabled="disabled">------------</option>
-                        <php>}</php>
                           <option value="因私护照（P）">因私护照（P）</option>
                           <option value="因公护照（I）">因公护照（I）</option>
                           <option value="外交护照（D）">外交护照（D）</option>
@@ -169,45 +167,59 @@ $(document).ready(function(){
                         </strong></u></li>
                       <li>
                         <label for="certificate_number" class="tjdd_label">证件号码：</label>
-                        <input type="text" id="certificate_number<{$i}>" class="tjdd_text" onclick="checkhuzhao(1,<{$i}>)" name="zhengjianhaoma" value="<{$v[zhengjianhaoma]}>"/>
+                        <input type="text" id="certificate_number<{$i}>" class="tjdd_text" onclick="checkhuzhao(1,<{$i}>)" name="lyzj_haoma<{$i}>" value="<{$v['lyzj_haoma']}>" />
                       </li>
                       <li>
                         <label class="tjdd_label">签发日期：</label>
+                        <input type="hidden" id="lyzj_qianfariqi<{$i}>" name="lyzj_qianfariqi<{$i}>" value="<{$v[lyzj_qianfariqi]}>"/>
+                        <php>$ymd=explode('-',$v[lyzj_qianfariqi]);</php>
                         <u class="tjdd_select_short_f"><strong>
-                        <select onclick="checkhuzhao(4,<{$i}>)" class="issued_year" name="qianfariqi" id="issued_year<{$i}>" />
+                        <select onclick="checkhuzhao(4,<{$i}>)" class="issued_year" id="issued_year<{$i}>" />
+                          <option value="<{$ymd[0]}>"><{$ymd[0]}></option>
+                          <option disabled="disabled">------------</option>
                         </select>
                         </strong></u><u class="tjdd_select_short_s"><strong>
                         <select class="issued_month" id="issued_month<{$i}>">
+                          <option value="<{$ymd[1]}>"><{$ymd[1]}></option>
+                          <option disabled="disabled">------------</option>
                         </select>
                         </strong></u><u class="tjdd_select_short_t"><strong>
                         <select class="issued_day" id="issued_day<{$i}>">
+                          <option value="<{$ymd[2]}>"><{$ymd[2]}></option>
+                          <option disabled="disabled">------------</option>
                         </select>
                         </strong></u></li>
                       <li>
                         <label class="tjdd_label">有效期至：</label>
+                        <input type="hidden" id="lyzj_youxiaoqi<{$i}>" name="lyzj_youxiaoqi<{$i}>" value="<{$v[lyzj_youxiaoqi]}>"/>
+                        <php>$ymd=explode('-',$v[lyzj_youxiaoqi]);</php>
                         <u class="tjdd_select_short_f"><strong>
-                        <select onclick="checkhuzhao(2,<{$i}>)" class="validity_year" name="youxiaoqi" />
+                        <select onclick="checkhuzhao(2,<{$i}>)" class="validity_year" id="validity_year<{$i}>" name="validity_year<{$i}>"/>
+                          <option value="<{$ymd[0]}>"><{$ymd[0]}></option>
+                          <option disabled="disabled">------------</option>
                         </select>
                         </strong></u><u class="tjdd_select_short_s"><strong>
-                        <select class="validity_month" id="validity_month<{$i}>">
+                        <select onclick="checkhuzhao(2,<{$i}>)" class="validity_month" id="validity_month<{$i}>" name="validity_month<{$i}>">
+                          <option value="<{$ymd[1]}>"><{$ymd[1]}></option>
+                          <option disabled="disabled">------------</option>
                         </select>
                         </strong></u><u class="tjdd_select_short_t"><strong>
-                        <select class="validity_day" id="validity_day<{$i}>">
+                        <select onclick="checkhuzhao(2,<{$i}>)" class="validity_day" id="validity_day<{$i}>" name="validity_day<{$i}>">
+                          <option value="<{$ymd[2]}>"><{$ymd[2]}></option>
+                          <option disabled="disabled">------------</option>
                         </select>
                         </strong></u></li>
                       <li>
                         <label class="tjdd_label">签发地：</label>
                         <u class="tjdd_select_long"><strong>
-                        <select onclick="checkhuzhao(3,<{$i}>)" class="issued_address" id="issued_address<{$i}>" name="qianfadi" />
-                        <php>if($v[zhengjiantype]){</php>
-                          <option value="<{$v[qianfadi]}>"><{$v[qianfadi]}></option>
+                        <select onclick="checkhuzhao(3,<{$i}>)" class="issued_address" id="issued_address<{$i}>" name="lyzj_qianfadi<{$i}>" value="<{$v['lyzj_qianfadi']}>" />
+                          <option value="<{$v['lyzj_qianfadi']}>"><{$v['lyzj_qianfadi']}></option>
                           <option disabled="disabled">------------</option>
-                        <php>}</php>
                         </select>
                         </strong></u></li>
                     </ul>
                     <b id="zhengjiantupian<{$i}>"></b> </i> </span>
-        <PHP>}</PHP>
+        <PHP>$i++;}</PHP>
         <PHP>}else{</PHP>
         <PHP>for($i=0;$i<$order['chengrenshu']+$order['ertongshu'];$i++){</PHP>
                     <input type="hidden" name="manorchild<{$i}>" value="成人"/>
@@ -269,9 +281,9 @@ $(document).ready(function(){
                         <h3>请选择户籍地</h3>
                       </li>
                       <li><big>旅游证件信息：</big>
-                        <input type="radio" id="yes" onFocus="this.blur()" onclick="hashuzhao(1,<{$i}>)" name="if_huzhao" <php>if(has_lyzj){</php> checked="checked" <php>}</php> />
+                        <input type="radio" id="yes" onFocus="this.blur()" onclick="hashuzhao(1,<{$i}>)" name="has_lyzj<{$i}>" value='1' />
                         <label for="yes">我有护照</label>
-                        <input type="radio" id="no" onFocus="this.blur()" name="if_huzhao" onclick="hashuzhao(2,<{$i}>)" <php>if(!has_lyzj){</php> checked="checked" <php>}</php> />
+                        <input type="radio" id="no" onFocus="this.blur()" onclick="hashuzhao(2,<{$i}>)" name="has_lyzj<{$i}>" value='0' />
                         <label for="no">没有护照</label>
                       </li>
                     </ol>
@@ -280,7 +292,7 @@ $(document).ready(function(){
                       <li>
                         <label class="tjdd_label">证件类型：</label>
                         <u class="tjdd_select_long"><strong>
-                        <select onchange="checkhuzhao(1,<{$i}>)" name="zhengjiantype" id="zhengjiantype<{$i}>">
+                        <select onchange="checkhuzhao(1,<{$i}>)" name="lyzj_type<{$i}>" id="zhengjiantype<{$i}>">
                           <option value="因私护照（P）">因私护照（P）</option>
                           <option value="因公护照（I）">因公护照（I）</option>
                           <option value="外交护照（D）">外交护照（D）</option>
@@ -291,12 +303,13 @@ $(document).ready(function(){
                         </strong></u></li>
                       <li>
                         <label for="certificate_number" class="tjdd_label">证件号码：</label>
-                        <input type="text" id="certificate_number<{$i}>" class="tjdd_text" onclick="checkhuzhao(1,<{$i}>)" name="zhengjianhaoma" />
+                        <input type="text" id="certificate_number<{$i}>" class="tjdd_text" onclick="checkhuzhao(1,<{$i}>)" name="lyzj_haoma<{$i}>" />
                       </li>
                       <li>
                         <label class="tjdd_label">签发日期：</label>
+                        <input type="hidden" id="lyzj_qianfariqi<{$i}>" name="lyzj_qianfariqi<{$i}>"/>
                         <u class="tjdd_select_short_f"><strong>
-                        <select onclick="checkhuzhao(4,<{$i}>)" class="issued_year" name="qianfariqi" id="issued_year<{$i}>" />
+                        <select onclick="checkhuzhao(4,<{$i}>)" class="issued_year" id="issued_year<{$i}>" />
                         </select>
                         </strong></u><u class="tjdd_select_short_s"><strong>
                         <select class="issued_month" id="issued_month<{$i}>">
@@ -307,20 +320,21 @@ $(document).ready(function(){
                         </strong></u></li>
                       <li>
                         <label class="tjdd_label">有效期至：</label>
+                        <input type="hidden" id="lyzj_youxiaoqi<{$i}>" name="lyzj_youxiaoqi<{$i}>"/>
                         <u class="tjdd_select_short_f"><strong>
-                        <select onclick="checkhuzhao(2,<{$i}>)" class="validity_year" name="youxiaoqi" />
+                        <select onclick="checkhuzhao(2,<{$i}>)" class="validity_year" id="validity_year<{$i}>" >
                         </select>
                         </strong></u><u class="tjdd_select_short_s"><strong>
-                        <select class="validity_month" id="validity_month<{$i}>">
+                        <select onclick="checkhuzhao(2,<{$i}>)" class="validity_month" id="validity_month<{$i}>" >
                         </select>
                         </strong></u><u class="tjdd_select_short_t"><strong>
-                        <select class="validity_day" id="validity_day<{$i}>">
+                        <select onclick="checkhuzhao(2,<{$i}>)" class="validity_day" id="validity_day<{$i}>" >
                         </select>
                         </strong></u></li>
                       <li>
                         <label class="tjdd_label">签发地：</label>
                         <u class="tjdd_select_long"><strong>
-                        <select onclick="checkhuzhao(3,<{$i}>)" class="issued_address" id="issued_address<{$i}>" name="qianfadi" />
+                        <select onclick="checkhuzhao(3,<{$i}>)" class="issued_address" id="issued_address<{$i}>" name="lyzj_qianfadi<{$i}>" />
                         </select>
                         </strong></u></li>
                     </ul>
@@ -347,8 +361,19 @@ var renshu = "<php> echo $order['chengrenshu']+$order['ertongshu']</php>";
 function dosubmit() {
 	var falsemark;
 	for(i=0;i<renshu;i++){
-		if(checkname(i) && checkpinyin(i) && checknumber(i) && checkbirthday(i) && checkhujidi(i) )
-		continue;
+		if(checkname(i) && checkpinyin(i) && checknumber(i) && checkbirthday(i) && checkhujidi(i) ){
+			var y = $("#validity_year"+i).val();
+			var m = $("#validity_month"+i).val();
+			var d = $("#validity_day"+i).val();
+			var t = y+'-'+m+'-'+d;
+			$("#lyzj_youxiaoqi"+i).val(t);
+			var y = $("#issued_year"+i).val();
+			var m = $("#issued_month"+i).val();
+			var d = $("#issued_day"+i).val();
+			var t = y+'-'+m+'-'+d;
+			$("#lyzj_qianfariqi"+i).val(t);
+			continue;
+		}
 		else{
 			falsemark = 1;
 			break;
@@ -460,20 +485,20 @@ function checkhuzhao(x,i){
 		$(tupiandiv).css("background-image","none");
 	}
 }
-
+ 
 $(document).ready(function(){
 	var myDate = new Date();
 	var thisYear = myDate.getFullYear();
 	for(var i=0;i<16;i++){
 		var validity_year = thisYear+i;
 		var issued_year = thisYear-i;
-		$(".validity_year").append("<option>"+validity_year+"</option>");
-		$(".issued_year").append("<option>"+issued_year+"</option>");
+		$(".validity_year").append("<option value='"+validity_year+"'>"+validity_year+"</option>");
+		$(".issued_year").append("<option value='"+issued_year+"'>"+issued_year+"</option>");
 	}
 	$(".registration,.issued_address").append('<option value="">请选择</option><option value="安徽省">安徽省</option><option value="澳门">澳门</option><option value="北京">北京</option><option value="福建省">福建省</option><option value="甘肃省">甘肃省</option><option value="广东省">广东省</option><option value="广西">广西</option><option value="贵州省">贵州省</option><option value="海南省">海南省</option><option value="河北省">河北省</option><option value="河南省">河南省</option><option value="黑龙江省">黑龙江省</option><option value="湖北省">湖北省</option><option value="湖南省">湖南省</option><option value="吉林">吉林</option><option value="江苏省">江苏省</option><option value="江西省">江西省</option><option value="辽宁省">辽宁省</option><option value="内蒙古">内蒙古</option><option value="宁夏">宁夏</option><option value="青海省">青海省</option><option value="山东省">山东省</option><option value="山西省">山西省</option><option value="陕西省">陕西省</option><option value="上海市">上海市</option><option value="四川省">四川省</option><option value="台湾">台湾</option><option value="天津市">天津市</option><option value="西藏">西藏</option><option value="香港">香港</option><option value="新疆">新疆</option><option value="云南省">云南省</option><option value="浙江省">浙江省</option><option value="重庆市">重庆市</option><option value="其他">其他</option>');
-	$(".issued_month,.validity_month").append('<option value="1">JAN&lt;1&gt;</option><option value="2">FEB&lt;2&gt;</option><option value="3">MAR&lt;3&gt;</option><option value="4">APR&lt;4&gt;</option><option value="5">MAY&lt;5&gt;</option><option value="6">JUN&lt;6&gt;</option><option value="7">JUL&lt;7&gt;</option><option value="8">AUG&lt;8&gt;</option><option value="9">SEP&lt;9&gt;</option><option value="10">OCT&lt;10&gt;</option><option value="11">NOV&lt;11&gt;</option><option value="12">DEC&lt;12&gt;</option>');
+	$(".issued_month,.validity_month").append('<option value="JAN&lt;1&gt;">JAN&lt;1&gt;</option><option value="FEB&lt;2&gt;">FEB&lt;2&gt;</option><option value="MAR&lt;3&gt;">MAR&lt;3&gt;</option><option value="APR&lt;4&gt;">APR&lt;4&gt;</option><option value="MAY&lt;5&gt;">MAY&lt;5&gt;</option><option value="JUN&lt;6&gt;">JUN&lt;6&gt;</option><option value="JUL&lt;7&gt;">JUL&lt;7&gt;</option><option value="AUG&lt;8&gt;">AUG&lt;8&gt;</option><option value="SEP&lt;9&gt;">SEP&lt;9&gt;</option><option value="OCT&lt;10&gt;">OCT&lt;10&gt;</option><option value="NOV&lt;11&gt;">NOV&lt;11&gt;</option><option value="DEC&lt;12&gt;">DEC&lt;12&gt;</option>');
 	for(var i=1;i<32;i++){
-		$(".issued_day,.validity_day").append('<option value="i">'+i+'</option>');
+		$(".issued_day,.validity_day").append('<option value="'+i+'">'+i+'</option>');
 	}
 });
 </script>
