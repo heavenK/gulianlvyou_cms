@@ -50,15 +50,14 @@ $(document).ready(function(){
 <script type="text/javascript">
 //头部导航下拉菜单
 $(document).ready(function(){
-	var $ = jQuery;
-	var itswidth = jQuery("#mainbav_pull a").innerWidth();
-	jQuery("#mainbav_pull ol li a").width(itswidth-2);
-	jQuery("#mainbav_pull ol").width(itswidth);
-	jQuery('#mainbav_pull').mousemove(function(){
-		jQuery(this).find('ol').show();
+	var itswidth = $("#mainbav_pull a").innerWidth();
+	$("#mainbav_pull ol li a").width(itswidth-2);
+	$("#mainbav_pull ol").width(itswidth);
+	$('#mainbav_pull').mousemove(function(){
+		$(this).find('ol').show();
 	});
-		jQuery('#mainbav_pull').mouseleave(function(){
-			jQuery(this).find('ol').hide();
+		$('#mainbav_pull').mouseleave(function(){
+			$(this).find('ol').hide();
 	});
 });
 </script>
@@ -209,7 +208,7 @@ $(document).ready(function(){
         </div>
         <div class="zyx_article_jdxx"><!--酒店信息-->
         	<em><b>酒店信息</b></em>
-            <ul>
+            <ul id="jiudianxinxi">
             	<li>
                 	<div class="zyx_article_jdxx_l">
                     	<h1><b>行程安排：</b>第1到4天&nbsp;&nbsp;<b>酒店：</b>三亚城市运通酒店</h1>
@@ -237,7 +236,7 @@ $(document).ready(function(){
                     </div>
                     <div class="zyx_article_jdxx_r">
                         <div class="mask">
-                            <div id="box1" class="mark_box">
+                            <div id="box1" class="mark_box box">
                                 <span><img src="/demand/images/img1.jpg"width="418" height="298" alt="Photo" /></span>
                                 <span><img src="/demand/images/img2.jpg"width="418" height="298" alt="Photo" /></span>
                                 <span><img src="/demand/images/img3.jpg"width="418" height="298" alt="Photo" /></span>
@@ -249,18 +248,21 @@ $(document).ready(function(){
                             </div>
                             <div class="info" style=" display:none;"></div>
                         </div>
+                        
                         <div class="thumbs_box">
-                        	<a href="javascript:void(0);" id="prev1" class="thumbs_prev"></a>
-                            <a href="javascript:void(0);" id="next1" class="thumbs_next"></a>
-                            <div class="thumbs" id="handles1_2">
-                                <div><img src="/demand/images/img1.jpg" width="104" height="74" alt="Photo Thumb" /></div>
-                                <div><img src="/demand/images/img2.jpg" width="104" height="74" alt="Photo Thumb" /></div>
-                                <div><img src="/demand/images/img3.jpg" width="104" height="74" alt="Photo Thumb" /></div>
-                                <div><img src="/demand/images/img4.jpg" width="104" height="74" alt="Photo Thumb" /></div>
-                                <div><img src="/demand/images/img5.jpg" width="104" height="74" alt="Photo Thumb" /></div>
-                                <div><img src="/demand/images/img6.jpg" width="104" height="74" alt="Photo Thumb" /></div>
-                                <div><img src="/demand/images/img7.jpg" width="104" height="74" alt="Photo Thumb" /></div>
-                                <div><img src="/demand/images/img8.jpg" width="104" height="74" alt="Photo Thumb" /></div>
+                        	<a href="javascript:void(0);" id="prev1" class="thumbs_prev prev"></a>
+                            <a href="javascript:void(0);" id="next1" class="thumbs_next next"></a>
+                            <div style=" width:130px; height:246px; float:left; overflow:hidden; position:relative;">
+                                <div class="thumbs handles" id="handles1_2" style="position:absolute;">
+                                    <div><img src="/demand/images/img1.jpg" width="104" height="74" alt="Photo Thumb" /></div>
+                                    <div><img src="/demand/images/img2.jpg" width="104" height="74" alt="Photo Thumb" /></div>
+                                    <div><img src="/demand/images/img3.jpg" width="104" height="74" alt="Photo Thumb" /></div>
+                                    <div><img src="/demand/images/img4.jpg" width="104" height="74" alt="Photo Thumb" /></div>
+                                    <div><img src="/demand/images/img5.jpg" width="104" height="74" alt="Photo Thumb" /></div>
+                                    <div><img src="/demand/images/img6.jpg" width="104" height="74" alt="Photo Thumb" /></div>
+                                    <div><img src="/demand/images/img7.jpg" width="104" height="74" alt="Photo Thumb" /></div>
+                                    <div><img src="/demand/images/img8.jpg" width="104" height="74" alt="Photo Thumb" /></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -292,7 +294,7 @@ $(document).ready(function(){
                     </div>
                     <div class="zyx_article_jdxx_r">
                         <div class="mask">
-                            <div id="box2" class="mark_box">
+                            <div id="box2" class="mark_box box">
                                 <span><img src="/demand/images/img1.jpg"width="418" height="298" alt="Photo" /></span>
                                 <span><img src="/demand/images/img2.jpg"width="418" height="298" alt="Photo" /></span>
                                 <span><img src="/demand/images/img3.jpg"width="418" height="298" alt="Photo" /></span>
@@ -304,20 +306,24 @@ $(document).ready(function(){
                             </div>
                             <div class="info" style=" display:none;"></div>
                         </div>
+                        
                         <div class="thumbs_box">
-                       		<a href="javascript:void(0);" id="prev2" class="thumbs_prev"></a>
-                            <a href="javascript:void(0);" id="next2" class="thumbs_next"></a>
-                            <div class="thumbs" id="handles2_2">
-                                <div><img src="/demand/images/img1.jpg" width="104" height="74" alt="Photo Thumb" /></div>
-                                <div><img src="/demand/images/img2.jpg" width="104" height="74" alt="Photo Thumb" /></div>
-                                <div><img src="/demand/images/img3.jpg" width="104" height="74" alt="Photo Thumb" /></div>
-                                <div><img src="/demand/images/img4.jpg" width="104" height="74" alt="Photo Thumb" /></div>
-                                <div><img src="/demand/images/img5.jpg" width="104" height="74" alt="Photo Thumb" /></div>
-                                <div><img src="/demand/images/img6.jpg" width="104" height="74" alt="Photo Thumb" /></div>
-                                <div><img src="/demand/images/img7.jpg" width="104" height="74" alt="Photo Thumb" /></div>
-                                <div><img src="/demand/images/img8.jpg" width="104" height="74" alt="Photo Thumb" /></div>
+                        	<a href="javascript:void(0);" id="prev2" class="thumbs_prev prev"></a>
+                            <a href="javascript:void(0);" id="next2" class="thumbs_next next"></a>
+                            <div style=" width:130px; height:246px; float:left; overflow:hidden; position:relative;">
+                                <div class="thumbs handles" id="handles2_2" style="position:absolute;">
+                                    <div><img src="/demand/images/img1.jpg" width="104" height="74" alt="Photo Thumb" /></div>
+                                    <div><img src="/demand/images/img2.jpg" width="104" height="74" alt="Photo Thumb" /></div>
+                                    <div><img src="/demand/images/img3.jpg" width="104" height="74" alt="Photo Thumb" /></div>
+                                    <div><img src="/demand/images/img4.jpg" width="104" height="74" alt="Photo Thumb" /></div>
+                                    <div><img src="/demand/images/img5.jpg" width="104" height="74" alt="Photo Thumb" /></div>
+                                    <div><img src="/demand/images/img6.jpg" width="104" height="74" alt="Photo Thumb" /></div>
+                                    <div><img src="/demand/images/img7.jpg" width="104" height="74" alt="Photo Thumb" /></div>
+                                    <div><img src="/demand/images/img8.jpg" width="104" height="74" alt="Photo Thumb" /></div>
+                                </div>
                             </div>
                         </div>
+                        
                     </div>
                 </li>
             </ul>
@@ -436,9 +442,9 @@ $(document).ready(function(){
 </html>
 <script language="javascript" type="text/javascript">
 //古莲公告&旅游资讯
-var $ = jQuery;
-jQuery(document).ready(function(){
-	jQuery(".zyx_article_explain").zyx_article_explain({
+
+$(document).ready(function(){
+	$(".zyx_article_explain").zyx_article_explain({
 		scroller_time_interval: '',
 		scroller_window_padding: '20',
 		scroller_window_width: '980',
@@ -450,50 +456,127 @@ jQuery(document).ready(function(){
 });
 
 //起价说明&儿童价标准
-jQuery(document).ready(function(){
-	jQuery(".zyx_article_infos_tanchu").hover(function(){jQuery(this).find("span").show();},function(){jQuery(this).find("span").hide();});
+$(document).ready(function(){
+	$(".zyx_article_infos_tanchu").hover(function(){$(this).find("span").show();},function(){$(this).find("span").hide();});
 });
 
 //特价&热卖
 var tj_rm = "{dede:field name='biaoji'/}";
 if(tj_rm != "wu"){
-	jQuery(".zyx_article_title").append('<img src="/demand/images/cty_rmlxtj_'+tj_rm+'.png" width="33" height="19" />');
+	$(".zyx_article_title").append('<img src="/demand/images/cty_rmlxtj_'+tj_rm+'.png" width="33" height="19" />');
 }
 </script>
-<script type="text/javascript" src="/demand/js/zyx_article_focus_02.js"></script>
-<script type="text/javascript" src="/demand/js/zyx_article_focus_01.js"></script>
 <script type="text/javascript">
-//酒店信息焦点图
-window.addEvent('domready',function(){
-	var ks_j = jQuery(".zyx_article_jdxx_r").length;
-	var ks_num = jQuery('#box'+ks_j+' span').length;
-	for(var ks_i=1;ks_i<=ks_j;ks_i++){
-		var sampleObjectItems = new Array(ks_num);
-		var info6 = $('box'+ks_i).getNext().set('opacity',0.5);
-		var nS6 = new noobSlide({
-			mode: 'vertical',
-			box: $('box'+ks_i),
-			items: sampleObjectItems,
-			size: 298,
-			handles: $$('#handles'+ks_i+'_2 div'),
-			handle_event: 'mouseenter',
-			addButtons: {
-				previous: $('prev'+ks_i),
-				next: $('next'+ks_i)
-			},
-			button_event: 'click',
-			fxOptions: {
-				duration: 0,
-				transition: Fx.Transitions.Back.easeOut,
-				wait: false
-			},
-			onWalk: function(currentItem,currentHandle){
-				info6.empty();
-				this.handles.set('opacity',0.8);
-				currentHandle.set('opacity',0.3);
-			}
-		});
-		//nS6.next();
+	
+	$(document).ready(function(){
+		
+		order = 0;
+		
+		$("#jiudianxinxi li").hover(function(e) {
+            order = $(this).index() + 1;
+        });
+		
+		init_css();
+
+		
+
+		$(".handles div").hover(function(e) {
+            scoller(this);
+        });
+		
+		$(".prev").click(function(e) {
+			scoller_up();
+        });
+		$(".next").click(function(e) {
+			scoller_down();
+        });
+
+		//setInterval("time_scoller()",2000);
+	});
+	
+	function init_css(){
+		$("#jiudianxinxi li").each(function(index, element) {
+            index = index + 1;
+			$("#handles" + index + "_2 div").css("opacity",0.3);
+			$("#handles" + index + "_2 div:eq(0)").css("opacity",1);
+        });	
 	}
-});
+	
+	// 激活同步变换，步长为1。
+	function scoller(obj){
+
+		    var index = $(obj).index();
+			var height = $("#box"+order+" span:eq(" + index + ")").height();
+			
+			height = index * (0 - height);
+			
+			$("#handles"+order+"_2 div").css("opacity",0.3);
+			$(obj).css("opacity",1);
+			
+			
+			$("#box"+order).animate({top: height}, 0);
+	}
+	
+	// 向下轮换，步长为1。
+	function scoller_down(){
+			var height = $("#box"+order+" span:eq(0)").height();
+			var top = Math.abs($("#box"+order+"").position().top);
+			var n = $("#box"+order+" img").length;
+			
+			index = top/height + 1;
+			if(index > n-1) index = 0;
+			
+			if(index%3 == 0)	page_up();
+			
+
+			scoller($("#handles"+order+"_2 div:eq("+index+")"));
+			
+	}
+	
+	// 向上轮换，步长为1。
+	function scoller_up(){
+			var height = $("#box"+order+" span:eq(0)").height();
+			var top = Math.abs($("#box"+order+"").position().top);
+			var n = $("#box"+order+" img").length;
+			
+			index = top/height - 1;
+			if(index < 0) index = n-1;
+			
+			if((index+1)%3 == 0 || index == n-1)	page_down();
+			
+
+			scoller($("#handles"+order+"_2 div:eq("+index+")"));
+			
+	}
+	
+	// 小图向下翻页
+	function page_down(){
+		var top = $("#handles"+order+"_2").position().top;
+			var n = $("#handles"+order+"_2 img").length;
+			
+			n = Math.ceil(n/3);
+			
+			top = Math.abs(top);
+			
+			if (top == 0) top = 258 * (n-1);
+			else top = top - 258;
+
+            $("#handles"+order+"_2").animate({top: 0 - top}, 'fast');
+	}
+	
+	
+	// 小图向上翻页
+	function page_up(){
+		var top = $("#handles"+order+"_2").position().top;
+			var n = $("#handles"+order+"_2 img").length;
+			
+			n = Math.ceil(n/3);
+			
+			top = Math.abs(top);
+						
+			if (top >= (n-1)*258) top = 0;
+			else top = top + 258;
+			
+            $("#handles"+order+"_2").animate({top: 0 - top}, 'fast');	
+	}
 </script>

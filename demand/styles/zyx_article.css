@@ -77,7 +77,7 @@
 .zyx_article_jdxx_r .mark_box			{ width:418px; position:absolute;}
 .zyx_article_jdxx_r .mark_box span		{ width:418px; height:298px; overflow:hidden; float:left;}
 .zyx_article_jdxx_r .thumbs_box			{ width:130px; height:246px; padding:26px 0; background:#fbfbfb; border:1px solid #dddddd; position:relative; overflow:hidden; float:right;}
-.zyx_article_jdxx_r .thumbs				{ width:130px; height:246px; display:inline-block; overflow:hidden;}
+.zyx_article_jdxx_r .thumbs				{ width:130px; height:246px; display:inline-block;}
 .zyx_article_jdxx_r .thumbs div			{ width:104px; height:74px; margin:0 0 12px 0; display:inline; padding:0 13px; cursor:pointer; overflow:hidden; float:left;}
 .zyx_article_jdxx_r .thumbs_box a		{ position:absolute; left:56px;}
 .zyx_article_jdxx_r .thumbs_prev		{ width:21px; height:12px; background:url(../images/zyx_article_lunhuan.png) no-repeat 0 0; top:6px; cursor:pointer;}
