@@ -8,8 +8,8 @@ var arrlinegroup = new Array();
 var nowgroup = null;
 var arrline = null;
 function loadgroup(lineid) {
-	url = SERVER_GET_XIANLU + '/erpxianluID/' + 24;
-	//url = SERVER_GET_XIANLU + '/erpxianluID/' + _lineid;
+	//url = SERVER_GET_XIANLU + '/erpxianluID/' + 24;
+	url = SERVER_GET_XIANLU + '/erpxianluID/' + _lineid;
 	jQuery.getJSON(url +"&jsoncallback=?", function(data){  
         if (data.error != true) {
             arrlinegroup = arrgroup = data.data;
