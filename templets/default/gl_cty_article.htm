@@ -79,10 +79,10 @@ $(document).ready(function(){
                     <h2>
                     	<em><span>¥</span><b>{dede:field.jiage/}</b>起</em>
                         <a href="javascript:void(0);" class="cty_article_infos_tanchu">起价说明
-                        	<span><b>1.2米以下儿童,仅含车位，用餐（半餐）及导游服务，其余自理。</b></span>
+                        	<span><b>{dede:field.qijiashuoming/}</b></span>
                         </a>
                         <a href="javascript:void(0);" class="cty_article_infos_tanchu">儿童价标准
-                        	<span><b>1.2米以下儿童,仅含车位，用餐（半餐）及导游服务，其余自理。</b></span>
+                        	<span><b>{dede:field.ertongjia/}</b></span>
                         </a>
                     </h2>
                     <h3>提前报名：<em>{dede:field.tiqianbaoming/}</em></h3>
@@ -199,25 +199,17 @@ $(document).ready(function(){
             </div>
             <div class="tabBody">
                 <ul>
-                    <li>费用包含:<br />
-【交通】含往返机票经济舱（含税）。所有出发航班时间以机票显示时间为准；团队机票不得改签、更改或退票。当地交通为空调旅游车，按成团人数调配车辆，保证每人正座车座。<br />
-【住宿】挂四星级酒店双人标准间，丽江为指定入住酒店---私人别墅，石林为准四星级酒店，为当地最好的酒店，不提供自然单间，参团时如遇单人请客人补齐房差960元。<br />
-【景点】含景区景点首道门票，实地游览景点：昆明旅行社有权调整游览行程先后顺序，但游览内容和时间不会减少。（未产生的门票按旅行社与景区协议价格退还门票）、丽江段未产生的不予退费，因丽江实行一卡通制单刷 卡后不给予退费）。<br />
-【餐饮】全程含6早餐9正餐，正餐八菜一汤、十人一桌，餐标15元/人/餐，不含酒水，早餐为酒店内含早，不用早餐不退款，若小孩不占床，则须补早餐费(按实际产生现付)。<br />
-【导游】持有全国导游资格证上岗。带团导游不负责机场接送，由专职人员负责机场接送及办理登机手续<br />
-【保险】旅行社责任险<br />
-【儿童】12岁以下儿童（12岁以下含12岁，以出生年月为准）只含往返机票+不占床不含景点门票只收取车位及半价餐费400元，发生其他费用另行付费。<br />
-费用不含:<br />
-【附加服务】行程内标注自费、另行付费项目；航空保险、人身意外伤害险、景区电瓶车、骑马费
+                    <li>
+                    	{dede:field.feiyongshuoming/}
                     </li>
                     <li>
-                        asdasdasdasd
+                        {dede:field.qianzhengxuzhi/}
                     </li>
                     <li>
-                        bbbbbb人消费
+                        {dede:field.yudingxuzhi/}
                     </li>
                     <li>
-                        asdasdasdaasdasdassd
+                        {dede:field.fuwubiaozhun/}
                     </li>
                 </ul>
             </div>
@@ -225,34 +217,22 @@ $(document).ready(function(){
         <div class="cty_article_dryj">
         	<em><i>达人游记</i><a href="#" target="_blank">更多 >></a></em>
             <ul>
+                {dede:arclist typeid=49,51 row=2 titlelen=150 infolen=500}
             	<li>
-                	<p><a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="175" height="115" /></a></p>
+                	<p><a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" width="175" height="115" /></a></p>
                     <span>
-                    	<h1><a href="#" target="_blank">夏日悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间</a></h1>
-                        <h2>作者：<b>丢丢</b> <b>丢丢</b></h2>
-                        <h2>标签：<b>丢丢</b></h2>
-                        <h3>夏日悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间夏日悠悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间<b>[<a href="#" target="_blank">详细</a>]</b></h3>
+                    	<h1><a href="[field:arcurl/]" target="_blank">[field:title/]</a></h1>
+                        <h2>作者：<b>[field:writer/]</b></h2>
+                        <h2>标签：<b>[field:shorttitle/]</b></h2>
+                        <h3>[field:infos/]<b>[<a href="[field:arcurl/]" target="_blank">详细</a>]</b></h3>
                     </span>
                     <ol>
-                    	<li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>: 夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山</h1></li>
-                        <li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>: 夏日悠游漓江山</h1></li>
-                        <li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>: 夏日悠游漓江山</h1></li>
+                    	<li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>:&nbsp;夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山</h1></li>
+                        <li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>:&nbsp;夏日悠游漓江山</h1></li>
+                        <li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>:&nbsp;夏日悠游漓江山</h1></li>
                     </ol>
                 </li>
-                <li>
-                	<p><a href="#" target="_blank"><img src="/demand/images/pic_02.jpg" width="175" height="115" /></a></p>
-                    <span>
-                    	<h1><a href="#" target="_blank">夏日悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间</a></h1>
-                        <h2>作者：<b>丢丢</b> <b>丢丢</b></h2>
-                        <h2>标签：<b>丢丢</b></h2>
-                        <h3>夏日悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间夏日悠悠游漓江山水间夏日悠游漓江山水间夏日悠游漓江山水间<b>[<a href="#" target="_blank">详细</a>]</b></h3>
-                    </span>
-                    <ol>
-                    	<li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>: 夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山</h1></li>
-                        <li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>: 夏日悠游漓江山</h1></li>
-                        <li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>: 夏日悠游漓江山</h1></li>
-                    </ol>
-                </li>
+                {/dede:arclist}
             </ul>
         </div>
     </div>
