@@ -8,7 +8,11 @@
                 <input type="text" class="header_search_text" name="text" value="搜索旅游目的地" onfocus="if (value =='搜索旅游目的地'){value =''}" onblur="if (value ==''){value='搜索旅游目的地'}"/>
                 <input type="button" class="header_search_submit" name="submit" value="" onclick="topsearch()" />
             </b>
-            <em>热门搜索：<a href="#">灵山大佛</a>  <a href="#">马尔代夫</a>  <a href="#">海南</a>  <a href="#">巴厘岛</a>  <a href="#">普吉岛</a>  <a href="#">迪斯尼乐园</a></em>
+            <em>热门搜索：
+            	{dede:arclist typeid=73 row=10 titlelen=100}
+            	<a href="[field:arcurl/]">[field:title/]</a>&nbsp;
+                {/dede:arclist}
+            </em>
         </dt>
     </dl>
     <div class="mainbav_box"><!--导航-->
