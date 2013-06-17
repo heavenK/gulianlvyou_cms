@@ -6,9 +6,13 @@
         	<i><a href="#"><img src="/demand/images/logo.png" width="223" height="73" /></a></i>
             <b>
                 <input type="text" class="header_search_text" name="text" value="搜索旅游目的地" onfocus="if (value =='搜索旅游目的地'){value =''}" onblur="if (value ==''){value='搜索旅游目的地'}"/>
-                <input type="submit" class="header_search_submit" name="submit" value="" />
+                <input type="button" class="header_search_submit" name="submit" value="" onclick="topsearch()" />
             </b>
-            <em>热门搜索：<a href="#">灵山大佛</a>  <a href="#">马尔代夫</a>  <a href="#">海南</a>  <a href="#">巴厘岛</a>  <a href="#">普吉岛</a>  <a href="#">迪斯尼乐园</a></em>
+            <em>热门搜索：
+            	{dede:arclist typeid=73 row=10 titlelen=100}
+            	<a href="[field:arcurl/]">[field:title/]</a>&nbsp;
+                {/dede:arclist}
+            </em>
         </dt>
     </dl>
     <div class="mainbav_box"><!--导航-->
@@ -29,3 +33,13 @@
         </ul>
     </div>
 </div>
+<script type="text/javascript" language="javascript">
+function topsearch(){
+	var searchtext = $(".header_search_text").val();
+	if(searchtext == "搜索旅游目的地"){
+		alert("请输入您要搜索的目的地！");
+	}else{
+		window.location.href="/plus/gl_list.php?q="+searchtext+"&searchtype=title&channeltype=7&kwtype=0&xianlu=17,18";
+	}
+}
+</script>

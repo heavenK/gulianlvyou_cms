@@ -6,9 +6,9 @@
 <meta name="description" content="{dede:field.description function='html2text(@me)'/}" />
 <title>{dede:field.title/}_{dede:global.cfg_webname/}</title>
 <link href="/demand/styles/reset.css" type="text/css" rel="stylesheet" />
-<link href="/demand/styles/cty_article.css" type="text/css" rel="stylesheet" />
+<link href="/demand/styles/zyx_article.css" type="text/css" rel="stylesheet" />
 <script src="/demand/js/jquery-1.4a2.min.js" type="text/javascript"></script>
-<script type='text/javascript' src='/demand/js/scroller_tab_cty.js'></script>
+<script type='text/javascript' src='/demand/js/scroller_tab_zyx.js'></script>
 <script language="javascript" type="text/javascript" src="{dede:global.cfg_cmsurl/}/include/dedeajax2.js"></script>
 <script language="javascript" type="text/javascript">
 <!--
@@ -65,23 +65,23 @@ $(document).ready(function(){
 
 <body>
 {dede:include filename="gl_header.htm"/}
-<div class="cty_box"><!--主体-->
-    <div class="cty">
-        <div class="cty_article_mainbav">{dede:field name='position'/} {dede:field.title/}</div>
-        <div class="cty_article_lc"></div>
-        <div class="cty_article_title">
+<div class="zyx_box"><!--主体-->
+    <div class="zyx">
+        <div class="zyx_article_mainbav">{dede:field name='position'/} {dede:field.title/}</div>
+        <div class="zyx_article_lc"></div>
+        <div class="zyx_article_title">
         	<h1>{dede:field.title/}</h1>
         </div>
-        <dl class="cty_article_infos">
-        	<dd>
-            	<i>
-                	<p><img src="{dede:field.litpic/}" width="232" height="116" /></p>
+        <div class="zyx_article_infos">
+            <dl>
+            	<dd>
+                    <p><img src="{dede:field.litpic/}" width="232" height="116" /></p>
                     <h2>
-                    	<em><span>¥</span><b>{dede:field.jiage/}</b>起</em>
-                        <a href="javascript:void(0);" class="cty_article_infos_tanchu">起价说明
+                        <em><span>¥</span><b>{dede:field.jiage/}</b>起</em>
+                        <a href="javascript:void(0);" class="zyx_article_infos_tanchu">起价说明
                         	<span><b>{dede:field.qijiashuoming/}</b></span>
                         </a>
-                        <a href="javascript:void(0);" class="cty_article_infos_tanchu">儿童价标准
+                        <a href="javascript:void(0);" class="zyx_article_infos_tanchu">儿童价标准
                         	<span><b>{dede:field.ertongjia/}</b></span>
                         </a>
                     </h2>
@@ -101,18 +101,14 @@ $(document).ready(function(){
                     <script type="text/javascript">
                     	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
                     </script>
-                </i>
-                <ol>
-                	<em><i>推荐理由</i></em>
-                	{dede:field.tuijianliyou/}
-                </ol>
-                <ol>
-                	<em><i>特别优惠</i></em>
-                	{dede:field.tebieyouhui/}
-                </ol>
-            </dd>
-            <dt>
-				<script src="/b2cservice/apis/define.inc.js"></script>
+                    <div class="cty_rilitijoa select_03">
+                      <i></i>
+                    </div>
+                </dd>
+                <dt><a href="javascript:void(0);" class="book_03" name="预订"></a></dt>
+            </dl>
+            <u>
+            	<script src="/b2cservice/apis/define.inc.js"></script>
 				<script src="/b2cservice/apis/define2.inc.js"></script>
 				<link href="/b2cservice/apis/index2011.css" rel="stylesheet" type="text/css">
   				<div class="position_right">
@@ -140,10 +136,6 @@ $(document).ready(function(){
                         <script src="/b2cservice/apis/teamline.js"></script> 
                         <script src="/b2cservice/apis/login.js"></script> 
                       </div>
-                    </div>
-                    <div class="cty_rilitijoa select_03">
-                      <i></i>
-                      <b><a href="javascript:void(0);" class="book_03" name="预订"></a></b>
                     </div>
                   </div>
                   <div id="Popupbox_bg" style="width: 1517px; height: 3831px; opacity: 0.8;"></div>
@@ -175,36 +167,40 @@ $(document).ready(function(){
                   	<input type="image" src="/b2cservice/apis/nextstep.gif" width="113" height="35" />
                   </div>
                 </div>
-            </dt>
-        </dl>
-        <div class="cty_article_cont">
+            </u>
+            <ol>
+                <em><i>推荐理由</i></em>
+                {dede:field.tuijianliyou/}
+            </ol>
+            <ol>
+                <em><i>特别优惠</i></em>
+                {dede:field.tebieyouhui/}
+            </ol>
+        </div>
+        {dede:field.jipiaoxinxi/}
+        {dede:field.jiudianxinxi/}
+        <div class="zyx_article_fysm"><!--费用说明-->
+        	<em><b>费用说明</b></em>
+            <strong>{dede:field.feiyongshuoming/}</strong>
+        </div>
+        <div class="zyx_article_cont">
         	<em>
             	<b>行程介绍</b>
-                <i>重要提示：不同出发日期，产品行程或略有不同，请以最终合同版行程为准。</i>
-                <a href="#" target="_blank" class="cty_article_dyxcd"></a>
-                <a href="#" target="_blank" class="cty_article_cklyht"></a>
+                <i>以下行程为推荐行程，信息仅供参考</i>
+                <a href="#" target="_blank" class="zyx_article_dyxcd"></a>
+                <a href="#" target="_blank" class="zyx_article_cklyht"></a>
             </em>
-            <ul>
-            	{dede:field.xingcheng/}
-            </ul>
+            {dede:field.xingcheng/}
         </div>
-        <div class="cty_article_explain">
+        <div class="zyx_article_explain">
             <div class="tabContainer">
                 <ul class="tabHead">
-                    <li class="currentBtn"><a href="javascript:;">费用说明</a></li>
-                    <li><a href="javascript:;">签证须知</a></li>
-                    <li><a href="javascript:;">预订须知</a></li>
+                    <li class="currentBtn"><a href="javascript:;">预订须知</a></li>
                     <li><a href="javascript:;">服务标准</a></li>
                 </ul>
             </div>
             <div class="tabBody">
                 <ul>
-                    <li>
-                    	{dede:field.feiyongshuoming/}
-                    </li>
-                    <li>
-                        {dede:field.qianzhengxuzhi/}
-                    </li>
                     <li>
                         {dede:field.yudingxuzhi/}
                     </li>
@@ -214,10 +210,10 @@ $(document).ready(function(){
                 </ul>
             </div>
         </div>
-        <div class="cty_article_dryj">
-        	<em><i>达人游记</i><a href="#" target="_blank">更多 >></a></em>
+        <div class="zyx_article_dryj">
+        	<em><i>达人游记</i><a href="#" target="_blank">更多 &gt;&gt;</a></em>
             <ul>
-                {dede:arclist typeid=49,51 row=2 titlelen=150 infolen=500}
+            	{dede:arclist typeid=49,51 row=2 titlelen=150 infolen=500}
             	<li>
                 	<p><a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" width="175" height="115" /></a></p>
                     <span>
@@ -242,9 +238,9 @@ $(document).ready(function(){
 </html>
 <script language="javascript" type="text/javascript">
 //古莲公告&旅游资讯
-var jq = $;
-jq(function() {
-	jq(".cty_article_explain").cty_article_explain({
+
+$(document).ready(function(){
+	$(".zyx_article_explain").zyx_article_explain({
 		scroller_time_interval: '',
 		scroller_window_padding: '20',
 		scroller_window_width: '980',
@@ -256,13 +252,127 @@ jq(function() {
 });
 
 //起价说明&儿童价标准
-jq(document).ready(function(){
-	jq(".cty_article_infos_tanchu").hover(function(){jq(this).find("span").show();},function(){jq(this).find("span").hide();});
+$(document).ready(function(){
+	$(".zyx_article_infos_tanchu").hover(function(){$(this).find("span").show();},function(){$(this).find("span").hide();});
 });
 
 //特价&热卖
 var tj_rm = "{dede:field name='biaoji'/}";
 if(tj_rm != "wu"){
-	jq(".cty_article_title").append('<img src="/demand/images/cty_rmlxtj_'+tj_rm+'.png" width="33" height="19" />');
+	$(".zyx_article_title").append('<img src="/demand/images/cty_rmlxtj_'+tj_rm+'.png" width="33" height="19" />');
 }
+</script>
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		
+		order = 0;
+		
+		$("#jiudianxinxi li").hover(function(e) {
+            order = $(this).index() + 1;
+        });
+		
+		init_css();
+
+		
+
+		$(".handles div").hover(function(e) {
+            scoller(this);
+        });
+		
+		$(".prev").click(function(e) {
+			scoller_up();
+        });
+		$(".next").click(function(e) {
+			scoller_down();
+        });
+
+		//setInterval("time_scoller()",2000);
+	});
+	
+	function init_css(){
+		$("#jiudianxinxi li").each(function(index, element) {
+            index = index + 1;
+			$("#handles" + index + "_2 div").css("opacity",0.3);
+			$("#handles" + index + "_2 div:eq(0)").css("opacity",1);
+        });	
+	}
+	
+	// 激活同步变换，步长为1。
+	function scoller(obj){
+
+		    var index = $(obj).index();
+			var height = $("#box"+order+" span:eq(" + index + ")").height();
+			
+			height = index * (0 - height);
+			
+			$("#handles"+order+"_2 div").css("opacity",0.3);
+			$(obj).css("opacity",1);
+			
+			
+			$("#box"+order).animate({top: height}, 0);
+	}
+	
+	// 向下轮换，步长为1。
+	function scoller_down(){
+			var height = $("#box"+order+" span:eq(0)").height();
+			var top = Math.abs($("#box"+order+"").position().top);
+			var n = $("#box"+order+" img").length;
+			
+			index = top/height + 1;
+			if(index > n-1) index = 0;
+			
+			if(index%3 == 0)	page_up();
+			
+
+			scoller($("#handles"+order+"_2 div:eq("+index+")"));
+			
+	}
+	
+	// 向上轮换，步长为1。
+	function scoller_up(){
+			var height = $("#box"+order+" span:eq(0)").height();
+			var top = Math.abs($("#box"+order+"").position().top);
+			var n = $("#box"+order+" img").length;
+			
+			index = top/height - 1;
+			if(index < 0) index = n-1;
+			
+			if((index+1)%3 == 0 || index == n-1)	page_down();
+			
+
+			scoller($("#handles"+order+"_2 div:eq("+index+")"));
+			
+	}
+	
+	// 小图向下翻页
+	function page_down(){
+		var top = $("#handles"+order+"_2").position().top;
+			var n = $("#handles"+order+"_2 img").length;
+			
+			n = Math.ceil(n/3);
+			
+			top = Math.abs(top);
+			
+			if (top == 0) top = 258 * (n-1);
+			else top = top - 258;
+
+            $("#handles"+order+"_2").animate({top: 0 - top}, 'fast');
+	}
+	
+	
+	// 小图向上翻页
+	function page_up(){
+		var top = $("#handles"+order+"_2").position().top;
+			var n = $("#handles"+order+"_2 img").length;
+			
+			n = Math.ceil(n/3);
+			
+			top = Math.abs(top);
+						
+			if (top >= (n-1)*258) top = 0;
+			else top = top + 258;
+			
+            $("#handles"+order+"_2").animate({top: 0 - top}, 'fast');	
+	}
 </script>

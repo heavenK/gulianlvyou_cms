@@ -1,0 +1,96 @@
+<html>
+<head>
+    <title>农行网上支付平台-商户接口范例-委托扣款单笔扣款</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000' link='#0000FF' vlink='#0000FF' alink='#FF0000'>
+    <center>
+        委托扣款单笔代扣</center>
+    <form name='form1'  action='B2CAgentPayment.php' method='POST'>
+        <table>
+            <tr>
+                <td>
+                    订单编号</td>
+                <td>
+                    <input name='OrderNo' value='ON200905070001'>
+                    *必须</td>
+            </tr>
+            <tr>
+                <td>
+                    订单有效期</td>
+                <td>
+                    <input name='ExpiredDate' value='30'>
+                    *必须</td>
+            </tr>
+            <tr>
+                <td>
+                    请求日期</td>
+                <td>
+                    <input name='RequestDate' value='2009/05/07'>
+                    *必须，格式要求为YYYY/MM/DD</td>
+            </tr>
+            <tr>
+                <td>
+                    请求时间</td>
+                <td>
+                    <input name='RequestTime' value='09:10:10'>
+                    *必须，格式为HH:MM:SS</td>
+            </tr>
+            <tr>
+                <td>
+                    客户证件号码</td>
+                <td>
+                    <input name='CertificateNo' value='340121198403084619'>
+                    *必须</td>
+            </tr>
+            <tr>
+                <td>
+                    签约协议号</td>
+                <td>
+                    <input name='AgentSignNo' value='No200905150001'>
+                    *必须</td>
+            </tr>
+            <tr>
+                <td>
+                    账单币种</td>
+                <td>
+                    <input name='Currency' value='RMB'>
+                    *必须</td>
+            </tr>
+            <tr>
+                <td>
+                    账单金额</td>
+                <td>
+                    <input name='Amount' value='0.01'>
+                    *必须</td>
+            </tr>
+            <tr>
+                <td>
+                    商品编号</td>
+                <td>
+                    <input name='ProductId' value='000001'>
+                    *必须</td>
+            </tr>
+            <tr>
+                <td>
+                    商品名称</td>
+                <td>
+                    <input name='ProductName' value='点卡'>
+                    *必须</td>
+            </tr>
+            <tr>
+                <td>
+                    商品数量</td>
+                <td>
+                    <input name='Quantity' value='1'>
+                    *必须</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type='submit' value='委托扣款单笔扣款'></td>
+            </tr>
+        </table>
+    </form>
+    <center>
+        <a href='Merchant.html'>回商户首页</a></center>
+</body>
+</html>

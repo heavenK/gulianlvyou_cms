@@ -1,0 +1,227 @@
+<!--
+/*
+ * @(#)MerchantPayment.html	V1.5.1	2004/11/10
+ *
+ * Project: BJP03004
+ *
+ * Description:
+ *    商户支付请求范例页面。
+ *
+ * Modify Information:
+ *    Author        Date        Description
+ *    ============  ==========  =======================================
+ *    HiTRUST       2004/01/05  V1.0 Release
+ *    HiTRUST       2004/01/07  V1.0.1 Release
+ *    HiTRUST       2004/04/16  V1.0.3 Release 新增支付类型
+ *    HiTRUST       2004/09/16  V1.2   Release 新增支付结果通知类型
+ *    HiTRUST       2004/09/27  V1.5 Release
+ *    HiTRUST       2004/11/10  V1.5.1 Release
+ *
+ * Copyright Notice:
+ *   Copyright (c) 2001-2004 Beijing HiTRUST Technology Co., Ltd.
+ *   1808 Room, Science & Technology Building, No. 9 South Street,
+ *   Zhong Guan Cun, Haidian District, Beijing ,100081, China
+ *   All rights reserved.
+ *
+ *   This software is the confidential and proprietary information of
+ *   HiTRUST.COM, Inc. ("Confidential Information"). You shall not
+ *   disclose such Confidential Information and shall use it only in
+ *   accordance with the terms of the license agreement you entered
+ *   into with HiTRUST.
+ */
+-->
+<html>
+<head>
+    <title>农行网上支付平台-商户接口范例-支付请求</title>
+	<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+</head>
+
+<script language="javascript">
+	function formatIndex(index) {
+		if(index < 10)
+			return "00" + index ;
+		else if(index >= 10 && index < 100)
+			return "0" + index ;
+		else
+			return index ;
+	}
+	function addLine() {
+		var kc = event.keyCode ;
+		if(kc != 13)
+			return false ;
+		var count = form1.TotalCount.value ;
+		if(isNaN(count)) {
+			alert("商品条目总数请输入数字！") ;
+			return false ;
+		}
+		count = parseInt(count) ;
+		for(var i = 1 ; i <= count ; i++) {
+			var index = formatIndex(i) ;
+			var row = bach.insertRow() ;
+			for(var j = 0 ; j < 5  ; j++) {
+				var col = row.insertCell() ;
+				switch(j) {
+				case 0 :
+					col.align = "left" ;
+					col.height = "30" ;
+					col.innerHTML = index ;
+					break ;
+				case 1 :
+					col.align = "center" ;
+					col.innerHTML = "<input type=\"text\" name=\"productid[]\" style=\"width:95%\" value=\"160605\">" ;
+					break ;
+				case 2 :
+					col.align = "center" ;
+					col.innerHTML = "<input type=\"text\" name=\"productname[]\" style=\"width:95%\" value=\"商品\">" ;
+					break ;
+				case 3 :
+					col.align = "center" ;
+					col.innerHTML = "<input type=\"text\" name=\"uniteprice[]\" style=\"width:95%\" value=\"0.01\">" ;
+					break ;
+				case 4 :
+					col.align = "center" ;
+					col.innerHTML = "<input type=\"text\" name=\"qty[]\" style=\"width:95%\" value=\"1\">" ;
+				}
+				
+			}			
+		}
+		form1.payment.disabled = "" ;
+	}
+	function submitFun() {
+		form1.submit() ;
+	}
+</script>
+
+<body bgcolor='#FFFFFF' text='#000000' link='#0000FF' vlink='#0000FF' alink='#FF0000'>
+    <form name="form1" action='MerchantPayment02.php' method='POST'>
+        <table>
+            <tr>
+                <td>
+                    OrderNo
+                </td>
+                <td>
+                    <input name='OrderNo' value='ON200306300001'></td>
+            </tr>
+            <tr>
+                <td>
+                    ExpiredDate
+                </td>
+                <td>
+                    <input name='ExpiredDate' value='30'></td>
+            </tr>
+            <tr>
+                <td>
+                    OrderDesc
+                </td>
+                <td>
+                    <input name='OrderDesc' value='Game Card Order'></td>
+            </tr>
+            <tr>
+                <td>
+                    OrderDate
+                </td>
+                <td>
+                    <input name='OrderDate' value='2003/11/12'>（YYYY/MM/DD）</td>
+            </tr>
+            <tr>
+                <td>
+                    OrderTime
+                </td>
+                <td>
+                    <input name='OrderTime' value='23:55:30'>（HH:MM:SS）</td>
+            </tr>
+            <tr>
+                <td>
+                    OrderAmount
+                </td>
+                <td>
+                    <input name='OrderAmount' value='280'></td>
+            </tr>
+            <tr>
+                <td>
+                    OrderURL
+                </td>
+                <td>
+                    <input name='OrderURL' value='http://www.gulianlvyou.com:8080/axis/MerchantQueryOrder.jsp?ON=ON200306300001&QueryType=1'></td>
+            </tr>
+            <tr>
+                <td>
+                    BuyIP
+                </td>
+                <td>
+                    <input name='BuyIP' value='172.30.7.75'></td>
+            </tr>
+            <tr>
+                <td>
+                    ProductType
+                </td>
+                <td>
+                    <input name='ProductType' value='1'></td>
+            </tr>
+            <tr>
+                <td>
+                    PaymentType
+                </td>
+                <td>
+                    <input name='PaymentType' value='1'>1：农行卡支付 2：国际卡支付 3：农行贷记卡支付 A:支付方式合并 5：第三方跨行支付</td>
+            </tr>
+            <tr>
+                <td>
+                    PaymentLinkType
+                </td>
+                <td>
+                    <input name='PaymentLinkType' value='1'>1：internet网络接入 2：手机网络接入 3:数字电视网络接入 4:智能客户端 5:电话网络</td>
+            </tr>
+            <tr>
+                <td>
+                    NotifyType
+                </td>
+                <td>
+                    <input name='NotifyType' value='0'>0：URL页面通知 1：服务器通知</td>
+            </tr>
+            <tr>
+                <td>
+                    ResultNotifyURL</td>
+                <td>
+                    <input name='ResultNotifyURL' value='http://www.gulianlvyou.com:8080/axis/MerchantResult.jsp'></td>
+            </tr>
+            <tr>
+                <td>
+                    MerchantRemarks</td>
+                <td>
+                    <input name='MerchantRemarks' value='Hi!'></td>
+            </tr>
+            <tr>
+                <td>
+                    TotalCount</td>
+                <td>
+                    <input name='TotalCount' value='1' onkeyup="addLine()">
+                    *商品条目总数，必须(演示页面，输入条目总数后，需敲回车产生明细输入框)</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table border="1" style="font-size: 17px;" width="100%" id="bach">
+                        <tr>
+                            <td width="15%" align="center">
+                                批内序号</td>
+                            <td width="15%" align="center">
+                                产品代码</td>
+                            <td width="15%" align="center">
+                                产品名称</td>
+                            <td width="15%" align="center">
+                                产品单价</td>
+                            <td align="center" width="15%">
+                                购买数量</td>
+                            <tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input value='提交' name='payment' disabled="disabled" type='button' onclick="submitFun()">
+        </table>
+    </form>
+    <center>
+        <a href='Merchant.html'>回商户首页</a></center>
+</body>
+</html>
