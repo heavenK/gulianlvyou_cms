@@ -255,12 +255,16 @@ class OrderAction extends CommonMyAction{
 				$_REQUEST['OrderNo'] = $newID;
 			}
 			else{
-				$_REQUEST['msg'] = iconv("GBK","UTF-8",$merchantPaymentResult->ErrorMessage);
-				$this->ajaxReturn($_REQUEST, '操作失败345！', 0);
+//				$_REQUEST['msg'] = iconv("GBK","UTF-8",$merchantPaymentResult->ErrorMessage);
+//				$this->ajaxReturn($_REQUEST, '操作失败345！', 0);
+				print("<br>Failed!!!"."</br>");
+				print("<br>return code:".$merchantPaymentResult->returnCode."</br>"); 
+				print("<br>Error Message:".iconv("GBK","UTF-8",$merchantPaymentResult->ErrorMessage)."</br>");
 			}
 		}
 		$_REQUEST['PaymentURL'] = $PaymentURL;
-		$this->ajaxReturn($_REQUEST, '保存成功！', 1);
+//		$this->ajaxReturn($_REQUEST, '保存成功！', 1);
+		echo '<script language=javascript>var redirectURL="'.$PaymentURL.'";if(redirectURL!=null&&redirectURL!=""){location.href="'.$PaymentURL.'";}</script> ';
 	}
 	
 	

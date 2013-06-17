@@ -3,12 +3,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>产品预订</title>
-<link href="<{:SITE_PUBLIC}>/styles/reset.css" type="text/css" rel="stylesheet" />
-<link href="<{:SITE_PUBLIC}>/styles/txdd.css" type="text/css" rel="stylesheet" />
-<script src="<{:SITE_PUBLIC}>/js/jquery-1.4a2.min.js" type="text/javascript"></script>
+<link href="<{:SITE_PUBLIC}>styles/reset.css" type="text/css" rel="stylesheet" />
+<link href="<{:SITE_PUBLIC}>styles/txdd.css" type="text/css" rel="stylesheet" />
+<script language="javascript" src="<{:__PUBLIC__}>/myerp/jquery-1.7.2.min.js" ></script>
+
+<script src="<{:__PUBLIC__}>myerp/Thinkjs/Base.js" type="text/javascript"></script>
+<script src="<{:__PUBLIC__}>myerp/Thinkjs/prototype.js" type="text/javascript"></script>
+<script src="<{:__PUBLIC__}>myerp/Thinkjs/mootools.js" type="text/javascript"></script>
+<script src="<{:__PUBLIC__}>myerp/ThinkAjax_GP.js" type="text/javascript"></script>
+<script src="<{:__PUBLIC__}>myerp/Thinkjs/Form/CheckForm_GP.js" type="text/javascript"></script>
+
 <script type="text/javascript">
 //头部导航下拉菜单
-$(document).ready(function(){
+jQuery(function($) {
+
 	var itswidth = $("#mainbav_pull a").innerWidth();
 	$("#mainbav_pull ol li a").width(itswidth-2);
 	$("#mainbav_pull ol").width(itswidth);
@@ -19,6 +27,7 @@ $(document).ready(function(){
 			$(this).find('ol').hide();
 	});
 });
+
 </script>
 </head>
 
