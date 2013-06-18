@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+
+.ks_box{
+	width:100%;
+	float:left;
+}
+
+.bor {
+	width: 960px;
+	margin:100px auto 360px;
+	background: #FFF;
+	border: 1px solid #dfdddd;
+	overflow:hidden;
+}
+
+.success {
+	margin-left: 77px;
+	background: url(../images/correct.jpg) no-repeat;
+	padding-left: 70px;
+	line-height: 20px;
+	margin-bottom: 32px;
+}
+.success a {
+	color: #7eb61a;
+}
