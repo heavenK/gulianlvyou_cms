@@ -142,24 +142,67 @@ class SearchView
 		}
 		
 		
-		
-		
+		//
+		$mudidi_n = NULL;
 		$mudidi_text = "";
-		$mudidi_query = "SELECT DISTINCT mudidi FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid WHERE chufachengshi='".$this->chufadi."' AND arc.arcrank > -1";
+		$mudidi_query = "SELECT act.mudidi FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid WHERE act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1";
         $this->dsql->SetQuery($mudidi_query);
         $this->dsql->Execute();
 		while($mudidi_row = $this->dsql->getarray()){
-			$mudidi_query = "SELECT arc.*,act.*
-				FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
-				WHERE arc.typeid IN (".$this->xianluid.") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND act.mudidi='".$mudidi_row['mudidi']."' AND arc.arcrank > -1";
-				//var_dump($mudidi_query);
-			$mudidi_num = $this->dsql->ExecuteNoneQuery2($mudidi_query);
-			if($mudidi_row['mudidi'] == $mudidi){
-				$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&xianlu='.$xianlu.'&mudidi='.$mudidi_row['mudidi'].'&tianshu='.$tianshu.'&jiage='.$jiage.'" class="list_term_btn">'.$mudidi_row['mudidi'].'（'.$mudidi_num.'）</a>';
-			}else{
-				$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&xianlu='.$xianlu.'&mudidi='.$mudidi_row['mudidi'].'&tianshu='.$tianshu.'&jiage='.$jiage.'">'.$mudidi_row['mudidi'].'（'.$mudidi_num.'）</a>';
+			foreach($mudidi_row as $w){
+				$temp_m = explode(',',$w);
+				foreach($temp_m as $m){
+					if($mudidi_n == NULL){
+						$mudidi_n[0]['count'] = 1;
+						$mudidi_n[0]['mudidi'] = $m;
+						continue;
+					}
+					$i = 0;
+					$mark = 0;
+					foreach($mudidi_n as $vol){
+						if($m == $vol['mudidi']){
+							$mudidi_n[$i]['count'] += 1;
+							$mark = 1;
+						}
+						$i++;
+					}
+					if($mark == 0){
+						$j = count($mudidi_n);
+						$mudidi_n[$j]['count'] = 1;
+						$mudidi_n[$j]['mudidi'] = $m;
+					}
+				}
 			}
 		}
+		foreach($mudidi_n as $m){
+			if($m['mudidi'] == $mudidi){
+				$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&xianlu='.$xianlu.'&mudidi='.$m['mudidi'].'&tianshu='.$tianshu.'&jiage='.$jiage.'" class="list_term_btn">'.$m['mudidi'].'（'.$m['count'].'）</a>';
+			}else{
+				$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&xianlu='.$xianlu.'&mudidi='.$m['mudidi'].'&tianshu='.$tianshu.'&jiage='.$jiage.'">'.$m['mudidi'].'（'.$m['count'].'）</a>';
+			}
+		}
+		//
+		
+		
+//		$mudidi_text = "";
+//		$mudidi_query = "SELECT DISTINCT act.mudidi FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid WHERE act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1";
+//        $this->dsql->SetQuery($mudidi_query);
+//        $this->dsql->Execute();
+//		while($mudidi_row = $this->dsql->getarray()){
+//			$mudidi_query = "SELECT arc.*,act.*
+//				FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
+//				WHERE arc.typeid IN (".$this->xianluid.") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND act.mudidi='".$mudidi_row['mudidi']."' AND arc.arcrank > -1";
+//				//var_dump($mudidi_query);
+//			$mudidi_num = $this->dsql->ExecuteNoneQuery2($mudidi_query);
+//			if($mudidi_row['mudidi'] == $mudidi){
+//				$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&xianlu='.$xianlu.'&mudidi='.$mudidi_row['mudidi'].'&tianshu='.$tianshu.'&jiage='.$jiage.'" class="list_term_btn">'.$mudidi_row['mudidi'].'（'.$mudidi_num.'）</a>';
+//			}else{
+//				$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&xianlu='.$xianlu.'&mudidi='.$mudidi_row['mudidi'].'&tianshu='.$tianshu.'&jiage='.$jiage.'">'.$mudidi_row['mudidi'].'（'.$mudidi_num.'）</a>';
+//			}
+//		}
+		
+		
+		
 		//end add
         //设置一些全局参数的值
 		//edit by ks
@@ -498,7 +541,11 @@ class SearchView
         }*/
         if($this->xianlu)
         {
-            $ksqls[] = " typeid IN (".GetSonIds($this->xianlu).") ";
+			if($this->xianlu == "17,18"){
+				$ksqls[] = " typeid IN (".GetSonIds("17").",".GetSonIds("18").") ";
+			}else{
+				$ksqls[] = " typeid IN (".GetSonIds($this->xianlu).") ";
+			}
         }
         if($this->ChannelType > 0)
         {
@@ -515,7 +562,7 @@ class SearchView
         }
 		if($this->mudidi)
         {
-            $ksqls[] = " act.mudidi = '".$this->mudidi."'";
+            $ksqls[] = " act.mudidi LIKE '%".$this->mudidi."%'";
         }
 		if($this->tianshu)
         {
@@ -886,7 +933,8 @@ class SearchView
             WHERE {$this->AddSql} $ordersql LIMIT $limitstart,$row";*/
 			//end edit
         }
-        
+		
+		//var_dump($this->AddSql);
 		$cty_num = $this->dsql->ExecuteNoneQuery2($query);
         $this->dsql->SetQuery($query);
         $this->dsql->Execute("al");
@@ -1262,7 +1310,7 @@ class SearchView
 		
 		$zyx_query = "SELECT arc.*
             FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
-            WHERE arc.typeid IN (18) AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1";
+            WHERE arc.typeid IN (70,72) AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1";
 		$zyx_num = $this->dsql->ExecuteNoneQuery2($zyx_query);
 		$this->zyx_num = $zyx_num;
 		
