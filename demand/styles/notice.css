@@ -14,13 +14,33 @@
 	overflow:hidden;
 }
 
-.success {
+.notice_pic_01 {
 	margin-left: 77px;
-	background: url(../images/correct.jpg) no-repeat;
+	background: url(../images/notice_pic_01.png) no-repeat;
 	padding-left: 70px;
 	line-height: 20px;
 	margin-bottom: 32px;
 }
-.success a {
+.notice_pic_01 a {
+	color: #7eb61a;
+}
+.notice_pic_02 {
+	margin-left: 77px;
+	background: url(../images/notice_pic_02.png) no-repeat;
+	padding-left: 70px;
+	line-height: 20px;
+	margin-bottom: 32px;
+}
+.notice_pic_02 a {
+	color: #7eb61a;
+}
+.notice_pic_03 {
+	margin-left: 77px;
+	background: url(../images/notice_pic_03.png) no-repeat;
+	padding-left: 70px;
+	line-height: 20px;
+	margin-bottom: 32px;
+}
+.notice_pic_03 a {
 	color: #7eb61a;
 }
