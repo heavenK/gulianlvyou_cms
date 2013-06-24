@@ -179,9 +179,13 @@ $(document).ready(function(){
 //查询显示
 $(document).ready(function(){
 	var search_q = $("#search_q").val();
+	var search_q_h = $(".search_q_on dt").html();
 	if(search_q){
 		$(".search_q_on").show();
 		$(".search_q_off").hide();
+		if(search_q_h == null){
+			$(".search_q_on").append("<dt>抱歉，没有符合该条件的签证信息！</dt>");
+		}
 	}else{
 		$(".search_q_off").show();
 		$(".search_q_on").hide();
