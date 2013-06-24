@@ -704,11 +704,11 @@ class SearchView
                 }
             }
 
-            //搜索
-            $query = "SELECT arc.*,act.typedir,act.typename,act.isdefault,act.defaultname,act.namerule,
-            act.namerule2,act.ispart,act.moresite,act.siteurl,act.sitepath
-            FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` act ON arc.typeid=act.id
-            WHERE {$this->AddSql} $ordersql LIMIT $limitstart,$row";
+            //搜索		
+			$query = "SELECT arc.*,act.*,ack.typedir,ack.typename,ack.isdefault,ack.defaultname,ack.namerule,
+            ack.namerule2,ack.ispart,ack.moresite,ack.siteurl,ack.sitepath
+            FROM `{$this->AddTable}` arc LEFT JOIN `#@__qianzheng` act ON arc.id=act.aid LEFT JOIN `#@__arctype` ack ON arc.typeid=ack.id
+            WHERE arc.{$this->AddSql} $ordersql LIMIT $limitstart,$row";
         }
         
         $this->dsql->SetQuery($query);
