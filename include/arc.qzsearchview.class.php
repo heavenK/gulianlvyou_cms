@@ -20,8 +20,8 @@ require_once(DEDEINC."/taglib/php.lib.php");
 require_once(DEDEINC."/taglib/sql.lib.php");
 require_once(DEDEINC."/taglib/channel.lib.php");
 
+
 @set_time_limit(0);
-@ini_set('memory_limit', '512M');
 
 /**
  * 搜索视图类
@@ -58,17 +58,6 @@ class SearchView
     var $AddSql;
     var $RsFields;
     var $Sphinx;
-	var $xianlu;//add
-	var $mudidi;//add
-	var $chufadi;//add
-	var $tianshu;//add
-	var $jiage;//add
-	var $xianluid;//add
-	var $order_flag;//add
-	var $order_jiage;//add
-	var $order_tianshu;//add
-	var $order_rm;//add
-	var $order_tj;//add
 
     /**
      *  php5构造函数
@@ -86,18 +75,18 @@ class SearchView
      * @return    string
      */
     function __construct($typeid,$keyword,$orderby,$achanneltype="all",
-    $searchtype='',$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$xianlu,$mudidi,$tianshu,$jiage,$order_flag,$order_jiage,$order_tianshu,$order_rm,$order_tj)//add $xianlu,$mudidi
+    $searchtype='',$starttime=0,$upagesize=20,$kwtype=1,$mid=0)
     {
         global $cfg_search_max,$cfg_search_maxrc,$cfg_search_time,$cfg_sphinx_article;
         if(empty($upagesize))
         {
-            $upagesize = 8;
+            $upagesize = 10;
         }
         $this->TypeID = $typeid;
         $this->Keyword = $keyword;
         $this->OrderBy = $orderby;
         $this->KType = $kwtype;
-        $this->PageSize = (int)$upagesize;
+        $this->PageSize = $upagesize;
         $this->StartTime = $starttime;
         $this->ChannelType = $achanneltype;
         $this->SearchMax = $cfg_search_max;
@@ -113,111 +102,16 @@ class SearchView
         $this->dtp2 = new DedeTagParse();
         $this->dtp2->SetNameSpace("field","[","]");
         $this->TypeLink = new TypeLink($typeid);
-		//add by ks
-		$this->xianlu = $xianlu;
-		$this->mudidi = $mudidi;
-		$this->tianshu = $tianshu;
-		$this->jiage = $jiage;
-		$this->xianluid = GetSonIds("17,18");
-		$this->order_flag = $order_flag;
-		$this->order_jiage = $order_jiage;
-		$this->order_tianshu = $order_tianshu;
-		$this->order_rm = $order_rm;
-		$this->order_tj = $order_tj;
-		//end add
         // 通过分词获取关键词
         $this->Keywords = $this->GetKeywords($keyword);
-		
-		//add by ks
-		function ips($ip){ 
-			$str = file_get_contents("http://int.dpool.sina.com.cn/iplookup/iplookup.php?ip={$ip}"); 
-			$str = iconv("GBK", "UTF-8", $str);
-			$arr = explode("	",$str); 
-			return $arr;
-		}
-		$user_address = ips(GetIP());
-		$this->chufadi = $user_address[5];
-		if(empty($this->chufadi)){
-			$this->chufadi = "大连";
-		}
-		
-		
-		//
-		$mudidi_n = NULL;
-		$mudidi_text = "";
-		$mudidi_query = "SELECT act.mudidi FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid WHERE act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1";
-        $this->dsql->SetQuery($mudidi_query);
-        $this->dsql->Execute();
-		while($mudidi_row = $this->dsql->getarray()){
-			foreach($mudidi_row as $w){
-				$temp_m = explode(',',$w);
-				foreach($temp_m as $m){
-					if($mudidi_n == NULL){
-						$mudidi_n[0]['count'] = 1;
-						$mudidi_n[0]['mudidi'] = $m;
-						continue;
-					}
-					$i = 0;
-					$mark = 0;
-					foreach($mudidi_n as $vol){
-						if($m == $vol['mudidi']){
-							$mudidi_n[$i]['count'] += 1;
-							$mark = 1;
-						}
-						$i++;
-					}
-					if($mark == 0){
-						$j = count($mudidi_n);
-						$mudidi_n[$j]['count'] = 1;
-						$mudidi_n[$j]['mudidi'] = $m;
-					}
-				}
-			}
-		}
-		foreach($mudidi_n as $m){
-			if($m['mudidi'] == $mudidi){
-				$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&xianlu='.$xianlu.'&mudidi='.$m['mudidi'].'&tianshu='.$tianshu.'&jiage='.$jiage.'" class="list_term_btn">'.$m['mudidi'].'（'.$m['count'].'）</a>';
-			}else{
-				$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&xianlu='.$xianlu.'&mudidi='.$m['mudidi'].'&tianshu='.$tianshu.'&jiage='.$jiage.'">'.$m['mudidi'].'（'.$m['count'].'）</a>';
-			}
-		}
-		//
-		
-		
-//		$mudidi_text = "";
-//		$mudidi_query = "SELECT DISTINCT act.mudidi FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid WHERE act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1";
-//        $this->dsql->SetQuery($mudidi_query);
-//        $this->dsql->Execute();
-//		while($mudidi_row = $this->dsql->getarray()){
-//			$mudidi_query = "SELECT arc.*,act.*
-//				FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
-//				WHERE arc.typeid IN (".$this->xianluid.") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND act.mudidi='".$mudidi_row['mudidi']."' AND arc.arcrank > -1";
-//				//var_dump($mudidi_query);
-//			$mudidi_num = $this->dsql->ExecuteNoneQuery2($mudidi_query);
-//			if($mudidi_row['mudidi'] == $mudidi){
-//				$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&xianlu='.$xianlu.'&mudidi='.$mudidi_row['mudidi'].'&tianshu='.$tianshu.'&jiage='.$jiage.'" class="list_term_btn">'.$mudidi_row['mudidi'].'（'.$mudidi_num.'）</a>';
-//			}else{
-//				$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&xianlu='.$xianlu.'&mudidi='.$mudidi_row['mudidi'].'&tianshu='.$tianshu.'&jiage='.$jiage.'">'.$mudidi_row['mudidi'].'（'.$mudidi_num.'）</a>';
-//			}
-//		}
-		
-		
-		
-		//end add
+
         //设置一些全局参数的值
-		//edit by ks
-        /*if($this->TypeID=="0"){
+        if($this->TypeID=="0"){
             $this->ChannelTypeid=1;
         }else{
             $row =$this->dsql->GetOne("SELECT channeltype FROM `#@__arctype` WHERE id={$this->TypeID}");
             $this->ChannelTypeid=$row['channeltype'];
-        }*/
-		//end edit
-		//add by ks
-		//var_dump($xianlu);
-		$row =$this->dsql->GetOne("SELECT channeltype FROM `#@__arctype` WHERE id IN ({$this->xianlu})");
-        $this->ChannelTypeid=$row['channeltype'];
-		//end add
+        }
         foreach($GLOBALS['PubFields'] as $k=>$v)
         {
             $this->Fields[$k] = $v;
@@ -240,7 +134,7 @@ class SearchView
         }
         
         
-        $tempfile = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/".$GLOBALS['cfg_df_style']."/search.htm";
+        $tempfile = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/".$GLOBALS['cfg_df_style']."/qzsearch.htm";
         if(!file_exists($tempfile)||!is_file($tempfile))
         {
             echo "模板文件不存在，无法解析！";
@@ -263,9 +157,9 @@ class SearchView
 
     //php4构造函数
     function SearchView($typeid,$keyword,$orderby,$achanneltype="all",
-    $searchtype="",$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$mudidi,$tianshu,$jiage,$order_flag,$order_jiage,$order_tianshu,$order_rm,$order_tj)//add $xianlu,$mudidi
+    $searchtype="",$starttime=0,$upagesize=20,$kwtype=1,$mid=0)
     {
-        $this->__construct($typeid,$keyword,$orderby,$achanneltype,$searchtype,$starttime,$upagesize,$kwtype,$mid,$mudidi,$tianshu,$jiage,$order_flag,$order_jiage,$order_tianshu,$order_rm,$order_tj);//add $xianlu,$mudidi
+        $this->__construct($typeid,$keyword,$orderby,$achanneltype,$searchtype,$starttime,$upagesize,$kwtype,$mid);
     }
 
     //关闭相关资源
@@ -289,23 +183,14 @@ class SearchView
         {
             if(strlen($keyword)>7)
             {
+                //echo $keyword;
                 $sp = new SplitWord($cfg_soft_lang, $cfg_soft_lang);
                 $sp->SetSource($keyword, $cfg_soft_lang, $cfg_soft_lang);
                 $sp->SetResultType(2);
                 $sp->StartAnalysis(TRUE);
-                $keywords = $sp->GetFinallyResult();
-                $idx_keywords = $sp->GetFinallyIndex();
-                ksort($idx_keywords);
-                $keywords = $keyword.' ';
-                foreach ($idx_keywords as $key => $value) {
-                    if (strlen($key) <= 3) {
-                        continue;
-                    }
-                    $keywords .= ' '.$key;
-                }
-                $keywords = preg_replace("/[ ]{1,}/", " ", $keywords);
-                //var_dump($idx_keywords);exit();
-                unset($sp);
+                $keywords = $sp->GetFinallyResult(' ');
+                
+                $keywords = preg_replace("/[ ]{1,}/", " ", trim($keywords));
             }
             else
             {
@@ -457,9 +342,9 @@ class SearchView
                 continue;
             }
             // 这里不区分大小写进行关键词替换
-            $fstr = str_ireplace($k, "$k", $fstr);
+            // $fstr = str_ireplace($k, "<font color='red'>$k</font>", $fstr);
             // 速度更快,效率更高
-            //$fstr = str_replace($k, "<font color='red'>$k</font>", $fstr);
+            $fstr = str_replace($k, "<font color='red'>$k</font>", $fstr);
         }
         return $fstr;
     }
@@ -475,7 +360,7 @@ class SearchView
         }
         if(isset($GLOBALS['PageNo']))
         {
-            $this->PageNo = intval($GLOBALS['PageNo']);
+            $this->PageNo = $GLOBALS['PageNo'];
         }
         else
         {
@@ -486,13 +371,9 @@ class SearchView
         {
             $this->sphinx->SetFilterRange('senddate', $this->StartTime, time(), false);
         }
-		/*if($this->TypeID > 0)
+        if($this->TypeID > 0)
         {
             $this->sphinx->SetFilter('typeid', GetSonIds($this->TypeID));
-        }*/
-        if($this->xianlu)
-        {
-            $this->sphinx->SetFilter('typeid', GetSonIds($this->xianlu));
         }
         $this->sphinx->SetFilter('channel', array(1));
         if($this->mid > 0)
@@ -523,7 +404,7 @@ class SearchView
         }
         if(isset($GLOBALS['PageNo']))
         {
-            $this->PageNo = intval($GLOBALS['PageNo']);
+            $this->PageNo = $GLOBALS['PageNo'];
         }
         else
         {
@@ -535,17 +416,9 @@ class SearchView
         {
             $ksqls[] = " arc.senddate>'".$this->StartTime."' ";
         }
-		/*if($this->TypeID > 0)
+        if($this->TypeID > 0)
         {
             $ksqls[] = " typeid IN (".GetSonIds($this->TypeID).") ";
-        }*/
-        if($this->xianlu)
-        {
-			if($this->xianlu == "17,18"){
-				$ksqls[] = " typeid IN (".GetSonIds("17").",".GetSonIds("18").") ";
-			}else{
-				$ksqls[] = " typeid IN (".GetSonIds($this->xianlu).") ";
-			}
         }
         if($this->ChannelType > 0)
         {
@@ -555,56 +428,8 @@ class SearchView
         {
             $ksqls[] = " arc.mid = '".$this->mid."'";
         }
-		//add by ks
-		if($this->chufadi)
-        {
-            $ksqls[] = " act.chufachengshi = '".$this->chufadi."'";
-        }
-		if($this->mudidi)
-        {
-            $ksqls[] = " act.mudidi LIKE '%".$this->mudidi."%'";
-        }
-		if($this->tianshu)
-        {
-			if($this->tianshu == 1){
-				$ksqls[] = " act.tianshu BETWEEN 1 AND 5";
-			}elseif($this->tianshu == 2){
-				$ksqls[] = " act.tianshu BETWEEN 6 AND 9";
-			}elseif($this->tianshu == 3){
-				$ksqls[] = " act.tianshu BETWEEN 10 AND 15";
-			}elseif($this->tianshu == 4){
-				$ksqls[] = " act.tianshu>15";
-			}
-        }
-		if($this->jiage)
-        {
-			if($this->jiage == 1){
-				$ksqls[] = " act.jiage<5001";
-			}elseif($this->jiage == 2){
-				$ksqls[] = " act.jiage BETWEEN 5001 AND 8000";
-			}elseif($this->jiage == 3){
-				$ksqls[] = " act.jiage BETWEEN 8001 AND 10000";
-			}elseif($this->jiage == 4){
-				$ksqls[] = " act.jiage BETWEEN 10001 AND 15000";
-			}elseif($this->jiage == 5){
-				$ksqls[] = " act.jiage>15000";
-			}
-        }
-		if($this->order_flag)
-        {
-            $ksqls[] = " (arc.flag LIKE '%a%' OR arc.flag LIKE '%h%' OR arc.flag LIKE '%c%') ";
-        }
-		if($this->order_rm)
-        {
-            $ksqls[] = " act.biaoji = 'rm'";
-        }
-		if($this->order_tj)
-        {
-            $ksqls[] = " act.biaoji = 'tj'";
-        }
-		//end add
         $ksqls[] = " arc.arcrank > -1 ";
-        $this->AddSql = ($ksql=='' ? join(' AND ',$ksqls) : join(' AND ',$ksqls)." AND (".$ksql.")" );
+        $this->AddSql = ($ksql=='' ? join(' AND ',$ksqls) : join(' AND ',$ksqls)." AND ($ksql)" );
         if($this->ChannelType < 0 || $this->ChannelTypeid< 0){
             if($this->ChannelType=="0") $id=$this->ChannelTypeid;
             else $id=$this->ChannelType;
@@ -614,10 +439,9 @@ class SearchView
         }else{
             $this->AddTable="#@__archives";
         }
-        $cquery = "SELECT arc.*,act.* FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid WHERE  arc.".$this->AddSql;//用于统计页码数
-        //var_dump($cquery);
-        $hascode = md5($cquery);//用于统计页码数
-        $row = $this->dsql->GetOne("SELECT * FROM `#@__arccache` WHERE `md5hash`='".$hascode."' ");//用于统计页码数
+        $cquery = "SELECT * FROM `{$this->AddTable}` arc WHERE ".$this->AddSql;
+        $hascode = md5($cquery);
+        $row = $this->dsql->GetOne("SELECT * FROM `#@__arccache` WHERE `md5hash`='".$hascode."' ");
         $uptime = time();
         if(is_array($row) && time()-$row['uptime'] < 3600 * 24)
         {
@@ -699,22 +523,6 @@ class SearchView
                 }
                 $this->dtp->Assign($tagid,$this->GetPageListDM($list_len));
             }
-			//add by ks
-			else if($tagname=="pagelistlong")
-            {
-                $list_len = trim($ctag->GetAtt("listsize"));
-                $ctag->GetAtt("listitem")=="" ? $listitem="index,pre,pageno,next,end,option" : $listitem=$ctag->GetAtt("listitem");
-                if($list_len==""){
-                    $list_len = 3;
-                }
-                $this->dtp->Assign($tagid,$this->GetPageListDMlong($list_len,$listitem));
-            }
-			else if($tagname=="ks_ziduan")
-            {
-                $ctag->GetAtt("listitem")=="" ? $listitem="chufachengshi" : $listitem=$ctag->GetAtt("listitem");
-                $this->dtp->Assign($tagid,$this->ks_ziduan($listitem));
-            }
-			//end add
             else if($tagname=="likewords")
             {
                 $this->dtp->Assign($tagid,$this->GetLikeWords($ctag->GetAtt('num')));
@@ -851,7 +659,7 @@ class SearchView
             $this->sphinx->SetLimits($limitstart, (int)$row, ($row>1000) ? $row : 1000);
             $res = array();
             $res = AutoCharset($this->sphinx->Query($this->Keywords, 'mysql, delta'), 'utf-8', 'gbk');
-			
+            
             foreach ($res['words'] as $k => $v) {
                 $this->Keywords .= " $k";
             }
@@ -895,51 +703,16 @@ class SearchView
                     $ordersql=" ORDER BY arc.sortrank desc";
                 }
             }
-			
-			//add by ks
-            if($this->ChannelType = 7){
-				if($this->order_jiage && $this->order_jiage == 1){
-					$ordersql=" ORDER BY act.jiage asc";
-				}
-				elseif($this->order_jiage && $this->order_jiage == 2){
-					$ordersql=" ORDER BY act.jiage desc";
-				}
-				if($this->order_tianshu && $this->order_tianshu == 1){
-					$ordersql=" ORDER BY act.tianshu asc";
-				}
-				elseif($this->order_tianshu && $this->order_tianshu == 2){
-					$ordersql=" ORDER BY act.tianshu desc";
-				}
-			}
-			
-			//搜索
-			if($this->ChannelType = 7){
-				$query = "SELECT arc.*,act.*,ack.typedir,ack.typename,ack.isdefault,ack.defaultname,ack.namerule,
+
+            //搜索		
+			$query = "SELECT arc.*,act.*,ack.typedir,ack.typename,ack.isdefault,ack.defaultname,ack.namerule,
             ack.namerule2,ack.ispart,ack.moresite,ack.siteurl,ack.sitepath
-            FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid LEFT JOIN `#@__arctype` ack ON arc.typeid=ack.id
+            FROM `{$this->AddTable}` arc LEFT JOIN `#@__qianzheng` act ON arc.id=act.aid LEFT JOIN `#@__arctype` ack ON arc.typeid=ack.id
             WHERE arc.{$this->AddSql} $ordersql LIMIT $limitstart,$row";
-			}else{
-				$query = "SELECT arc.*,act.typedir,act.typename,act.isdefault,act.defaultname,act.namerule,
-            act.namerule2,act.ispart,act.moresite,act.siteurl,act.sitepath
-            FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` act ON arc.typeid=act.id
-            WHERE {$this->AddSql} $ordersql LIMIT $limitstart,$row";
-			}
-			//end add
-			
-			//edit by ks
-			/*$query = "SELECT arc.*,act.typedir,act.typename,act.isdefault,act.defaultname,act.namerule,
-            act.namerule2,act.ispart,act.moresite,act.siteurl,act.sitepath
-            FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` act ON arc.typeid=act.id
-            WHERE {$this->AddSql} $ordersql LIMIT $limitstart,$row";*/
-			//end edit
         }
-		
-		//var_dump($this->AddSql);
-		$cty_num = $this->dsql->ExecuteNoneQuery2($query);
+        
         $this->dsql->SetQuery($query);
         $this->dsql->Execute("al");
-		//var_dump($this->AddSql);
-		//var_dump($ordersql);
         $artlist = "";
         if($col>1)
         {
@@ -969,7 +742,6 @@ class SearchView
                         $row["pubdate"]=empty($row["pubdate  "])? $row["senddate"] : $row["pubdate"];
                     }
                     //处理一些特殊字段
-					$row["namerule"] = 
                     $row["arcurl"] = GetFileUrl($row["id"],$row["typeid"],$row["senddate"],$row["title"],
                     $row["ismake"],$row["arcrank"],$row["namerule"],$row["typedir"],$row["money"],$row['filename'],$row["moresite"],$row["siteurl"],$row["sitepath"]);
                     $row["description"] = $this->GetRedKeyWord(cn_substr($row["description"],$infolen));
@@ -985,7 +757,7 @@ class SearchView
                     }
                     $row['picname'] = $row['litpic'];
                     $row["typeurl"] = GetTypeUrl($row["typeid"],$row["typedir"],$row["isdefault"],$row["defaultname"],$row["ispart"],$row["namerule2"],$row["moresite"],$row["siteurl"],$row["sitepath"]);
-                    $row["infos"] = $row["description"];
+                    $row["info"] = $row["description"];
                     $row["filename"] = $row["arcurl"];
                     $row["stime"] = GetDateMK($row["pubdate"]);
                     $row["textlink"] = "<a href='".$row["filename"]."'>".$row["title"]."</a>";
@@ -1160,178 +932,6 @@ class SearchView
         $plist .= "</form>\r\n</tr>\r\n</table>\r\n";
         return $plist;
     }
-	
-	//add by ks
-    function GetPageListDMlong($list_len,$listitem="index,end,pre,next,pageno")
-    {
-        global $cfg_rewrite;
-        $prepage = $nextpage = '';
-        $prepagenum = $this->PageNo-1;
-        $nextpagenum = $this->PageNo+1;
-        if($list_len=='' || preg_match("/[^0-9]/", $list_len))
-        {
-            $list_len=3;
-        }
-        $totalpage = ceil($this->TotalResult/$this->PageSize);
-        /*if($totalpage<=1 && $this->TotalResult>0)
-        {
-            return "<li><span class=\"pageinfo\">共 1 页/".$this->TotalResult." 条记录</span></li>\r\n";
-        }
-        if($this->TotalResult == 0)
-        {
-            return "<li><span class=\"pageinfo\">共 0 页/".$this->TotalResult." 条记录</span></li>\r\n";
-        }*/
-        //$maininfo = "<li><span class=\"pageinfo\">共 <strong>{$totalpage}</strong>页<strong>".$this->TotalResult."</strong>条</span></li>\r\n";
-		if($totalpage == 0){
-			$maininfo = "<b>".$this->PageNo."/1</b>";
-		}else{
-			$maininfo = "<b>".$this->PageNo."/{$totalpage}</b>";
-		}
-		
-        $purl = $this->GetCurUrl();
-        // 如果开启为静态,则对规则进行替换
-        /*if($cfg_rewrite == 'Y')
-        {
-            $nowurls = preg_replace("/\-/", ".php?", $purl);
-            $nowurls = explode("?", $nowurls);
-            $purl = $nowurls[0];
-        }*/
-        
-        $oldkeyword = (empty($oldkeyword) ? $this->Keyword : $oldkeyword);
-
-        //$geturl = "tid=".$this->TypeID."&TotalResult=".$this->TotalResult."&";
-		//$purl .= '?'.$geturl;
-        
-		//$infos = "<td>共找到<b>".$this->TotalResult."</b>条记录/最大显示<b>{$totalpage}</b>页 </td>\r\n";
-        $geturl = "q=".urlencode($oldkeyword)."&searchtype=".$this->SearchType;
-        $hidenform = "<input type='hidden' name='keyword' value='".rawurldecode($oldkeyword)."'>\r\n";
-        $geturl .= "&channeltype=".$this->ChannelType;
-        $hidenform .= "<input type='hidden' name='channeltype' value='".$this->ChannelType."'>\r\n";
-        //$hidenform .= "<input type='hidden' name='orderby' value='".$this->OrderBy."'>\r\n";
-        $geturl .= "&kwtype=".$this->KType;
-        $hidenform .= "<input type='hidden' name='kwtype' value='".$this->KType."'>\r\n";
-        //$hidenform .= "<input type='hidden' name='pagesize' value='".$this->PageSize."'>\r\n";
-        $geturl .= "&xianlu=".$this->xianlu."&mudidi=".$this->mudidi;
-        $hidenform .= "<input type='hidden' name='xianlu' value='".$this->xianlu."'>\r\n";
-        $hidenform .= "<input type='hidden' name='mudidi' value='".$this->mudidi."'>\r\n";
-        $purl .= "?".$geturl;
-		$optionlist = '';
-
-		//获得上一页和下一页的链接
-        if($this->PageNo != 1)
-        {
-            $prepage.="<li><a href='".$purl."&PageNo=$prepagenum'>上一页</a></li>\r\n";
-            $indexpage="<li><a href='".$purl."&PageNo=1'>首页</a></li>\r\n";
-			//$nextpage.="<li><a href='javascript:void(0);'>下一页</a></li>\r\n";
-        }
-        else
-        {
-            $indexpage="<li><a>首页</a></li>\r\n";
-        }
-        if($this->PageNo!=$totalpage && $totalpage>1)
-        {
-			//$prepage.="<li><a href='javascript:void(0);'>上一页</a></li>\r\n";
-            $nextpage.="<li><a href='".$purl."&PageNo=$nextpagenum'>下一页</a></li>\r\n";
-            $endpage="<li><a href='".$purl."&PageNo=$totalpage'>末页</a></li>\r\n";
-        }
-        else
-        {
-            $endpage="<li><a>末页</a></li>\r\n";
-        }
-		
-		//获得数字链接
-        $listdd="";
-        $total_list = $list_len * 2 + 1;
-        if($this->PageNo >= $total_list)
-        {
-            $j = $this->PageNo-$list_len;
-            $total_list = $this->PageNo+$list_len;
-            if($total_list>$totalpage)
-            {
-                $total_list=$totalpage;
-            }
-        }
-        else
-        {
-            $j=1;
-            if($total_list>$totalpage)
-            {
-                $total_list=$totalpage;
-            }
-        }
-        for($j;$j<=$total_list;$j++)
-        {
-            if($j==$this->PageNo)
-            {
-                $listdd.= "<li class=\"thisclass\">$j</li>\r\n";
-            }
-            else
-            {
-                $listdd.="<li><a href='".$purl."&PageNo=$j'>".$j."</a></li>\r\n";
-            }
-        }
-		
-		$plist = '';
-        //$hidenform = "<input type='hidden' name='tid' value='".$this->TypeID."'>\r\n";
-        //$hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."'>\r\n";
-
-        
-        if(preg_match('/index/i', $listitem)) $plist .= $indexpage;
-        if(preg_match('/pre/i', $listitem)) $plist .= $prepage;
-        if(preg_match('/pageno/i', $listitem)) $plist .= $listdd;
-        if(preg_match('/next/i', $listitem)) $plist .= $nextpage;
-        if(preg_match('/end/i', $listitem)) $plist .= $endpage;
-        if(preg_match('/option/i', $listitem)) $plist .= $optionlist;
-        if(preg_match('/info/i', $listitem)) $plist .= $maininfo;
-		$plist = "<form name='pagelist' action='".$this->GetCurUrl()."'>$hidenform".$plist."</form>\r\n</tr>\r\n</table>\r\n";
-        
-        return $plist;
-    }
-	
-	function ks_ziduan($listitem="chufachengshi"){
-		global $cfg_rewrite;
-		if($this->chufadi){
-			$chufachengshi = $this->chufadi;
-		}else{
-			$chufachengshi = "大连";
-		}
-		$plist = '';
-		if(preg_match('/chufachengshi/i', $listitem)) $plist = $chufachengshi;
-		//$chufachengshi = $this->dsql->GetOne("SELECT * FROM `cty_addon7` WHERE chufachengshi='".$this->chufadi."'");
-		return $plist;
-	}
-	
-	function ks_return(){
-		$cty_query = "SELECT arc.*
-            FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
-            WHERE arc.typeid IN (38,40,42,44) AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1";
-		$cty_num = $this->dsql->ExecuteNoneQuery2($cty_query);
-		$this->cty_num = $cty_num;
-		
-		$zyx_query = "SELECT arc.*
-            FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
-            WHERE arc.typeid IN (70,72) AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1";
-		$zyx_num = $this->dsql->ExecuteNoneQuery2($zyx_query);
-		$this->zyx_num = $zyx_num;
-		
-	}
-	
-	function tianshu_num($num){
-		$tianshu_query = "SELECT arc.*
-            FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
-            WHERE arc.typeid IN (".$this->xianluid.") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND act.tianshu $num AND arc.arcrank > -1";
-		$tianshu_num = $this->dsql->ExecuteNoneQuery2($tianshu_query);
-		echo $tianshu_num;
-	}
-	
-	function jiage_num($num){
-		$jiage_query = "SELECT arc.*
-            FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
-            WHERE arc.typeid IN (".$this->xianluid.") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND act.jiage $num AND arc.arcrank > -1";
-		$jiage_num = $this->dsql->ExecuteNoneQuery2($jiage_query);
-		echo $jiage_num;
-	}
-	//end add
 
     /**
      *  获得当前的页面文件的url
@@ -1353,5 +953,4 @@ class SearchView
         }
         return $nowurl;
     }
-	
 }//End Class

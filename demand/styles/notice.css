@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+
+.ks_box{
+	width:100%;
+	float:left;
+}
+
+.bor {
+	width: 960px;
+	margin:100px auto 360px;
+	background: #FFF;
+	border: 1px solid #dfdddd;
+	overflow:hidden;
+}
+
+.notice_pic_01 {
+	margin-left: 77px;
+	background: url(../images/notice_pic_01.png) no-repeat;
+	padding-left: 70px;
+	line-height: 20px;
+	margin-bottom: 32px;
+}
+.notice_pic_01 a {
+	color: #7eb61a;
+}
+.notice_pic_02 {
+	margin-left: 77px;
+	background: url(../images/notice_pic_02.png) no-repeat;
+	padding-left: 70px;
+	line-height: 20px;
+	margin-bottom: 32px;
+}
+.notice_pic_02 a {
+	color: #7eb61a;
+}
+.notice_pic_03 {
+	margin-left: 77px;
+	background: url(../images/notice_pic_03.png) no-repeat;
+	padding-left: 70px;
+	line-height: 20px;
+	margin-bottom: 32px;
+}
+.notice_pic_03 a {
+	color: #7eb61a;
+}
