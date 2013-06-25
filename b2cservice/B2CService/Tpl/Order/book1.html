@@ -1,4 +1,4 @@
-<include file="Order:header" />
+<tp:includeCA file="Order:showheader" />
 
 <div class="txdd_box"><!--主体-->
     <div class="txdd">
@@ -69,13 +69,13 @@
         }
 
         function CheckPage() {
-            var tmp = $.trim($("#lxr_name").val());
+            var tmp = jQuery.trim(jQuery("#lxr_name").val());
             if (tmp == "") {
                 alert("请正确填写联系人姓名");
                 return false;
             }
 
-            tmp = $.trim($("#lxr_telnum").val());
+            tmp = jQuery.trim(jQuery("#lxr_telnum").val());
             if (tmp == "") {
                 alert("请正确填写手机号码");
                 return false;
@@ -85,7 +85,7 @@
                 alert("请正确填写手机号码,以1开头的11位数字");
                 return false;
             }
-            tmp = $.trim($("#lxr_email").val());
+            tmp = jQuery.trim(jQuery("#lxr_email").val());
             if (tmp == "") {
                 alert("请正确填写电子邮箱");
                 return false;

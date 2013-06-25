@@ -54,11 +54,11 @@ class MethodServiceAction extends CommonAction{
 	//检查产品
     public function _checkchanpin($chanpinID) {
 		$zituan = FileGetContents(SERVER_INDEX."Server/getzituanbyID/chanpinID/".$chanpinID);
-		if('false' != $zituan)
-			return $zituan;
-		else
+		if($zituan['error']){
 			return false;	
-		
+		}
+		else
+			return $zituan;
 	}
 	
 	
@@ -96,11 +96,6 @@ class MethodServiceAction extends CommonAction{
 	
 	//团员生成
     public function _createDingdanJoiner($DingdanJoiner,$_REQUEST,$id) {
-		if($_REQUEST['id'])
-			$cus['id'] = $_REQUEST['id'][$id];
-		else
-			$cus['dingdanID'] = $_REQUEST['dingdanID'];
-			
 		$cus['name'] = $_REQUEST['name'.$id];
 		$cus['manorchild'] = $_REQUEST['manorchild'.$id];
 		$cus['sex'] = $_REQUEST['sex'.$id];
@@ -116,12 +111,21 @@ class MethodServiceAction extends CommonAction{
 		$cus['lyzj_qianfariqi'] = $_REQUEST['lyzj_qianfariqi'.$id];
 		$cus['lyzj_youxiaoqi'] = $_REQUEST['lyzj_youxiaoqi'.$id];
 		$cus['lyzj_qianfadi'] = $_REQUEST['lyzj_qianfadi'.$id];
-		
+		if($_REQUEST['id'])
+			$cus['id'] = $_REQUEST['id'][$id];
+		else{
+			$cus['dingdanID'] = $_REQUEST['dingdanID'];
+			$Dingdan = D("Dingdan");	
+			$order = $Dingdan->where("`id` = '$cus[dingdanID]'")->find();
+			if($cus['manorchild'] == '儿童')
+				$cus['price'] = $order['child_price'];
+			else
+				$cus['price'] = $order['adult_price'];
+		}
 		if(!isChineseName($cus['name']))
 			ShowMsg("请使用中文");
 		if(!isIdCard($cus['zhengjianhaoma']))
 			ShowMsg("身份证号错误");
-		
 		if(false !== $DingdanJoiner->mycreate($cus))
 			return true;
 		else{
@@ -203,7 +207,16 @@ class MethodServiceAction extends CommonAction{
 	}
 	
 	
-	
+    public function _change_order_tempstatus($orderID,$status) {
+		$order = A("MethodService")->_getdingdan($orderID);
+		if(!$order){
+			return false;
+		}
+		$Dingdan = D("Dingdan");
+		$order['status_temp'] = $status;
+		$dingdan = $Dingdan->where("`orderID` = '$order[orderID]'")->save($order);
+		return $dingdan;
+	}
 	
 	
 	

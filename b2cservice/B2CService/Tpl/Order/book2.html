@@ -1,4 +1,4 @@
-<include file="Order:header" />
+<tp:includeCA file="Order:showheader" />
 <link href="<{:SITE_PUBLIC}>styles/tjdd.css" type="text/css" rel="stylesheet" />
 
 <div class="txdd_box"><!--主体-->
@@ -8,8 +8,8 @@
     <div class="tjdd_ddxxxx"><!--订单详细信息--> 
       <em><b>订单详细信息</b></em> <span>
       <p> <b>尊敬的客人：</b><br />
-        您好，您的订单申请已提交，订单号：<strong style="color:red"><{$order['orderID']}></strong>！<br />
-        感谢您关注古莲旅游网最新产品信息！如有疑问，您可以直接致电010—85906636咨询相关事宜。 </p>
+        您好，您的订单申请已提交，临时订单号：<{$order['orderID']}>。<br />
+        感谢您关注古莲旅游网最新产品信息！如有疑问，您可以直接致电40007-66667咨询相关事宜。 </p>
       <table width="938" cellpadding="0" cellspacing="0">
         <tr height="34">
           <td width="431">产品名称：<b><{$order['title_copy']}></b></td>
@@ -314,16 +314,16 @@ function dosubmit() {
 	var falsemark;
 	for(i=0;i<renshu;i++){
 		if(checkname(i) && checkpinyin(i) && checknumber(i) && checkbirthday(i) && checkhujidi(i) ){
-			var y = $("#validity_year"+i).val();
-			var m = $("#validity_month"+i).val();
-			var d = $("#validity_day"+i).val();
+			var y = jQuery("#validity_year"+i).val();
+			var m = jQuery("#validity_month"+i).val();
+			var d = jQuery("#validity_day"+i).val();
 			var t = y+'-'+m+'-'+d;
-			$("#lyzj_youxiaoqi"+i).val(t);
-			var y = $("#issued_year"+i).val();
-			var m = $("#issued_month"+i).val();
-			var d = $("#issued_day"+i).val();
+			jQuery("#lyzj_youxiaoqi"+i).val(t);
+			var y = jQuery("#issued_year"+i).val();
+			var m = jQuery("#issued_month"+i).val();
+			var d = jQuery("#issued_day"+i).val();
 			var t = y+'-'+m+'-'+d;
-			$("#lyzj_qianfariqi"+i).val(t);
+			jQuery("#lyzj_qianfariqi"+i).val(t);
 			continue;
 		}
 		else{
@@ -338,75 +338,75 @@ function dosubmit() {
 //检验姓名
 function checkname(i){ 
 var idname = "#name"+i;
-var str =  $(idname).val();
+var str =  jQuery(idname).val();
 var re1 =  /^\s*[\u4e00-\u9fa5]{2,15}\s*$/; 
 if (!re1.exec(str)){ 
-	$(idname).siblings("h3").show();
-	$(idname).siblings("b").hide();
+	jQuery(idname).siblings("h3").show();
+	jQuery(idname).siblings("b").hide();
 	return false; 
 } 
-	$(idname).siblings("h3").hide();
-	$(idname).siblings("b").show();
+	jQuery(idname).siblings("h3").hide();
+	jQuery(idname).siblings("b").show();
 	return true; 
 }
 
 //检验拼音
 function checkpinyin(i){
 var idname = "#name_py"+i;
-var str =  $(idname).val();
+var str =  jQuery(idname).val();
 var re1 = /^\s*[a-zA-Z]{4,16}\s*$/; 
 if (!re1.exec(str)){ 
-	$(idname).siblings("h3").show();
-	$(idname).siblings("b").hide();
+	jQuery(idname).siblings("h3").show();
+	jQuery(idname).siblings("b").hide();
 	return false; 
 } 
-	$(idname).siblings("h3").hide();
-	$(idname).siblings("b").show();
+	jQuery(idname).siblings("h3").hide();
+	jQuery(idname).siblings("b").show();
 	return true; 
 }
 
 //检验证件号码
 function checknumber(i){ 
 var idname = "#number"+i;
-var str =  $(idname).val();
+var str =  jQuery(idname).val();
 var re1 = /^\s*\d{15}\s*$/;
 var re2 = /^\s*\d{16}[\dxX]{2}\s*$/;
 if (!re1.exec(str) && !re2.exec(str)){ 
-	$(idname).siblings("h3").show();
-	$(idname).siblings("b").hide();
+	jQuery(idname).siblings("h3").show();
+	jQuery(idname).siblings("b").hide();
 	return false; 
 } 
-	$(idname).siblings("h3").hide();
-	$(idname).siblings("b").show();
+	jQuery(idname).siblings("h3").hide();
+	jQuery(idname).siblings("b").show();
 	return true; 
 }
 
 //检验出生日期
 function checkbirthday(){
 var idname = "#birthday"+i;
-var str =  $(idname).val();
+var str =  jQuery(idname).val();
 var re1 = /^\s*[0-9]{4}-[0-9]{2}-[0-9]{2}\s*$/;
 if (!re1.exec(str)){ 
-	$(idname).siblings("h3").show();
-	$(idname).siblings("b").hide();
+	jQuery(idname).siblings("h3").show();
+	jQuery(idname).siblings("b").hide();
 	return false; 
 } 
-	$(idname).siblings("h3").hide();
-	$(idname).siblings("b").show();
+	jQuery(idname).siblings("h3").hide();
+	jQuery(idname).siblings("b").show();
 	return true; 
 }
 
 //检验户籍地
 function checkhujidi(){
 	var idname = "#registration"+i;
-	var str =  $(idname).val();
+	var str =  jQuery(idname).val();
 	if(str == ""){
-		$(idname).parent("strong").parent("u").siblings("h3").show();
-		$(idname).parent("strong").parent("u").siblings("b").hide();
+		jQuery(idname).parent("strong").parent("u").siblings("h3").show();
+		jQuery(idname).parent("strong").parent("u").siblings("b").hide();
 		return false;
 	}else{
-		$(idname).parent("strong").parent("u").siblings("h3").hide();
-		$(idname).parent("strong").parent("u").siblings("b").show();
+		jQuery(idname).parent("strong").parent("u").siblings("h3").hide();
+		jQuery(idname).parent("strong").parent("u").siblings("b").show();
 		return true; 
 	}
 }
@@ -415,15 +415,15 @@ function checkhujidi(){
 function hashuzhao(s,i){
 	var idname = "#lvyouzhengjiandiv"+i;
 	if(s == 1){
-		$(idname).show();
+		jQuery(idname).show();
 	}else{
-		$(idname).hide();
+		jQuery(idname).hide();
 	}
 }
 
 //选择护照
 function checkhuzhao(x,i){
-	var huzhao = $("#zhengjiantype"+i).val();
+	var huzhao = jQuery("#zhengjiantype"+i).val();
 	var tupiandiv = "#zhengjiantupian"+i;
 	if(huzhao == '港澳通行证')
 		var s = 1;
@@ -432,25 +432,25 @@ function checkhuzhao(x,i){
 	else
 		var s = 0;
 	if(huzhao){
-		$(tupiandiv).css("background-image","url(<{:SITE_PUBLIC}>images/tjdd_certificate_pic_"+s+x+".jpg)");
+		jQuery(tupiandiv).css("background-image","url(<{:SITE_PUBLIC}>images/tjdd_certificate_pic_"+s+x+".jpg)");
 	}else{
-		$(tupiandiv).css("background-image","none");
+		jQuery(tupiandiv).css("background-image","none");
 	}
 }
  
-$(document).ready(function(){
+jQuery(document).ready(function(){
 	var myDate = new Date();
 	var thisYear = myDate.getFullYear();
 	for(var i=0;i<16;i++){
 		var validity_year = thisYear+i;
 		var issued_year = thisYear-i;
-		$(".validity_year").append("<option value='"+validity_year+"'>"+validity_year+"</option>");
-		$(".issued_year").append("<option value='"+issued_year+"'>"+issued_year+"</option>");
+		jQuery(".validity_year").append("<option value='"+validity_year+"'>"+validity_year+"</option>");
+		jQuery(".issued_year").append("<option value='"+issued_year+"'>"+issued_year+"</option>");
 	}
-	$(".registration,.issued_address").append('<option value="">请选择</option><option value="安徽省">安徽省</option><option value="澳门">澳门</option><option value="北京">北京</option><option value="福建省">福建省</option><option value="甘肃省">甘肃省</option><option value="广东省">广东省</option><option value="广西">广西</option><option value="贵州省">贵州省</option><option value="海南省">海南省</option><option value="河北省">河北省</option><option value="河南省">河南省</option><option value="黑龙江省">黑龙江省</option><option value="湖北省">湖北省</option><option value="湖南省">湖南省</option><option value="吉林">吉林</option><option value="江苏省">江苏省</option><option value="江西省">江西省</option><option value="辽宁省">辽宁省</option><option value="内蒙古">内蒙古</option><option value="宁夏">宁夏</option><option value="青海省">青海省</option><option value="山东省">山东省</option><option value="山西省">山西省</option><option value="陕西省">陕西省</option><option value="上海市">上海市</option><option value="四川省">四川省</option><option value="台湾">台湾</option><option value="天津市">天津市</option><option value="西藏">西藏</option><option value="香港">香港</option><option value="新疆">新疆</option><option value="云南省">云南省</option><option value="浙江省">浙江省</option><option value="重庆市">重庆市</option><option value="其他">其他</option>');
-	$(".issued_month,.validity_month").append('<option value="JAN&lt;1&gt;">JAN&lt;1&gt;</option><option value="FEB&lt;2&gt;">FEB&lt;2&gt;</option><option value="MAR&lt;3&gt;">MAR&lt;3&gt;</option><option value="APR&lt;4&gt;">APR&lt;4&gt;</option><option value="MAY&lt;5&gt;">MAY&lt;5&gt;</option><option value="JUN&lt;6&gt;">JUN&lt;6&gt;</option><option value="JUL&lt;7&gt;">JUL&lt;7&gt;</option><option value="AUG&lt;8&gt;">AUG&lt;8&gt;</option><option value="SEP&lt;9&gt;">SEP&lt;9&gt;</option><option value="OCT&lt;10&gt;">OCT&lt;10&gt;</option><option value="NOV&lt;11&gt;">NOV&lt;11&gt;</option><option value="DEC&lt;12&gt;">DEC&lt;12&gt;</option>');
+	jQuery(".registration,.issued_address").append('<option value="">请选择</option><option value="安徽省">安徽省</option><option value="澳门">澳门</option><option value="北京">北京</option><option value="福建省">福建省</option><option value="甘肃省">甘肃省</option><option value="广东省">广东省</option><option value="广西">广西</option><option value="贵州省">贵州省</option><option value="海南省">海南省</option><option value="河北省">河北省</option><option value="河南省">河南省</option><option value="黑龙江省">黑龙江省</option><option value="湖北省">湖北省</option><option value="湖南省">湖南省</option><option value="吉林">吉林</option><option value="江苏省">江苏省</option><option value="江西省">江西省</option><option value="辽宁省">辽宁省</option><option value="内蒙古">内蒙古</option><option value="宁夏">宁夏</option><option value="青海省">青海省</option><option value="山东省">山东省</option><option value="山西省">山西省</option><option value="陕西省">陕西省</option><option value="上海市">上海市</option><option value="四川省">四川省</option><option value="台湾">台湾</option><option value="天津市">天津市</option><option value="西藏">西藏</option><option value="香港">香港</option><option value="新疆">新疆</option><option value="云南省">云南省</option><option value="浙江省">浙江省</option><option value="重庆市">重庆市</option><option value="其他">其他</option>');
+	jQuery(".issued_month,.validity_month").append('<option value="JAN&lt;1&gt;">JAN&lt;1&gt;</option><option value="FEB&lt;2&gt;">FEB&lt;2&gt;</option><option value="MAR&lt;3&gt;">MAR&lt;3&gt;</option><option value="APR&lt;4&gt;">APR&lt;4&gt;</option><option value="MAY&lt;5&gt;">MAY&lt;5&gt;</option><option value="JUN&lt;6&gt;">JUN&lt;6&gt;</option><option value="JUL&lt;7&gt;">JUL&lt;7&gt;</option><option value="AUG&lt;8&gt;">AUG&lt;8&gt;</option><option value="SEP&lt;9&gt;">SEP&lt;9&gt;</option><option value="OCT&lt;10&gt;">OCT&lt;10&gt;</option><option value="NOV&lt;11&gt;">NOV&lt;11&gt;</option><option value="DEC&lt;12&gt;">DEC&lt;12&gt;</option>');
 	for(var i=1;i<32;i++){
-		$(".issued_day,.validity_day").append('<option value="'+i+'">'+i+'</option>');
+		jQuery(".issued_day,.validity_day").append('<option value="'+i+'">'+i+'</option>');
 	}
 });
 </script>

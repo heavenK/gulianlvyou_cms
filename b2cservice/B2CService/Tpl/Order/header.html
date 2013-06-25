@@ -6,13 +6,11 @@
 <link href="<{:SITE_PUBLIC}>styles/reset.css" type="text/css" rel="stylesheet" />
 <link href="<{:SITE_PUBLIC}>styles/txdd.css" type="text/css" rel="stylesheet" />
 <script language="javascript" src="<{:__PUBLIC__}>/myerp/jquery-1.7.2.min.js" ></script>
-
 <script src="<{:__PUBLIC__}>myerp/Thinkjs/Base.js" type="text/javascript"></script>
 <script src="<{:__PUBLIC__}>myerp/Thinkjs/prototype.js" type="text/javascript"></script>
 <script src="<{:__PUBLIC__}>myerp/Thinkjs/mootools.js" type="text/javascript"></script>
 <script src="<{:__PUBLIC__}>myerp/ThinkAjax_GP.js" type="text/javascript"></script>
 <script src="<{:__PUBLIC__}>myerp/Thinkjs/Form/CheckForm_GP.js" type="text/javascript"></script>
-
 <script type="text/javascript">
 //头部导航下拉菜单
 jQuery(function($) {
@@ -32,33 +30,38 @@ jQuery(function($) {
 </head>
 
 <body>
-<div class="header_box"><!--头部-->
-	<dl>
-    	<dd><b><a href="#" style=" font-family:Arial;">ENGLISH</a>  |  <a href="#">日本語</a>  |  <a href="#" style=" font-family:Arial;">РУССКИЙ ЯЗЫК</a></b><i><u><a href="#">登录</a></u> | <a href="#">注册</a> | <a href="#">加入收藏</a></i><em>欢迎来到古莲旅游网！</em></dd>
-        <dt>
-        	<i><a href="#"><img src="<{:SITE_PUBLIC}>/images/logo.png" width="223" height="73" /></a></i>
-            <b>
-                <input type="text" class="header_search_text" name="text" value="搜索旅游目的地" onfocus="if (value =='搜索旅游目的地'){value =''}" onblur="if (value ==''){value='搜索旅游目的地'}"/>
-                <input type="submit" class="header_search_submit" name="submit" value="" />
-            </b>
-            <em>热门搜索：<a href="#">灵山大佛</a>  <a href="#">马尔代夫</a>  <a href="#">海南</a>  <a href="#">巴厘岛</a>  <a href="#">普吉岛</a>  <a href="#">迪斯尼乐园</a></em>
-        </dt>
-    </dl>
-    <div class="mainbav_box"><!--导航-->
-    	<ul>
-        	<li style=" background:none;"><a href="<{:ROOT_URL}>"><span>首 页</span></a></li>
-            <li class="mainbav_on"><a href="<{:ROOT_URL}>gulian/cty/"><span>参团游</span></a></li>
-            <li><a href="<{:ROOT_URL}>gulian/zyx/"><span>自由行</span></a></li>
-            <li><a href="<{:ROOT_URL}>gulian/ztdj/"><span>主题度假</span></a></li>
-            <li><a href="<{:ROOT_URL}>gulian/gxdz/"><span>个性定制</span></a></li>
-            <li><a href="<{:ROOT_URL}>gulian/qianzheng/"><span>签 证</span></a></li>
-            <li id="mainbav_pull"><a href="<{:ROOT_URL}>gulian/dryj/"><span>达人游记</span></a>
-            	<ol>
-                	<li><a href="<{:ROOT_URL}>gulian/dryj/jcyj">精彩游记</a></li>
-                    <li><a href="<{:ROOT_URL}>gulian/dryj/tietu">贴&nbsp;&nbsp;&nbsp;&nbsp;图</a></li>
-                    <li><a href="<{:ROOT_URL}>gulian/dryj/shipin">视&nbsp;&nbsp;&nbsp;&nbsp;频</a></li>
-                </ol>
-            </li>
-        </ul>
-    </div>
+<div class="header_box" id=""><!--头部-->
+  <dl>
+  
+    <dd><b><a href="#" style=" font-family:Arial;">ENGLISH</a> | <a href="#">日本語</a> | <a href="#" style=" font-family:Arial;">РУССКИЙ ЯЗЫК</a></b>
+    <em><u><a href="<{:MY_URL}>">个人中心</a></u><strong>|</strong><span><a href="<{:ORDER_URL}>">我的订单</a></span>
+    </em>
+        <i style="color:#666666;">
+        <{$user[userid]}> [<a href="<{:B2CSERVICE_APIS}>action_index_do.php?fmdo=login&dopost=exit">退出登录</a>]</i>
+    </dd>
+
+    
+    <script language="javascript" type="text/javascript">CheckLogin();</script>
+    <dt> <i><a href="#"><img src="<{:SITE_PUBLIC}>images/logo.png" width="223" height="73" /></a></i> <b>
+      <input type="text" class="header_search_text" name="text" value="搜索旅游目的地" onfocus="if (value =='搜索旅游目的地'){value =''}" onblur="if (value ==''){value='搜索旅游目的地'}"/>
+      <input type="submit" class="header_search_submit" name="submit" value="" />
+      </b> <em>热门搜索：<a href="#">灵山大佛</a> <a href="#">马尔代夫</a> <a href="#">海南</a> <a href="#">巴厘岛</a> <a href="#">普吉岛</a> <a href="#">迪斯尼乐园</a></em> </dt>
+  </dl>
+  <div class="mainbav_box"><!--导航-->
+    <ul>
+      <li id="mainbav_index" style=" background:none;"><a href="/"><span>首 页</span></a></li>
+      <li id="mainbav_cty"><a href="/gulian/cty"><span>参团游</span></a></li>
+      <li id="mainbav_zyx"><a href="/gulian/zyx"><span>自由行</span></a></li>
+      <li id="mainbav_ztdj"><a href="/gulian/ztdj"><span>主题度假</span></a></li>
+      <li id="mainbav_gxdz"><a href="/gulian/gxdz"><span>个性定制</span></a></li>
+      <li id="mainbav_qianzheng"><a href="/gulian/qianzheng"><span>签 证</span></a></li>
+      <li id="mainbav_pull"><a href="/gulian/dryj"><span>达人游记</span></a>
+        <ol>
+          <li><a href="/gulian/dryj/jcyj">精彩游记</a></li>
+          <li><a href="/gulian/dryj/tietu">贴&nbsp;&nbsp;&nbsp;&nbsp;图</a></li>
+          <li><a href="/gulian/dryj/shipin">视&nbsp;&nbsp;&nbsp;&nbsp;频</a></li>
+        </ol>
+      </li>
+    </ul>
+  </div>
 </div>

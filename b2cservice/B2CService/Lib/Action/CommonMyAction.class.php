@@ -11,6 +11,7 @@ class CommonMyAction extends Action{
 		$this->loginsta = A("DEDEInfo")->ajax_loginsta('arrary');
         if (false === $this->loginsta)
             redirect(ROOT_URL.'member');
+		$this->assign("user",$this->loginsta);
 		$this->_myinit();	
     }
 	

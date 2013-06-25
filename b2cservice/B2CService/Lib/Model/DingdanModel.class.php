@@ -1,6 +1,6 @@
 <?php
 
-class DingdanModel extends Model {
+class DingdanModel extends RelationModel {
 	protected $trueTableName = 'b2cservice_member_dingdan';	
    // 自动验证设置 
     protected $_validate = array( 
@@ -42,6 +42,11 @@ class DingdanModel extends Model {
 		else
 			return 1;
 	}
+
+	protected $_link = array(
+		'joinerlist'=>array('mapping_type'=>HAS_MANY,'class_name'=>'b2cservice_member_dingdanjoiner','foreign_key'=>'dingdanID'),
+	);
+	
 
 
 }

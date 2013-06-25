@@ -14,10 +14,5 @@ class IndexAction extends Action{
 		}
     }
 	
-    public function test() {
-		echo 111;
-	}
-	
-	
 }
 ?>
