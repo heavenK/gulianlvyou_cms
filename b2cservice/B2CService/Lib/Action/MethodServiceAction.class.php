@@ -157,11 +157,14 @@ class MethodServiceAction extends CommonAction{
 	
 	
     public function _check_dingdan_valid($orderID) {
-		$order = A("MethodService")->_getdingdan($orderID);
+		$order = $this->_getdingdan($orderID);
 		if(!$order){
 			return false;
 		}
-		$chanpin = A("MethodService")->_checkchanpin($order['serverdataID']);
+		if($order['type'] == '签证')
+			$chanpin = $this->_checkchanpin_qianzheng($order['serverdataID']);
+		else
+			$chanpin = $this->_checkchanpin($order['serverdataID']);
 		if(false === $chanpin){
 			return false;
 		}
@@ -218,7 +221,7 @@ class MethodServiceAction extends CommonAction{
 	
 	
     public function _change_order_tempstatus($orderID,$status) {
-		$order = A("MethodService")->_getdingdan($orderID);
+		$order = $this->_getdingdan($orderID);
 		if(!$order){
 			return false;
 		}

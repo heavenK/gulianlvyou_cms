@@ -28,7 +28,10 @@ class NHOrderAction extends Action{
 		if($merchantQueryOrderResult->isSucess==TRUE)
 		{
 			$v['status'] = '已支付';
-			$dingdan = $Dingdan->where("`orderID` = '$v[orderID]'")->save($v);
+			if(false == $Dingdan->where("`orderID` = '$tOrderNo'")->save($v)){
+				$msg = iconv("UTF-8","GBK",'<br>支付失败!!!</br>');
+			}
+			else
 			$msg = iconv("UTF-8","GBK",'<br>已支付成功!!!</br>');
 			print($msg);
 			//推送到erp和center
