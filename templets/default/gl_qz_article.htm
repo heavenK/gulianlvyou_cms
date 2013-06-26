@@ -60,6 +60,20 @@ $(document).ready(function(){
 	});
 });
 </script>
+
+<script src="/b2cservice/apis/define.inc.js"></script>
+<script src="/b2cservice/apis/define2.inc.js"></script>
+<script>
+function qianzhengyuding(chanpinID,aid){
+	clickurl = BOOK_1_URL + "/chanpintype/签证/chanpinID/"+chanpinID+"/aid/"+aid;
+	judge("judegeover('" + clickurl + "')");
+}
+function judegeover(url) {
+    window.location.href = url;
+}
+</script>
+
+
 </head>
 
 <body>
@@ -80,7 +94,8 @@ $(document).ready(function(){
                         <em>最多停留期：<b>{dede:field.tingliuqi/}</b>&nbsp;&nbsp;&nbsp;&nbsp;预计工作日：<b>{dede:field.yujigongzuori/}</b></em>
                         <em>收客范围：<b>{dede:field.fanwei/}</b></em>
                         <i>价格：<b>￥<strong>{dede:field.jiage/}</strong></b></i>
-                        <u><a href="#"></a></u>
+                        <script src="/b2cservice/apis/login.js"></script> 
+                        <u><a href="javascript:qianzhengyuding({dede:field.serverdataid/},{dede:field.id/})"></a></u>
                     </dt>
                 </dl>
             </div>

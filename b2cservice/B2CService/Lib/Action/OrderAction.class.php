@@ -28,6 +28,7 @@ class OrderAction extends CommonMyAction{
 	
 	
     public function book1() {
+		
 		if($_REQUEST['orderID']){
 			$order = A("MethodService")->_getdingdan($_REQUEST['orderID']);
 			if(!$order){
@@ -45,17 +46,35 @@ class OrderAction extends CommonMyAction{
 			$this->assign("ertongshu",$_REQUEST['ertongshu']);
 			$this->assign("order",$order);
 		}
-		$chanpin = A("MethodService")->_checkchanpin($_REQUEST['chanpinID']);
-		if(false === $chanpin){
-			echo "产品不存在或已经停止销售！！";
-			exit;
+		
+		if($_REQUEST['chanpintype'] == '签证'){
+			$chanpin = A("MethodService")->_checkchanpin_qianzheng($_REQUEST['chanpinID']);
+			if(false === $chanpin){
+				echo "产品不存在或已经停止销售！！";
+				exit;
+			}
+			$DEDEAddonarticle = D(A_QIANZHENG_ADDONARTICLE);//自定义模型文章附表
+			$aid = $_REQUEST['aid'];
+			$qianzheng_info = $DEDEAddonarticle->where("`aid` = '$aid'")->find();
+			$this->assign("qianzheng",$chanpin);
+			$this->assign("qianzheng_info",$qianzheng_info);
+			$zongjia = $chanpin['shoujia'];
+			$this->assign("zongjia",$zongjia);
+			$this->display('book1_qianzheng');
 		}
-		$xianlu = unserialize($chanpin['xianlulist']['datatext']);
-		$zongjia = $chanpin['adult_price']*$_REQUEST['chengrenshu']+$chanpin['child_price']*$_REQUEST['ertongshu'];
-		$this->assign("zongjia",$zongjia);
-		$this->assign("zituan",$chanpin);
-		$this->assign("xianlu",$xianlu);
-		$this->display();
+		else{
+			$chanpin = A("MethodService")->_checkchanpin($_REQUEST['chanpinID']);
+			if(false === $chanpin){
+				echo "产品不存在或已经停止销售！！";
+				exit;
+			}
+			$xianlu = unserialize($chanpin['xianlulist']['datatext']);
+			$zongjia = $chanpin['adult_price']*$_REQUEST['chengrenshu']+$chanpin['child_price']*$_REQUEST['ertongshu'];
+			$this->assign("zongjia",$zongjia);
+			$this->assign("zituan",$chanpin);
+			$this->assign("xianlu",$xianlu);
+			$this->display();
+		}
 	}
 	
     public function dopostbook1() {

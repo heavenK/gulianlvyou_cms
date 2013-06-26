@@ -61,6 +61,16 @@ class MethodServiceAction extends CommonAction{
 			return $zituan;
 	}
 	
+	//检查产品
+    public function _checkchanpin_qianzheng($chanpinID) {
+		$qianzheng = FileGetContents(SERVER_INDEX."Server/getqianzhengbyID/chanpinID/".$chanpinID);
+		if($qianzheng['error']){
+			return false;	
+		}
+		else
+			return $qianzheng;
+	}
+	
 	
 	//用户状态
     public function ajax_loginsta($mid='') {

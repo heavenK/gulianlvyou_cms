@@ -4,7 +4,7 @@
 //	SERVER_URL = 'http://www.'+SERVER_ROOT_NAME+'.com/';
 	ORDER_URL = 'http://order.'+SITE_ROOT_NAME+'.com/';
 	MY_URL = 'http://my.'+SITE_ROOT_NAME+'.com/';
-	BBS_URL = 'http://bbs.'+SITE_ROOT_NAME+'.com/';
+	BBS_URL = 'http://faq.'+SITE_ROOT_NAME+'.com/';
     B2CSERVICE_URL = ROOT_URL+"b2cservice/";
     SITE_URL = ROOT_URL;
 	//常用定义

@@ -5,7 +5,7 @@
     define('B2CSERVICE_URL',ROOT_URL.'b2cservice/');
     define('ORDER_URL','http://order.'.SITE_ROOT_NAME.'.com/');
     define('MY_URL','http://my.'.SITE_ROOT_NAME.'.com/');
-    define('BBS_URL','http://bbs.'.SITE_ROOT_NAME.'.com/');
+    define('BBS_URL','http://faq.'.SITE_ROOT_NAME.'.com/');
 	//常用定义
     define('SERVER_INDEX',SERVER_URL.'index.php?s=/');
     define('CLIENT_INDEX',CLIENT_URL.'index.php?s=/');
@@ -27,4 +27,25 @@
 	
 	//其他
     define('NHORDER_INDEX',B2CSERVICE_URL.'IndexNHOrder/index.php?s=/');
+	
+	//参团游线路主栏目ID
+    define('A_XIANLU_TYPEID', 17);
+	//参团游线路频道模型ID
+    define('A_XIANLU_CHANNEL', 7);
+	//参团游线路附表ID
+    define('A_XIANLU_ADDONARTICLE', 'cty_addon7');
+	
+	//自由行线路主栏目ID
+    define('B_XIANLU_TYPEID', 18);
+	//自由行线路频道模型ID
+    define('B_XIANLU_CHANNEL', 7);
+	
+	//签证主栏目ID
+    define('A_QIANZHENG_TYPEID', 34);
+	//签证频道模型ID
+    define('A_QIANZHENG_CHANNEL', 9);
+	//签证附表ID
+    define('A_QIANZHENG_ADDONARTICLE', 'glly_qianzheng');
+	
+	
 ?>

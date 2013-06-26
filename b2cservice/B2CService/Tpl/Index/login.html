@@ -27,8 +27,8 @@ function do_login() {
     }
 	jQuery.getJSON(B2CSERVICE_URL+"apis/action_index_do.php?userid="+userid+"&pwd="+pwd+"&fmdo="+fmdo+"&dopost="+dopost+"&keeptime="+keeptime+"&jsoncallback=?", function(data){
 		if(data.suc == 1){
-			$("head").append(""+data.code);
-			window.location = MY_URL;
+			jQuery("body").append(""+data.ucsynlogin);
+			window.setTimeout('show_suc()',500);
 		}
 		else{
 			alert("登录失败:"+data.msg);
@@ -36,12 +36,14 @@ function do_login() {
     });
 }
 
-
+function show_suc(){
+	window.location = MY_URL;
+}
 </script>
 
 </head>
 
-<body>
+<body id="body">
 <div class="login_top"><a href="#"><img src="<?php echo SITE_PUBLIC ?>images/logo.png" width="223" height="73" /></a></div>
 <div class="login_cont_box">
 

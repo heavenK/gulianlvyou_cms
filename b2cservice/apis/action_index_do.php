@@ -356,7 +356,6 @@ else if($fmdo=='login')
 			$res['ucsynlogin'] = $ucsynlogin;
             // 清除会员缓存
             $cfg_ml->DelCache($cfg_ml->M_ID);
-			$res['msg'] = "管理员帐号不允许从前台登录！";
 			$res['suc'] = 1;
 			$res = json_encode($res);
 			echo  $_GET['jsoncallback'].'('.$res.')';
@@ -374,9 +373,10 @@ else if($fmdo=='login')
         if(defined('UC_API') && @include_once DEDEROOT.'/uc_client/client.php')
         {
             $ucsynlogin = uc_user_synlogout();
+			echo($ucsynlogin);//必须
         }
         #/aip}}
-		my_redirect(ROOT_URL);
+		my_redirect(ROOT_URL,1,'退出成功');
         //ShowMsg("成功退出登录！","index.php",0,2000);
         exit();
     }
