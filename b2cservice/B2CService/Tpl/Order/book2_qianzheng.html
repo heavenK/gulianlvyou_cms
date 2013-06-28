@@ -46,18 +46,25 @@ function closeBox(){
         感谢您关注古莲旅游网最新产品信息！如有疑问，您可以直接致电40007-66667咨询相关事宜。 </p>
 	  <php>}</php>
       <table width="938" cellpadding="0" cellspacing="0">
-        <tr height="34">
-          <td width="431">产品名称：<b><{$order['title_copy']}></b></td>
-          <td width="252">出发城市：<b><{$order['chufadi_copy']}></b></td>
-          <td width="255">出发时间：<b><{$order['chutuanriqi_copy']}></b></td>
-        </tr>
-        <tr height="34">
-          <td width="431">出团编号：<b><{$order['tuanhao_copy']}></b></td>
-          <td width="252">行程天数：<b><{$order['tianshu_copy']}>日</b></td>
-          <td width="255"></td>
-        </tr>
+          <tr height="34">
+              <td width="431">产品名称：<b><{$order['title_copy']}></b></td>
+              <td width="252">办理地点：<b><{$qianzheng_info['banlididian']}></b></td>
+              <td width="255">有效期：<b><{$qianzheng_info['youxiaoqi']}></b></td>
+          </tr>
+          <tr height="34">
+              <td width="431">最多停留期：<b><{$qianzheng_info['tingliuqi']}></b></td>
+              <td width="252">预计工作日：<b><{$qianzheng_info['yujigongzuori']}></b></td>
+              <td width="255">收客范围：<b><{$qianzheng_info['fanwei']}></b></td>
+          </tr>
+          <tr height="34">
+              <td width="431">特别提示：<b><{$qianzheng_info['xiangxi']}></b></td>
+              <td width="252"></td>
+              <td width="255"></td>
+          </tr>
       </table>
-      <i>出行人数： 成人 <{$order['chengrenshu']}> 人&nbsp;，&nbsp;儿童 <{$order['ertonghsu']}> 人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合计：<u>￥</u><b><{$order['zongjia']}></b></i> </span> </div>
+      
+      
+      <i>人数：  <{$order['chengrenshu']}> 人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合计：<u>￥</u><b><{$order['zongjia']}></b></i> </span> </div>
     <div class="zxzf_lxrxx"><!--联系人信息-->
       <dl>
         <dd>联系人信息</dd>
@@ -68,46 +75,16 @@ function closeBox(){
           <th width="66" scope="col">姓名</th>
           <th width="163" scope="col">电话</th>
           <th width="207" scope="col">邮箱</th>
+          <th width="400" scope="col">邮寄地址</th>
           <th scope="col"></th>
         </tr>
         <tr height="40" align="center">
           <td><{$order['lxr_name']}></td>
           <td><{$order['lxr_telnum']}></td>
           <td><{$order['lxr_email']}></td>
+          <td><{$order['remark']}></td>
           <td></td>
         </tr>
-      </table>
-    </div>
-    <div class="zxzf_sjcyrxxxx"><!--实际出游人详细信息-->
-      <dl>
-        <dd>实际出游人详细信息</dd>
-        <dt><a href="<{:SITE_INDEX}>Order/book2/orderID/<{$_REQUEST[orderID]}>">返回修改&gt;&gt;</a></dt>
-      </dl>
-      <table width="980" border="0" cellspacing="0" cellpadding="0">
-        <tr height="27" bgcolor="#eeeeee" align="center">
-          <th width="67" scope="col">姓名</th>
-          <th width="128" scope="col">拼音</th>
-          <th width="44" scope="col">性别</th>
-          <th width="108" scope="col">生日</th>
-          <th width="88" scope="col">证件类型</th>
-          <th width="222" scope="col">证件号</th>
-          <th width="157" scope="col">旅游证件号</th>
-          <th width="67" scope="col">签发地</th>
-          <th scope="col">有效期至</th>
-        </tr>
-        <php>foreach($joinerall as $v){</php>
-        <tr height="40" align="center">
-          <td><{$v['name']}></td>
-          <td><{$v['pinyin']}></td>
-          <td><{$v['sex']}></td>
-          <td><{$v['birthday']}></td>
-          <td><{$v['zhengjiantype']}></td>
-          <td><{$v['zhengjianhaoma']}></td>
-          <td><php>if($v['lyzj_haoma'])echo $v['lyzj_haoma'];else echo '--'</php></td>
-          <td><php>if($v['lyzj_qianfadi'])echo $v['lyzj_qianfadi'];else echo '--'</php></td>
-          <td><php>if($v['lyzj_youxiaoqi'])echo $v['lyzj_youxiaoqi'];else echo '--'</php></td>
-        </tr>
-        <php>}</php>
       </table>
     </div>
     <php>if($order['status'] == '等待支付'){</php>

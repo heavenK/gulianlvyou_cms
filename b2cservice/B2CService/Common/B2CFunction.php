@@ -377,7 +377,7 @@ if ( ! function_exists('DEDECheckUserID'))
      * @param     string  $pwd  需要加密的密码
      * @return    string
      */
-	if ( ! function_exists('DEDEGetShortPwd'))
+	if ( ! function_exists('DEDEGetEncodePwd'))
 	{
 		function DEDEGetEncodePwd($pwd)
 		{
@@ -599,7 +599,7 @@ if ( ! function_exists('utf82gb'))
 
 /**更改订单号
  */
-if ( ! function_exists('DEDEGetShortPwd'))
+if ( ! function_exists('API_change_orderID'))
 {
 function API_change_orderID($orderID)
 {

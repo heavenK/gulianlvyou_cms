@@ -15,12 +15,28 @@ class OrderAction extends CommonMyAction{
 		$this->display('My:orderlist');
 	}
 	
+	function showheader(){
+		$this->display('header');
+	}
+	
+	
+	function getadstips(){
+		$DEDEArchives = D("DEDEArchives");//文章主表
+		$tips = $DEDEArchives->where("`typeid` = '73'")->findall();
+		dump($tips);
+	}
+	
 	
     public function book1() {
+		
 		if($_REQUEST['orderID']){
 			$order = A("MethodService")->_getdingdan($_REQUEST['orderID']);
 			if(!$order){
 				echo "订单不存在！！";
+				exit;
+			}
+			if($order['status'] == '已支付'){
+				ShowMsg("已支付不允许修改");
 				exit;
 			}
 			$_REQUEST['chanpinID'] = $order['serverdataID'];
@@ -30,46 +46,93 @@ class OrderAction extends CommonMyAction{
 			$this->assign("ertongshu",$_REQUEST['ertongshu']);
 			$this->assign("order",$order);
 		}
-		$chanpin = A("MethodService")->_checkchanpin($_REQUEST['chanpinID']);
-		if(false === $chanpin){
-			echo "产品不存在或已经停止销售！！";
-			exit;
+		
+		if($_REQUEST['chanpintype'] == '签证'){
+			$chanpin = A("MethodService")->_checkchanpin_qianzheng($_REQUEST['chanpinID']);
+			if(false === $chanpin){
+				echo "产品不存在或已经停止销售！！";
+				exit;
+			}
+			$DEDEAddonarticle = D(A_QIANZHENG_ADDONARTICLE);//自定义模型文章附表
+			$aid = $_REQUEST['aid'];
+			$qianzheng_info = $DEDEAddonarticle->where("`aid` = '$aid'")->find();
+			$this->assign("qianzheng",$chanpin);
+			$this->assign("qianzheng_info",$qianzheng_info);
+			$zongjia = $chanpin['shoujia'];
+			$this->assign("zongjia",$zongjia);
+			$this->display('book1_qianzheng');
 		}
-		$xianlu = unserialize($chanpin['xianlulist']['datatext']);
-		$zongjia = $chanpin['adult_price']*$_REQUEST['chengrenshu']+$chanpin['child_price']*$_REQUEST['ertongshu'];
-		$this->assign("zongjia",$zongjia);
-		$this->assign("zituan",$chanpin);
-		$this->assign("xianlu",$xianlu);
-		$this->display();
-	}
-	
-    public function dopostbook1() {
-		if($_REQUEST['chanpinID']){
+		else{
 			$chanpin = A("MethodService")->_checkchanpin($_REQUEST['chanpinID']);
 			if(false === $chanpin){
 				echo "产品不存在或已经停止销售！！";
 				exit;
 			}
 			$xianlu = unserialize($chanpin['xianlulist']['datatext']);
-			//提交到订单
-			$rows = $_REQUEST;
-			$rows['serverdataID'] = $_REQUEST['chanpinID'];
-			$rows['title_copy'] = $chanpin['title_copy'];
-			$rows['chufadi_copy'] = $xianlu['chufadi'];
-			$rows['tianshu_copy'] = $xianlu['tianshu'];
-			$rows['chutuanriqi_copy'] = $chanpin['chutuanriqi'];
-			$rows['tuanhao_copy'] = $chanpin['tuanhao'];
-			$rows['chengrenshu'] = $_REQUEST['chengrenshu'];
-			$rows['ertongshu'] = $_REQUEST['ertongshu'];
-			$rows['status'] = '准备中';
-			$rows['price'] = $chanpin['adult_price']*$_REQUEST['chengrenshu']+$chanpin['child_price']*$_REQUEST['ertongshu'];
-			$rows['orderID'] = MakeOrders($rows['serverdataID']);
-			$redirect_rul = ORDER_INDEX.'Order/book2/orderID/'.$rows['orderID'];
+			$zongjia = $chanpin['adult_price']*$_REQUEST['chengrenshu']+$chanpin['child_price']*$_REQUEST['ertongshu'];
+			$this->assign("zongjia",$zongjia);
+			$this->assign("zituan",$chanpin);
+			$this->assign("xianlu",$xianlu);
+			$this->display();
+		}
+	}
+	
+    public function dopostbook1() {
+		if($_REQUEST['chanpinID']){
+			if($_REQUEST['chanpintype'] == '签证'){
+				$chanpin = A("MethodService")->_checkchanpin_qianzheng($_REQUEST['chanpinID']);
+				if(false === $chanpin){
+					echo "产品不存在或已经停止销售！！";
+					exit;
+				}
+				//提交到订单
+				$rows = $_REQUEST;
+				$rows['serverdataID'] = $_REQUEST['chanpinID'];
+				$rows['type'] = '签证';
+				$rows['title_copy'] = $chanpin['title'];
+				$rows['chutuanriqi_copy'] = $chanpin['chutuanriqi'];
+				$rows['chengrenshu'] = 1;
+				$rows['status'] = '等待支付';
+				$rows['price'] = $chanpin['shoujia'];
+				$rows['adult_price'] = $chanpin['shoujia'];
+				$rows['child_price'] = $chanpin['ertongshoujia'];
+				$rows['orderID'] = MakeOrders($rows['serverdataID']);
+				$redirect_rul = ORDER_INDEX.'Order/book2/orderID/'.$rows['orderID'];
+			}
+			else{
+				$chanpin = A("MethodService")->_checkchanpin($_REQUEST['chanpinID']);
+				if(false === $chanpin){
+					echo "产品不存在或已经停止销售！！";
+					exit;
+				}
+				$xianlu = unserialize($chanpin['xianlulist']['datatext']);
+				//提交到订单
+				$rows = $_REQUEST;
+				$rows['serverdataID'] = $_REQUEST['chanpinID'];
+				$rows['type'] = '标准';
+				$rows['title_copy'] = $chanpin['title_copy'];
+				$rows['chufadi_copy'] = $xianlu['chufadi'];
+				$rows['tianshu_copy'] = $xianlu['tianshu'];
+				$rows['chutuanriqi_copy'] = $chanpin['chutuanriqi'];
+				$rows['tuanhao_copy'] = $chanpin['tuanhao'];
+				$rows['chengrenshu'] = $_REQUEST['chengrenshu'];
+				$rows['ertongshu'] = $_REQUEST['ertongshu'];
+				$rows['status'] = '准备中';
+				$rows['price'] = $chanpin['adult_price']*$_REQUEST['chengrenshu']+$chanpin['child_price']*$_REQUEST['ertongshu'];
+				$rows['adult_price'] = $chanpin['adult_price'];
+				$rows['child_price'] = $chanpin['child_price'];
+				$rows['orderID'] = MakeOrders($rows['serverdataID']);
+				$redirect_rul = ORDER_INDEX.'Order/book2/orderID/'.$rows['orderID'];
+			}
 		}
 		if($_REQUEST['orderID']){
 			$order = A("MethodService")->_getdingdan($_REQUEST['orderID']);
 			if(!$order){
 				echo "订单不存在！！";
+				exit;
+			}
+			if($order['status'] == '已支付'){
+				ShowMsg("已支付不允许修改");
 				exit;
 			}
 			$rows['id'] = $order['id'];
@@ -80,6 +143,7 @@ class OrderAction extends CommonMyAction{
 		$rows['lxr_name'] = $_REQUEST['lxr_name'];
 		$rows['lxr_telnum'] = $_REQUEST['lxr_telnum'];
 		$rows['lxr_email'] = $_REQUEST['lxr_email'];
+		$rows['remark'] = $_REQUEST['remark'];
 		if($_REQUEST['telservice'])
 		$rows['telservice'] = 1;
 		else
@@ -100,19 +164,36 @@ class OrderAction extends CommonMyAction{
 			echo "订单不存在！！";
 			exit;
 		}
-		$DingdanJoiner = D("DingdanJoiner");
-		$joinerall = $DingdanJoiner->where("`dingdanID` = '$order[id]'")->findall();
-		$this->assign("joinerall",$joinerall);
-		$chanpin = A("MethodService")->_checkchanpin($order['serverdataID']);
-		if(false === $chanpin){
-			echo "产品不存在或已经停止销售！！";
+		if($order['status'] == '已支付'){
+			ShowMsg("已支付不允许修改");
 			exit;
 		}
-		$order['zongjia'] = $order['chengrenshu']*$chanpin['adult_price']+$order['ertongshu']*$order['child_price'];
-		$this->assign("order",$order);
-		$this->assign("zituan",$chanpin);
-		$this->assign("xianlu",$xianlu);
-		$this->display();
+		if($order['type'] == '签证'){
+			$chanpin = A("MethodService")->_checkchanpin_qianzheng($order['serverdataID']);
+			if(false === $chanpin){
+				echo "产品不存在或已经停止销售！！";
+				exit;
+			}
+			$order['zongjia'] = $chanpin['shoujia'];
+			$this->assign("qianzheng_info",$chanpin);
+			$this->assign("order",$order);
+			$this->display('book2_qianzheng');
+		}
+		else{
+			$DingdanJoiner = D("DingdanJoiner");
+			$joinerall = $DingdanJoiner->where("`dingdanID` = '$order[id]'")->findall();
+			$this->assign("joinerall",$joinerall);
+			$chanpin = A("MethodService")->_checkchanpin($order['serverdataID']);
+			if(false === $chanpin){
+				echo "产品不存在或已经停止销售！！";
+				exit;
+			}
+			$order['zongjia'] = $order['chengrenshu']*$chanpin['adult_price']+$order['ertongshu']*$order['child_price'];
+			$this->assign("order",$order);
+			$this->assign("zituan",$chanpin);
+			$this->assign("xianlu",$xianlu);
+			$this->display();
+		}
 	}
 	
 	
@@ -120,6 +201,10 @@ class OrderAction extends CommonMyAction{
 		$order = A("MethodService")->_getdingdan($_REQUEST['orderID']);
 		if(!$order){
 			ShowMsg("订单不存在");
+			exit;
+		}
+		if($order['status'] == '已支付'){
+			ShowMsg("已支付不允许修改");
 			exit;
 		}
 		$DingdanJoiner = D("DingdanJoiner");
@@ -159,12 +244,18 @@ class OrderAction extends CommonMyAction{
 //			echo "订单不存在！！";
 			exit;
 		}
-		$chanpin = A("MethodService")->_checkchanpin($order['serverdataID']);
-		if(false === $chanpin){
-			redirect(ORDER_URL);
-			echo "product is not selling or out exist";
-//			echo "产品不存在或已经停止销售！！";
-			exit;
+		if($order['type'] == '签证'){
+			$redirect_rul = ORDER_INDEX.'Order/book2/orderID/'.$order['orderID'];
+			redirect($redirect_rul);
+		}
+		else{
+			$chanpin = A("MethodService")->_checkchanpin($order['serverdataID']);
+			if(false === $chanpin){
+				redirect(ORDER_URL);
+				echo "product is not selling or out exist";
+//				echo "产品不存在或已经停止销售！！";
+				exit;
+			}
 		}
 		$this->assign("chanpin",$chanpin);
 		$order['zongjia'] = $order['chengrenshu']*$chanpin['adult_price']+$order['ertongshu']*$order['child_price'];
@@ -177,22 +268,57 @@ class OrderAction extends CommonMyAction{
 		
 	}
 	
+	function queryOrder(){
+		$orderID = $_REQUEST['orderID'];
+		$dingdan = A("NHOrder")->_query_order($orderID);
+		if($dingdan){
+			redirect($redirect_rul);
+		}
+		else{
+			redirect($redirect_rul);
+		}
+	}
+	
+	function helpOrder(){
+		$orderID = $_REQUEST['orderID'];
+		$dingdan = A("NHOrder")->_query_order($orderID);
+		if($dingdan){
+			redirect($redirect_rul);
+		}
+		else{
+			$Dingdan = D("Dingdan");
+			$order['status_temp'] = '支付帮助';
+			$dingdan = $Dingdan->where("`orderID` = '$order[orderID]'")->save($order);
+			redirect($redirect_rul);
+		}
+	}
 	
 	function MerchantPaymant(){
 		require_once(B2CSERVICE_PATH."/apis/nh/b2c01/api.php");
-		$add = "http://www.dlgulian.com:8080/axis/services/B2CWarpper?wsdl";
+		//$add = "http://www.dlgulian.com:8080/axis/services/B2CWarpper?wsdl";
+		$add = "http://www.gulianlvyou.com:8080/axis/services/B2CWarpper?wsdl";
 		//检查订单
 		$info = A("MethodService")->_check_dingdan_valid($_POST['OrderNo']);
 		if(false === $info){
 			$_REQUEST['msg'] = '订单已失效或产品已下架';
-			$this->ajaxReturn($_REQUEST, '操作失败123！', 0);
+			$_REQUEST['msg'] = iconv("UTF-8","GBK",$_REQUEST['msg']);
+//			$this->ajaxReturn($_REQUEST, '操作失败123！', 0);
+			
+			print("<br>Failed!!!"."</br>");
+			print("<br>Error Message:".$_REQUEST['msg']."</br>");
+			exit;
 		}
 		else{
 			$order = $info['order'];
 			$chanpin = $info['chanpin'];
 			if($order['status'] != '等待支付'){
 				$_REQUEST['msg'] = '此订单不允许再支付';
-				$this->ajaxReturn($_REQUEST, '操作失败234！', 0);
+				$_REQUEST['msg'] = iconv("UTF-8","GBK",$_REQUEST['msg']);
+//				$this->ajaxReturn($_REQUEST, '操作失败234！', 0);
+				
+				print("<br>Failed!!!"."</br>");
+				print("<br>Error Message:".$_REQUEST['msg']."</br>");
+				exit;
 			}
 		}
 		//数据填充
@@ -202,14 +328,12 @@ class OrderAction extends CommonMyAction{
 		$tOrderDate = date("Y/m/d",time());
 		$tOrderTime = date("H:i:s",time());
 		$tOrderAmountStr = 0.01;
-//		$tOrderAmountStr = $order['price'];
 		$tOrderURL = ORDER_INDEX.'Order/book3/orderID/'.$tOrderNo;
 		$tBuyIP = real_ip();
 		$tProductType = 1;
 		$tPaymentType = $_POST['PaymentType'];
-		$tNotifyType = 0;//设定支付结果通知方式（必要信息）
-//		$tResultNotifyURL = ORDER_INDEX.'Order/test';
-		$tResultNotifyURL = B2CSERVICE_INDEX.'Index/test';
+		$tNotifyType = 1;//设定支付结果通知方式（必要信息）0：URL页面通知 1：服务器通知
+		$tResultNotifyURL = NHORDER_INDEX;//这货不能带参数
 		$tMerchantRemarks = '';//商户备注信息
 		$tPaymentLinkType = 1;//设定支付接入方式（必要信息） 注意：目前支持三种接入方式，Internet网络接入，Mobile网络接入，数字电视网络接入，不同的支付方式会返回不同的支付处理页面。
 		$tTotalCount = $order['chengrenshu']+$order['ertongshu'];
@@ -246,15 +370,29 @@ class OrderAction extends CommonMyAction{
 				$_REQUEST['OrderNo'] = $newID;
 			}
 			else{
-				$_REQUEST['msg'] = iconv("GBK","UTF-8",$merchantPaymentResult->ErrorMessage);
-				$this->ajaxReturn($_REQUEST, '操作失败345！', 0);
+//				$_REQUEST['msg'] = iconv("GBK","UTF-8",$merchantPaymentResult->ErrorMessage);
+//				$this->ajaxReturn($_REQUEST, '操作失败345！', 0);
+
+				print("<br>Failed!!!"."</br>");
+				print("<br>return code:".$merchantPaymentResult->returnCode."</br>"); 
+				print("<br>Error Message:".$merchantPaymentResult->ErrorMessage."</br>");
+				exit;
 			}
 		}
+		
+		//修改订单状态，标记支付动作
+		A("MethodService")->_change_order_tempstatus($_REQUEST['OrderNo'],'开始支付');
 		$_REQUEST['PaymentURL'] = $PaymentURL;
-		$this->ajaxReturn($_REQUEST, '保存成功！', 1);
+//		$this->ajaxReturn($_REQUEST, '保存成功！', 1);
+		echo '<script language=javascript>var redirectURL="'.$PaymentURL.'";if(redirectURL!=null&&redirectURL!=""){location.href="'.$PaymentURL.'";}</script> ';
 	}
 	
 	
 	
 }
 ?>
+
+
+
+
+
