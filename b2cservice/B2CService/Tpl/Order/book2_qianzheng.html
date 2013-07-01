@@ -82,7 +82,7 @@ function closeBox(){
           <td><{$order['lxr_name']}></td>
           <td><{$order['lxr_telnum']}></td>
           <td><{$order['lxr_email']}></td>
-          <td><{$order['remark']}></td>
+          <td><{$order['lxr_address']}></td>
           <td></td>
         </tr>
       </table>
@@ -90,7 +90,7 @@ function closeBox(){
     <php>if($order['status'] == '等待支付'){</php>
     <div class="zxzf_jsxx"><!--结算信息-->
       <form id="form1" name="form1" target="_blank" method="post" action="<{:ORDER_INDEX}>Order/MerchantPaymant">
-        <input type="hidden" name='OrderNo' value='<{$orderID}>'>
+        <input type="hidden" name='orderID' value='<{$orderID}>'>
         <php>foreach($joinerall as $v){</php>
         <input type="hidden" name='productid[]' value='<{$order[serverdataID]}>' >
         <input type="hidden" name='productname[]' value='<{$order[title_copy]}>' >

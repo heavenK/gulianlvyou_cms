@@ -85,7 +85,7 @@
 	{
 		function MakeOrders($id)
 		{
-			$OrdersId = 'DLGL'.time().'RN'.mt_rand(100,999);
+			$OrdersId = 'WY'.time().'RN'.mt_rand(100,999);
 			deCrypt(saveCookie("OrdersId_".$id,$OrdersId));
 			return $OrdersId;
 		}	
@@ -599,11 +599,11 @@ if ( ! function_exists('utf82gb'))
 
 /**更改订单号
  */
-if ( ! function_exists('API_change_orderID'))
+if ( ! function_exists('API_change_orderNo'))
 {
-function API_change_orderID($orderID)
+function API_change_orderNo($orderID)
 {
-	return A("MethodService")->_change_orderID($orderID);
+	return A("MethodService")->_change_orderNo($orderID);
 }
 }
 

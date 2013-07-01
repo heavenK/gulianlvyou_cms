@@ -97,6 +97,7 @@ class OrderAction extends CommonMyAction{
 				$rows['adult_price'] = $chanpin['shoujia'];
 				$rows['child_price'] = $chanpin['ertongshoujia'];
 				$rows['orderID'] = MakeOrders($rows['serverdataID']);
+				$rows['orderNo'] = $rows['orderID'];
 				$redirect_rul = ORDER_INDEX.'Order/book2/orderID/'.$rows['orderID'];
 			}
 			else{
@@ -270,7 +271,7 @@ class OrderAction extends CommonMyAction{
 	
 	function queryOrder(){
 		$orderID = $_REQUEST['orderID'];
-		$dingdan = A("NHOrder")->_query_order($orderID);
+		$dingdan = A("NHOrder")->_query_order_byorderID($orderID);
 		if($dingdan){
 			redirect($redirect_rul);
 		}
@@ -281,7 +282,7 @@ class OrderAction extends CommonMyAction{
 	
 	function helpOrder(){
 		$orderID = $_REQUEST['orderID'];
-		$dingdan = A("NHOrder")->_query_order($orderID);
+		$dingdan = A("NHOrder")->_query_order_byorderID($orderID);
 		if($dingdan){
 			redirect($redirect_rul);
 		}
@@ -294,16 +295,20 @@ class OrderAction extends CommonMyAction{
 	}
 	
 	function MerchantPaymant(){
+		$orderID = $_REQUEST['orderID'];
+		//支付前进行订单查询
+		if(A("NHOrder")->_query_order_byorderID($orderID)){
+			redirect(ORDER_INDEX);
+		}
 		require_once(B2CSERVICE_PATH."/apis/nh/b2c01/api.php");
 		//$add = "http://www.dlgulian.com:8080/axis/services/B2CWarpper?wsdl";
 		$add = "http://www.gulianlvyou.com:8080/axis/services/B2CWarpper?wsdl";
 		//检查订单
-		$info = A("MethodService")->_check_dingdan_valid($_POST['OrderNo']);
+		$info = A("MethodService")->_check_dingdan_valid($orderID);
 		if(false === $info){
 			$_REQUEST['msg'] = '订单已失效或产品已下架';
 			$_REQUEST['msg'] = iconv("UTF-8","GBK",$_REQUEST['msg']);
 //			$this->ajaxReturn($_REQUEST, '操作失败123！', 0);
-			
 			print("<br>Failed!!!"."</br>");
 			print("<br>Error Message:".$_REQUEST['msg']."</br>");
 			exit;
@@ -315,20 +320,22 @@ class OrderAction extends CommonMyAction{
 				$_REQUEST['msg'] = '此订单不允许再支付';
 				$_REQUEST['msg'] = iconv("UTF-8","GBK",$_REQUEST['msg']);
 //				$this->ajaxReturn($_REQUEST, '操作失败234！', 0);
-				
 				print("<br>Failed!!!"."</br>");
 				print("<br>Error Message:".$_REQUEST['msg']."</br>");
 				exit;
 			}
 		}
 		//数据填充
-		$tOrderNo = $_POST['OrderNo'];
+		$tOrderNo = $order['OrderNo'];//副ID
 		$tExpiredDate = 30;
-		$tOrderDesc = "线路：".$order['title_copy']."/团号：".$order['tuanhao']."/成人：".$order['chengrenshu']."/儿童：".$order['ertongshu'];
+		if($order['type'] != '签证')
+			$tOrderDesc = "线路：".$order['title_copy']."/团号：".$order['tuanhao']."/联系人：".$order['lxr_name'];
+		else
+			$tOrderDesc = "签证：".$order['title_copy']."/联系人：".$order['lxr_name'];
 		$tOrderDate = date("Y/m/d",time());
 		$tOrderTime = date("H:i:s",time());
 		$tOrderAmountStr = 0.01;
-		$tOrderURL = ORDER_INDEX.'Order/book3/orderID/'.$tOrderNo;
+		$tOrderURL = ORDER_INDEX.'Order/book3/orderID/'.$orderID;
 		$tBuyIP = real_ip();
 		$tProductType = 1;
 		$tPaymentType = $_POST['PaymentType'];
@@ -359,20 +366,17 @@ class OrderAction extends CommonMyAction{
 		else
 		{
 			//检查订单合法性
-			$newID = API_change_orderID($tOrderNo);
-			$tOrderNo = $newID;
+			$tOrderNo = API_change_orderNo($orderID);
 			$merchantPaymentRequest = new MerchantPaymentRequest($tOrderNo,$tExpiredDate,$tOrderDesc,$tOrderDate,$tOrderTime,$tOrderAmountStr,$tOrderURL,$tBuyIP,$tProductType,$tPaymentType,$tNotifyType,$tResultNotifyURL,$tMerchantRemarks,$tPaymentLinkType,$tOrderItems);
 			$merchantPayment = new MerchantPayment($add,$merchantPaymentRequest);
 			$merchantPaymentResult = $merchantPayment->invoke();
 			if($merchantPaymentResult->isSucess==TRUE)
 			{
 				$PaymentURL = $merchantPaymentResult->paymentURL;
-				$_REQUEST['OrderNo'] = $newID;
 			}
 			else{
 //				$_REQUEST['msg'] = iconv("GBK","UTF-8",$merchantPaymentResult->ErrorMessage);
 //				$this->ajaxReturn($_REQUEST, '操作失败345！', 0);
-
 				print("<br>Failed!!!"."</br>");
 				print("<br>return code:".$merchantPaymentResult->returnCode."</br>"); 
 				print("<br>Error Message:".$merchantPaymentResult->ErrorMessage."</br>");
@@ -381,7 +385,7 @@ class OrderAction extends CommonMyAction{
 		}
 		
 		//修改订单状态，标记支付动作
-		A("MethodService")->_change_order_tempstatus($_REQUEST['OrderNo'],'开始支付');
+		A("MethodService")->_change_order_tempstatus($orderID,'开始支付');
 		$_REQUEST['PaymentURL'] = $PaymentURL;
 //		$this->ajaxReturn($_REQUEST, '保存成功！', 1);
 		echo '<script language=javascript>var redirectURL="'.$PaymentURL.'";if(redirectURL!=null&&redirectURL!=""){location.href="'.$PaymentURL.'";}</script> ';
