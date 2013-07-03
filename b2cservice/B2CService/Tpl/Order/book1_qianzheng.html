@@ -43,7 +43,7 @@
             	<li><label for="contact" class="txdd_label">联系人：</label><input type="text" id="lxr_name" name="lxr_name" class="txdd_text" /><i>*</i></li>
                 <li><label for="phone" class="txdd_label">手机号：</label><input type="text" id="lxr_telnum" name="lxr_telnum" class="txdd_text" /><i>*</i></li>
                 <li><label for="email" class="txdd_label">电子邮箱：</label><input type="text" id="lxr_email" name="lxr_email" class="txdd_text" /><i>*</i></li>
-                <li><label for="email" class="txdd_label">邮寄地址：</label><input type="text" id="remark" name="remark" class="txdd_text" style="width:400px;" /><i>*</i></li>
+                <li><label for="email" class="txdd_label">邮寄地址：</label><input type="text" id="lxr_address" name="lxr_address" class="txdd_text" style="width:400px;" /><i>*</i></li>
                 <li><input type="checkbox" id="telservice" name="telservice" class="txdd_accept" onFocus="this.blur()" checked="checked" value="1" /><label for="telservice" class="txdd_accept_label">&nbsp;接受电话回访服务</label></li>
             	<PHP>}</PHP>
             </ul>
@@ -100,7 +100,7 @@
                 alert("请正确填写电子邮箱");
                 return false;
             }       
-            tmp = jQuery.trim(jQuery("#remark").val());
+            tmp = jQuery.trim(jQuery("#lxr_address").val());
             if (tmp == "") {
                 alert("请填写邮寄地址");
                 return false;
