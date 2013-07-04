@@ -103,10 +103,16 @@ function judegeover(url) {
             	<em>办理细则</em>
                 <div>{dede:field.xiangxi/}</div>
             </div>
-            <div class="qianzheng_dgzysx">
-            	<em>签证订购注意事项</em>
-                <h1>申请人必须提供本人名下借记卡对账单原件，首选工资账户<br />使馆不接受信用卡对账单，如果申请人的工资账户为信用卡，还需提供本人名下其它借记卡对账单原件<br />对账单需体现出资人的姓名、账号并加盖银行的业务公章<br />账户余额没有具体要求，建议多多提供<br />交易记录需含有近期3个月以上有多笔交易情况，6个月以上更佳</h1>
+            <div class="qianzheng_qzbg">
+            	<em>{dede:field.title/}签证表格</em>
+                <div>{dede:field.biaoge/}</div>
             </div>
+            {dede:arclist typeid=84 row=1 titlelen=150 channelid=1 addfields=body}
+            <div class="qianzheng_dgzysx">
+            	<em>[field:title/]</em>
+                <div>[field:body/]</div>
+            </div>
+            {/dede:arclist}
         </div>
         <div class="qianzheng_right"><!--右半部-->
         	<div class="qianzheng_zxgg">
