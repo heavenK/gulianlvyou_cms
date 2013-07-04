@@ -166,7 +166,7 @@ class OrderAction extends CommonMyAction{
 			exit;
 		}
 		if($order['status'] == '已支付'){
-			ShowMsg("已支付不允许修改");
+			ShowMsg("已支付不允许修改",ORDER_INDEX);
 			exit;
 		}
 		if($order['type'] == '签证'){
