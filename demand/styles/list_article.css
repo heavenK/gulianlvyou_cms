@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*主体*/
+.list_box	{ width:100%; float:left;}
+.list		{ width:980px; margin:0 auto; overflow:hidden;}
+
+/*左半部*/
+.list_left		{ width:720px; overflow:hidden; float:left;}
+.list_left u							{ width:675px; height:32px; margin:11px 0 0 0; display:inline; padding:0 0 0 45px; background:url(../images/list_article_bav_bg.png) no-repeat; font-family:"微软雅黑"; font-size:18px; color:#a73766; line-height:32px; overflow:hidden; float:left;}
+.list_left ol							{ width:720px; padding:11px 0 0 0; overflow:hidden; float:left;}
+.list_left ol li						{ width:681px; height:33px; padding:0 10px 0 29px; background:url(../images/list_article_cont_bg.png) no-repeat 14px 12px; border-bottom:1px dotted #e0e0e0; font-family:"微软雅黑"; line-height:33px; overflow:hidden; float:left;}
+.list_left ol li em						{ width:610px; height:33px; font-size:15px; overflow:hidden; float:left;}
+.list_left ol li i						{ width:70px; height:33px; text-align:right; overflow:hidden; float:right;}
+.list_left .pagelist					{ width:710px; height:18px; margin:35px 0 0 0; display:inline; padding:9px 10px 5px 0; background:#eeeeef; text-align:right; overflow:hidden; float:right;}
+.list_left .pagelist li					{ margin:0 1px; display:inline; color:#FFF; overflow:hidden;}
+.list_left .pagelist li span			{ color:#666666;}
+.list_left .pagelist .thisclass a		{ _margin:0 8px 0 1px; padding:3px 7px; _padding:3px 1px 3px 7px; background-color:#d22b70; border:#e1e1e1 1px solid; color:#FFF;}
+.list_left .pagelist li a				{ padding:3px 7px; background-color:#FFF; border:#e1e1e1 1px solid; color:#666666;}	
+.list_left .pagelist li a:hover			{ background-color:#d22b70; color:#FFF; text-decoration:none;}
+
+/*右半部*/
+.list_right		{ width:250px; overflow:hidden; float:right;}
+.list_right dl							{ width:248px; border:#e1e1e1 1px solid; margin:10px 0 0 0; display:inline; float:right;}
+.list_right dt							{ width:248px; height:30px; line-height:30px; text-align:left; font-size:14px; color:#FFFFFF; background-color:#ac3767; float:left;}
+.list_right dt span						{ width:36px; height:30px; background:url(../images/cty_rmlxtj_hot.png) no-repeat 4px 3px ; float:left;}
+.list_right dd							{ width:248px; height:411px; overflow:hidden; float:left;}
+.list_right dd li						{ width:234px; height:195px; line-height:22px; margin:10px 0 0 7px; display:inline; border-bottom:#CCCCCC 1px dotted; float:left;}
+.list_right dd li img					{ margin:0 0 4px; display:inline; border:#f4f4f5 1px solid; float:left;}
+.list_right dd li span					{ color:#ec3911; font-size:14px; font-weight:bold; font-family:Arial, Helvetica, sans-serif;}
+.list_right ol							{ width:250px; padding:10px 0 0 0; float:left;}
+.list_right ol li						{ width:250px; padding:0 0 10px 0; float:left;}
+.list_right ol li img					{ float:left;}
