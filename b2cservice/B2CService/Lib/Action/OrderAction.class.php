@@ -165,10 +165,6 @@ class OrderAction extends CommonMyAction{
 			echo "订单不存在！！";
 			exit;
 		}
-		if($order['status'] == '已支付'){
-			ShowMsg("已支付不允许修改",ORDER_INDEX);
-			exit;
-		}
 		if($order['type'] == '签证'){
 			$chanpin = A("MethodService")->_checkchanpin_qianzheng($order['serverdataID']);
 			if(false === $chanpin){
@@ -181,6 +177,10 @@ class OrderAction extends CommonMyAction{
 			$this->display('book2_qianzheng');
 		}
 		else{
+			if($order['status'] == '已支付'){
+				ShowMsg("已支付不允许修改",ORDER_INDEX);
+				exit;
+			}
 			$DingdanJoiner = D("DingdanJoiner");
 			$joinerall = $DingdanJoiner->where("`dingdanID` = '$order[id]'")->findall();
 			$this->assign("joinerall",$joinerall);
@@ -334,7 +334,8 @@ class OrderAction extends CommonMyAction{
 			$tOrderDesc = "签证：".$order['title_copy']."/联系人：".$order['lxr_name'];
 		$tOrderDate = date("Y/m/d",time());
 		$tOrderTime = date("H:i:s",time());
-		$tOrderAmountStr = 0.01;
+		//$tOrderAmountStr = 0.01;
+		$tOrderAmountStr = $order['price'];
 		$tOrderURL = ORDER_INDEX.'Order/book3/orderID/'.$orderID;
 		$tBuyIP = real_ip();
 		$tProductType = 1;
