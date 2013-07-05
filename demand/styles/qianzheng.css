@@ -37,6 +37,9 @@
 .qianzheng_blxz									{ width:682px; margin:10px 0 0 0; display:inline; padding:0 18px 15px 18px; border:1px solid #e1e1e1; overflow:hidden; float:left;}
 .qianzheng_blxz em								{ width:682px; height:52px; font-size:16px; font-weight:bold; color:#ac3666; line-height:52px; overflow:hidden; float:left;}
 .qianzheng_blxz div								{ width:682px; color:#666666; line-height:24px; overflow:hidden; float:left;}
+.qianzheng_qzbg									{ width:682px; margin:10px 0 0 0; display:inline; padding:0 18px 15px 18px; border:1px solid #e1e1e1; overflow:hidden; float:left;}
+.qianzheng_qzbg em								{ width:682px; height:52px; font-size:16px; font-weight:bold; color:#ac3666; line-height:52px; overflow:hidden; float:left;}
+.qianzheng_qzbg div								{ width:682px; color:#666666; line-height:24px; overflow:hidden; float:left;}
 .qianzheng_rmtjqz								{ width:720px; margin:10px 0 0 0; display:inline; overflow:hidden; float:left;}
 .qianzheng_rmtjqz .tabContainer					{ width:720px; height:26px; border-bottom:1px solid #ac3666; overflow:hidden; float:left;}
 .qianzheng_rmtjqz .tabContainer span			{ width:122px; height:26px; background:#ac3666; text-align:center; font-size:14px; font-weight:bold; color:#FFF; line-height:26px; _line-height:27px; overflow:hidden; float:left;}
@@ -59,7 +62,7 @@
 .qianzheng_rmtjqz .tabBody ul li dl dt em b		{ font-size:24px;}
 .qianzheng_dgzysx								{ width:682px; margin:10px 0 0 0; display:inline; padding:0 18px 15px 18px; border:1px solid #e1e1e1; overflow:hidden; float:left;}
 .qianzheng_dgzysx em							{ width:682px; height:52px; font-size:16px; font-weight:bold; color:#ac3666; line-height:52px; overflow:hidden; float:left;}
-.qianzheng_dgzysx h1							{ width:682px; color:#666666; line-height:24px; overflow:hidden; float:left;}
+.qianzheng_dgzysx div							{ width:682px; color:#666666; line-height:24px; overflow:hidden; float:left;}
 
 /*右半部*/
 .qianzheng_right	{ width:250px; overflow:hidden; float:right;}
