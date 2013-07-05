@@ -78,7 +78,7 @@
 .qianzheng_cjwt span							{ width:248px; height:28px; background:url(../images/index_right_right_bav_bg.png) repeat-x; border-bottom:1px solid #e1e1e1; line-height:28px; overflow:hidden; float:left;}
 .qianzheng_cjwt span em							{ height:28px; padding:0 0 0 10px; overflow:hidden; float:left;}
 .qianzheng_cjwt span i							{ height:28px; padding:0 13px 0 0; overflow:hidden; float:right;}
-.qianzheng_cjwt ul								{ width:238px; margin:10px 0 0 10px; display:inline; overflow:hidden; float:left;}
+.qianzheng_cjwt ul								{ width:238px; height:192px; margin:10px 0 0 10px; display:inline; overflow:hidden; float:left;}
 .qianzheng_cjwt ul li							{ width:220px; padding:2px 0 0 7px; background:url(../images/index_right_right_point.png) no-repeat 0 12px; line-height:22px; overflow:hidden; float:left;}
 .qianzheng_cjwt ul li a							{ color:#333333;}
 .qianzheng_cjwt ul li a:hover					{ color:#ff6633;}
