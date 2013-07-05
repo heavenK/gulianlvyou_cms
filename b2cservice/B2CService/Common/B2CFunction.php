@@ -83,9 +83,9 @@
      */
 	if ( ! function_exists('MakeOrders'))
 	{
-		function MakeOrders($id)
+		function MakeOrders($id,$mark='WY')
 		{
-			$OrdersId = 'WY'.time().'RN'.mt_rand(100,999);
+			$OrdersId = $mark.time().'RN'.mt_rand(100,999);
 			deCrypt(saveCookie("OrdersId_".$id,$OrdersId));
 			return $OrdersId;
 		}	

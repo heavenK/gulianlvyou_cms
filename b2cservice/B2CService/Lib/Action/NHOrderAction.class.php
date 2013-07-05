@@ -13,7 +13,7 @@ class NHOrderAction extends Action{
 	
 	
 	
-	
+	//查询
     public function _query_order_byorderID($orderID) {
 		$order = A("MethodService")->_getdingdan($orderID);
 		if(!$order){
@@ -63,6 +63,63 @@ class NHOrderAction extends Action{
 			return false;
 		}
 	}
+	
+	
+	
+	//查询
+    public function _interface_query_order_byorderNo() {
+		$tOrderNo = $_REQUEST['orderNo'];
+		require_once(B2CSERVICE_PATH."/apis/nh/b2c01/api.php");
+		$add = "http://www.gulianlvyou.com:8080/axis/services/B2CWarpper?wsdl";
+		$Dingdan = D("Dingdan");
+		$tQueryType = 1;//0：状态查询； 1：详细查询
+		$merchantQueryOrderRequest = new MerchantQueryOrderRequest($tOrderNo,$tQueryType);
+		$merchantQueryOrder = new MerchantQueryOrder($add,$merchantQueryOrderRequest);
+		$merchantQueryOrderResult = $merchantQueryOrder->invoke();
+		//显示结果
+		if($merchantQueryOrderResult->isSucess==TRUE)
+		{
+			/*
+			? 01：订单已建立，等待支付 ? 02：消费者已支付，等待支付结果 ? 03：订单已支付（支付成功） ? 04：订单已结算（支付成功） ? 05：订单已退款 ? 99：订单支付失败
+			*/
+			if($merchantQueryOrderResult->order->OrderStatus == 03 || $merchantQueryOrderResult->order->OrderStatus == 04){
+				$order['zhifu'] = $merchantQueryOrderResult->order->PayAmount;
+				$order['shijian'] = $merchantQueryOrderResult->order->OrderDate.' '.$merchantQueryOrderResult->order->OrderTime;
+				$order['miaoshu'] = $merchantQueryOrderResult->order->OrderDesc;
+				$order['url'] = $merchantQueryOrderResult->order->OrderURL;
+				$count = count($merchantQueryOrderResult->order->OrderItems);
+				$order['itemcount'] = $count;
+				for ($i = 0; $i < $count; $i++) 
+				{	
+					$item = $merchantQueryOrderResult->order->OrderItems[$i];
+					$order['list'][$i]['ProductName'] = $item->ProductName;
+					$order['list'][$i]['Qty'] = $item->Qty;
+					$order['list'][$i]['UnitPrice'] = $item->UnitPrice;
+				}
+				echo serialize($order);
+				exit;	
+			}
+			else{
+				$returndata['msg'] = "此订单未支付成功！";
+				$returndata['error'] = 'true';
+				echo serialize($returndata);
+				exit;
+			}
+		}
+		else
+		{
+			$returndata['msg'] = "此订单未查询失败！错误代码：".$merchantQueryOrderResult->returnCode."<br>错误内容：".$merchantQueryOrderResult->ErrorMessage;
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	
