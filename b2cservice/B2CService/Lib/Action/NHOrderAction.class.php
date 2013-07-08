@@ -67,8 +67,20 @@ class NHOrderAction extends Action{
 	
 	
 	//查询
-    public function _interface_query_order_byorderNo() {
+    public function _interface_query_order() {
 		$tOrderNo = $_REQUEST['orderNo'];
+		$tOrderID = $_REQUEST['orderID'];
+		if(!$tOrderNo){
+			$Dingdan = D("Dingdan");
+			$dingdan = $Dingdan->where("`orderID` = '$tOrderID'")->find();
+			$tOrderNo = $dingdan['orderNo'];
+		}
+		if(!$tOrderNo){
+			$returndata['msg'] = "订单查询失败！订单编号无效！";
+			$returndata['error'] = 'true';
+			echo serialize($returndata);
+			exit;
+		}
 		require_once(B2CSERVICE_PATH."/apis/nh/b2c01/api.php");
 		$add = "http://www.gulianlvyou.com:8080/axis/services/B2CWarpper?wsdl";
 		$Dingdan = D("Dingdan");
@@ -108,7 +120,7 @@ class NHOrderAction extends Action{
 		}
 		else
 		{
-			$returndata['msg'] = "此订单未查询失败！错误代码：".$merchantQueryOrderResult->returnCode."<br>错误内容：".$merchantQueryOrderResult->ErrorMessage;
+			$returndata['msg'] = "订单查询失败！错误代码：".$merchantQueryOrderResult->returnCode."<br>错误内容：".$merchantQueryOrderResult->ErrorMessage;
 			$returndata['error'] = 'true';
 			echo serialize($returndata);
 			exit;
