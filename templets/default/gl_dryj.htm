@@ -70,11 +70,13 @@ $(document).ready(function(){
 		<div class="dryj_search_focus"><!--搜索&游记-->
         	<dl>
             	<dd>
-                    <form  name="formsearch" action="{dede:global.cfg_cmsurl/}/plus/gl_list.php">
-                    	<input type="hidden" name="typeid" value="35" />
-                        <input type="hidden" name="kwtype" value="1" />
-                        <input type="hidden" name="searchtype" value="title" />
-                        <input type="text" class="dryj_search_text" id="search-keyword" name="q" value="请输入游记名称" onfocus="if (value =='请输入游记名称'){value =''}" onblur="if (value ==''){value='请输入游记名称'}" />
+                    <form name="formsearch" id="formsearch" action="http://faq.gulianlvyou.com/search.php" method="get" target="_blank">
+                    	<input type="hidden" name="mod" value="forum" />
+                        <input type="hidden" name="searchid" value="" />
+                        <input type="hidden" name="orderby" value="lastpost" />
+                        <input type="hidden" name="ascdesc" value="desc" />
+                        <input type="hidden" name="searchsubmit" value="yes" />
+                        <input type="text" class="dryj_search_text" id="search-keyword" name="srchtxt" value="请输入游记名称" onfocus="if (value =='请输入游记名称'){value =''}" onblur="if (value ==''){value='请输入游记名称'}" />
                     	<input type="submit" class="dryj_search_sub" value="搜索" />
                     </form>
                 </dd>
@@ -83,17 +85,17 @@ $(document).ready(function(){
                     	<li>
                         	<h1>国内旅游</h1>
                             {dede:arclist typeid=48 row=20 titlelen=150}
-                            <i><a href="#" target="_blank">[field:title/]</a></i>
+                            <i><a href="javascript:void(0)" target="_blank" onclick="search_tag('[field:title/]')">[field:title/]</a></i>
                             {/dede:arclist}
                         </li>
                         <li>
                         	<h1>国外旅游</h1>
                             {dede:arclist typeid=50 row=20 titlelen=150}
-                            <i><a href="#" target="_blank">[field:title/]</a></i>
+                            <i><a href="javascript:void(0)" target="_blank" onclick="search_tag('[field:title/]')">[field:title/]</a></i>
                             {/dede:arclist}
                         </li>
                     </ul>
-                    <em><a href="#" target="_blank"></a></em>
+                    <em><a href="http://faq.gulianlvyou.com/forum.php?mod=forumdisplay&fid=37" target="_blank"></a></em>
                 </dt>
             </dl>
             <div class="dryj_focus">
@@ -116,7 +118,7 @@ $(document).ready(function(){
             </div>
         </div>
         <div class="dryj_jcyj"><!--精彩游记-->
-        	<em><i>精彩游记</i><a href="#" target="_blank">更多 &gt;&gt;</a></em>
+        	<em><i>精彩游记</i><a href="http://faq.gulianlvyou.com/forum.php?mod=forumdisplay&fid=47" target="_blank">更多 &gt;&gt;</a></em>
             <ul>
             	{dede:arclist typeid=49,51 row=4 titlelen=150 infolen=500}
             	<li>
@@ -127,17 +129,13 @@ $(document).ready(function(){
                         <h2>标签：<b>[field:shorttitle/]</b></h2>
                         <h3>[field:infos/]<b>[<a href="[field:arcurl/]" target="_blank">详细</a>]</b></h3>
                     </span>
-                    <ol>
-                    	<li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>:&nbsp;夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山</h1></li>
-                        <li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>:&nbsp;夏日悠游漓江山</h1></li>
-                        <li><b><img src="/demand/images/pic_01.jpg" width="16" height="16" /></b><h1><a href="#" target="_blank">丢丢</a>:&nbsp;夏日悠游漓江山</h1></li>
-                    </ol>
+                    <script src="/plus/faq_about.php?source=[field:source/]" type="text/javascript"></script>
                 </li>
                 {/dede:arclist}
             </ul>
         </div>
         <div class="dryj_mtxx"><!--美图秀秀-->
-        	<em><i>美图秀秀</i><a href="#" target="_blank">更多 &gt;&gt;</a></em>
+        	<em><i>美图秀秀</i><a href="http://faq.gulianlvyou.com/forum.php?mod=forumdisplay&fid=41" target="_blank">更多 &gt;&gt;</a></em>
             <span>
             	<h1>
                 	{dede:arclist typeid=74 row=1 titlelen=150}
@@ -178,7 +176,7 @@ $(document).ready(function(){
             </span>
         </div>
         <div class="dryj_sp"><!--视频-->
-        	<em><i>视&nbsp;&nbsp;频</i><a href="#" target="_blank">更多 &gt;&gt;</a></em>
+        	<em><i>视&nbsp;&nbsp;频</i><a href="http://faq.gulianlvyou.com/forum.php?mod=forumdisplay&fid=42" target="_blank">更多 &gt;&gt;</a></em>
             <ul>
             	{dede:arclist typeid=36 row=3 titlelen=150 infolen=54}
             	<li>
@@ -193,5 +191,12 @@ $(document).ready(function(){
     </div>
 </div>
 {dede:include filename="gl_footer.htm"/}
+<script type="text/javascript">
+//搜索关键字
+function search_tag(tag){
+	$("#search-keyword").val(tag);
+	$("#formsearch").submit();
+}
+</script>
 </body>
 </html>
