@@ -124,7 +124,7 @@ class MyAction extends CommonMyAction{
 	//广告
 	function _getadstips(){
 		$DEDEArchives = D("DEDEArchives");//文章主表
-		$tips = $DEDEArchives->where("`typeid` = '15'")->findall();
+		$tips = $DEDEArchives->where("`typeid` = '15'")->order('id desc')->findall();
 		return $tips;
 	}
 	
