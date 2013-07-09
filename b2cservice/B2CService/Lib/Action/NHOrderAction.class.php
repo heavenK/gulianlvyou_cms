@@ -147,7 +147,7 @@ class NHOrderAction extends Action{
 		$tOrderDate = date("Y/m/d",time());
 		$tOrderTime = date("H:i:s",time());
 		$tOrderAmountStr = 0.01;
-		$tOrderURL = '测试地址';
+		$tOrderURL = '';
 		$tBuyIP = real_ip();
 		$tProductType = 1;
 		$tPaymentType = $_REQUEST['PaymentType'];
@@ -157,7 +157,7 @@ class NHOrderAction extends Action{
 		$tPaymentLinkType = $_REQUEST['PaymentLinkType'];//设定支付接入方式（必要信息） 注意：目前支持三种接入方式，Internet网络接入，Mobile网络接入，数字电视网络接入，不同的支付方式会返回不同的支付处理页面。
 		$tTotalCount = 1;
 		$tOrderItems=array();
-		for($i=0;$i<1;$i++)
+		for($i=0;$i<$tTotalCount;$i++)
 		{
 			$tOrderItems[]=array(1, 2, 3, 4);
 		}
