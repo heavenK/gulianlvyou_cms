@@ -27,7 +27,7 @@
           </tr>
           <PHP>if($orderall){foreach($orderall as $v){</PHP>
           <tr align="center" valign="top">
-            <td><b><{$v['orderID']}></b> <em>(<{$v['status']}>)</em></td>
+            <td><b><{$v['orderID']}></b> <em><br />(<{$v['status']}>)</em></td>
             <td><h1 style="text-align:center"><a  href="<{$v['referer_url']}>" target="_blank"><{$v['title_copy']}></a></h1></td>
             <td><{$v['chutuanriqi_copy']}></td>
             <td>
@@ -61,8 +61,8 @@
               <ul class="slides">
               
               <php>foreach($tips as $v){</php>
-                <li> <span><a href="#" target="_blank"><img src="../../../<{$v['litpic']}>" width="232" height="116" /></a></span>
-                  <h1><a href="#" target="_blank">-<{$v['title']}></a></h1>
+                <li> <span><a href="<{:ROOT_URL}>plus/view.php?aid=<{$v[id]}>" target="_blank"><img src="<{:ROOT_URL}><{$v['litpic']}>" width="232" height="116" /></a></span>
+                  <h1><a href="<{:ROOT_URL}>plus/view.php?aid=<{$v[id]}>" target="_blank">-<{$v['title']}></a></h1>
                   <h2><b>¥<{$v['shorttitle']}>/b>起</h2>
                 </li>
               <php>}</php>
