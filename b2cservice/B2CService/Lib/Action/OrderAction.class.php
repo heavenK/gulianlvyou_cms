@@ -20,13 +20,6 @@ class OrderAction extends CommonMyAction{
 	}
 	
 	
-	function getadstips(){
-		$DEDEArchives = D("DEDEArchives");//文章主表
-		$tips = $DEDEArchives->where("`typeid` = '73'")->findall();
-		dump($tips);
-	}
-	
-	
     public function book1() {
 		if($_REQUEST['orderID']){
 			$order = A("MethodService")->_getdingdan($_REQUEST['orderID']);
