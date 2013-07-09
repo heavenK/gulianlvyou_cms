@@ -147,12 +147,12 @@ class NHOrderAction extends Action{
 		$tOrderDate = date("Y/m/d",time());
 		$tOrderTime = date("H:i:s",time());
 		$tOrderAmountStr = 0.01;
-		$tOrderURL = '';
+		$tOrderURL = SITE_INDEX;
 		$tBuyIP = real_ip();
 		$tProductType = 1;
 		$tPaymentType = $_REQUEST['PaymentType'];
 		$tNotifyType = 1;//设定支付结果通知方式（必要信息）0：URL页面通知 1：服务器通知
-		$tResultNotifyURL = '';//这货不能带参数
+		$tResultNotifyURL = SITE_INDEX;//这货不能带参数
 		$tMerchantRemarks = '';//商户备注信息
 		$tPaymentLinkType = $_REQUEST['PaymentLinkType'];//设定支付接入方式（必要信息） 注意：目前支持三种接入方式，Internet网络接入，Mobile网络接入，数字电视网络接入，不同的支付方式会返回不同的支付处理页面。
 		$tTotalCount = 1;
