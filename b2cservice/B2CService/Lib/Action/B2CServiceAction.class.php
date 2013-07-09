@@ -2,6 +2,7 @@
 
 class B2CServiceAction extends Action{
 	
+	
     public function getorder() {
 		$orderID = $_REQUEST['orderID'];
 		$Dingdan = D("Dingdan");
@@ -14,6 +15,15 @@ class B2CServiceAction extends Action{
 		else
 			echo serialize($order);
 		
+	}
+	
+	
+    public function dopost_gexingdingzhi() {
+		C('TOKEN_ON',false);
+		$Gexingdingzhi = D("Gexingdingzhi");
+		$_REQUEST['datatext'] = serialize($_REQUEST);
+		$Gexingdingzhi->mycreate($_REQUEST);
+		ShowMsg("提交成功，我们会尽量与您联系。",ROOT_URL);
 	}
 	
 	
