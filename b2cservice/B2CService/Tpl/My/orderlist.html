@@ -16,7 +16,7 @@
                     </tr>
                     <PHP>if($orderall){foreach($orderall as $v){</PHP>
                     <tr align="center" valign="top">
-                      <td><b><{$v['orderID']}></b> <em>(<{$v['status']}>)</em></td>
+                      <td><b><{$v['orderID']}></b> <em><br />(<{$v['status']}>)</em></td>
                       <td><h1 style="text-align:center"><a href="<{$v['referer_url']}>" target="_blank"><{$v['title_copy']}></a></h1></td>
                       <td><{$v['chutuanriqi_copy']}></td>
                       <td>总金额：<em>¥<{$v['price']}></em><br />待支付：<em>¥<{$v['price']}></em></td>

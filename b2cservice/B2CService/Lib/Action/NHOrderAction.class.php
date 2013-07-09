@@ -136,6 +136,52 @@ class NHOrderAction extends Action{
 	
 	
 	
+	//支付测试
+	function MerchantPaymant_test(){
+		require_once(B2CSERVICE_PATH."/apis/nh/b2c01/api.php");
+		$add = "http://www.gulianlvyou.com:8080/axis/services/B2CWarpper?wsdl";
+		//数据填充
+		$tOrderNo = 'CSTC'.time().rand(100,200);
+		$tExpiredDate = 30;
+		$tOrderDesc = "测试填充";
+		$tOrderDate = date("Y/m/d",time());
+		$tOrderTime = date("H:i:s",time());
+		$tOrderAmountStr = 0.01;
+		$tOrderURL = '测试地址';
+		$tBuyIP = real_ip();
+		$tProductType = 1;
+		$tPaymentType = $_REQUEST['PaymentType'];
+		$tNotifyType = 1;//设定支付结果通知方式（必要信息）0：URL页面通知 1：服务器通知
+		$tResultNotifyURL = '';//这货不能带参数
+		$tMerchantRemarks = '';//商户备注信息
+		$tPaymentLinkType = $_REQUEST['PaymentLinkType'];//设定支付接入方式（必要信息） 注意：目前支持三种接入方式，Internet网络接入，Mobile网络接入，数字电视网络接入，不同的支付方式会返回不同的支付处理页面。
+		$tTotalCount = 1;
+		$tOrderItems=array();
+		//通信
+		$merchantPaymentRequest = new MerchantPaymentRequest($tOrderNo,$tExpiredDate,$tOrderDesc,$tOrderDate,$tOrderTime,$tOrderAmountStr,$tOrderURL,$tBuyIP,$tProductType,$tPaymentType,$tNotifyType,$tResultNotifyURL,$tMerchantRemarks,$tPaymentLinkType,$tOrderItems);
+		$merchantPayment = new MerchantPayment($add,$merchantPaymentRequest);
+		$merchantPaymentResult = $merchantPayment->invoke();
+		//显示结果
+		if($merchantPaymentResult->isSucess==TRUE)
+		{
+			$PaymentURL = $merchantPaymentResult->paymentURL;
+		}
+		else
+		{
+			print("<br>Failed!!!"."</br>");
+			print("<br>return code:".$merchantPaymentResult->returnCode."</br>"); 
+			print("<br>Error Message:".iconv("GBK","UTF-8",$merchantPaymentResult->ErrorMessage)."</br>");
+		}
+		echo '<script language=javascript>var redirectURL="'.$PaymentURL.'";if(redirectURL!=null&&redirectURL!=""){location.href="'.$PaymentURL.'";}</script> ';
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }
