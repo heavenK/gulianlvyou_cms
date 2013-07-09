@@ -28,7 +28,6 @@ class OrderAction extends CommonMyAction{
 	
 	
     public function book1() {
-		
 		if($_REQUEST['orderID']){
 			$order = A("MethodService")->_getdingdan($_REQUEST['orderID']);
 			if(!$order){
