@@ -10,8 +10,6 @@
         <dt>
           <h1><b><{$user[userid]}>，</b>欢迎来到古莲旅游！</h1>
           <h2><em>登录邮箱：</em><i><{$user[email]}></i></h2>
-          <h2><em>手 机 号：</em><i>未绑定</i><a href="#"></a></h2>
-          <h2><em>交易提醒：</em><i>待支付订单</i><u>（0）</u></h2>
         </dt>
       </dl>
       <div class="center_index_dingdan"><!--首页订单-->
@@ -30,7 +28,7 @@
           <PHP>if($orderall){foreach($orderall as $v){</PHP>
           <tr align="center" valign="top">
             <td><b><{$v['orderID']}></b> <em>(<{$v['status']}>)</em></td>
-            <td><h1><a href="#" target="_blank"><{$v['title_copy']}></a></h1></td>
+            <td><h1 style="text-align:center"><a  href="<{$v['referer_url']}>" target="_blank"><{$v['title_copy']}></a></h1></td>
             <td><{$v['chutuanriqi_copy']}></td>
             <td>
 				总金额：<em>¥<{$v['price']}></em><br />
@@ -41,7 +39,7 @@
                 <php>}</php>
                 </em>
             </td>
-            <td><a href="<{:ORDER_INDEX}>Order/book3/orderID/<{$v[orderID]}>" target="_blank">查看订单</a>&nbsp;&nbsp;<a href="#" target="_blank">查看合同</a><br />
+            <td><a href="<{:ORDER_INDEX}>Order/book3/orderID/<{$v[orderID]}>" target="_blank">查看订单</a>&nbsp;&nbsp;<a href="http://faq.gulianlvyou.com/forum.php?mod=viewthread&tid=2&extra=page%3D1" target="_blank">查看合同</a><br />
               <php>if($v['status'] != '已支付'){</php>
               <br />
               <a href="<{:ORDER_INDEX}>Order/book3/orderID/<{$v[orderID]}>" class="center_dingdan_btn"></a>

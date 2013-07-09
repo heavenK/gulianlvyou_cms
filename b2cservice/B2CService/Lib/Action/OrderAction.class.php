@@ -28,7 +28,6 @@ class OrderAction extends CommonMyAction{
 	
 	
     public function book1() {
-		
 		if($_REQUEST['orderID']){
 			$order = A("MethodService")->_getdingdan($_REQUEST['orderID']);
 			if(!$order){
@@ -96,8 +95,8 @@ class OrderAction extends CommonMyAction{
 				$rows['price'] = $chanpin['shoujia'];
 				$rows['adult_price'] = $chanpin['shoujia'];
 				$rows['child_price'] = $chanpin['ertongshoujia'];
-				$rows['orderID'] = MakeOrders($rows['serverdataID']);
-				$rows['orderNo'] = $rows['orderID'];
+				$rows['orderID'] = MakeOrders($rows['serverdataID'],'DLGL');
+				$rows['orderNo'] = MakeOrders($rows['serverdataID']);
 				$redirect_rul = ORDER_INDEX.'Order/book2/orderID/'.$rows['orderID'];
 			}
 			else{
@@ -334,7 +333,7 @@ class OrderAction extends CommonMyAction{
 			$tOrderDesc = "签证：".$order['title_copy']."/联系人：".$order['lxr_name'];
 		$tOrderDate = date("Y/m/d",time());
 		$tOrderTime = date("H:i:s",time());
-		//$tOrderAmountStr = 0.01;
+		$tOrderAmountStr = 0.01;
 		$tOrderAmountStr = $order['price'];
 		$tOrderURL = ORDER_INDEX.'Order/book3/orderID/'.$orderID;
 		$tBuyIP = real_ip();

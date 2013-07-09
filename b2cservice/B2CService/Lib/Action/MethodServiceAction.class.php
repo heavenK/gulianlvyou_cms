@@ -149,7 +149,6 @@ class MethodServiceAction extends CommonAction{
 		$dingdan = $this->_getdingdan($orderID);
 		if(!$dingdan)
 			return false;
-//		$dingdan['orderID'] = MakeOrders($dingdan['serverdataID']);
 		$dingdan['orderNo'] = MakeOrders($dingdan['serverdataID']);
 		$Dingdan = D("Dingdan");
 		if($Dingdan->save($dingdan))
