@@ -141,7 +141,7 @@ class NHOrderAction extends Action{
 		require_once(B2CSERVICE_PATH."/apis/nh/b2c01/api.php");
 		$add = "http://www.gulianlvyou.com:8080/axis/services/B2CWarpper?wsdl";
 		//数据填充
-		$tOrderNo = 'CSTC'.time().rand(100,200);
+		$tOrderNo = 'CSTC'.time();
 		$tExpiredDate = 30;
 		$tOrderDesc = "测试填充";
 		$tOrderDate = date("Y/m/d",time());
@@ -157,10 +157,10 @@ class NHOrderAction extends Action{
 		$tPaymentLinkType = $_REQUEST['PaymentLinkType'];//设定支付接入方式（必要信息） 注意：目前支持三种接入方式，Internet网络接入，Mobile网络接入，数字电视网络接入，不同的支付方式会返回不同的支付处理页面。
 		$tTotalCount = 1;
 		$tOrderItems=array();
-		for($i=0;$i<$tTotalCount;$i++)
-		{
-			$tOrderItems[]=array(1, 2, 3, 4);
-		}
+//		for($i=0;$i<$tTotalCount;$i++)
+//		{
+//			$tOrderItems[]=array(1, 2, 3, 4);
+//		}
 		
 		//通信
 		$merchantPaymentRequest = new MerchantPaymentRequest($tOrderNo,$tExpiredDate,$tOrderDesc,$tOrderDate,$tOrderTime,$tOrderAmountStr,$tOrderURL,$tBuyIP,$tProductType,$tPaymentType,$tNotifyType,$tResultNotifyURL,$tMerchantRemarks,$tPaymentLinkType,$tOrderItems);
