@@ -168,6 +168,9 @@ class NHOrderAction extends Action{
 		}
 		else
 		{
+			echo '<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
 			print("<br>Failed!!!"."</br>");
 			print("<br>return code:".$merchantPaymentResult->returnCode."</br>"); 
 			print("<br>Error Message:".iconv("GBK","UTF-8",$merchantPaymentResult->ErrorMessage)."</br>");
