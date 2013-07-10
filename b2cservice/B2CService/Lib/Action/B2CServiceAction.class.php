@@ -27,7 +27,7 @@ class B2CServiceAction extends Action{
 	}
 	
     public function faq_about() {
-		$where['tid'] = $_REQUEST['source'];
+		$where['tid'] = $_REQUEST['tid'];
 		$where['first'] = 0;
 		$DISCUZForumPost = D("DISCUZForumPost");
 		$tips = $DISCUZForumPost->where($where)->order('pid desc')->findall();
