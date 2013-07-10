@@ -27,8 +27,8 @@ jQuery(function($) {
 });
 
 function do_search(){
-	var keyword = $('#keyword').val();
-	if(!keyword){
+	var keyword = jQuery('#keyword').val();
+	if(!keyword || keyword == '搜索旅游目的地'){
 		alert("请输入您要搜索的目的地!");
 		return false;
 	}
