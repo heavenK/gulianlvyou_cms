@@ -28,7 +28,7 @@ jQuery(function($) {
 
 function do_search(){
 	var keyword = $('#keyword').val();
-	if(keyword){
+	if(!keyword){
 		alert("请输入您要搜索的目的地!");
 		return false;
 	}
@@ -49,8 +49,6 @@ function do_search(){
         <{$user[userid]}> [<a href="<{:B2CSERVICE_APIS}>action_index_do.php?fmdo=login&dopost=exit">退出登录</a>]</i>
     </dd>
 
-    
-    <script language="javascript" type="text/javascript">CheckLogin();</script>
     <dt> <i><a href="#"><img src="<{:SITE_PUBLIC}>images/logo.png" width="223" height="73" /></a></i> <b>
       <input type="text" class="header_search_text" id="keyword" name="text" value="搜索旅游目的地" onfocus="if (value =='搜索旅游目的地'){value =''}" onblur="if (value ==''){value='搜索旅游目的地'}"/>
       <input type="button" class="header_search_submit" name="submit" value="" onclick="do_search()" />
