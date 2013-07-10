@@ -1,5 +1,5 @@
 <?php
-class DISCUZForumpostModel extends DISCUZConfigModel {
+class DISCUZForumPostModel extends DISCUZConfigModel {
 	protected $trueTableName='glly_forum_post';
 
    // 自动验证设置

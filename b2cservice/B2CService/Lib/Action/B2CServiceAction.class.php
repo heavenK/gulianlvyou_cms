@@ -28,13 +28,14 @@ class B2CServiceAction extends Action{
 	
     public function faq_about() {
 		$where['tid'] = $_REQUEST['source'];
+		$where['tid'] = 1;
 		$where['first'] = 0;
-		$DISCUZForumpost = D("DISCUZForumpost");
-		$tips = $DISCUZForumpost->where($where)->order('pid desc')->find();
+		$DISCUZForumPost = D("DISCUZForumPost");
+		$tips = $DISCUZForumPost->where($where)->order('pid desc')->findall();
 		$DISCUZCommonMember = D("DISCUZCommonMember");
 		echo "document.write('<ol>";
 		foreach($tips as $v){
-			$uc = $DISCUZCommonMember->where("`username` = '$v[authorid]'")->find();
+			$uc = $DISCUZCommonMember->where("`uid` = '$v[authorid]'")->find();
 			$face = BBS_URL.'uc_server/avatar.php?uid='.$uc['uid'];
 			echo "<li><b><img src=\"".$face."\" width=\"16\" height=\"16\" /></b><h1><a href=\"".BBS_URL."home.php?mod=space&uid=".$uc['uid']."&do=profile&from=space"."\" target=\"_blank\">".$uc['username']."</a>:&nbsp;".$v['message']."</h1></li>";
 		}
