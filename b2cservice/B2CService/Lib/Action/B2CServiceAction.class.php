@@ -26,6 +26,22 @@ class B2CServiceAction extends Action{
 		ShowMsg("提交成功，我们会尽量与您联系。",ROOT_URL);
 	}
 	
+    public function faq_about() {
+		$where['tid'] = $_REQUEST['tid'];
+		$where['first'] = 0;
+		$DISCUZForumpost = D("DISCUZForumpost");
+		$tips = $DISCUZForumpost->where($where)->order('pid desc')->find();
+		echo "document.write('<ol>";
+		echo "<li><b><img src=\"/demand/images/pic_01.jpg\" width=\"16\" height=\"16\" /></b><h1><a href=\"#\" target=\"_blank\">丢丢</a>:&nbsp;夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山</h1></li>";
+		echo "<li><b><img src=\"/demand/images/pic_01.jpg\" width=\"16\" height=\"16\" /></b><h1><a href=\"#\" target=\"_blank\">丢丢</a>:&nbsp;夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山</h1></li>";
+		echo "<li><b><img src=\"/demand/images/pic_01.jpg\" width=\"16\" height=\"16\" /></b><h1><a href=\"#\" target=\"_blank\">丢丢</a>:&nbsp;夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山</h1></li>";
+		echo "</ol>');";
+	}
+	
+	
+	
+	
+	
 	
 }
 
