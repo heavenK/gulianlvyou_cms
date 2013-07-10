@@ -27,7 +27,7 @@
           </tr>
           <PHP>if($orderall){foreach($orderall as $v){</PHP>
           <tr align="center" valign="top">
-            <td><b><{$v['orderID']}></b> <em>(<{$v['status']}>)</em></td>
+            <td><b><{$v['orderID']}></b> <em><br />(<{$v['status']}>)</em></td>
             <td><h1 style="text-align:center"><a  href="<{$v['referer_url']}>" target="_blank"><{$v['title_copy']}></a></h1></td>
             <td><{$v['chutuanriqi_copy']}></td>
             <td>
@@ -59,42 +59,14 @@
           <div id="loopedCarousel">
             <div class="container">
               <ul class="slides">
-                <li> <span><a href="#" target="_blank"><img src="<{:SITE_PUBLIC}>/images/pic_01.jpg" width="232" height="116" /></a></span>
-                  <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
-                  <h2><b>¥4999</b>起</h2>
+              
+              <php>foreach($tips as $v){</php>
+                <li> <span><a href="<{:ROOT_URL}>plus/view.php?aid=<{$v[id]}>" target="_blank"><img src="<{:ROOT_URL}><{$v['litpic']}>" width="232" height="116" /></a></span>
+                  <h1><a href="<{:ROOT_URL}>plus/view.php?aid=<{$v[id]}>" target="_blank">-<{$v['title']}></a></h1>
+                  <h2><b>¥<{$v['shorttitle']}></b>起</h2>
                 </li>
-                <li> <span><a href="#" target="_blank"><img src="<{:SITE_PUBLIC}>/images/pic_02.jpg" width="232" height="116" /></a></span>
-                  <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
-                  <h2><b>¥4999</b>起</h2>
-                </li>
-                <li> <span><a href="#" target="_blank"><img src="<{:SITE_PUBLIC}>/images/pic_01.jpg" width="232" height="116" /></a></span>
-                  <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
-                  <h2><b>¥4999</b>起</h2>
-                </li>
-                <li> <span><a href="#" target="_blank"><img src="<{:SITE_PUBLIC}>/images/pic_02.jpg" width="232" height="116" /></a></span>
-                  <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
-                  <h2><b>¥4999</b>起</h2>
-                </li>
-                <li> <span><a href="#" target="_blank"><img src="<{:SITE_PUBLIC}>/images/pic_01.jpg" width="232" height="116" /></a></span>
-                  <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
-                  <h2><b>¥4999</b>起</h2>
-                </li>
-                <li> <span><a href="#" target="_blank"><img src="<{:SITE_PUBLIC}>/images/pic_02.jpg" width="232" height="116" /></a></span>
-                  <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
-                  <h2><b>¥4999</b>起</h2>
-                </li>
-                <li> <span><a href="#" target="_blank"><img src="<{:SITE_PUBLIC}>/images/pic_01.jpg" width="232" height="116" /></a></span>
-                  <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
-                  <h2><b>¥4999</b>起</h2>
-                </li>
-                <li> <span><a href="#" target="_blank"><img src="<{:SITE_PUBLIC}>/images/pic_02.jpg" width="232" height="116" /></a></span>
-                  <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
-                  <h2><b>¥4999</b>起</h2>
-                </li>
-                <li> <span><a href="#" target="_blank"><img src="<{:SITE_PUBLIC}>/images/pic_01.jpg" width="232" height="116" /></a></span>
-                  <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
-                  <h2><b>¥4999</b>起</h2>
-                </li>
+              <php>}</php>
+              
               </ul>
             </div>
           </div>
@@ -111,7 +83,7 @@
 	$(function(){
 		$('#loopedCarousel').loopedCarousel({
 			autoStart: 3000, 
-			slidespeed: 300, 
+			slidespeed: 700, 
 			fadespeed: 0, 
 			items: 3,
 			padding: 0

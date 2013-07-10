@@ -47,6 +47,34 @@ $(document).ready(function(){
 		break;
 	}
 });
+
+
+function checkform(){
+	if(!$("#lianxiren").val()){
+		alert('请填写联系人');
+		$("#lianxiren").focus();
+		return false;
+	}
+	if(!$("#lianxidianhua").val()){
+		alert('请填写联系人电话');
+		$("#lianxidianhua").focus();
+		return false;
+	}
+	if(!$("#lvyoumudidi").val()){
+		alert('请填写旅游目的地');
+		$("#lvyoumudidi").focus();
+		return false;
+	}
+	if(!$("#chengren").val()){
+		alert('请填写成人数');
+		$("#chengren").focus();
+		return false;
+	}
+	return true;
+}
+
+
+
 </script>
 <script type="text/javascript">
 //头部导航下拉菜单
@@ -72,47 +100,61 @@ $(document).ready(function(){
         <div class="dingzhi_information">
         	<em>出游需求信息</em>
           <div class="dingzhi_information_content">
+          		
+                <form action="../../b2cservice/index.php?s=/B2CService/dopost_gexingdingzhi" method="post">
             	<dl class="dingzhi_dla">
+                	<dt>联系人：</dt>
+                    <dd><input type="text" name="lianxiren" id="lianxiren" /></dd>
+                	<dt>联系电话：</dt>
+                    <dd><input type="text" name="lianxidianhua" id="lianxidianhua" /></dd>
                 	<dt>旅游目的地：</dt>
-                    <dd>
-                      <select name="select">
-                        <option>亚洲</option>
-                      </select>
-                      <select name="select2">
-                     	<option>内蒙古自治区</option>
-                      </select>
-                    </dd>
+                    <dd><input type="text" name="lvyoumudidi" id="lvyoumudidi" /></dd>
                     <dt>其它目的地：</dt>
-                    <dd><input type="text" name="textfield" id="textfield" /></dd>
+                    <dd><input type="text" name="qitamudidi" id="qitamudidi" /></dd>
                     <dt>出发时间：</dt>
                     <dd>
-                      <select name="select">
-                        <option>2013年</option>
+                      <select name="chufanian" id="chufanian">
+                        <option value="2013年">2013年</option>
+                        <option value="2014年">2014年</option>
                       </select>
-                      <select name="select2">
-                     	<option>3月</option>
+                      <select name="chufayue" id="chufayue">
+                     	<option value="1月">1月</option>
+                     	<option value="2月">2月</option>
+                     	<option value="3月">3月</option>
+                     	<option value="4月">4月</option>
+                     	<option value="5月">5月</option>
+                     	<option value="6月">6月</option>
+                     	<option value="7月">7月</option>
+                     	<option value="8月">8月</option>
+                     	<option value="9月">9月</option>
+                     	<option value="10月">10月</option>
+                     	<option value="11月">11月</option>
+                     	<option value="12月">12月</option>
                       </select>
                     </dd>
                     <dt>其它时间：</dt>
-                    <dd><input type="text" name="textfield" id="textfield" /></dd>
+                    <dd><input type="text" name="qitashijian" id="qitashijian" /></dd>
                     <dt>出行天数：</dt>
                     <dd>
-                      <select name="select">
-                        <option>1-4天</option>
+                      <select name="chuxingtianshu" id="chuxingtianshu">
+                        <option value="1-4天">1-4天</option>
+                        <option value="5-8天">5-8天</option>
+                        <option value="大于9天">大于9天</option>
                       </select>
                     </dd>
                     <dt>出发城市：</dt>
                     <dd>
-                    	<select name="select2">
-                     	<option>大连</option>
+                      <select name="chufachengshi" id="chufachengshi">
+                          <option value="大连">大连</option>
                       </select>
                     </dd>
                 </dl>
                 <dl class="dingzhi_dlb">
                 	<dt>行程预算：</dt>
                     <dd>
-                      <select name="select">
-                        <option>5000元以下</option>
+                      <select name="xingchengyusuan" id="xingchengyusuan">
+                        <option value="5000元以下">5000元以下</option>
+                        <option value="10000元以下">10000元以下</option>
                       </select>
                       /人
                     </dd>
@@ -120,18 +162,20 @@ $(document).ready(function(){
                  <dl class="dingzhi_dlc">
                 	<dt>出游人数：</dt>
                     <dd>
-                      <span><i>成人</i><input type="text" name="textfield" id="textfield" /><i>人</i></span>
-                      <span><i>儿童(2-12岁)</i><input type="text" name="textfield" id="textfield" /><i>人</i></span>
-                      <span><i>婴儿(0-2岁)</i><input type="text" name="textfield" id="textfield" /><i>人</i></span>
+                      <span><i>成人</i><input type="text" name="chengren" id="chengren" /><i>人</i></span>
+                      <span><i>儿童(2-12岁)</i><input type="text" name="ertong" /><i>人</i></span>
+                      <span><i>婴儿(0-2岁)</i><input type="text" name="yinger" /><i>人</i></span>
                     </dd>
                  </dl>
                  <dl class="dingzhi_dld">
                     <dt>其他需求：</dt>
                     <dd>
-                      <textarea name="textfield" id="textfield"></textarea>
+                      <textarea name="qitaxuqiu" id="qitaxuqiu"></textarea>
                     </dd>
                 </dl>
-                <input class="dingzhi_input" name="" type="button" />
+                <input class="dingzhi_input" value="" type="submit" onclick="return checkform()" />
+                </form>
+                
           </div>
         </div>
     </div>

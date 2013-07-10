@@ -12,6 +12,9 @@ class MyAction extends CommonMyAction{
 		$Dingdan = D("Dingdan");
 		$orderall = $Dingdan->where("`mid` = '$u[mid]' AND `status_system` = '1'")->order("time desc")->limit('0,2')->findall();
 		$this->assign("orderall",$orderall);
+		//广告
+		$tips = $this->_getadstips();
+		$this->assign("tips",$tips);
 		$this->display();
 	}
 	
@@ -66,8 +69,6 @@ class MyAction extends CommonMyAction{
 	
 	
 	function joiner(){
-		
-		
 		$this->assign("mark",'常用游客信息');
 		$id = $_REQUEST['id'];
 		$Joiner = D("Joiner");
@@ -120,7 +121,12 @@ class MyAction extends CommonMyAction{
 		
 	}
 	
-	
+	//广告
+	function _getadstips(){
+		$DEDEArchives = D("DEDEArchives");//文章主表
+		$tips = $DEDEArchives->where("`typeid` = '15'")->order('id desc')->findall();
+		return $tips;
+	}
 	
 	
 	
