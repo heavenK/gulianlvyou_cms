@@ -16,6 +16,8 @@ class OrderAction extends CommonMyAction{
 	}
 	
 	function showheader(){
+		$tips = $this->_getadstips();
+		$this->assign("tips",$tips);
 		$this->display('header');
 	}
 	
@@ -328,7 +330,7 @@ class OrderAction extends CommonMyAction{
 		$tOrderTime = date("H:i:s",time());
 		$tOrderAmountStr = 0.01;
 		$tOrderAmountStr = $order['price'];
-		$tOrderURL = ORDER_INDEX.'Order/book3/orderID/'.$orderID;
+		$tOrderURL = ORDER_INDEX.'Order/book3/orderID/'.$orderID;//必填
 		$tBuyIP = real_ip();
 		$tProductType = 1;
 		$tPaymentType = $_POST['PaymentType'];
@@ -385,7 +387,12 @@ class OrderAction extends CommonMyAction{
 	}
 	
 	
-	
+	//广告
+	function _getadstips(){
+		$DEDEArchives = D("DEDEArchives");//文章主表
+		$tips = $DEDEArchives->where("`typeid` = '73'")->order('id desc')->findall();
+		return $tips;
+	}
 }
 ?>
 
