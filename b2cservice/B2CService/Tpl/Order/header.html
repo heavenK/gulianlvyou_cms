@@ -26,6 +26,15 @@ jQuery(function($) {
 	});
 });
 
+function do_search(){
+	var keyword = jQuery('#keyword').val();
+	if(!keyword || keyword == '搜索旅游目的地'){
+		alert("请输入您要搜索的目的地!");
+		return false;
+	}
+	window.location = '<{:ROOT_URL}>plus/gl_list.php?q='+keyword+'&searchtype=title&channeltype=7&kwtype=0&xianlu=17,18';
+}
+
 </script>
 </head>
 
@@ -40,12 +49,14 @@ jQuery(function($) {
         <{$user[userid]}> [<a href="<{:B2CSERVICE_APIS}>action_index_do.php?fmdo=login&dopost=exit">退出登录</a>]</i>
     </dd>
 
-    
-    <script language="javascript" type="text/javascript">CheckLogin();</script>
     <dt> <i><a href="#"><img src="<{:SITE_PUBLIC}>images/logo.png" width="223" height="73" /></a></i> <b>
-      <input type="text" class="header_search_text" name="text" value="搜索旅游目的地" onfocus="if (value =='搜索旅游目的地'){value =''}" onblur="if (value ==''){value='搜索旅游目的地'}"/>
-      <input type="submit" class="header_search_submit" name="submit" value="" />
-      </b> <em>热门搜索：<a href="#">灵山大佛</a> <a href="#">马尔代夫</a> <a href="#">海南</a> <a href="#">巴厘岛</a> <a href="#">普吉岛</a> <a href="#">迪斯尼乐园</a></em> </dt>
+      <input type="text" class="header_search_text" id="keyword" name="text" value="搜索旅游目的地" onfocus="if (value =='搜索旅游目的地'){value =''}" onblur="if (value ==''){value='搜索旅游目的地'}"/>
+      <input type="button" class="header_search_submit" name="submit" value="" onclick="do_search()" />
+      </b> <em>热门搜索：
+      <php>foreach($tips as $v){</php>
+          <a href="<{:ROOT_URL}>plus/gl_list.php?q=<{$v['title']}>&searchtype=title&channeltype=7&kwtype=0&xianlu=17,18"><{$v['title']}></a>
+      <php>}</php>
+      </em> </dt>
   </dl>
   <div class="mainbav_box"><!--导航-->
     <ul>

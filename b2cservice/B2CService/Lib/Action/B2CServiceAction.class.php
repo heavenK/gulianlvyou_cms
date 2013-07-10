@@ -26,6 +26,25 @@ class B2CServiceAction extends Action{
 		ShowMsg("提交成功，我们会尽量与您联系。",ROOT_URL);
 	}
 	
+    public function faq_about() {
+		$where['tid'] = $_REQUEST['tid'];
+		$where['first'] = 0;
+		$DISCUZForumPost = D("DISCUZForumPost");
+		$tips = $DISCUZForumPost->where($where)->order('pid desc')->findall();
+		$DISCUZCommonMember = D("DISCUZCommonMember");
+		echo "document.write('<ol>";
+		foreach($tips as $v){
+			$uc = $DISCUZCommonMember->where("`uid` = '$v[authorid]'")->find();
+			$face = BBS_URL.'uc_server/avatar.php?uid='.$uc['uid'];
+			echo "<li><b><img src=\"".$face."\" width=\"16\" height=\"16\" /></b><h1><a href=\"".BBS_URL."home.php?mod=space&uid=".$uc['uid']."&do=profile&from=space"."\" target=\"_blank\">".$uc['username']."</a>:&nbsp;".$v['message']."</h1></li>";
+		}
+		echo "</ol>');";
+	}
+	
+	
+	
+	
+	
 	
 }
 
