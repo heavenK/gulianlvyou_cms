@@ -32,9 +32,10 @@ class B2CServiceAction extends Action{
 		$DISCUZForumpost = D("DISCUZForumpost");
 		$tips = $DISCUZForumpost->where($where)->order('pid desc')->find();
 		echo "document.write('<ol>";
-		echo "<li><b><img src=\"/demand/images/pic_01.jpg\" width=\"16\" height=\"16\" /></b><h1><a href=\"#\" target=\"_blank\">丢丢</a>:&nbsp;夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山</h1></li>";
-		echo "<li><b><img src=\"/demand/images/pic_01.jpg\" width=\"16\" height=\"16\" /></b><h1><a href=\"#\" target=\"_blank\">丢丢</a>:&nbsp;夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山</h1></li>";
-		echo "<li><b><img src=\"/demand/images/pic_01.jpg\" width=\"16\" height=\"16\" /></b><h1><a href=\"#\" target=\"_blank\">丢丢</a>:&nbsp;夏日悠游漓江山夏日悠游漓江山夏日悠游漓江山</h1></li>";
+		foreach($tips as $v){
+		echo "<li><b><img src=\"/demand/images/pic_01.jpg\" width=\"16\" height=\"16\" /></b><h1><a href=\"#\" target=\"_blank\">丢丢</a>:&nbsp;".$v['message']."</h1></li>";
+			
+		}
 		echo "</ol>');";
 	}
 	
