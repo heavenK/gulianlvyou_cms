@@ -73,7 +73,7 @@ function initFloatDiv() {
     }
     initFloatPerson(nowgroup);
     $("#Popupbox select").bind("change", function() { initFloatPerson(arrlinegroup[$("#Popupbox select").get(0).selectedIndex]); });
-
+	//判断儿童价，不存在则不显示.
     if (nowgroup.child_price == 0) {
         $("#Popupbox ul li:last-child").remove();
         $(".stastics span").remove();
