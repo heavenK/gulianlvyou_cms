@@ -91,9 +91,9 @@ function initFloatPerson(group) {
     //删除原有的   添加新版
     $("#Popupbox ul").remove();
     var text = "";
-//	text += '<ul><li class="pwidth">标准零售价：</li><li class="pwidth2"><b class="piaohong">￥' + group.adult_price + '</b></li>'
-//		+ '<li> <span>成人：</span> <span class="add_count"><input type="text" value="1"  /><span class="less"></span> <span class="add"></span> </span> <span>&nbsp;人</span> </li>'
-//		+ '<li> <span>儿童：</span> <span class="add_count"><input type="text" value="0"  /><span class="less"></span> <span class="add"></span> </span> <span>&nbsp;人</span> </li></ul>';
+	text += '<ul><li class="pwidth">标准零售价：</li><li class="pwidth2"><b class="piaohong">￥' + group.adult_price + '</b></li>'
+		+ '<li> <span>成人：</span> <span class="add_count"><input type="text" value="1"  /><span class="less"></span> <span class="add"></span> </span> <span>&nbsp;人</span> </li>'
+		+ '<li> <span>儿童：</span> <span class="add_count"><input type="text" value="0"  /><span class="less"></span> <span class="add"></span> </span> <span>&nbsp;人</span> </li></ul>';
 		
 	alert(text)	
 		
