@@ -85,9 +85,9 @@ function initFloatPerson(group) {
     $(".pro_table td:first").html(group.date);
     $(".pro_table td:eq(1)").html(group.enddate);
     $(".pro_table td:last").html((group.renshu > 9 ? ">9" : (group.renshu <= 0 ? 0 : group.renshu)));
-    $(".tuanhao").remove();
-    $("<div class='tuanhao'>团队编号：" + group.erpno + "</div>").insertBefore(".pro_table");
-
+    $(".ks_tuanhao").remove();
+    $("<div class='ks_tuanhao'><em>团队编号：</em><b>" + group.erpno + "</b></div>").insertBefore(".pro_table");
+	
     //删除原有的   添加新版
     $("#Popupbox ul").remove();
     var text = "";
