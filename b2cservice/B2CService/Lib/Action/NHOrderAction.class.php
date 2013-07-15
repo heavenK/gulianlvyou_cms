@@ -108,6 +108,11 @@ class NHOrderAction extends Action{
 					$order['list'][$i]['Qty'] = $item->Qty;
 					$order['list'][$i]['UnitPrice'] = $item->UnitPrice;
 				}
+				//推送
+				if($tOrderID){
+					//推送到erp和center
+					$order_s = FileGetContents(SERVER_INDEX."Server/dopostOrder/orderID/".$tOrderID);
+				}
 				echo serialize($order);
 				exit;	
 			}

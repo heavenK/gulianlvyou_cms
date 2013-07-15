@@ -113,9 +113,21 @@ class OrderAction extends CommonMyAction{
 				$rows['chengrenshu'] = $_REQUEST['chengrenshu'];
 				$rows['ertongshu'] = $_REQUEST['ertongshu'];
 				$rows['status'] = '准备中';
-				$rows['price'] = $chanpin['adult_price']*$_REQUEST['chengrenshu']+$chanpin['child_price']*$_REQUEST['ertongshu'];
 				$rows['adult_price'] = $chanpin['adult_price'];
+				if($rows['adult_price'] == NULL || $rows['adult_price'] == 0){
+					echo "数据错误！！";
+					exit;
+				}
 				$rows['child_price'] = $chanpin['child_price'];
+				if($rows['adult_price'] == NULL){
+					echo "数据错误！！";
+					exit;
+				}
+				$rows['price'] = $chanpin['adult_price']*$_REQUEST['chengrenshu']+$chanpin['child_price']*$_REQUEST['ertongshu'];
+				if($rows['price'] == NULL || $rows['price'] < 0 || $rows['price'] == 0){
+					echo "数据错误！！";
+					exit;
+				}
 				$rows['orderID'] = MakeOrders($rows['serverdataID']);
 				$redirect_rul = ORDER_INDEX.'Order/book2/orderID/'.$rows['orderID'];
 			}
