@@ -280,33 +280,40 @@ class OrderAction extends CommonMyAction{
 	
 	function queryOrder(){
 		$orderID = $_REQUEST['orderID'];
-		$dingdan = A("NHOrder")->_query_order_byorderID($orderID);
+		$dingdan = A("NHOrder")->_query_order_byorderID($orderID,0);
 		if($dingdan){
-			redirect($redirect_rul);
+			$_REQUEST['msg'] = '支付成功';
+			$_REQUEST['msg'] = iconv("UTF-8","GBK",$_REQUEST['msg']);
+			print("<br>Message:".$_REQUEST['msg']."</br>");
+			exit;
 		}
 		else{
-			redirect($redirect_rul);
+			$_REQUEST['msg'] = '支付失败';
+			$_REQUEST['msg'] = iconv("UTF-8","GBK",$_REQUEST['msg']);
+			print("<br>Failed!!!"."</br>");
+			print("<br>Error Message:".$_REQUEST['msg']."</br>");
+			exit;
 		}
 	}
 	
 	function helpOrder(){
-		$orderID = $_REQUEST['orderID'];
-		$dingdan = A("NHOrder")->_query_order_byorderID($orderID);
-		if($dingdan){
-			redirect($redirect_rul);
-		}
-		else{
-			$Dingdan = D("Dingdan");
-			$order['status_temp'] = '支付帮助';
-			$dingdan = $Dingdan->where("`orderID` = '$order[orderID]'")->save($order);
-			redirect($redirect_rul);
-		}
+//		$orderID = $_REQUEST['orderID'];
+//		$dingdan = A("NHOrder")->_query_order_byorderID($orderID);
+//		if($dingdan){
+//			redirect($redirect_rul);
+//		}
+//		else{
+//			$Dingdan = D("Dingdan");
+//			$order['status_temp'] = '支付帮助';
+//			$dingdan = $Dingdan->where("`orderID` = '$order[orderID]'")->save($order);
+//			redirect($redirect_rul);
+//		}
 	}
 	
 	function MerchantPaymant(){
 		$orderID = $_REQUEST['orderID'];
 		//支付前进行订单查询
-		if(A("NHOrder")->_query_order_byorderID($orderID)){
+		if(A("NHOrder")->_query_order_byorderID($orderID,0)){
 			redirect(ORDER_INDEX);
 		}
 		require_once(B2CSERVICE_PATH."/apis/nh/b2c01/api.php");

@@ -7,19 +7,21 @@ class NHOrderAction extends Action{
 		$Dingdan = D("Dingdan");
 		$orderall = $Dingdan->where("`mid` = '$u[mid]' AND `status_system` = '1' AND `status_temp` = '开始支付'")->findall();
 		foreach($orderall as $v){
-			$this->_query_order_byorderID($v['orderID'],1);
+			$this->_query_order_byorderID($v['orderID']);
 		}
     }
 	
 	
 	
 	//查询
-    public function _query_order_byorderID($orderID,$neednotice=0) {
+    public function _query_order_byorderID($orderID,$neednotice=1) {
 		$order = A("MethodService")->_getdingdan($orderID);
 		if(!$order){
-			print("<br>Failed!!!"."</br>");
-			print("<br>order is not exist!!!"."</br>");
-			print("<br>Point11</br>");
+			if($neednotice){
+				print("<br>Failed!!!"."</br>");
+				print("<br>order is not exist!!!"."</br>");
+				print("<br>Point11</br>");
+			}
 			return false;
 		}
 		$tOrderNo = $order['orderNo'];
