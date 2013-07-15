@@ -90,7 +90,7 @@ class OrderAction extends CommonMyAction{
 				$rows['price'] = $chanpin['shoujia'];
 				$rows['adult_price'] = $chanpin['shoujia'];
 				$rows['child_price'] = $chanpin['ertongshoujia'];
-				$rows['orderID'] = MakeOrders($rows['serverdataID'],'DLGL');
+				$rows['orderID'] = MakeOrders($rows['serverdataID'],'GL');
 				$rows['orderNo'] = MakeOrders($rows['serverdataID']);
 				$redirect_rul = ORDER_INDEX.'Order/book2/orderID/'.$rows['orderID'];
 			}
@@ -131,7 +131,7 @@ class OrderAction extends CommonMyAction{
 					echo "数据错误！！";
 					exit;
 				}
-				$rows['orderID'] = MakeOrders($rows['serverdataID']);
+				$rows['orderID'] = MakeOrders($rows['serverdataID'],'GL');
 				$redirect_rul = ORDER_INDEX.'Order/book2/orderID/'.$rows['orderID'];
 			}
 		}
