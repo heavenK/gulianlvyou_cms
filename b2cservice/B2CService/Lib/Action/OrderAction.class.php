@@ -115,16 +115,19 @@ class OrderAction extends CommonMyAction{
 				$rows['status'] = '准备中';
 				$rows['adult_price'] = $chanpin['adult_price'];
 				if($rows['adult_price'] == NULL || $rows['adult_price'] == 0){
+					dump($rows);
 					echo "数据错误！！";
 					exit;
 				}
 				$rows['child_price'] = $chanpin['child_price'];
 				if($rows['adult_price'] == NULL){
+					dump($rows);
 					echo "数据错误！！";
 					exit;
 				}
 				$rows['price'] = $chanpin['adult_price']*$_REQUEST['chengrenshu']+$chanpin['child_price']*$_REQUEST['ertongshu'];
 				if($rows['price'] == NULL || $rows['price'] < 0 || $rows['price'] == 0){
+					dump($rows);
 					echo "数据错误！！";
 					exit;
 				}
