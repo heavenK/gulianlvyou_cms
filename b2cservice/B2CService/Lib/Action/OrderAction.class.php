@@ -320,7 +320,7 @@ class OrderAction extends CommonMyAction{
 //			$this->ajaxReturn($_REQUEST, '操作失败123！', 0);
 			print("<br>Failed!!!"."</br>");
 			print("<br>Error Message:".$_REQUEST['msg']."</br>");
-			print("<br>位置0</br>");
+			print("<br>Point0</br>");
 			exit;
 		}
 		else{
@@ -332,7 +332,7 @@ class OrderAction extends CommonMyAction{
 //				$this->ajaxReturn($_REQUEST, '操作失败234！', 0);
 				print("<br>Failed!!!"."</br>");
 				print("<br>Error Message:".$_REQUEST['msg']."</br>");
-				print("<br>位置1</br>");
+				print("<br>Point1</br>");
 				exit;
 			}
 		}
@@ -392,7 +392,7 @@ class OrderAction extends CommonMyAction{
 				print("<br>Failed!!!"."</br>");
 				print("<br>return code:".$merchantPaymentResult->returnCode."</br>"); 
 				print("<br>Error Message:".$merchantPaymentResult->ErrorMessage."</br>");
-				print("<br>位置2</br>");
+				print("<br>Point2</br>");
 				exit;
 			}
 		}
@@ -401,7 +401,7 @@ class OrderAction extends CommonMyAction{
 		A("MethodService")->_change_order_tempstatus($orderID,'开始支付');
 		$_REQUEST['PaymentURL'] = $PaymentURL;
 //		$this->ajaxReturn($_REQUEST, '保存成功！', 1);
-		//echo '<script language=javascript>var redirectURL="'.$PaymentURL.'";if(redirectURL!=null&&redirectURL!=""){location.href="'.$PaymentURL.'";}</script> ';
+		echo '<script language=javascript>var redirectURL="'.$PaymentURL.'";if(redirectURL!=null&&redirectURL!=""){location.href="'.$PaymentURL.'";}</script> ';
 	}
 	
 	
