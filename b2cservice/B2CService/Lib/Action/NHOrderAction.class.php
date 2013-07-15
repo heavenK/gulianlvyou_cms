@@ -19,6 +19,7 @@ class NHOrderAction extends Action{
 		if(!$order){
 			print("<br>Failed!!!"."</br>");
 			print("<br>order is not exist!!!"."</br>");
+			print("<br>位置11</br>");
 			return false;
 		}
 		$tOrderNo = $order['orderNo'];
@@ -60,6 +61,7 @@ class NHOrderAction extends Action{
 			print("<br>Failed!!!"."</br>");
 			print("<br>return code:".$merchantQueryOrderResult->returnCode."</br>"); 
 			print("<br>Error Message:".$merchantQueryOrderResult->ErrorMessage."</br>");
+			print("<br>位置12</br>");
 			return false;
 		}
 	}
