@@ -398,7 +398,7 @@ class OrderAction extends CommonMyAction{
 		A("MethodService")->_change_order_tempstatus($orderID,'开始支付');
 		$_REQUEST['PaymentURL'] = $PaymentURL;
 //		$this->ajaxReturn($_REQUEST, '保存成功！', 1);
-		echo '<script language=javascript>var redirectURL="'.$PaymentURL.'";if(redirectURL!=null&&redirectURL!=""){location.href="'.$PaymentURL.'";}</script> ';
+		//echo '<script language=javascript>var redirectURL="'.$PaymentURL.'";if(redirectURL!=null&&redirectURL!=""){location.href="'.$PaymentURL.'";}</script> ';
 	}
 	
 	
