@@ -7,14 +7,14 @@ class NHOrderAction extends Action{
 		$Dingdan = D("Dingdan");
 		$orderall = $Dingdan->where("`mid` = '$u[mid]' AND `status_system` = '1' AND `status_temp` = '开始支付'")->findall();
 		foreach($orderall as $v){
-			$this->_query_order_byorderID($v['orderID']);
+			$this->_query_order_byorderID($v['orderID'],1);
 		}
     }
 	
 	
 	
 	//查询
-    public function _query_order_byorderID($orderID) {
+    public function _query_order_byorderID($orderID,$neednotice=0) {
 		$order = A("MethodService")->_getdingdan($orderID);
 		if(!$order){
 			print("<br>Failed!!!"."</br>");
@@ -45,23 +45,28 @@ class NHOrderAction extends Action{
 				}
 				else
 				$msg = iconv("UTF-8","GBK",'<br>已支付成功!!!</br>');
-				print($msg);
 				//推送到erp和center
 				$order_s = FileGetContents(SERVER_INDEX."Server/dopostOrder/orderID/".$orderID);
 				//$order = FileGetContents(CLIENT_INDEX."Client/dopostOrder/orderID/".$v['orderID']);
+				if($neednotice)
+					print($msg);
 				return true;
 			}
 			else{
 				$msg = iconv("UTF-8","GBK",'<br>订单支付失败!!!</br>');
-				print($msg);
+				if($neednotice)
+					print($msg);
+				return false;
 			}
 		}
 		else
 		{
-			print("<br>Failed!!!"."</br>");
-			print("<br>return code:".$merchantQueryOrderResult->returnCode."</br>"); 
-			print("<br>Error Message:".$merchantQueryOrderResult->ErrorMessage."</br>");
-			print("<br>位置12</br>");
+			if($neednotice){
+				print("<br>Failed!!!"."</br>");
+				print("<br>return code:".$merchantQueryOrderResult->returnCode."</br>"); 
+				print("<br>Error Message:".$merchantQueryOrderResult->ErrorMessage."</br>");
+				print("<br>位置12</br>");
+			}
 			return false;
 		}
 	}
