@@ -196,7 +196,7 @@ else if($fmdo=='user')
     {
         $step = empty($step)? 1 : intval(preg_replace("/[^\d]/",'', $step));
 //        require_once(dirname(__FILE__)."/reg_new.php");
-		include(APP_PATH."Tpl/Index/register.html");
+		include(APP_PATH."Tpl/My/register.html");
         exit();
     }
   /***************************
