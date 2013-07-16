@@ -90,7 +90,7 @@ class OrderAction extends CommonMyAction{
 				$rows['price'] = $chanpin['shoujia'];
 				$rows['adult_price'] = $chanpin['shoujia'];
 				$rows['child_price'] = $chanpin['ertongshoujia'];
-				$rows['orderID'] = MakeOrders($rows['serverdataID'],'DLGL');
+				$rows['orderID'] = MakeOrders($rows['serverdataID'],'GL');
 				$rows['orderNo'] = MakeOrders($rows['serverdataID']);
 				$redirect_rul = ORDER_INDEX.'Order/book2/orderID/'.$rows['orderID'];
 			}
@@ -113,10 +113,25 @@ class OrderAction extends CommonMyAction{
 				$rows['chengrenshu'] = $_REQUEST['chengrenshu'];
 				$rows['ertongshu'] = $_REQUEST['ertongshu'];
 				$rows['status'] = '准备中';
-				$rows['price'] = $chanpin['adult_price']*$_REQUEST['chengrenshu']+$chanpin['child_price']*$_REQUEST['ertongshu'];
 				$rows['adult_price'] = $chanpin['adult_price'];
+				if($rows['adult_price'] == NULL || $rows['adult_price'] == 0){
+					dump($rows);
+					echo "数据错误！！";
+					exit;
+				}
 				$rows['child_price'] = $chanpin['child_price'];
-				$rows['orderID'] = MakeOrders($rows['serverdataID']);
+				if($rows['adult_price'] == NULL){
+					dump($rows);
+					echo "数据错误！！";
+					exit;
+				}
+				$rows['price'] = $chanpin['adult_price']*$_REQUEST['chengrenshu']+$chanpin['child_price']*$_REQUEST['ertongshu'];
+				if($rows['price'] == NULL || $rows['price'] < 0 || $rows['price'] == 0){
+					dump($rows);
+					echo "数据错误！！";
+					exit;
+				}
+				$rows['orderID'] = MakeOrders($rows['serverdataID'],'GL');
 				$redirect_rul = ORDER_INDEX.'Order/book2/orderID/'.$rows['orderID'];
 			}
 		}
@@ -265,33 +280,40 @@ class OrderAction extends CommonMyAction{
 	
 	function queryOrder(){
 		$orderID = $_REQUEST['orderID'];
-		$dingdan = A("NHOrder")->_query_order_byorderID($orderID);
+		$dingdan = A("NHOrder")->_query_order_byorderID($orderID,0);
 		if($dingdan){
-			redirect($redirect_rul);
+			$_REQUEST['msg'] = '支付成功';
+			$_REQUEST['msg'] = iconv("UTF-8","GBK",$_REQUEST['msg']);
+			print("<br>Message:".$_REQUEST['msg']."</br>");
+			exit;
 		}
 		else{
-			redirect($redirect_rul);
+			$_REQUEST['msg'] = '支付失败';
+			$_REQUEST['msg'] = iconv("UTF-8","GBK",$_REQUEST['msg']);
+			print("<br>Failed!!!"."</br>");
+			print("<br>Error Message:".$_REQUEST['msg']."</br>");
+			exit;
 		}
 	}
 	
 	function helpOrder(){
-		$orderID = $_REQUEST['orderID'];
-		$dingdan = A("NHOrder")->_query_order_byorderID($orderID);
-		if($dingdan){
-			redirect($redirect_rul);
-		}
-		else{
-			$Dingdan = D("Dingdan");
-			$order['status_temp'] = '支付帮助';
-			$dingdan = $Dingdan->where("`orderID` = '$order[orderID]'")->save($order);
-			redirect($redirect_rul);
-		}
+//		$orderID = $_REQUEST['orderID'];
+//		$dingdan = A("NHOrder")->_query_order_byorderID($orderID);
+//		if($dingdan){
+//			redirect($redirect_rul);
+//		}
+//		else{
+//			$Dingdan = D("Dingdan");
+//			$order['status_temp'] = '支付帮助';
+//			$dingdan = $Dingdan->where("`orderID` = '$order[orderID]'")->save($order);
+//			redirect($redirect_rul);
+//		}
 	}
 	
 	function MerchantPaymant(){
 		$orderID = $_REQUEST['orderID'];
 		//支付前进行订单查询
-		if(A("NHOrder")->_query_order_byorderID($orderID)){
+		if(A("NHOrder")->_query_order_byorderID($orderID,0)){
 			redirect(ORDER_INDEX);
 		}
 		require_once(B2CSERVICE_PATH."/apis/nh/b2c01/api.php");
@@ -305,6 +327,7 @@ class OrderAction extends CommonMyAction{
 //			$this->ajaxReturn($_REQUEST, '操作失败123！', 0);
 			print("<br>Failed!!!"."</br>");
 			print("<br>Error Message:".$_REQUEST['msg']."</br>");
+			print("<br>Point0</br>");
 			exit;
 		}
 		else{
@@ -316,6 +339,7 @@ class OrderAction extends CommonMyAction{
 //				$this->ajaxReturn($_REQUEST, '操作失败234！', 0);
 				print("<br>Failed!!!"."</br>");
 				print("<br>Error Message:".$_REQUEST['msg']."</br>");
+				print("<br>Point1</br>");
 				exit;
 			}
 		}
@@ -375,6 +399,7 @@ class OrderAction extends CommonMyAction{
 				print("<br>Failed!!!"."</br>");
 				print("<br>return code:".$merchantPaymentResult->returnCode."</br>"); 
 				print("<br>Error Message:".$merchantPaymentResult->ErrorMessage."</br>");
+				print("<br>Point2</br>");
 				exit;
 			}
 		}

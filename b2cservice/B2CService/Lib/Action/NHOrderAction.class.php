@@ -14,11 +14,14 @@ class NHOrderAction extends Action{
 	
 	
 	//查询
-    public function _query_order_byorderID($orderID) {
+    public function _query_order_byorderID($orderID,$neednotice=1) {
 		$order = A("MethodService")->_getdingdan($orderID);
 		if(!$order){
-			print("<br>Failed!!!"."</br>");
-			print("<br>order is not exist!!!"."</br>");
+			if($neednotice){
+				print("<br>Failed!!!"."</br>");
+				print("<br>order is not exist!!!"."</br>");
+				print("<br>Point11</br>");
+			}
 			return false;
 		}
 		$tOrderNo = $order['orderNo'];
@@ -44,22 +47,28 @@ class NHOrderAction extends Action{
 				}
 				else
 				$msg = iconv("UTF-8","GBK",'<br>已支付成功!!!</br>');
-				print($msg);
 				//推送到erp和center
 				$order_s = FileGetContents(SERVER_INDEX."Server/dopostOrder/orderID/".$orderID);
 				//$order = FileGetContents(CLIENT_INDEX."Client/dopostOrder/orderID/".$v['orderID']);
+				if($neednotice)
+					print($msg);
 				return true;
 			}
 			else{
 				$msg = iconv("UTF-8","GBK",'<br>订单支付失败!!!</br>');
-				print($msg);
+				if($neednotice)
+					print($msg);
+				return false;
 			}
 		}
 		else
 		{
-			print("<br>Failed!!!"."</br>");
-			print("<br>return code:".$merchantQueryOrderResult->returnCode."</br>"); 
-			print("<br>Error Message:".$merchantQueryOrderResult->ErrorMessage."</br>");
+			if($neednotice){
+				print("<br>Failed!!!"."</br>");
+				print("<br>return code:".$merchantQueryOrderResult->returnCode."</br>"); 
+				print("<br>Error Message:".$merchantQueryOrderResult->ErrorMessage."</br>");
+				print("<br>Point12</br>");
+			}
 			return false;
 		}
 	}
@@ -107,6 +116,11 @@ class NHOrderAction extends Action{
 					$order['list'][$i]['ProductName'] = $item->ProductName;
 					$order['list'][$i]['Qty'] = $item->Qty;
 					$order['list'][$i]['UnitPrice'] = $item->UnitPrice;
+				}
+				//推送
+				if($tOrderID){
+					//推送到erp和center
+					$order_s = FileGetContents(SERVER_INDEX."Server/dopostOrder/orderID/".$tOrderID);
 				}
 				echo serialize($order);
 				exit;	

@@ -3698,29 +3698,29 @@ class MethodAction extends CommonAction{
 					$xl = $ViewXianlu->where("`chanpinID` = '$dataID'")->find();
 					$guojing = $xl['guojing'];
 				}
-				$dataOMlist = A("Method")->_setDataOMlist('计调','组团',$user_name,$guojing);
+				$dataOMlist = $this->_setDataOMlist('计调','组团',$user_name,$guojing);
 			}
-			A("Method")->_createDataOM($dataID,$datatype,'管理',$dataOMlist);
+			$this->_createDataOM($dataID,$datatype,'管理',$dataOMlist);
 			if($datatype == '线路'){
 				$Chanpin = D("Chanpin");
 				$zituanall = $Chanpin->where("`parentID` = '$dataID' and `marktype` = 'zituan'")->findall();
 				foreach($zituanall as $v){
-					A("Method")->_OMRcreate($v['chanpinID'],'子团',$user_name,$dataOMlist);
+					$this->_OMRcreate($v['chanpinID'],'子团',$user_name,$dataOMlist);
 					$bzdall = $Chanpin->where("`parentID` = '$v[chanpinID]' and `marktype` = 'baozhang'")->findall();
 					foreach($bzdall as $vol){
-						A("Method")->_OMRcreate($vol['chanpinID'],'报账单',$user_name,$dataOMlist);
+						$this->_OMRcreate($vol['chanpinID'],'报账单',$user_name,$dataOMlist);
 					}
 				}
 			}
 		}
 		if($datatype == '地接'){
 				if(!$dataOMlist)
-				$dataOMlist = A("Method")->_setDataOMlist('地接','地接',$user_name);
-			A("Method")->_createDataOM($dataID,$datatype,'管理',$dataOMlist);
+				$dataOMlist = $this->_setDataOMlist('地接','地接',$user_name);
+			$this->_createDataOM($dataID,$datatype,'管理',$dataOMlist);
 		}
 		if($datatype == '报账单' || $datatype == '报账项'){
 				if($dataOMlist)
-					A("Method")->_createDataOM($dataID,$datatype,'管理',$dataOMlist);
+					$this->_createDataOM($dataID,$datatype,'管理',$dataOMlist);
 		}
 	}
 	
