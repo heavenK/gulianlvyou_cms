@@ -26,7 +26,7 @@ if($cfg_ml->IsLogin()){
 	//跳转
 	my_redirect(MY_URL);
 }else{
-	include(APP_PATH."Tpl/Index/register.html");
+	include(APP_PATH."Tpl/My/register.html");
 }
 exit;
 

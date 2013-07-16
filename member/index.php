@@ -12,7 +12,7 @@ if($cfg_ml->IsLogin()){
 	//跳转
 	my_redirect(MY_URL);
 }else{
-	include(APP_PATH."Tpl/Index/login.html");
+	include(APP_PATH."Tpl/My/login.html");
 }
 exit;
 
