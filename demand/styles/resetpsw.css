@@ -1,0 +1,20 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*主体*/
+.register_box			{ width:100%; float:left;}
+.register								{ width:980px; margin:0 auto; overflow:hidden;}
+.register span							{ width:188px; height:37px; margin:19px 0 0 116px; display:inline; background:url(../images/resetpsw_pic_01.png) no-repeat; overflow:hidden; float:left;}
+.register ul							{ width:860px; padding:32px 0 0 116px; overflow:hidden; float:left;}
+.register ul li							{ width:860px; height:27px; margin:0 0 16px 0; display:inline; color:#999999; line-height:27px; overflow:hidden; float:left;}
+.register ul li label					{ width:73px; height:27px; color:#010101; overflow:hidden; float:left;}
+.register ul li input.intxt				{ width:264px; height:15px; padding:5px; background:#FFF; border:1px solid #ced4dd; font-size:12px; color:#7a7a7a; overflow:hidden; float:left;}
+.register ul li em						{ height:27px; padding:0 0 0 15px; color:#999999; overflow:hidden; float:left;}
+.register ul li img						{ width:77px; height:27px; margin:0 5px; display:inline; overflow:hidden; float:left;}
+.register ul li a						{ color:#0d0d8f;}
+.register ul li a:hover					{ color:#ff6633;}
+.register ul li b						{ font-weight:normal; color:#000;}
+.button5								{ width:183px; height:49px; background:url(../images/resetpsw_pic_02.png) no-repeat 0 0; cursor:pointer; overflow:hidden; float:left;}
+.login_sidebar							{ width:860px; padding:32px 0 50px 189px; font-size:14px; line-height:28px; overflow:hidden; float:left;}
+.signUp									{ color:#F63; text-decoration:underline;}
+.signUp:hover							{ text-decoration:none;}
