@@ -1,6 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <iframe name="iframe_content" id="iframe_content" onload="SetWinHeight(this);" src="<?php echo SITE_INDEX.'My/header/title/注册成功' ?>" width="100%" scrolling="no"></iframe>
+<meta http-equiv="refresh" content="10;url=index.php">
+
+<link href="<?php echo SITE_PUBLIC ?>/styles/reset.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo SITE_PUBLIC ?>/styles/center_reset.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo SITE_PUBLIC ?>/styles/success.css" type="text/css" rel="stylesheet" />
+<script src="<?php echo SITE_PUBLIC ?>/js/jquery-1.4a2.min.js" type="text/javascript"></script>
 <script>
     function SetWinHeight(obj) {
 		var frm = obj;
@@ -10,74 +16,24 @@
 			frm.height = subWeb.body.scrollHeight;
 		}
     }
+var time = 10;
+returnUrlByTime();
+function returnUrlByTime() {
+   $("#loadtime").html(time);
+   time = time - 1;
+   window.setTimeout('returnUrlByTime()', 1000);
+}
 </script>
-
-<link href="<?php echo SITE_PUBLIC ?>/styles/reset.css" type="text/css" rel="stylesheet" />
-<link href="<?php echo SITE_PUBLIC ?>/styles/center_reset.css" type="text/css" rel="stylesheet" />
-<link href="<?php echo SITE_PUBLIC ?>/styles/success.css" type="text/css" rel="stylesheet" />
-<script src="<?php echo SITE_PUBLIC ?>/js/jquery-1.4a2.min.js" type="text/javascript"></script>
 
 <body style=" background:#FFF url(<?php echo SITE_PUBLIC ?>/images/register_bg.jpg) no-repeat center top;">
 <div class="success_register_box"><!--主体-->
     <div class="success_register">
-    	<i><h1>恭喜您注册成功！<br /><b>您的注册邮箱308715744@qq.com（登录名）</b></h1><br /><h2>完成邮箱验证后，将有机会享受更多会员优惠推荐信息。</h2></i>
-        <u></u>
-        <div class="center_index_rmtj"><!--热卖推荐-->
-            <em></em>
-            <div id="container">
-                <div id="loopedCarousel">
-                    <div class="container">
-                        <ul class="slides">
-                            <li>
-                                <span><a href="#" target="_blank"><img src="images/pic_01.jpg" width="214" height="106" /></a></span>
-                                <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
-                                <h2><b>¥4999</b>起</h2>
-                            </li>
-                            <li>
-                                <span><a href="#" target="_blank"><img src="images/pic_02.jpg" width="214" height="106" /></a></span>
-                                <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
-                                <h2><b>¥4999</b>起</h2>
-                            </li>
-                            <li>
-                                <span><a href="#" target="_blank"><img src="images/pic_01.jpg" width="214" height="106" /></a></span>
-                                <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
-                                <h2><b>¥4999</b>起</h2>
-                            </li>
-                            <li>
-                                <span><a href="#" target="_blank"><img src="images/pic_02.jpg" width="214" height="106" /></a></span>
-                                <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
-                                <h2><b>¥4999</b>起</h2>
-                            </li>
-                            <li>
-                                <span><a href="#" target="_blank"><img src="images/pic_01.jpg" width="214" height="106" /></a></span>
-                                <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
-                                <h2><b>¥4999</b>起</h2>
-                            </li>
-                            <li>
-                                <span><a href="#" target="_blank"><img src="images/pic_02.jpg" width="214" height="106" /></a></span>
-                                <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
-                                <h2><b>¥4999</b>起</h2>
-                            </li>
-                            <li>
-                                <span><a href="#" target="_blank"><img src="images/pic_01.jpg" width="214" height="106" /></a></span>
-                                <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
-                                <h2><b>¥4999</b>起</h2>
-                            </li>
-                            <li>
-                                <span><a href="#" target="_blank"><img src="images/pic_02.jpg" width="214" height="106" /></a></span>
-                                <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
-                                <h2><b>¥4999</b>起</h2>
-                            </li>
-                            <li>
-                                <span><a href="#" target="_blank"><img src="images/pic_01.jpg" width="214" height="106" /></a></span>
-                                <h1><a href="#" target="_blank">-巴厘岛6日恋恋之旅</a></h1>
-                                <h2><b>¥4999</b>起</h2>
-                            </li>
-                        </ul>
-                    </div>	
-                </div>
-            </div>
-        </div>
+    	<i style="height:200px;"><h1>恭喜您注册成功！<br /><b>您的用户名:<?php echo $uname ?></b></h1>
+        <h2>您已成为本站的正式会员!</h2><br />
+        <font color="#ff6600"><span id="loadtime" style=" font-weight:bold">10</span></font>秒钟后自动转到会员中心！<br />
+        <a href="<?php echo MY_URL ?>">[马上进入会员中心]</a>&nbsp;&nbsp;<a href="<?php echo ROOT_URL ?>">[返回网站首页]</a>
+        </i>
+        <iframe name="iframe_content" id="iframe_content" src="<?php echo SITE_INDEX.'My/showtips' ?>" width="100%" scrolling="no" height="250px;"></iframe>
     </div>
 </div>
 <div class="footer_box"><!--底部-->
@@ -86,16 +42,5 @@
         <em>Copyright &copy; 2005-2011 gulianlvyou.com　All rights reserved   古莲旅游 版权所有<br />旅行社业务经营许可证编号：辽B2-20120096   大连ICP证031062号</em>
     </div>
 </div>
-<script type="text/javascript" charset="utf-8">
-	$(function(){
-		$('#loopedCarousel').loopedCarousel({
-			autoStart: 3000, 
-			slidespeed: 300, 
-			fadespeed: 0, 
-			items: 3,
-			padding: 0
-		});
-	});
-</script>
 </body>
 </html>
