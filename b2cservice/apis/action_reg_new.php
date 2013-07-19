@@ -278,7 +278,8 @@ if($step == 1)
                 ShowMsg("完成基本信息的注册，接下来完善详细资料...","index_do.php?fmdo=user&dopost=regnew&step=2",0,1000);
                 exit();
             } else {
-                require_once(DEDEMEMBER."/templets/reg-new3.htm");
+                //require_once(DEDEMEMBER."/templets/reg-new3.htm");
+				include("../B2CService/Tpl/My/success_register.html");
                 exit;
             } 
         } else {
@@ -356,9 +357,25 @@ if($step == 1)
             $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET `spacesta`='2' WHERE `mid`='{$cfg_ml->M_ID}'");
             // 清除缓存
             $cfg_ml->DelCache($cfg_ml->M_ID);
-            require_once(DEDEMEMBER."/templets/reg-new3.htm");
+            //require_once(DEDEMEMBER."/templets/reg-new3.htm");
+			include("../B2CService/Tpl/My/success_register.html");
             exit;
         }
     }
     require_once(DEDEMEMBER."/templets/reg-new2.htm");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

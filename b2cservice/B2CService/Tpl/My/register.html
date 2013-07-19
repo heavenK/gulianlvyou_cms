@@ -120,14 +120,16 @@ function do_res() {
           <img id="vdimgck" align="absmiddle" onclick="this.src=this.src+'?'" style="cursor: pointer;" alt="看不清？点击更换" src="/include/vdimgck.php" /> 看不清？ <a href="#" onclick="changeAuthCode();">点击更换</a></li>
       </ul>
       <ol>
+      
         <li>
           <input type="checkbox" id="agree" checked="checked" onFocus="this.blur()" />
           <label for="agree">我已阅读并同意古莲旅游的</label>
-          <a href="#" target="_blank">《隐私声明》</a></li>
+          <a href="<?php echo BBS_URL ?>forum.php?mod=viewthread&tid=330&extra=page%3D1" target="_blank">《隐私声明》</a></li>
         <li>
           <input type="checkbox" id="notice" checked="checked" onFocus="this.blur()" />
           <label for="notice">古莲旅游的重大更新以及活动可通过邮件通知我</label>
-          <a href="#" target="_blank">《用户协议》</a></li>
+          <a href="<?php echo BBS_URL ?>forum.php?mod=viewthread&tid=331&extra=page%3D1" target="_blank">《用户协议》</a></li>
+          
       </ol>
       <u><a href="javascript:do_res()"></a></u>
     </form>

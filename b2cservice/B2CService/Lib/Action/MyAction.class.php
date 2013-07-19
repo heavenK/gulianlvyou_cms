@@ -129,6 +129,13 @@ class MyAction extends CommonMyAction{
 	}
 	
 	
+	//广告
+	function showtips(){
+		$tips = $this->_getadstips();
+		$this->assign("tips",$tips);
+		$this->display('tips_ads');
+	}
+	
 	
 	
 	
