@@ -360,5 +360,21 @@ if($step == 1)
             exit;
         }
     }
-    require_once(DEDEMEMBER."/templets/reg-new2.htm");
+//    require_once(DEDEMEMBER."/templets/reg-new2.htm");
+	include("../B2CService/Tpl/My/success_register.html");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

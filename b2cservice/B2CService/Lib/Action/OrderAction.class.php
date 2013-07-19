@@ -282,16 +282,17 @@ class OrderAction extends CommonMyAction{
 		$orderID = $_REQUEST['orderID'];
 		$dingdan = A("NHOrder")->_query_order_byorderID($orderID,0);
 		if($dingdan){
-			$_REQUEST['msg'] = '支付成功';
-			$_REQUEST['msg'] = iconv("UTF-8","GBK",$_REQUEST['msg']);
-			print("<br>Message:".$_REQUEST['msg']."</br>");
+//			$_REQUEST['msg'] = '支付成功';
+//			$_REQUEST['msg'] = iconv("UTF-8","GBK",$_REQUEST['msg']);
+//			print("<br>Message:".$_REQUEST['msg']."</br>");
+			$this->display('yuding_success');
 			exit;
 		}
 		else{
-//			$_REQUEST['msg'] = '支付失败';
-//			$_REQUEST['msg'] = iconv("UTF-8","GBK",$_REQUEST['msg']);
-//			print("<br>Failed!!!"."</br>");
-//			print("<br>Error Message:".$_REQUEST['msg']."</br>");
+			$_REQUEST['msg'] = '支付失败';
+			$_REQUEST['msg'] = iconv("UTF-8","GBK",$_REQUEST['msg']);
+			print("<br>Failed!!!"."</br>");
+			print("<br>Error Message:".$_REQUEST['msg']."</br>");
 			$this->display('yuding_success');
 			exit;
 		}
