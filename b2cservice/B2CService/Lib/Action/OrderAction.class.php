@@ -289,11 +289,12 @@ class OrderAction extends CommonMyAction{
 			exit;
 		}
 		else{
-			$_REQUEST['msg'] = '支付失败';
-			$_REQUEST['msg'] = iconv("UTF-8","GBK",$_REQUEST['msg']);
-			print("<br>Failed!!!"."</br>");
-			print("<br>Error Message:".$_REQUEST['msg']."</br>");
-			$this->display('yuding_success');
+//			$_REQUEST['msg'] = '支付失败';
+//			$_REQUEST['msg'] = iconv("UTF-8","GBK",$_REQUEST['msg']);
+//			print("<br>Failed!!!"."</br>");
+//			print("<br>Error Message:".$_REQUEST['msg']."</br>");
+//			$this->display('yuding_success');
+			$this->display('zhifu_fail');
 			exit;
 		}
 	}

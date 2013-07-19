@@ -137,6 +137,13 @@ class MyAction extends CommonMyAction{
 	}
 	
 	
+	//广告
+	function test(){
+		$this->display('success_exit');
+	}
+	
+	
+	
 	
 	
 	

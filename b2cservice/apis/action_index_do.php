@@ -376,7 +376,8 @@ else if($fmdo=='login')
 			echo($ucsynlogin);//必须
         }
         #/aip}}
-		my_redirect(ROOT_URL,1,'退出成功');
+		//my_redirect(ROOT_URL,1,'退出成功');
+		include("../B2CService/Tpl/My/success_exit.html");
         //ShowMsg("成功退出登录！","index.php",0,2000);
         exit();
     }
