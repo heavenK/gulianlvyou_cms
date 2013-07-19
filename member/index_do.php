@@ -8,6 +8,7 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 require_once(dirname(__FILE__)."/../b2cservice/apis/define3.inc.php");
+
 if($cfg_ml->IsLogin()){
 	
     if($dopost=="exit")
@@ -17,9 +18,11 @@ if($cfg_ml->IsLogin()){
         if(defined('UC_API') && @include_once DEDEROOT.'/uc_client/client.php')
         {
             $ucsynlogin = uc_user_synlogout();
+			echo($ucsynlogin);//必须
         }
         #/aip}}
-		my_redirect(ROOT_URL);
+		include("../b2cservice/B2CService/Tpl/My/success_exit.html");
+		//my_redirect(ROOT_URL);
         exit();
     }
 	
