@@ -279,6 +279,7 @@ if($step == 1)
                 exit();
             } else {
                 require_once(DEDEMEMBER."/templets/reg-new3.htm");
+				include("../B2CService/Tpl/My/success_register.html");
                 exit;
             } 
         } else {
@@ -357,11 +358,11 @@ if($step == 1)
             // 清除缓存
             $cfg_ml->DelCache($cfg_ml->M_ID);
             require_once(DEDEMEMBER."/templets/reg-new3.htm");
+			include("../B2CService/Tpl/My/success_register.html");
             exit;
         }
     }
-//    require_once(DEDEMEMBER."/templets/reg-new2.htm");
-	include("../B2CService/Tpl/My/success_register.html");
+    require_once(DEDEMEMBER."/templets/reg-new2.htm");
 }
 
 
