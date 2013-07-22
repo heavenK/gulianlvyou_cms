@@ -13,7 +13,7 @@ if($cfg_ml->IsLogin()){
 	
     if($dopost=="exit")
     {
-        $cfg_ml->ExitCookie();
+       	$cfg_ml->ExitCookie();
         #api{{
         if(defined('UC_API') && @include_once DEDEROOT.'/uc_client/client.php')
         {
@@ -21,8 +21,8 @@ if($cfg_ml->IsLogin()){
 			echo($ucsynlogin);//必须
         }
         #/aip}}
-		include("../b2cservice/B2CService/Tpl/My/success_exit.html");
-		//my_redirect(ROOT_URL);
+		//include(APP_PATH."Tpl/My/success_exit.html");
+		my_redirect(ROOT_URL);
         exit();
     }
 	
