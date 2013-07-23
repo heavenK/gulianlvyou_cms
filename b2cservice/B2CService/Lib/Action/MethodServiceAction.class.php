@@ -52,23 +52,39 @@ class MethodServiceAction extends CommonAction{
 
 	
 	//检查产品
-    public function _checkchanpin($chanpinID) {
+    public function _checkchanpin($chanpinID,$checkmark = 0) {
 		$zituan = FileGetContents(SERVER_INDEX."Server/getzituanbyID/chanpinID/".$chanpinID);
 		if($zituan['error']){
 			return false;	
 		}
-		else
+		else{
+			if($checkmark == 1){
+				if($zituan['status'] == '下架' || $zituan['status'] == '截止'){
+					return false;
+				}
+				if( time()-strtotime(jisuanriqi($zituan['chutuanriqi'],$zituan['baomingjiezhi'],'减少')) > 0){
+					return false;
+				}
+			}
 			return $zituan;
+		}
 	}
 	
 	//检查产品
-    public function _checkchanpin_qianzheng($chanpinID) {
+    public function _checkchanpin_qianzheng($chanpinID,$checkmark = 0) {
 		$qianzheng = FileGetContents(SERVER_INDEX."Server/getqianzhengbyID/chanpinID/".$chanpinID);
 		if($qianzheng['error']){
 			return false;	
 		}
-		else
+		else{
+			if($checkmark == 1){
+				if($qianzheng['status'] == '下架' || $qianzheng['status'] == '截止'){
+					return false;
+				}
+			}
 			return $qianzheng;
+			
+		}
 	}
 	
 	

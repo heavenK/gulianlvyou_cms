@@ -159,4 +159,35 @@ if ( ! function_exists('real_ip'))
 		return $realip;
 	}
 }
+
+
+
+
+
+
+
+if ( ! function_exists('jisuanriqi'))
+{
+	function jisuanriqi($date,$num,$mark = '增加')
+	{
+		  if($mark == '增加')
+			$num -= 1;
+		  $date = strtotime($date);
+		  $tianshu = 60 * 60 *24 * $num; 
+		  if($mark == '增加')
+		  $shijian = date('Y-m-d',($date + $tianshu));
+		  if($mark == '减少')
+		  $shijian = date('Y-m-d',($date - $tianshu));
+		  
+		  return $shijian;
+	}
+}
+
+
+
+
+
+
+
+
 ?>
