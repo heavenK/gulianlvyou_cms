@@ -74,7 +74,7 @@ class OrderAction extends CommonMyAction{
     public function dopostbook1() {
 		if($_REQUEST['chanpinID']){
 			if($_REQUEST['chanpintype'] == '签证'){
-				$chanpin = A("MethodService")->_checkchanpin_qianzheng($_REQUEST['chanpinID']);
+				$chanpin = A("MethodService")->_checkchanpin_qianzheng($_REQUEST['chanpinID'],1);
 				if(false === $chanpin){
 					echo "产品不存在或已经停止销售！！";
 					exit;
@@ -95,7 +95,7 @@ class OrderAction extends CommonMyAction{
 				$redirect_rul = ORDER_INDEX.'Order/book2/orderID/'.$rows['orderID'];
 			}
 			else{
-				$chanpin = A("MethodService")->_checkchanpin($_REQUEST['chanpinID']);
+				$chanpin = A("MethodService")->_checkchanpin($_REQUEST['chanpinID'],1);
 				if(false === $chanpin){
 					echo "产品不存在或已经停止销售！！";
 					exit;
@@ -175,10 +175,10 @@ class OrderAction extends CommonMyAction{
 			exit;
 		}
 		if($order['type'] == '签证'){
-			$chanpin = A("MethodService")->_checkchanpin_qianzheng($order['serverdataID']);
+			//设置支付状态
+			$chanpin = A("MethodService")->_checkchanpin_qianzheng($order['serverdataID'],1);
 			if(false === $chanpin){
-				echo "产品不存在或已经停止销售！！";
-				exit;
+				$this->assign("zhifu_status",'false');
 			}
 			$order['zongjia'] = $chanpin['shoujia'];
 			$this->assign("qianzheng_info",$chanpin);
@@ -249,7 +249,7 @@ class OrderAction extends CommonMyAction{
     public function book3() {
 		$order = A("MethodService")->_getdingdan($_REQUEST['orderID']);
 		if(!$order){
-			redirect(ORDER_URL);
+			//redirect(ORDER_URL);
 			echo "order is not find";
 //			echo "订单不存在！！";
 			exit;
@@ -259,24 +259,23 @@ class OrderAction extends CommonMyAction{
 			redirect($redirect_rul);
 		}
 		else{
-			$chanpin = A("MethodService")->_checkchanpin($order['serverdataID']);
+			//设置支付状态
+			$chanpin = A("MethodService")->_checkchanpin($order['serverdataID'],1);
 			if(false === $chanpin){
-				redirect(ORDER_URL);
-				echo "product is not selling or out exist";
-//				echo "产品不存在或已经停止销售！！";
-				exit;
+				$this->assign("zhifu_status",'false');
 			}
 		}
+		
 		$this->assign("chanpin",$chanpin);
 		$order['zongjia'] = $order['chengrenshu']*$chanpin['adult_price']+$order['ertongshu']*$order['child_price'];
 		$DingdanJoiner = D("DingdanJoiner");
 		$joinerall = $DingdanJoiner->where("`dingdanID` = '$order[id]'")->findall();
 		$this->assign("order",$order);
 		$this->assign("joinerall",$joinerall);
-		
 		$this->display();
 		
 	}
+	
 	
 	function queryOrder(){
 		$orderID = $_REQUEST['orderID'];
@@ -319,6 +318,16 @@ class OrderAction extends CommonMyAction{
 		if(A("NHOrder")->_query_order_byorderID($orderID,0)){
 			redirect(ORDER_INDEX);
 		}
+		
+		//检查产品
+		if($order['type'] == '签证')
+			$chanpin = A("MethodService")->_checkchanpin_qianzheng($order['serverdataID'],1);
+		else
+			$chanpin = A("MethodService")->_checkchanpin($order['serverdataID'],1);
+		if(false === $chanpin){
+			redirect(ORDER_INDEX);
+		}
+		
 		require_once(B2CSERVICE_PATH."/apis/nh/b2c01/api.php");
 		//$add = "http://www.dlgulian.com:8080/axis/services/B2CWarpper?wsdl";
 		$add = "http://www.gulianlvyou.com:8080/axis/services/B2CWarpper?wsdl";

@@ -87,7 +87,7 @@ function closeBox(){
         </tr>
       </table>
     </div>
-    <php>if($order['status'] == '等待支付'){</php>
+    <php>if($order['status'] == '等待支付' && $zhifu_status != 'false'){</php>
     <div class="zxzf_jsxx"><!--结算信息-->
       <form id="form1" name="form1" target="_blank" method="post" action="<{:ORDER_INDEX}>Order/MerchantPaymant">
         <input type="hidden" name='orderID' value='<{$orderID}>'>
@@ -118,6 +118,14 @@ function closeBox(){
         <em><b>结算信息</b></em> <span>
         <p>您的订单已支付成功。</p>
         <h1><b>支付金额：</b><strong>￥</strong><{$order['zongjia']}></h1>
+    </div>
+    <php>}</php>
+    
+    <php>if($zhifu_status == 'false'){</php>
+    <div class="zxzf_jsxx"><!--结算信息-->
+        <em><b>结算信息</b></em> <span>
+        <h1><b>订单失效：</b></h1>
+        <p>产品已失效，请重新下单后支付。</p>
     </div>
     <php>}</php>
     
