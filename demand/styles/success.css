@@ -2,7 +2,14 @@
 /* CSS Document */
 
 .success_box			{ width:980px; margin:0 auto;}
-.success_yuding							{ width:980px; height:362px; margin:60px 0 90px 0; display:inline; overflow:hidden; float:left;}
+.success_yuding							{ width:980px; height:362px; margin:60px 0 90px 0; display:inline; background:url(../images/fail_yuding_bg.png) no-repeat; text-align:center; overflow:hidden; float:left;}
+.success_yuding dl						{ margin:38px 0 0 0; padding:10px 0 0 107px; background:url(../images/fail_yuding_pic.png) no-repeat; display:inline-block; _display:inline; text-align:left; zoom:1;}
+.success_yuding dl dd					{ font-family:"微软雅黑"; font-size:34px; color:#221815; line-height:38px;}
+.success_yuding dl dt					{ font-family:"微软雅黑"; font-size:20px; color:#221815; _line-height:58px;}
+.success_yuding em						{ width:250px; padding:132px 0 0 695px; _padding:115px 0 0 695px; text-align:left; font-family:"黑体"; font-size:14px; color:#595757; line-height:22px; float:left;}
+.success_yuding em b					{ font-family:"黑体"; font-size:14px; color:#ed6c00;}
+.success_yuding em a					{ font-family:"黑体"; font-size:14px; color:#ed6c00; text-decoration:underline;}
+.success_yuding em a:hover				{ text-decoration:none;}
 
 .success_register_box	{ width:980px; margin:0 auto;}
 .success_register						{ width:847px; margin:10px 0 9px 0; display:inline; padding:0 0 0 131px; background:#FFF; border:1px solid #e6e6e6; overflow:hidden; float:left;}
