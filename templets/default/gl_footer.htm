@@ -56,9 +56,10 @@ language:(navigator.browserLanguage || navigator.language).toLowerCase()
 
 //document.writeln(" 是否为移动终端: "+browser.versions.mobile);
 
-
-if(browser.versions.mobile == true){
+alert(browser.versions.mobile)
+if(browser.versions.mobile != true){
 	$("#comm100_FloatImageButton").hide();
+	alert(123);
 }
 
 </script>
