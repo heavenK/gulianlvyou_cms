@@ -320,13 +320,13 @@ class OrderAction extends CommonMyAction{
 		}
 		
 		//检查产品
-		if($order['type'] == '签证')
-			$chanpin = A("MethodService")->_checkchanpin_qianzheng($order['serverdataID'],1);
-		else
-			$chanpin = A("MethodService")->_checkchanpin($order['serverdataID'],1);
-		if(false === $chanpin){
-			redirect(ORDER_INDEX);
-		}
+//		if($order['type'] == '签证')
+//			$chanpin = A("MethodService")->_checkchanpin_qianzheng($order['serverdataID'],1);
+//		else
+//			$chanpin = A("MethodService")->_checkchanpin($order['serverdataID'],1);
+//		if(false === $chanpin){
+//			redirect(ORDER_INDEX);
+//		}
 		
 		require_once(B2CSERVICE_PATH."/apis/nh/b2c01/api.php");
 		//$add = "http://www.dlgulian.com:8080/axis/services/B2CWarpper?wsdl";
