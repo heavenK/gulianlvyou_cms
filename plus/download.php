@@ -9,6 +9,7 @@
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
+ exit();
 require_once(dirname(__FILE__)."/../include/common.inc.php");
 require_once(DEDEINC."/channelunit.class.php");
 if(!isset($open)) $open = 0;
