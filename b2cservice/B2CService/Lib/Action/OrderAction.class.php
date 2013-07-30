@@ -421,6 +421,7 @@ class OrderAction extends CommonMyAction{
 		$_REQUEST['PaymentURL'] = $PaymentURL;
 //		$this->ajaxReturn($_REQUEST, '保存成功！', 1);
 		echo '<script language=javascript>var redirectURL="'.$PaymentURL.'";if(redirectURL!=null&&redirectURL!=""){location.href="'.$PaymentURL.'";}</script> ';
+		
 	}
 	
 	
