@@ -1,7 +1,7 @@
 <tp:includeCA file="Order:showheader" />
 <meta http-equiv="refresh" content="10;url=<?php echo ROOT_URL ?>">
 
-<link href="<{:SITE_PUBLIC}>styles/success1.css" rel="stylesheet" type="text/css" />
+<link href="<{:SITE_PUBLIC}>styles/success.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-1.4a2.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 //头部导航下拉菜单
@@ -21,10 +21,10 @@ $(document).ready(function(){
 
 <div class="success_box">
 	<div class="success_yuding">
-      <dl style="height:78px; width:400px;">
+      <dl style="height:80px; width:400px;">
 		<div>
-        	<dd style=" color:#ed6c00">dsrfasdf</dd>
-        	<dt>dsrfasdf</dt>
+        	<dd><{$msg_title}></dd>
+        	<dt><{$msg_content}></dt>
         </div>
       </dl>
       <em><a href="<{:ORDER_URL}>">去我的订单&gt;&gt;</a><b>，</b>查看订单信息<br /><a href="<{:ROOT_URL}>">去古莲首页&gt;&gt;</a><b>，</b>浏览更多优惠旅游路线</em>
