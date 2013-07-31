@@ -261,7 +261,7 @@ else if($action=='send')
     elseif ($comtype == 'reply')
     {
         $row = $dsql->GetOne("SELECT * FROM `#@__feedback` WHERE id ='$fid'");
-        $arctitle = $row['arctitle'];
+        $arctitle = addslashes($row['arctitle']);
         $aid =$row['aid'];
         $msg = $quotemsg.$msg;
         $msg = HtmlReplace($msg, 2);

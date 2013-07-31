@@ -306,7 +306,7 @@ function feed_del(){ }
 else if($action=='feeddel')
 {
     CheckRank(0,0);
-    $fid=(empty($fid))? "" : $fid;
+    $fid=(empty($fid))? "" : intval($fid);
     $row = $dsql->GetOne("SELECT mid FROM `#@__member_feed` WHERE fid='$fid'");
     if($cfg_ml->M_ID!=$row['mid'])
     {
@@ -325,7 +325,7 @@ function mood_del(){ }
 else if($action=='mooddel')
 {
     CheckRank(0,0);
-    $id=(empty($id))? "" : $id;
+    $id=(empty($id))? "" : intval($id);
     $row = $dsql->GetOne("SELECT mid FROM `#@__member_msg` WHERE id='$id'");
     if($cfg_ml->M_ID!=$row['mid'])
     {
