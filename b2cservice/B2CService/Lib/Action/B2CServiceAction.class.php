@@ -21,10 +21,19 @@ class B2CServiceAction extends Action{
     public function dopost_gexingdingzhi() {
 		C('TOKEN_ON',false);
 		$Gexingdingzhi = D("Gexingdingzhi");
+		$i = 0;
+		foreach($_REQUEST as $key => $val){
+			if($key == 'qitaxuqiu')
+				$num = 200;
+			else
+				$num = 20;
+			$list[$key] = substr($val, 0,$num);
+		}
 		$_REQUEST['datatext'] = serialize($_REQUEST);
 		$Gexingdingzhi->mycreate($_REQUEST);
 		ShowMsg("提交成功，我们会尽量与您联系。",ROOT_URL);
 	}
+	
 	
     public function faq_about() {
 		$where['tid'] = $_REQUEST['tid'];

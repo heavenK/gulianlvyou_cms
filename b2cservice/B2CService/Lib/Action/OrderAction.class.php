@@ -316,7 +316,11 @@ class OrderAction extends CommonMyAction{
 		$orderID = $_REQUEST['orderID'];
 		//支付前进行订单查询
 		if(A("NHOrder")->_query_order_byorderID($orderID,0)){
-			redirect(ORDER_INDEX);
+			$this->assign("msg_title",'订单已支付！');
+			$this->assign("msg_content",'');
+			$this->display('xinxi_tishi');
+			exit;
+			//redirect(ORDER_INDEX);
 		}
 		
 		//检查产品
@@ -325,7 +329,11 @@ class OrderAction extends CommonMyAction{
 		else
 			$chanpin = A("MethodService")->_checkchanpin($order['serverdataID'],1);
 		if(false === $chanpin){
-			redirect(ORDER_INDEX);
+			$this->assign("msg_title",'支付失败！');
+			$this->assign("msg_content",'该订单所属产品已下架或停止销售！');
+			$this->display('xinxi_tishi');
+			exit;
+			//redirect(ORDER_INDEX);
 		}
 		
 		require_once(B2CSERVICE_PATH."/apis/nh/b2c01/api.php");
@@ -421,6 +429,7 @@ class OrderAction extends CommonMyAction{
 		$_REQUEST['PaymentURL'] = $PaymentURL;
 //		$this->ajaxReturn($_REQUEST, '保存成功！', 1);
 		echo '<script language=javascript>var redirectURL="'.$PaymentURL.'";if(redirectURL!=null&&redirectURL!=""){location.href="'.$PaymentURL.'";}</script> ';
+		
 	}
 	
 	
@@ -430,6 +439,16 @@ class OrderAction extends CommonMyAction{
 		$tips = $DEDEArchives->where("`typeid` = '73'")->order('id desc')->findall();
 		return $tips;
 	}
+	
+	
+	
+	
+	function test(){
+		
+		$this->display('yuding_success');
+		//$this->display('xinxi_tishi');
+	}
+	
 }
 ?>
 
