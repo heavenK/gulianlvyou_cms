@@ -166,7 +166,7 @@ function initcalendar() {
 
     adjustCalendar();
 }
-¥
+
 //生成日历控件body
 function adjustCalendar() {
     //赋值
