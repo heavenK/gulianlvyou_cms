@@ -30,11 +30,11 @@
             <td><h1 style="text-align:center"><a  href="<{$v['referer_url']}>" target="_blank"><{$v['title_copy']}></a></h1></td>
             <td><{$v['chutuanriqi_copy']}></td>
             <td>
-				总金额：<em>¥<{$v['price']}></em><br />
+				总金额：<em>￥<{$v['price']}></em><br />
                 <php>if($v['status'] == '已支付'){</php>
-                已支付：<em>¥<{$v['price']}>
+                已支付：<em>￥<{$v['price']}>
                 <php>}else{</php>
-                待支付：<em>¥<{$v['price']}>
+                待支付：<em>￥<{$v['price']}>
                 <php>}</php>
                 </em>
             </td>
