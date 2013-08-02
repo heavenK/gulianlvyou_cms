@@ -567,6 +567,21 @@ class SearchView
         {
             $ksqls[] = " act.mudidi LIKE '%".$this->mudidi."%'";
         }
+		if($this->order_flag)
+        {
+            $ksqls[] = " (arc.flag LIKE '%a%' OR arc.flag LIKE '%h%' OR arc.flag LIKE '%c%') ";
+        }
+		if($this->order_rm)
+        {
+            $ksqls[] = " act.biaoji = 'rm'";
+        }
+		if($this->order_tj)
+        {
+            $ksqls[] = " act.biaoji = 'tj'";
+        }
+		//end add
+        $ksqls[] = " arc.arcrank > -1 ";
+		$ksqls[] = " arc.ismake <> 0 ";
 		if($this->tianshu)
         {
 			if($this->tianshu == 1){
@@ -593,21 +608,7 @@ class SearchView
 				$ksqls[] = " act.jiage>15000";
 			}
         }
-		if($this->order_flag)
-        {
-            $ksqls[] = " (arc.flag LIKE '%a%' OR arc.flag LIKE '%h%' OR arc.flag LIKE '%c%') ";
-        }
-		if($this->order_rm)
-        {
-            $ksqls[] = " act.biaoji = 'rm'";
-        }
-		if($this->order_tj)
-        {
-            $ksqls[] = " act.biaoji = 'tj'";
-        }
-		//end add
-        $ksqls[] = " arc.arcrank > -1 ";
-		$ksqls[] = " arc.ismake <> 0 ";
+		
         $this->AddSql = ($ksql=='' ? join(' AND ',$ksqls) : join(' AND ',$ksqls)." AND (".$ksql.")" );
         if($this->ChannelType < 0 || $this->ChannelTypeid< 0){
             if($this->ChannelType=="0") $id=$this->ChannelTypeid;
@@ -1328,18 +1329,18 @@ class SearchView
 		}else{
 			$ksqls[] = " typeid IN (".GetSonIds($this->xianlu).") ";
 		}*/
-		$tianshu_query = "SELECT arc.*
+		$tianshu_query = "SELECT arc.*,act.*
             FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
-            WHERE arc.typeid IN (".$this->xianluid.") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1 AND arc.ismake <> 0 AND act.tianshu ".$num;
+            WHERE arc.typeid IN (".GetSonIds("25").",".GetSonIds("26").",".GetSonIds("18").") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1 AND arc.ismake <> 0 AND act.tianshu ".$num;
 			//var_dump($tianshu_query);
 		$tianshu_num = $this->dsql->ExecuteNoneQuery2($tianshu_query);
 		echo $tianshu_num;
 	}
 	
 	function jiage_num($num){
-		$jiage_query = "SELECT arc.*
+		$jiage_query = "SELECT arc.*,act.*
             FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
-            WHERE arc.typeid IN (".$this->xianluid.") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1 AND arc.ismake <> 0 AND act.jiage ".$num;
+            WHERE arc.typeid IN (".GetSonIds("25").",".GetSonIds("26").",".GetSonIds("18").") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1 AND arc.ismake <> 0 AND act.jiage ".$num;
 		$jiage_num = $this->dsql->ExecuteNoneQuery2($jiage_query);
 		echo $jiage_num;
 	}
