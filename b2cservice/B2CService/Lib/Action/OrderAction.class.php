@@ -91,6 +91,7 @@ class OrderAction extends CommonMyAction{
 				//提交到订单
 				$rows = $_REQUEST;
 				$rows['serverdataID'] = $_REQUEST['chanpinID'];
+				$rows['clientdataID'] = $chanpin['clientdataID'];
 				$rows['type'] = '签证';
 				$rows['title_copy'] = $chanpin['title'];
 				$rows['chutuanriqi_copy'] = $chanpin['chutuanriqi'];
@@ -115,6 +116,7 @@ class OrderAction extends CommonMyAction{
 				//提交到订单
 				$rows = $_REQUEST;
 				$rows['serverdataID'] = $_REQUEST['chanpinID'];
+				$rows['clientdataID'] = $chanpin['clientdataID'];
 				$rows['type'] = '标准';
 				$rows['title_copy'] = $chanpin['title_copy'];
 				$rows['chufadi_copy'] = $xianlu['chufadi'];
@@ -229,7 +231,11 @@ class OrderAction extends CommonMyAction{
 			$this->assign("order",$order);
 			$this->assign("zituan",$chanpin);
 			$this->assign("xianlu",$xianlu);
-			$this->display();
+			
+			if($chanpin['second_confirm'] == 1)
+				$this->display('book2_second_confirm');
+			else
+				$this->display();
 		}
 	}
 	

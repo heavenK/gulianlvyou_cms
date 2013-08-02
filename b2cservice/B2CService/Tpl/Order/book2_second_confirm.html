@@ -1,0 +1,177 @@
+<tp:includeCA file="Order:showheader" />
+<link href="<{:SITE_PUBLIC}>styles/zxzf.css" type="text/css" rel="stylesheet" />
+<link href="<{:SITE_PUBLIC}>styles/pay_tanchu.css" type="text/css" rel="stylesheet" />
+<link href="<{:SITE_PUBLIC}>styles/tjdd.css" type="text/css" rel="stylesheet" />
+<script>
+function letDivCenter(divName){   
+	var top = (jQuery(window).height() - jQuery(divName).height())/2;   
+	var left = (jQuery(window).width() - jQuery(divName).width())/2;   
+	var scrollTop = jQuery(document).scrollTop();   
+	var scrollLeft = jQuery(document).scrollLeft();   
+	jQuery(divName).css( { 'top' : top, left : left + scrollLeft } ).show(); 
+	jQuery("#wowoDivLayer").css( { 'background-color': 'black', opacity: '0.4', width: '100%', height: '2000px', position: 'fixed', top: '0px', left: '0px' } ).show();  
+}
+function closeBox(){
+	jQuery("#wowoWindow").hide();
+	jQuery("#wowoDivLayer").hide();
+}
+</script>
+
+<div id="wowoWindow" class="tcnewbox">
+  <div class="tcnewtop"><a href="javascript:" class="tcnewcle" onclick="closeBox()">X</a>
+    <h2 class="tcnewtit">确认支付结果</h2>
+  </div>
+  <div class="tcnewbd">
+    <div class="tcnewbuy"> <b class="tcnewbuyico">ico</b>
+      <h3 class="tcnewbuyh3">请在新打开的页面完成支付</h3>
+      <p class="tcnewbuyp"> 点击"已完成支付"，您可以直接查看订单<br>
+        点击"遇到支付困难"，您可以查看支付帮助信息 </p>
+      <a href="<{:ORDER_INDEX}>Order/queryOrder/orderID/<{$_REQUEST[orderID]}>" class="tcnewbuya tcnewbuya1">已完成支付</a> <a href="http://faq.gulianlvyou.com/forum.php?mod=viewthread&tid=1&page=1&extra=#pid1" class="tcnewbuya tcnewbuya2">遇到支付困难</a> </div>
+  </div>
+</div>
+<div id="wowoDivLayer" style=""></div>
+<div class="txdd_box"><!--主体-->
+  <div class="zxzf">
+    <div class="txdd_mainbav"><a href="#">旅游产品预订</a> &gt; 在线支付</div>
+    <div class="zxzf_lc"></div>
+    <div class="tjdd_ddxxxx"><!--订单详细信息--> 
+      <em><b>订单详细信息</b></em> <span>
+      <php>if($order['status'] == '已支付'){</php>
+      <p> <b>尊敬的客人：</b><br />
+        您好，您的订单已经支付成功，订单号：<strong style="color:red"><{$order['orderID']}></strong>！<br />
+        感谢您关注古莲旅游网最新产品信息！如有疑问，您可以直接致电40007-66667咨询相关事宜。 我们将会尽快与您进行联系。</p>
+	  <php>}else{</php>
+      <p> <b>尊敬的客人：</b><br />
+        您好，您的订单申请已提交，订单号：<strong style="color:red"><{$order['orderID']}></strong>。<br />
+        感谢您关注古莲旅游网最新产品信息！如有疑问，您可以直接致电40007-66667咨询相关事宜。 </p>
+	  <php>}</php>
+      <table width="938" cellpadding="0" cellspacing="0">
+        <tr height="34">
+          <td width="431">产品名称：<b><{$order['title_copy']}></b></td>
+          <td width="252">出发城市：<b><{$order['chufadi_copy']}></b></td>
+          <td width="255">出发时间：<b><{$order['chutuanriqi_copy']}></b></td>
+        </tr>
+        <tr height="34">
+          <td width="431">出团编号：<b><{$order['tuanhao_copy']}></b></td>
+          <td width="252">行程天数：<b><{$order['tianshu_copy']}>日</b></td>
+          <td width="255"></td>
+        </tr>
+      </table>
+      
+      
+      <i>人数：  <{$order['chengrenshu']}> 人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合计：<u>￥</u><b><{$order['zongjia']}></b></i> </span> </div>
+    <div class="zxzf_lxrxx"><!--联系人信息-->
+      <dl>
+        <dd>联系人信息</dd>
+        <dt><a href="<{:SITE_INDEX}>Order/book1/orderID/<{$_REQUEST[orderID]}>">返回修改&gt;&gt;</a></dt>
+      </dl>
+      <table width="980" border="0" cellspacing="0" cellpadding="0">
+        <tr height="27" bgcolor="#eeeeee" align="center">
+          <th width="66" scope="col">姓名</th>
+          <th width="163" scope="col">电话</th>
+          <th width="207" scope="col">邮箱</th>
+          <th width="400" scope="col">邮寄地址</th>
+          <th scope="col"></th>
+        </tr>
+        <tr height="40" align="center">
+          <td><{$order['lxr_name']}></td>
+          <td><{$order['lxr_telnum']}></td>
+          <td><{$order['lxr_email']}></td>
+          <td><{$order['lxr_address']}></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+    <php>if($order['status'] == '等待支付' && $zhifu_status != 'false'){</php>
+    <div class="zxzf_jsxx"><!--结算信息-->
+      <form id="form1" name="form1" target="_blank" method="post" action="<{:ORDER_INDEX}>Order/MerchantPaymant">
+        <input type="hidden" name='orderID' value='<{$orderID}>'>
+        <php>foreach($joinerall as $v){</php>
+        <input type="hidden" name='productid[]' value='<{$order[serverdataID]}>' >
+        <input type="hidden" name='productname[]' value='<{$order[title_copy]}>' >
+        <input type="hidden" name='uniteprice[]' value="<php>if($v[manorchild] == '成人') echo $chanpin[adult_price]; else echo $chanpin[child_price];</php>" >
+        <input type="hidden" name='qty[]' value='1' >
+        <php>}</php>
+        <em><b>结算信息</b></em> <span>
+        <p>您的订单已提交，如果您没有立即支付，我们将按照您所指定的联系方式尽快回复您。但由于网上订单提交并未最终完成出团名额预订，因此为确保我们为您预留出团名额，请选择网上支付。</p>
+        <h1><b>应付金额：</b><strong>￥</strong><{$order['zongjia']}></h1>
+        <h1>
+          <div style="float:left;">
+            <input name='PaymentType' type="radio" value="1" style=" height:40px; margin-right:20px;float:left" />
+            <img style="float:left" src="<{:__PUBLIC__}>b2cservice/images/bank_nyyh.gif"  /> </div>
+          <div style="float:left; margin-left:40px;">
+            <input name='PaymentType' type="radio" value="5" style=" height:40px; margin-right:20px;float:left" />
+            <img style="float:left" src="<{:__PUBLIC__}>b2cservice/images/bank_ylzx.gif"  /> </div>
+        </h1>
+        <a href="javascript:submitFun2()"></a> </span>
+      </form>
+    </div>
+    <php>}</php>
+    
+    <php>if($order['status'] == '已支付'){</php>
+    <div class="zxzf_jsxx"><!--结算信息-->
+        <em><b>结算信息</b></em> <span>
+        <p>您的订单已支付成功。</p>
+        <h1><b>支付金额：</b><strong>￥</strong><{$order['zongjia']}></h1>
+    </div>
+    <php>}</php>
+    
+    <php>if($zhifu_status == 'false'){</php>
+    <div class="zxzf_jsxx"><!--结算信息-->
+        <em><b>结算信息</b></em> <span>
+        <h1><b>订单失效：</b></h1>
+        <p>产品已失效，请重新下单后支付。</p>
+    </div>
+    <php>}</php>
+    
+  </div>
+</div>
+<div class="footer_box"><!--底部-->
+  <div class="footer"> <i><a href="#" target="_blank">关于古莲</a> | <a href="#" target="_blank">加入古莲</a> | <a href="#" target="_blank">合作品牌</a> | <a href="#" target="_blank">友情链接</a> | <a href="#" target="_blank">法律声明</a> | <a href="#" target="_blank">营业网点</a> | <a href="#" target="_blank">联系我们</a> | <a href="#" target="_blank">网站地图</a></i> <em>Copyright &copy; 2005-2011 gulianlvyou.com　All rights reserved   古莲旅游 版权所有<br />
+    旅行社业务经营许可证编号：辽B2-20120096   大连ICP证031062号</em> </div>
+</div>
+<link href="<{:B2CSERVICE_URL}>apis/index2011.css" type="text/css" rel="stylesheet" />
+<script language="javascript" src="<{:B2CSERVICE_URL}>apis/common.js" ></script>
+<div id="Popupbox_bg" style="width: 100%; height: 3831px; opacity: 0.2; z-index:999999999"></div>
+<div id="Popupbox" style=" z-index:999999999""> <span class="shutdown"></span>
+  <div class="hr_10"></div>
+  <div class="select_01">
+    <select style=" display:none;">
+    </select>
+  </div>
+  <div class="ks_tuanhao"><em>提示：</em></div>
+  <div class="pro_table">
+    <div style="float:left; margin-top:10px;text-align:center;"> <strong id="msgtext1" style="text-align:center;">正在通信中....<img src="<{:B2CSERVICE_URL}>apis/ajaxloading.gif" /></strong> <strong id="msgtext2" style="text-align:center; color:red"></strong> </div>
+  </div>
+</div>
+</body></html><script>
+
+
+function submitFun2(){
+	var val=jQuery('input:radio[name="PaymentType"]:checked').val();
+	if(val==null){
+		alert("请选择支付方式!");
+		return false;
+	}
+	jQuery("#form1").submit(); 
+	letDivCenter('#wowoWindow');
+	
+//	doloading();
+//	jQuery("#msgtext1").show();  
+//	jQuery("#msgtext2").hide();  
+//	ThinkAjax.sendForm('form1','<{:ORDER_INDEX}>Order/MerchantPaymant',doComplete,'loading');
+}
+
+function doComplete(data,status){
+	if(status == 1){
+		window.location.href=data.PaymentURL;
+	}
+	else{
+		jQuery("#msgtext1").hide(); 
+		jQuery("#msgtext2").html("操作失败："+data.msg);  
+		jQuery("#msgtext2").show();  
+	}
+}
+
+
+</script>
