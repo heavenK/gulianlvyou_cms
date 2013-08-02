@@ -191,8 +191,15 @@ function adjustCalendar() {
             else if (groupday.renshu <= 0) //已满
                 strbody += "<td class='has_pro'>" + arrDay[i * 7 + j] + "<span class='pro_state'>已满</span><span class='detail_data'></span><span class='pro_price'><em class='f5'>￥</em>" + groupday.adult_price + "</span></td>\n";
             else {
-				strbody += "<td class='" + (groupday == nowgroup ? "current " : "") + "has_pro' use='group'>" + arrDay[i * 7 + j] + "<span> </span><span class='pro_state'>" + (groupday.renshu > 9 ? ">9" : groupday.renshu) + "个</span><span class='pro_state' style='background:#09F;margin:0 0;width:52px;float:left;text-align:center;color:#FFF'>二次确认</span><span class='pro_price'><em class='f5'>￥</em>" + groupday.adult_price + "</span></td>\n";
-//				strbody += "<td class='" + (groupday == nowgroup ? "current " : "") + "has_pro' use='group'>" + arrDay[i * 7 + j] + "<span class='pro_state' style='margin:0 0'>剩余</span><span class='detail_data'>" + (groupday.renshu > 9 ? ">9" : groupday.renshu) + "</span><span class='pro_state' style='background:#03F;margin:0 0;width:52px;float:left;text-align:center;'>二次确认</span><span class='pro_price'><em class='f5'>￥</em>" + groupday.adult_price + "</span></td>\n";
+				strbody += "<td class='" + (groupday == nowgroup ? "current " : "") + "has_pro' use='group'>" + arrDay[i * 7 + j];
+				if(groupday.second_confirm != 1)
+					strbody += "<span class='pro_state'>剩余</span><span class='detail_data'>";
+				else
+					strbody += "<span> </span><span class='pro_state'>";
+				strbody += (groupday.renshu > 9 ? ">9" : groupday.renshu) + "个</span>";
+				if(groupday.second_confirm == 1)
+					strbody += "<span class='pro_state' style='background:#09F;margin:0 0;width:52px;float:left;text-align:center;color:#FFF'>二次确认</span>";
+				strbody += "<span class='pro_price'><em class='f5'>￥</em>" + groupday.adult_price + "</span></td>\n";
 //				strbody += "<td class='" + (groupday == nowgroup ? "current " : "") + "has_pro' use='group'>" + arrDay[i * 7 + j] + "<span class='pro_state' style='margin:0 0'>剩余</span><span class='detail_data'>" + (groupday.renshu > 9 ? ">9" : groupday.renshu) + "</span><span class='pro_state' style='background:#03F;margin:0 0;width:52px;float:left;text-align:center;'>二次确认</span><span class='pro_price'><em class='f5'>￥</em>" + groupday.adult_price + "</span></td>\n";
             	//默认所选日期
 				if(groupday == nowgroup){
