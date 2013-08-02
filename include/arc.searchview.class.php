@@ -1321,9 +1321,17 @@ class SearchView
 	}
 	
 	function tianshu_num($num){
+		/*if($this->xianlu == "25,26,18"){
+			$ksqls[] = " typeid IN (".GetSonIds("25").",".GetSonIds("26").",".GetSonIds("18").") ";
+		}elseif($this->xianlu == "25,26"){
+			$ksqls[] = " typeid IN (".GetSonIds("25").",".GetSonIds("26").") ";
+		}else{
+			$ksqls[] = " typeid IN (".GetSonIds($this->xianlu).") ";
+		}*/
 		$tianshu_query = "SELECT arc.*
             FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
-            WHERE arc.typeid IN (".$this->xianluid.") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND act.tianshu $num AND arc.arcrank > -1 AND arc.ismake <> 0";
+            WHERE arc.typeid IN (".$this->xianluid.") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1 AND arc.ismake <> 0 AND act.tianshu ".$num;
+			//var_dump($tianshu_query);
 		$tianshu_num = $this->dsql->ExecuteNoneQuery2($tianshu_query);
 		echo $tianshu_num;
 	}
@@ -1331,7 +1339,7 @@ class SearchView
 	function jiage_num($num){
 		$jiage_query = "SELECT arc.*
             FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
-            WHERE arc.typeid IN (".$this->xianluid.") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND act.jiage $num AND arc.arcrank > -1 AND arc.ismake <> 0";
+            WHERE arc.typeid IN (".$this->xianluid.") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1 AND arc.ismake <> 0 AND act.jiage ".$num;
 		$jiage_num = $this->dsql->ExecuteNoneQuery2($jiage_query);
 		echo $jiage_num;
 	}
