@@ -9,6 +9,9 @@
 <script>
   if( /iphone|android|ipad|windows phone/i.test( navigator.userAgent) || /nokia/i.test( navigator.userAgent) == true){
 	 $("#comm100_ButtonImage").hide();
+  }else{
+	$("#comm100_ButtonImage").hide();
+	setTimeout("$('#comm100_ButtonImage').show()",3000);
   }
    
 </script>
