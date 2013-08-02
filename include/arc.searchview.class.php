@@ -118,7 +118,7 @@ class SearchView
 		$this->mudidi = $mudidi;
 		$this->tianshu = $tianshu;
 		$this->jiage = $jiage;
-		$this->xianluid = GetSonIds("17,18");
+		$this->xianluid = GetSonIds("25,26,18");
 		$this->order_flag = $order_flag;
 		$this->order_jiage = $order_jiage;
 		$this->order_tianshu = $order_tianshu;
@@ -541,8 +541,8 @@ class SearchView
         }*/
         if($this->xianlu)
         {
-			if($this->xianlu == "17,18"){
-				$ksqls[] = " typeid IN (".GetSonIds("17").",".GetSonIds("18").") ";
+			if($this->xianlu == "25,26,18"){
+				$ksqls[] = " typeid IN (".GetSonIds("25").",".GetSonIds("26").",".GetSonIds("18").") ";
 			}else{
 				$ksqls[] = " typeid IN (".GetSonIds($this->xianlu).") ";
 			}
@@ -1304,7 +1304,7 @@ class SearchView
 	function ks_return(){
 		$cty_query = "SELECT arc.*
             FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
-            WHERE arc.typeid IN (38,40,42,44) AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1";
+            WHERE arc.typeid IN (25,26) AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1";
 		$cty_num = $this->dsql->ExecuteNoneQuery2($cty_query);
 		$this->cty_num = $cty_num;
 		
