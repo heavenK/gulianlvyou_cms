@@ -145,10 +145,11 @@ class SearchView
 		//
 		$mudidi_n = NULL;
 		$mudidi_text = "";
-		$mudidi_query = "SELECT act.mudidi FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid WHERE act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1";
+		$mudidi_query = "SELECT act.mudidi FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid WHERE arc.typeid IN (25,27,28,37,38,29,39,40,31,41,42,101,102,103,26,99,30,43,44,104,105,106,18,68,71,72,66,67,69,70) AND act.chufachengshi='".$this->chufadi."' AND arc.channel='7' AND arc.arcrank > -1 AND arc.ismake <> 0";
         $this->dsql->SetQuery($mudidi_query);
         $this->dsql->Execute();
 		while($mudidi_row = $this->dsql->getarray()){
+			//var_dump($mudidi_row);
 			foreach($mudidi_row as $w){
 				$temp_m = explode(',',$w);
 				foreach($temp_m as $m){
@@ -185,13 +186,13 @@ class SearchView
 		
 		
 //		$mudidi_text = "";
-//		$mudidi_query = "SELECT DISTINCT act.mudidi FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid WHERE act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1";
+//		$mudidi_query = "SELECT DISTINCT act.mudidi FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid WHERE act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1 AND arc.ismake <> 0";
 //        $this->dsql->SetQuery($mudidi_query);
 //        $this->dsql->Execute();
 //		while($mudidi_row = $this->dsql->getarray()){
 //			$mudidi_query = "SELECT arc.*,act.*
 //				FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
-//				WHERE arc.typeid IN (".$this->xianluid.") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND act.mudidi='".$mudidi_row['mudidi']."' AND arc.arcrank > -1";
+//				WHERE arc.typeid IN (".$this->xianluid.") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND act.mudidi='".$mudidi_row['mudidi']."' AND arc.arcrank > -1 AND arc.ismake <> 0";
 //				//var_dump($mudidi_query);
 //			$mudidi_num = $this->dsql->ExecuteNoneQuery2($mudidi_query);
 //			if($mudidi_row['mudidi'] == $mudidi){
@@ -543,6 +544,8 @@ class SearchView
         {
 			if($this->xianlu == "25,26,18"){
 				$ksqls[] = " typeid IN (".GetSonIds("25").",".GetSonIds("26").",".GetSonIds("18").") ";
+			}elseif($this->xianlu == "25,26"){
+				$ksqls[] = " typeid IN (".GetSonIds("25").",".GetSonIds("26").") ";
 			}else{
 				$ksqls[] = " typeid IN (".GetSonIds($this->xianlu).") ";
 			}
@@ -604,6 +607,7 @@ class SearchView
         }
 		//end add
         $ksqls[] = " arc.arcrank > -1 ";
+		$ksqls[] = " arc.ismake <> 0 ";
         $this->AddSql = ($ksql=='' ? join(' AND ',$ksqls) : join(' AND ',$ksqls)." AND (".$ksql.")" );
         if($this->ChannelType < 0 || $this->ChannelTypeid< 0){
             if($this->ChannelType=="0") $id=$this->ChannelTypeid;
@@ -1304,13 +1308,13 @@ class SearchView
 	function ks_return(){
 		$cty_query = "SELECT arc.*
             FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
-            WHERE arc.typeid IN (25,26) AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1";
+            WHERE arc.typeid IN (".GetSonIds("25").",".GetSonIds("26").") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1 AND arc.ismake <> 0";
 		$cty_num = $this->dsql->ExecuteNoneQuery2($cty_query);
 		$this->cty_num = $cty_num;
 		
 		$zyx_query = "SELECT arc.*
             FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
-            WHERE arc.typeid IN (70,72) AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1";
+            WHERE arc.typeid IN (70,72) AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1 AND arc.ismake <> 0";
 		$zyx_num = $this->dsql->ExecuteNoneQuery2($zyx_query);
 		$this->zyx_num = $zyx_num;
 		
@@ -1319,7 +1323,7 @@ class SearchView
 	function tianshu_num($num){
 		$tianshu_query = "SELECT arc.*
             FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
-            WHERE arc.typeid IN (".$this->xianluid.") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND act.tianshu $num AND arc.arcrank > -1";
+            WHERE arc.typeid IN (".$this->xianluid.") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND act.tianshu $num AND arc.arcrank > -1 AND arc.ismake <> 0";
 		$tianshu_num = $this->dsql->ExecuteNoneQuery2($tianshu_query);
 		echo $tianshu_num;
 	}
@@ -1327,7 +1331,7 @@ class SearchView
 	function jiage_num($num){
 		$jiage_query = "SELECT arc.*
             FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
-            WHERE arc.typeid IN (".$this->xianluid.") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND act.jiage $num AND arc.arcrank > -1";
+            WHERE arc.typeid IN (".$this->xianluid.") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND act.jiage $num AND arc.arcrank > -1 AND arc.ismake <> 0";
 		$jiage_num = $this->dsql->ExecuteNoneQuery2($jiage_query);
 		echo $jiage_num;
 	}
