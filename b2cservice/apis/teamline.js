@@ -68,7 +68,7 @@ function initFloatDiv() {
         if (nowgroup.chanpinID == arrlinegroup[i].chanpinID) {
             tmp += " selected='true'";
         }
-        tmp += ">" + arrlinegroup[i].date + "出发　零售价：¥" + arrlinegroup[i].adult_price;
+        tmp += ">" + arrlinegroup[i].date + "出发　零售价：&#65509;" + arrlinegroup[i].adult_price;
         $("#Popupbox select").append(tmp);
     }
     initFloatPerson(nowgroup);
@@ -92,7 +92,7 @@ function initFloatPerson(group) {
     $("#Popupbox ul").remove();
     var text = "";
 	text += '<ul>'
-		+ '<li class="pwidth">标准零售价：</li><li class="pwidth2"><b class="piaohong">¥' + group.adult_price + '</b></li>'
+		+ '<li class="pwidth">标准零售价：</li><li class="pwidth2"><b class="piaohong">&#65509;' + group.adult_price + '</b></li>'
 		+ '<li> <span>成人：</span> <span class="add_count"><input type="text" value="1"  /><span class="less"></span> <span class="add"></span> </span> <span>&nbsp;人</span> </li>'
 		+ '<li> <span>儿童：</span> <span class="add_count"><input type="text" value="0"  /><span class="less"></span> <span class="add"></span> </span> <span>&nbsp;人</span> </li>'
 		+'</ul>';
@@ -166,7 +166,7 @@ function initcalendar() {
 
     adjustCalendar();
 }
-
+¥
 //生成日历控件body
 function adjustCalendar() {
     //赋值
@@ -189,11 +189,11 @@ function adjustCalendar() {
             if (groupday == null)
                 strbody += "<td>" + arrDay[i * 7 + j] + "</td>\n";
             else if (groupday.renshu <= 0) //已满
-                strbody += "<td class='has_pro'>" + arrDay[i * 7 + j] + "<span class='pro_state'>已满</span><span class='detail_data'></span><span class='pro_price'><em class='f5'>¥</em>" + groupday.adult_price + "</span></td>\n";
+                strbody += "<td class='has_pro'>" + arrDay[i * 7 + j] + "<span class='pro_state'>已满</span><span class='detail_data'></span><span class='pro_price'><em class='f5'>&#65509;</em>" + groupday.adult_price + "</span></td>\n";
             else {
-				strbody += "<td class='" + (groupday == nowgroup ? "current " : "") + "has_pro' use='group'>" + arrDay[i * 7 + j] + "<span> </span><span class='pro_state'>" + (groupday.renshu > 9 ? ">9" : groupday.renshu) + "个</span><span class='pro_state' style='background:#09F;margin:0 0;width:52px;float:left;text-align:center;color:#FFF'>二次确认</span><span class='pro_price'><em class='f5'>¥</em>" + groupday.adult_price + "</span></td>\n";
-//				strbody += "<td class='" + (groupday == nowgroup ? "current " : "") + "has_pro' use='group'>" + arrDay[i * 7 + j] + "<span class='pro_state' style='margin:0 0'>剩余</span><span class='detail_data'>" + (groupday.renshu > 9 ? ">9" : groupday.renshu) + "</span><span class='pro_state' style='background:#03F;margin:0 0;width:52px;float:left;text-align:center;'>二次确认</span><span class='pro_price'><em class='f5'>¥</em>" + groupday.adult_price + "</span></td>\n";
-//				strbody += "<td class='" + (groupday == nowgroup ? "current " : "") + "has_pro' use='group'>" + arrDay[i * 7 + j] + "<span class='pro_state' style='margin:0 0'>剩余</span><span class='detail_data'>" + (groupday.renshu > 9 ? ">9" : groupday.renshu) + "</span><span class='pro_state' style='background:#03F;margin:0 0;width:52px;float:left;text-align:center;'>二次确认</span><span class='pro_price'><em class='f5'>¥</em>" + groupday.adult_price + "</span></td>\n";
+				strbody += "<td class='" + (groupday == nowgroup ? "current " : "") + "has_pro' use='group'>" + arrDay[i * 7 + j] + "<span> </span><span class='pro_state'>" + (groupday.renshu > 9 ? ">9" : groupday.renshu) + "个</span><span class='pro_state' style='background:#03F;margin:0 0;width:52px;float:left;text-align:center;color:#FFF'>二次确认</span><span class='pro_price'><em class='f5'>&#65509;</em>" + groupday.adult_price + "</span></td>\n";
+//				strbody += "<td class='" + (groupday == nowgroup ? "current " : "") + "has_pro' use='group'>" + arrDay[i * 7 + j] + "<span class='pro_state' style='margin:0 0'>剩余</span><span class='detail_data'>" + (groupday.renshu > 9 ? ">9" : groupday.renshu) + "</span><span class='pro_state' style='background:#03F;margin:0 0;width:52px;float:left;text-align:center;'>二次确认</span><span class='pro_price'><em class='f5'>&#65509;</em>" + groupday.adult_price + "</span></td>\n";
+//				strbody += "<td class='" + (groupday == nowgroup ? "current " : "") + "has_pro' use='group'>" + arrDay[i * 7 + j] + "<span class='pro_state' style='margin:0 0'>剩余</span><span class='detail_data'>" + (groupday.renshu > 9 ? ">9" : groupday.renshu) + "</span><span class='pro_state' style='background:#03F;margin:0 0;width:52px;float:left;text-align:center;'>二次确认</span><span class='pro_price'><em class='f5'>&#65509;</em>" + groupday.adult_price + "</span></td>\n";
             	//默认所选日期
 				if(groupday == nowgroup){
 					$(".select_03 i").html("出发日期：" + nowgroup.date + "&nbsp;团队编号：" + nowgroup.erpno);
@@ -309,7 +309,7 @@ function computeprice(ctrl, type) {
 		pernum = 1;
 	}
     var text = "";
-        text = '<div class="stastics">你选择了：标准零售价成人<em>' + pernum + '</em>，儿童<em>' + childnum + '</em>，合计：<em class="f1">¥</em><em class="f2">' + (group.adult_price * pernum + group.child_price * childnum) + '</em></div>';
+        text = '<div class="stastics">你选择了：标准零售价成人<em>' + pernum + '</em>，儿童<em>' + childnum + '</em>，合计：<em class="f1">&#65509;</em><em class="f2">' + (group.adult_price * pernum + group.child_price * childnum) + '</em></div>';
     
 	$(".stastics").remove();
     $(".heji").remove();
