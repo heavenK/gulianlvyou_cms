@@ -8,5 +8,4 @@ define('DEFAULT_ACTION', 'My');
 
 require(THINK_PATH.'ThinkPHP.php');
 	
-
 ?>
