@@ -1309,9 +1309,15 @@ class SearchView
 	function ks_return(){
 		$cty_query = "SELECT arc.*
             FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
-            WHERE arc.typeid IN (".GetSonIds("25").",".GetSonIds("26").") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1 AND arc.ismake <> 0";
-		$cty_num = $this->dsql->ExecuteNoneQuery2($cty_query);
-		$this->cty_num = $cty_num;
+            WHERE arc.typeid IN (".GetSonIds("25").") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1 AND arc.ismake <> 0";
+		$cjy_num = $this->dsql->ExecuteNoneQuery2($cty_query);
+		$this->cjy_num = $cjy_num;
+		
+		$cty_query = "SELECT arc.*
+            FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
+            WHERE arc.typeid IN (".GetSonIds("26").") AND arc.channel='7' AND act.chufachengshi='".$this->chufadi."' AND arc.arcrank > -1 AND arc.ismake <> 0";
+		$gny_num = $this->dsql->ExecuteNoneQuery2($cty_query);
+		$this->gny_num = $gny_num;
 		
 		$zyx_query = "SELECT arc.*
             FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
