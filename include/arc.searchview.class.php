@@ -145,7 +145,16 @@ class SearchView
 		//
 		$mudidi_n = NULL;
 		$mudidi_text = "";
-		$mudidi_query = "SELECT act.mudidi FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid WHERE arc.typeid IN (25,27,28,37,38,29,39,40,31,41,42,101,102,103,26,99,30,43,44,104,105,106,18,68,71,72,66,67,69,70) AND act.chufachengshi='".$this->chufadi."' AND arc.channel='7' AND arc.arcrank > -1 AND arc.ismake <> 0";
+		if($this->xianlu == "25"){
+			$mudidi_query = "SELECT act.mudidi FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid WHERE arc.typeid IN (38,40,42,103) AND act.chufachengshi='".$this->chufadi."' AND arc.channel='7' AND arc.arcrank > -1 AND arc.ismake <> 0";
+		}elseif($this->xianlu == "26"){
+			$mudidi_query = "SELECT act.mudidi FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid WHERE arc.typeid IN (44,106,110,112) AND act.chufachengshi='".$this->chufadi."' AND arc.channel='7' AND arc.arcrank > -1 AND arc.ismake <> 0";
+		}elseif($this->xianlu == "25,26,18" || $this->xianlu == "25,26"){
+			$mudidi_query = "SELECT act.mudidi FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid WHERE arc.typeid IN (38,40,42,103,44,106,110,112,70,72) AND act.chufachengshi='".$this->chufadi."' AND arc.channel='7' AND arc.arcrank > -1 AND arc.ismake <> 0";
+		}elseif($this->xianlu == "18"){
+			$mudidi_query = "SELECT act.mudidi FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid WHERE arc.typeid IN (70,72) AND act.chufachengshi='".$this->chufadi."' AND arc.channel='7' AND arc.arcrank > -1 AND arc.ismake <> 0";
+		}
+		
         $this->dsql->SetQuery($mudidi_query);
         $this->dsql->Execute();
 		while($mudidi_row = $this->dsql->getarray()){
