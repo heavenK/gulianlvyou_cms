@@ -142,7 +142,7 @@ class SearchView
 		}
 		
 		
-		//
+		//var_dump($this->xianlu);
 		$mudidi_n = NULL;
 		$mudidi_text = "";
 		if($this->xianlu == "25"){
@@ -153,6 +153,8 @@ class SearchView
 			$mudidi_query = "SELECT act.mudidi FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid WHERE arc.typeid IN (38,40,42,103,44,106,110,112,70,72) AND act.chufachengshi='".$this->chufadi."' AND arc.channel='7' AND arc.arcrank > -1 AND arc.ismake <> 0";
 		}elseif($this->xianlu == "18"){
 			$mudidi_query = "SELECT act.mudidi FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid WHERE arc.typeid IN (70,72) AND act.chufachengshi='".$this->chufadi."' AND arc.channel='7' AND arc.arcrank > -1 AND arc.ismake <> 0";
+		}else{
+			$mudidi_query = "SELECT act.mudidi FROM `#@__archives` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid WHERE arc.typeid IN (".GetSonIds($this->xianlu).") AND act.chufachengshi='".$this->chufadi."' AND arc.channel='7' AND arc.arcrank > -1 AND arc.ismake <> 0";
 		}
 		
         $this->dsql->SetQuery($mudidi_query);
