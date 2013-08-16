@@ -20,7 +20,10 @@ var time = 10;
 returnUrlByTime();
 function returnUrlByTime() {
    $("#loadtime").html(time);
+   if(time>0)
    time = time - 1;
+   else
+   location.href = "<?php echo MY_URL ?>";
    window.setTimeout('returnUrlByTime()', 1000);
 }
 </script>
