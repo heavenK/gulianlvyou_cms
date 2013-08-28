@@ -1230,10 +1230,17 @@ class SearchView
         //$hidenform .= "<input type='hidden' name='orderby' value='".$this->OrderBy."'>\r\n";
         $geturl .= "&kwtype=".$this->KType;
         $hidenform .= "<input type='hidden' name='kwtype' value='".$this->KType."'>\r\n";
+		$hidenform .= "<input type='hidden' name='chufadi' value='".$this->chufadi."'>\r\n";
+		$hidenform .= "<input type='hidden' name='tianshu' value='".$this->tianshu."'>\r\n";
+		$hidenform .= "<input type='hidden' name='jiage' value='".$this->jiage."'>\r\n";
+		$hidenform .= "<input type='hidden' name='order_flag' value='".$this->order_flag."'>\r\n";
+		$hidenform .= "<input type='hidden' name='order_jiage' value='".$this->order_jiage."'>\r\n";
+		$hidenform .= "<input type='hidden' name='order_tianshu' value='".$this->order_tianshu."'>\r\n";
+		$hidenform .= "<input type='hidden' name='order_tj' value='".$this->order_tj."'>\r\n";
         //$hidenform .= "<input type='hidden' name='pagesize' value='".$this->PageSize."'>\r\n";
-        $geturl .= "&xianlu=".$this->xianlu."&mudidi=".$this->mudidi;
         $hidenform .= "<input type='hidden' name='xianlu' value='".$this->xianlu."'>\r\n";
         $hidenform .= "<input type='hidden' name='mudidi' value='".$this->mudidi."'>\r\n";
+		$geturl .= "&xianlu=".$this->xianlu."&mudidi=".$this->mudidi."&chufadi=".$this->chufadi."&tianshu=".$this->tianshu."&jiage=".$this->jiage."&order_flag=".$this->order_flag."&order_jiage=".$this->order_jiage."&order_tianshu=".$this->order_tianshu."&order_tj=".$this->order_tj;
         $purl .= "?".$geturl;
 		$optionlist = '';
 
