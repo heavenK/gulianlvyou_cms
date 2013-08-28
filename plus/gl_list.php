@@ -106,7 +106,7 @@ else
 
 $t1 = ExecTime();
 
-$sp = new SearchView($typeid,$keyword,$orderby,$channeltype,$searchtype,$starttime,$pagesize,$kwtype,$mid,$xianlu,$mudidi,$tianshu,$jiage,$order_flag,$order_jiage,$order_tianshu,$order_rm,$order_tj);
+$sp = new SearchView($typeid,$keyword,$orderby,$channeltype,$searchtype,$starttime,$pagesize,$kwtype,$mid,$xianlu,$mudidi,$tianshu,$jiage,$order_flag,$order_jiage,$order_tianshu,$order_rm,$order_tj,$chufadi);
 $keyword = $oldkeyword;
 $sp->ks_return();
 $sp->Display();

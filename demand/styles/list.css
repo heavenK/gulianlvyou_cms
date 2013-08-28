@@ -16,8 +16,12 @@
 
 /*左半部*/
 .list_left		{ width:720px; overflow:hidden; float:left;}
-.list_left em							{ width:708px; height:31px; margin:9px 0 0 0; display:inline; padding:0 12px 0 0; background-position:-55px -28px; border-bottom:2px solid #ac3666; text-align:right; color:#ac3666; line-height:31px; overflow:hidden; float:left;}
+.list_left em							{ width:708px; height:31px; margin:9px 0 0 0; display:inline; padding:0 12px 0 0; background-position:-55px -28px; border-bottom:2px solid #ac3666; text-align:right; color:#ac3666; line-height:31px; position:relative; float:left;}
 .list_left em b							{ color:#333333;}
+.list_left em a							{ color:#AC3666;}
+.list_left em a:hover					{ color:#ff6633;}
+.list_left em u							{ width:160px; padding:5px; background:#FFF; border:1px solid #ccc; position:absolute; top:28px; right:0px; text-align:left; font-weight:bold; color:#333; overflow:hidden; display:none;}
+.list_left em u a						{ margin:0 10px 0 0; display:inline; font-weight:normal;}
 .list_term								{ width:720px; padding:2px 0 0 0; overflow:hidden; float:left;}
 .list_term li							{ width:700px; padding:12px 0 6px 0; _padding:12px 0 0 0; border-bottom:1px dashed #999999; line-height:16px; _line-height:17px; overflow:hidden; float:left;}
 .list_term li b							{ width:75px; height:17px; text-align:right; font-weight:normal; color:#333333; overflow:hidden; float:left;}
