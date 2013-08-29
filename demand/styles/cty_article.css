@@ -38,7 +38,7 @@
 .cty_article_infos dd ol				{ width:561px; padding:0 0 8px 0; overflow:hidden; float:left;}
 .cty_article_infos dd ol em				{ width:561px; height:26px; margin:0 0 6px 0; display:inline; border-bottom:1px solid #ac3666; overflow:hidden; float:left;}
 .cty_article_infos dd ol em i			{ width:120px; height:26px; background:#ac3666; text-align:center; font-family:"微软雅黑"; font-size:14px; color:#FFF; line-height:25px; overflow:hidden; float:left;}
-.cty_article_infos dd ol li				{ width:537px; height:30px; margin:0 0 0 11px; display:inline; padding:0 0 0 13px; background:url(../images/index_right_right_point.png) no-repeat 0 13px; color:#343432; line-height:28px; overflow:hidden; float:left;}
+.cty_article_infos dd ol li				{ width:537px; margin:0 0 0 11px; display:inline; padding:0 0 0 13px; background:url(../images/index_right_right_point.png) no-repeat 0 13px; color:#343432; line-height:30px; overflow:hidden; float:left;}
 .cty_article_infos dt					{ width:402px; overflow:hidden; float:right;}
 .cty_article_infos dt .cty_rilitijoa i	{ margin:25px 0 0 0; display:inline; color:#666666; overflow:hidden; float:left;}
 .cty_article_infos dt .cty_rilitijoa b	{ width:113px; height:35px; margin:10px 0 0 0; display:inline; overflow:hidden; float:right;}
