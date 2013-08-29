@@ -43,7 +43,7 @@
 .zyx_article_infos ol					{ width:552px; padding:33px 0 0 0; overflow:hidden; float:right;}
 .zyx_article_infos ol em				{ width:552px; height:26px; margin:0 0 26px 0; display:inline; border-bottom:1px solid #ac3666; overflow:hidden; float:left;}
 .zyx_article_infos ol em i				{ width:120px; height:26px; background:#ac3666; text-align:center; font-family:"微软雅黑"; font-size:14px; color:#FFF; line-height:25px; overflow:hidden; float:left;}
-.zyx_article_infos ol li				{ width:537px; height:32px; margin:0 0 0 11px; display:inline; padding:0 0 0 13px; background:url(../images/index_right_right_point.png) no-repeat 0 13px; color:#343432; line-height:28px; overflow:hidden; float:left;}
+.zyx_article_infos ol li				{ width:537px; margin:0 0 0 11px; display:inline; padding:0 0 0 13px; background:url(../images/index_right_right_point.png) no-repeat 0 13px; color:#343432; line-height:32px; overflow:hidden; float:left;}
 
 /*机票信息*/
 .zyx_article_jpxx						{ width:980px; margin:15px 0 0 0; display:inline; overflow:hidden; float:left;}

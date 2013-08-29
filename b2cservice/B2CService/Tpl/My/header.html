@@ -23,9 +23,14 @@
     <a href="<{:ROOT_URL}>gulian/dryj/">达人游记</a></b>
     <em><u><a href="<{:MY_URL}>">个人中心</a></u><strong>|</strong>
     <span><a href="<{:ORDER_URL}>">我的订单</a></span>
+    
     </em>
-        <i style="color:#666666;">
-        <{$user[userid]}> [<a href="<{:ROOT_URL}>member/index_do.php?fmdo=login&dopost=exit">退出登录</a>]</i>
+        <php>if($user){</php>
+            <i style="color:#666666;">
+            <{$user[userid]}> [<a href="<{:ROOT_URL}>member/index_do.php?fmdo=login&dopost=exit">退出登录</a>]</i>
+        <php>}else{</php>
+            <i><a href="<?php echo ROOT_URL?>member/index.php">登录</a> | <a href="<?php echo ROOT_URL?>member/index_do.php?fmdo=user&dopost=regnew">注册</a></i>
+        <php>}</php>
     </dd>
     
     <dt><a href="<{:ROOT_URL}>"></a></dt>
