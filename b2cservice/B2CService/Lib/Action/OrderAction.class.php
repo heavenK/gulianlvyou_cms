@@ -127,6 +127,7 @@ class OrderAction extends CommonMyAction{
 				$rows['ertongshu'] = $_REQUEST['ertongshu'];
 				$rows['status'] = '准备中';
 				$rows['adult_price'] = $chanpin['adult_price'];
+				$rows['second_confirm'] = $chanpin['second_confirm'];
 				if($rows['adult_price'] == NULL || $rows['adult_price'] == 0){
 					$this->assign("msg_title",'订单发生错误，请稍候重试！');
 					$this->assign("msg_content",'');

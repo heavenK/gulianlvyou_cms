@@ -52,8 +52,9 @@ class B2CServiceAction extends Action{
 	
 	
 	
-	
-	
+    public function myheader() {
+		$this->display("My:header");
+	}
 	
 }
 
