@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<iframe name="iframe_content" id="iframe_content" onload="SetWinHeight(this);" src="<?php echo SITE_INDEX.'B2CService/myheader/title/注册成功' ?>" width="100%" scrolling="no"></iframe>
+
+
 <title>注册新用户</title>
 <link href="<?php echo SITE_PUBLIC ?>styles/reset.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo SITE_PUBLIC ?>styles/center_reset.css" type="text/css" rel="stylesheet" />
@@ -68,26 +69,7 @@ function do_res() {
 
 <body style=" background:#FFF url(<?php echo SITE_PUBLIC ?>images/register_bg.jpg) no-repeat center top;">
 
-<div class="center_header_box"><!--头部-->
-  <dl>
-    <dd><b>
-    <a href="<?php echo ROOT_URL?>" style=" font-family:Arial;">首 页</a> | 
-    <a href="<?php echo ROOT_URL?>gulian/cty/">参团游</a> | 
-    <a href="<?php echo ROOT_URL?>gulian/zyx/">自由行</a> |
-    <a href="<?php echo ROOT_URL?>gulian/ztdj/">主题度假</a> | 
-    <a href="<?php echo ROOT_URL?>gulian/gxdz/">个性定制</a> | 
-    <a href="<?php echo ROOT_URL?>plus/gl_qianzheng.php?typeid=56&q=&orderby=pubdate&kwtype=1&searchtype=title">签 证</a> | 
-    <a href="<?php echo ROOT_URL?>gulian/dryj/">达人游记</a></b>
-    <em><u><a href="<?php echo MY_URL?>">个人中心</a></u><strong>|</strong>
-    <span><a href="<?php echo ORDER_URL?>">我的订单</a></span>
-    </em>
-        <i><a href="<?php echo ROOT_URL?>member/index.php">登录</a> | <a href="<?php echo ROOT_URL?>member/index_do.php?fmdo=user&dopost=regnew">注册</a></i>
-    </dd>
-    
-    <dt><a href="<?php echo ROOT_URL?>"></a></dt>
-  </dl>
-</div>
-<div class="register_box"><!--主体-->
+<div class="register_box" style="margin-top:80px;"><!--主体-->
   <div class="register"> <span></span>
     <form method="post" action="<?php echo B2CSERVICE_URL ?>apis/action_reg_new.php" id="regUser" name="form2">
       <input type="hidden" value="regbase" name="dopost"/>

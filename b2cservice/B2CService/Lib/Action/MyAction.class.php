@@ -136,11 +136,5 @@ class MyAction extends CommonMyAction{
 		$this->display('tips_ads');
 	}
 	
-	
-	
-	
-	
-	
-	
 }
 ?>
