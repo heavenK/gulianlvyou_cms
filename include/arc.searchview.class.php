@@ -86,7 +86,7 @@ class SearchView
      * @return    string
      */
     function __construct($typeid,$keyword,$orderby,$achanneltype="all",
-    $searchtype='',$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$xianlu,$mudidi,$tianshu,$jiage,$order_flag,$order_jiage,$order_tianshu,$order_rm,$order_tj)//add $xianlu,$mudidi
+    $searchtype='',$starttime=0,$upagesize=20,$kwtype=1,$mid=0,$xianlu,$mudidi,$tianshu,$jiage,$order_flag,$order_jiage,$order_tianshu,$order_rm,$order_tj,$chufadi)//add $xianlu,$mudidi
     {
         global $cfg_search_max,$cfg_search_maxrc,$cfg_search_time,$cfg_sphinx_article;
         if(empty($upagesize))
@@ -124,6 +124,8 @@ class SearchView
 		$this->order_tianshu = $order_tianshu;
 		$this->order_rm = $order_rm;
 		$this->order_tj = $order_tj;
+		$this->chufadi = $chufadi;
+		//var_dump($this->chufadi);
 		//end add
         // 通过分词获取关键词
         $this->Keywords = $this->GetKeywords($keyword);
@@ -136,7 +138,9 @@ class SearchView
 			return $arr;
 		}
 		$user_address = ips(GetIP());
-		$this->chufadi = $user_address[5];
+		if(empty($this->chufadi)){
+			$this->chufadi = $user_address[5];
+		}
 		if(empty($this->chufadi)){
 			$this->chufadi = "大连";
 		}
@@ -188,9 +192,9 @@ class SearchView
 		}
 		foreach($mudidi_n as $m){
 			if($m['mudidi'] == $mudidi){
-				$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&xianlu='.$xianlu.'&mudidi='.$m['mudidi'].'&tianshu='.$tianshu.'&jiage='.$jiage.'" class="list_term_btn">'.$m['mudidi'].'（'.$m['count'].'）</a>';
+				$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&chufadi='.$chufadi.'&xianlu='.$xianlu.'&mudidi='.$m['mudidi'].'&tianshu='.$tianshu.'&jiage='.$jiage.'" class="list_term_btn">'.$m['mudidi'].'（'.$m['count'].'）</a>';
 			}else{
-				$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&xianlu='.$xianlu.'&mudidi='.$m['mudidi'].'&tianshu='.$tianshu.'&jiage='.$jiage.'">'.$m['mudidi'].'（'.$m['count'].'）</a>';
+				$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&chufadi='.$chufadi.'&xianlu='.$xianlu.'&mudidi='.$m['mudidi'].'&tianshu='.$tianshu.'&jiage='.$jiage.'">'.$m['mudidi'].'（'.$m['count'].'）</a>';
 			}
 		}
 		//
@@ -207,9 +211,9 @@ class SearchView
 //				//var_dump($mudidi_query);
 //			$mudidi_num = $this->dsql->ExecuteNoneQuery2($mudidi_query);
 //			if($mudidi_row['mudidi'] == $mudidi){
-//				$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&xianlu='.$xianlu.'&mudidi='.$mudidi_row['mudidi'].'&tianshu='.$tianshu.'&jiage='.$jiage.'" class="list_term_btn">'.$mudidi_row['mudidi'].'（'.$mudidi_num.'）</a>';
+//				$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&chufadi='.$chufadi.'&xianlu='.$xianlu.'&mudidi='.$mudidi_row['mudidi'].'&tianshu='.$tianshu.'&jiage='.$jiage.'" class="list_term_btn">'.$mudidi_row['mudidi'].'（'.$mudidi_num.'）</a>';
 //			}else{
-//				$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&xianlu='.$xianlu.'&mudidi='.$mudidi_row['mudidi'].'&tianshu='.$tianshu.'&jiage='.$jiage.'">'.$mudidi_row['mudidi'].'（'.$mudidi_num.'）</a>';
+//				$this->mudidi_text .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&chufadi='.$chufadi.'&xianlu='.$xianlu.'&mudidi='.$mudidi_row['mudidi'].'&tianshu='.$tianshu.'&jiage='.$jiage.'">'.$mudidi_row['mudidi'].'（'.$mudidi_num.'）</a>';
 //			}
 //		}
 		
@@ -1226,10 +1230,17 @@ class SearchView
         //$hidenform .= "<input type='hidden' name='orderby' value='".$this->OrderBy."'>\r\n";
         $geturl .= "&kwtype=".$this->KType;
         $hidenform .= "<input type='hidden' name='kwtype' value='".$this->KType."'>\r\n";
+		$hidenform .= "<input type='hidden' name='chufadi' value='".$this->chufadi."'>\r\n";
+		$hidenform .= "<input type='hidden' name='tianshu' value='".$this->tianshu."'>\r\n";
+		$hidenform .= "<input type='hidden' name='jiage' value='".$this->jiage."'>\r\n";
+		$hidenform .= "<input type='hidden' name='order_flag' value='".$this->order_flag."'>\r\n";
+		$hidenform .= "<input type='hidden' name='order_jiage' value='".$this->order_jiage."'>\r\n";
+		$hidenform .= "<input type='hidden' name='order_tianshu' value='".$this->order_tianshu."'>\r\n";
+		$hidenform .= "<input type='hidden' name='order_tj' value='".$this->order_tj."'>\r\n";
         //$hidenform .= "<input type='hidden' name='pagesize' value='".$this->PageSize."'>\r\n";
-        $geturl .= "&xianlu=".$this->xianlu."&mudidi=".$this->mudidi;
         $hidenform .= "<input type='hidden' name='xianlu' value='".$this->xianlu."'>\r\n";
         $hidenform .= "<input type='hidden' name='mudidi' value='".$this->mudidi."'>\r\n";
+		$geturl .= "&xianlu=".$this->xianlu."&mudidi=".$this->mudidi."&chufadi=".$this->chufadi."&tianshu=".$this->tianshu."&jiage=".$this->jiage."&order_flag=".$this->order_flag."&order_jiage=".$this->order_jiage."&order_tianshu=".$this->order_tianshu."&order_tj=".$this->order_tj;
         $purl .= "?".$geturl;
 		$optionlist = '';
 
@@ -1306,13 +1317,20 @@ class SearchView
 	
 	function ks_ziduan($listitem="chufachengshi"){
 		global $cfg_rewrite;
-		if($this->chufadi){
-			$chufachengshi = $this->chufadi;
-		}else{
-			$chufachengshi = "大连";
+		
+		$chufadi_query = "SELECT DISTINCT act.chufachengshi
+            FROM `{$this->AddTable}` arc LEFT JOIN `cty_addon7` act ON arc.id=act.aid
+            WHERE arc.typeid IN (".GetSonIds("25").",".GetSonIds("26").",".GetSonIds("18").") AND arc.channel='7' AND arc.arcrank > -1 AND arc.ismake <> 0";
+		$this->dsql->SetQuery($chufadi_query);
+        $this->dsql->Execute();
+		while($chufadi_row = $this->dsql->getarray()){
+			if($chufadi_row['chufachengshi']){
+				$all_chufadi .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&chufadi='.$chufadi_row['chufachengshi'].'&xianlu=25,26,18&mudidi='.$mudidi.'&tianshu='.$tianshu.'&jiage='.$jiage.'">'.$chufadi_row['chufachengshi'].'</a>';
+			}
 		}
+		//var_dump($all_chufadi);
 		$plist = '';
-		if(preg_match('/chufachengshi/i', $listitem)) $plist = $chufachengshi;
+		if(preg_match('/chufachengshi/i', $listitem)) $plist = '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&chufadi='.$this->chufadi.'&xianlu=25,26,18&mudidi='.$mudidi.'&tianshu='.$tianshu.'&jiage='.$jiage.'">'.$this->chufadi.'</a><u>切换：<br />'.$all_chufadi.'</u>';
 		//$chufachengshi = $this->dsql->GetOne("SELECT * FROM `cty_addon7` WHERE chufachengshi='".$this->chufadi."'");
 		return $plist;
 	}
