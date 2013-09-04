@@ -138,9 +138,9 @@ class SearchView
 			return $arr;
 		}
 		$user_address = ips(GetIP());
-		if(empty($this->chufadi)){
+		/*if(empty($this->chufadi)){
 			$this->chufadi = $user_address[5];
-		}
+		}*/
 		if(empty($this->chufadi)){
 			$this->chufadi = "大连";
 		}
