@@ -22,31 +22,24 @@
 	
 	$(document).ready(function(){
 		var main_id = $(".header_box").attr("id");
-		switch(main_id){
-			case "":
+		if(main_id){
+			if(main_id == "25"){
+				$("#mainbav_cjy").addClass("mainbav_on");
+			}else if(main_id == "26"){
+				$("#mainbav_gny").addClass("mainbav_on");
+			}else if(main_id == "18"){
+				$("#mainbav_zyx").addClass("mainbav_on");
+			}else if(main_id == "16"){
+				$("#mainbav_ztdj").addClass("mainbav_on");
+			}else if(main_id == "33"){
+				$("#mainbav_gxdz").addClass("mainbav_on");
+			}else if(main_id == "34"){
+				$("#mainbav_qianzheng").addClass("mainbav_on");
+			}else if(main_id == "10"){
+				$("#mainbav_pull").addClass("mainbav_on");
+			}
+		}else{
 			$("#mainbav_index").addClass("mainbav_on");
-			break;
-			case "25":
-			$("#mainbav_cjy").addClass("mainbav_on");
-			break;
-			case "26":
-			$("#mainbav_gny").addClass("mainbav_on");
-			break;
-			case "18":
-			$("#mainbav_zyx").addClass("mainbav_on");
-			break;
-			case "16":
-			$("#mainbav_ztdj").addClass("mainbav_on");
-			break;
-			case "33":
-			$("#mainbav_gxdz").addClass("mainbav_on");
-			break;
-			case "34":
-			$("#mainbav_qianzheng").addClass("mainbav_on");
-			break;
-			case "10":
-			$("#mainbav_pull").addClass("mainbav_on");
-			break;
 		}
 	});
 -->
