@@ -15,7 +15,7 @@ $uname = $userid;
 require_once DEDEINC.'/membermodel.cls.php';
 if($cfg_mb_allowreg=='N')
 {
-    ShowMsg('系统关闭了新用户注册！', 'index.php');
+    ShowMsg('系统关闭了新用户注册！', ROOT_URL);
     exit();
 }
 
@@ -35,7 +35,7 @@ if($step == 1)
                  exit;
             }
         }
-        ShowMsg('你已经登陆系统，无需重新注册！', 'index.php');
+        ShowMsg('你已经登陆系统，无需重新注册！', ROOT_URL);
         exit();
     }
     if($dopost=='regbase')
@@ -296,7 +296,7 @@ if($step == 1)
     } else {
         if($cfg_ml->fields['spacesta'] == 2)
         {
-             ShowMsg('你已经登陆系统，无需重新注册！', 'index.php');
+             ShowMsg('你已经登陆系统，无需重新注册！', ROOT_URL);
              exit;
         }
     }
