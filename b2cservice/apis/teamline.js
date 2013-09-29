@@ -84,7 +84,7 @@ function initFloatDiv() {
 function initFloatPerson(group) {
     $(".pro_table td:first").html(group.date);
     $(".pro_table td:eq(1)").html(group.enddate);
-    $(".pro_table td:last").html((group.renshu > 9 ? ">9" : (group.renshu <= 0 ? 0 : group.renshu)));
+    //$(".pro_table td:last").html((group.renshu > 9 ? ">9" : (group.renshu <= 0 ? 0 : group.renshu)));
     $(".ks_tuanhao").remove();
     $("<div class='ks_tuanhao'><em>团队编号：</em><b>" + group.erpno + "</b></div>").insertBefore(".pro_table");
 	
@@ -197,7 +197,7 @@ function adjustCalendar() {
 					strbody += "<span class='pro_state'>剩余</span><span class='detail_data'>";
 				else
 					strbody += "<span> </span><span class='pro_state'>";
-				strbody += (groupday.renshu > 9 ? ">9" : groupday.renshu) + "个</span>";
+				//strbody += (groupday.renshu > 9 ? ">9" : groupday.renshu) + "个</span>";
 				if(groupday.second_confirm == 1)
 					strbody += "<span class='pro_state' style='background:#09F;margin:0 0;width:52px;float:left;text-align:center;color:#FFF'>二次确认</span>";
 				strbody += "<span class='pro_price'><em class='f5'>￥</em>" + groupday.adult_price + "</span></td>\n";
