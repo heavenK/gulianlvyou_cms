@@ -92,8 +92,9 @@ function initFloatPerson(group) {
     $("#Popupbox ul").remove();
     var text = "";
 	text += '<ul>'
-		+ '<li class="pwidth">标准零售价：</li><li class="pwidth2"><b class="piaohong">￥' + group.adult_price + '</b></li>'
+		+ '<li class="pwidth">成人价：</li><li class="pwidth2"><b class="piaohong">￥' + group.adult_price + '</b></li>'
 		+ '<li> <span>成人：</span> <span class="add_count"><input type="text" value="1"  /><span class="less"></span> <span class="add"></span> </span> <span>&nbsp;人</span> </li>'
+		+ '<li class="pwidth">儿童不占床不占票价：</li><li class="pwidth2"><b class="piaohong">￥' + group.child_price + '</b></li>'
 		+ '<li> <span>儿童：</span> <span class="add_count"><input type="text" value="0"  /><span class="less"></span> <span class="add"></span> </span> <span>&nbsp;人</span> </li>'
 		+'</ul>';
 		
@@ -196,7 +197,8 @@ function adjustCalendar() {
 					strbody += "<span class='pro_state'>剩余</span><span class='detail_data'>";
 				else
 					strbody += "<span> </span><span class='pro_state'>";
-				strbody += (groupday.renshu > 9 ? ">9" : groupday.renshu) + "个</span>";
+//				strbody += (groupday.renshu > 9 ? ">9" : groupday.renshu) + "个</span>";
+				strbody += "</span>";
 				if(groupday.second_confirm == 1)
 					strbody += "<span class='pro_state' style='background:#09F;margin:0 0;width:52px;float:left;text-align:center;color:#FFF'>二次确认</span>";
 				strbody += "<span class='pro_price'><em class='f5'>￥</em>" + groupday.adult_price + "</span></td>\n";
@@ -316,7 +318,7 @@ function computeprice(ctrl, type) {
 		pernum = 1;
 	}
     var text = "";
-        text = '<div class="stastics">你选择了：标准零售价成人<em>' + pernum + '</em>，儿童<em>' + childnum + '</em>，合计：<em class="f1">￥</em><em class="f2">' + (group.adult_price * pernum + group.child_price * childnum) + '</em></div>';
+        text = '<div class="stastics">你选择了：成人<em>' + pernum + '</em>，儿童<em>' + childnum + '</em>，合计：<em class="f1">￥</em><em class="f2">' + (group.adult_price * pernum + group.child_price * childnum) + '</em></div>';
     
 	$(".stastics").remove();
     $(".heji").remove();
