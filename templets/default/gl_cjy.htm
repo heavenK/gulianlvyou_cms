@@ -335,6 +335,11 @@ function cty_chufariqi(f_class,s_class) {
 	}
 	firstdate = litedatelist[0];
 	$(f_class).text(alldate);
-	$(s_class).text(firstdate+"出发 ");
+	if(!firstdate){
+		$(s_class).text("电话咨询 ");
+	}else{
+		$(s_class).text(firstdate+"出发 ");
+	}
+	
 }  
 </script>
