@@ -16,7 +16,7 @@
 .cty_article_mainbav a					{ color:#333333;}
 .cty_article_mainbav a:hover			{ color:#ff6633;}
 .cty_article_lc							{ width:980px; height:40px; background:url(../images/cty_article_lc_bg.jpg) no-repeat; overflow:hidden; float:left;}
-.cty_article_title						{ width:561px; height:49px; background:url(../images/cty_article_title_bg.png) no-repeat 0 16px; overflow:hidden; float:left;}
+.cty_article_title						{ width:980px; height:49px; background:url(../images/cty_article_title_bg.png) no-repeat 0 16px; overflow:hidden; float:left;}
 .cty_article_title h1					{ height:49px; padding:0 3px 0 55px; font-size:18px; font-weight:bold; color:#333333; line-height:52px; _line-height:54px; overflow:hidden; float:left;}
 .cty_article_title img					{ width:33px; height:19px; margin:16px 0 0 12px; display:inline; overflow:hidden; float:left;}
 .cty_article_infos						{ width:980px; padding:0 0 19px 0; overflow:hidden; float:left;}
