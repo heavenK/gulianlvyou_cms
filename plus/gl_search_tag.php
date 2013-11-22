@@ -18,7 +18,7 @@ $dsql->Execute();
 $tag = "";
 
 while($arr = $dsql->GetArray()){
-	$tag .= "<a href='/plus/gl_list.php?q=".$arr['title']."&searchtype=title&channeltype=7&kwtype=0&xianlu=17,18\'>".$arr['title']."</a>&nbsp;";
+	$tag .= "<a href='/plus/gl_list.php?q=".$arr['title']."&searchtype=title&channeltype=7&kwtype=0&xianlu=25,26,18\'>".$arr['title']."</a>&nbsp;";
 }
 echo 'document.write("'.$tag.'");';
 
