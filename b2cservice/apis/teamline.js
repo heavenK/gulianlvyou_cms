@@ -92,10 +92,10 @@ function initFloatPerson(group) {
     $("#Popupbox ul").remove();
     var text = "";
 	text += '<ul>'
-		+ '<li class="pwidth">成人价：</li><li class="pwidth2"><b class="piaohong">￥' + group.adult_price + '</b></li>'
-		+ '<li> <span>成人：</span> <span class="add_count"><input type="text" value="1"  /><span class="less"></span> <span class="add"></span> </span> <span>&nbsp;人</span> </li>'
-		+ '<li class="pwidth">儿童不占床不占票价：</li><li class="pwidth2"><b class="piaohong">￥' + group.child_price + '</b></li>'
-		+ '<li> <span>儿童：</span> <span class="add_count"><input type="text" value="0"  /><span class="less"></span> <span class="add"></span> </span> <span>&nbsp;人</span> </li>'
+		+ '<li class="pwidth" style="width:70px;">成人价：</li><li class="pwidth2"><b class="piaohong">￥' + group.adult_price + '</b></li>'
+		+ '<li style="width:80px;"> <span>成人：</span> <span class="add_count"><input type="text" value="1"  /><span class="less"></span> <span class="add"></span> </span> <span>&nbsp;</span> </li>'
+		+ '<li class="pwidth" style="width:120px;">儿童不占床不占票价：</li><li class="pwidth2"><b class="piaohong">￥' + group.child_price + '</b></li>'
+		+ '<li style="width:80px;"> <span>儿童：</span> <span class="add_count"><input type="text" value="0"  /><span class="less"></span> <span class="add"></span> </span> <span>&nbsp;</span> </li>'
 		+'</ul>';
 		
     $(text).insertAfter(".pro_table");

@@ -1325,12 +1325,17 @@ class SearchView
         $this->dsql->Execute();
 		while($chufadi_row = $this->dsql->getarray()){
 			if($chufadi_row['chufachengshi']){
-				$all_chufadi .= '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&chufadi='.$chufadi_row['chufachengshi'].'&xianlu=25,26,18&mudidi='.$mudidi.'&tianshu='.$tianshu.'&jiage='.$jiage.'">'.$chufadi_row['chufachengshi'].'</a>';
+				if($chufadi_row['chufachengshi'] == $this->chufadi){
+					$user_chufadi = '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&chufadi='.$chufadi_row['chufachengshi'].'&xianlu=25,26,18&mudidi='.$mudidi.'&tianshu='.$tianshu.'&jiage='.$jiage.'" class="list_term_btn">'.$chufadi_row['chufachengshi'].'</a>';
+				}else{
+					$user_chufadi = '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&chufadi='.$chufadi_row['chufachengshi'].'&xianlu=25,26,18&mudidi='.$mudidi.'&tianshu='.$tianshu.'&jiage='.$jiage.'">'.$chufadi_row['chufachengshi'].'</a>';
+				}
+				$all_chufadi .= $user_chufadi;
 			}
 		}
 		//var_dump($all_chufadi);
 		$plist = '';
-		if(preg_match('/chufachengshi/i', $listitem)) $plist = '<a href="/plus/gl_list.php?q='.$q.'&searchtype=title&channeltype=7&kwtype=0&chufadi='.$this->chufadi.'&xianlu=25,26,18&mudidi='.$mudidi.'&tianshu='.$tianshu.'&jiage='.$jiage.'">'.$this->chufadi.'</a><u>切换：<br />'.$all_chufadi.'</u>';
+		if(preg_match('/chufachengshi/i', $listitem)) $plist = $all_chufadi;
 		//$chufachengshi = $this->dsql->GetOne("SELECT * FROM `cty_addon7` WHERE chufachengshi='".$this->chufadi."'");
 		return $plist;
 	}
