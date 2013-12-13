@@ -83,3 +83,28 @@ h1,h2,h3{ font-size:12px; font-weight:normal;}
 .login_tanchu span dl dd a:hover	{ background-position:0 -755px;}
 .login_tanchu span dl dt a			{ width:246px; height:35px; background-position:0 -790px; overflow:hidden; float:left;}
 .login_tanchu span dl dt a:hover	{ background-position:0 -825px;}
+
+#cus_ser{
+        z-index:9999;
+        width:32px; 
+		height:170px;
+        position:fixed; 
+		left:0px; 
+		color:#FFF; 
+		top:200px; 
+		overflow:hidden;
+}
+.cus_ser_{width:165px; height:240px; background:#1463da;overflow:hidden;}
+#cus_ser .title{ width:32px; height:112px; float:left; background:url(../images/zxzx.jpg); cursor:pointer;
+}
+#cus_ser  ul{ padding:10px 0px 0px 2px; width:130px; float:left;}
+#cus_ser  ul li#zqq{ height:30px; line-height:30px; display:block; font-size:12px; padding-left:24px; background:url(../images/zqq.png) no-repeat 2px 7px;}
+#cus_ser  ul li#zphone{ height:30px; line-height:30px; display:block; font-size:12px; padding-left:24px; background:url(../images/zphone.png) no-repeat 2px 8px;}
+#cus_ser  ul li#wb{ height:30px; line-height:30px; display:block; font-size:12px; padding-left: 12px;}
+#cus_ser  ul li a{ color:#FFF;}
+#cus_ser  ul li a:hover{ text-decoration:underline;}
+#cus_ser .close{ display:inline-block; width:16px; height:16px; overflow:hidden; cursor:pointer; margin-right:4px; float:right;}
+#cus_ser ul, ol{
+	list-style: none;
+	margin:0 0 9px 0;
+}

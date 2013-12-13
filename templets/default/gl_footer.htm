@@ -1,6 +1,5 @@
 ﻿<div id="comm100_FloatImageButton"><div><div id="comm100_LiveChatDiv"></div><a href="http://www.comm100.com/livechat/" onclick="comm100_Chat();return false;" target="_blank" title= "Live Chat Help"><img id="comm100_ButtonImage" src="http://chatserver.comm100.cn/BBS.aspx?siteId=80030641&amp;planId=2104&amp;partnerId=-1" style="border:0px" alt="Live Chat by comm100" /></a><script src="http://chatserver.comm100.cn/js/LiveChat.js?siteId=80030641&amp;planId=2104&amp;partnerId=-1" type="text/javascript"></script></div></div>
-<div class="footer_box">
-  <!--底部-->
+<div class="footer_box"><!--底部-->
   <div class="footer">
     <div style=" display:none">
       <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cdiv id='cnzz_stat_icon_1000015833'%3E%3C/div%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000015833' type='text/javascript'%3E%3C/script%3E"));</script>
@@ -8,6 +7,39 @@
     <i><a href="/gulian/wzxg/2013/0911/516.html" target="_blank">古莲荣誉</a> | <a href="/gulian/wzxg/2013/0911/517.html" target="_blank">公司简介</a> | <a href="/gulian/wzxg/2013/0911/518.html" target="_blank">诚聘英才</a> | <a href="/gulian/wzxg/2013/0911/519.html" target="_blank">合作品牌</a> | <a href="/gulian/wzxg/2013/0911/522.html" target="_blank">营业网点</a> | <a href="/gulian/wzxg/2013/0911/523.html" target="_blank">联系我们</a></i> <em>Copyright &copy; 2005-2011 gulianlvyou.com　All rights reserved   古莲旅游 版权所有<br />
     旅行社业务经营许可证编号：辽B2-20120096   大连ICP证031062号</em> </div>
 </div>
+<div id="cus_ser">
+  <div class="cus_ser_">
+    <div class="title"></div>
+    <ul>
+      <li id="zqq"><a href="http://wpa.qq.com/msgrd?V=1&Uin=2736129471&Site=ioshenmue&Menu=yes" target="_blank">客服-姜美</a></li>
+      <li id="zqq"><a href="http://wpa.qq.com/msgrd?V=1&Uin=1045288043&Site=ioshenmue&Menu=yes" target="_blank">客服-吴爽</a></li>
+      <li id="zqq"><a href="http://wpa.qq.com/msgrd?V=1&Uin=2092562580&Site=ioshenmue&Menu=yes" target="_blank">客服-周旗</a></li>
+      <li id="zqq"><a href="http://wpa.qq.com/msgrd?V=1&Uin=1537071149&Site=ioshenmue&Menu=yes" target="_blank">客服-康蕊</a></li>
+      <li id="zqq"><a href="http://wpa.qq.com/msgrd?V=1&Uin=575864990&Site=ioshenmue&Menu=yes" target="_blank">客服-阎蕊</a></li>
+    </ul>
+  </div>
+  <span class="close"><img src="/demand/static/images/icon_close.png" /></span> </div>
+<script>
+$("#cus_ser .close").click(function() {
+    $("#cus_ser").css({
+        display: 'none'
+    });
+})
+$("#cus_ser").mouseover(function() {
+    $(this).stop();
+    $(this).animate({
+        width: 140
+    },
+    400, 'swing');
+}) 
+$("#cus_ser").mouseout(function() {
+    $("#cus_ser").stop();
+    $("#cus_ser").animate({
+        width: 32
+    },
+    400, 'swing');
+})
+</script>
 <script>
   if( /iphone|android|ipad|windows phone/i.test( navigator.userAgent) || /nokia/i.test( navigator.userAgent) == true){
 	 $("#comm100_ButtonImage").hide();
