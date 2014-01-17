@@ -168,24 +168,26 @@ class SearchView
 			foreach($mudidi_row as $w){
 				$temp_m = explode(',',$w);
 				foreach($temp_m as $m){
-					if($mudidi_n == NULL){
-						$mudidi_n[0]['count'] = 1;
-						$mudidi_n[0]['mudidi'] = $m;
-						continue;
-					}
-					$i = 0;
-					$mark = 0;
-					foreach($mudidi_n as $vol){
-						if($m == $vol['mudidi']){
-							$mudidi_n[$i]['count'] += 1;
-							$mark = 1;
+					if($m != ''){
+						if($mudidi_n == NULL){
+							$mudidi_n[0]['count'] = 1;
+							$mudidi_n[0]['mudidi'] = $m;
+							continue;
 						}
-						$i++;
-					}
-					if($mark == 0){
-						$j = count($mudidi_n);
-						$mudidi_n[$j]['count'] = 1;
-						$mudidi_n[$j]['mudidi'] = $m;
+						$i = 0;
+						$mark = 0;
+						foreach($mudidi_n as $vol){
+							if($m == $vol['mudidi']){
+								$mudidi_n[$i]['count'] += 1;
+								$mark = 1;
+							}
+							$i++;
+						}
+						if($mark == 0){
+							$j = count($mudidi_n);
+							$mudidi_n[$j]['count'] = 1;
+							$mudidi_n[$j]['mudidi'] = $m;
+						}
 					}
 				}
 			}
