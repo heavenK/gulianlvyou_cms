@@ -210,22 +210,30 @@
 /*右边部分右半部*/
 .index_right_right	{ width:190px; overflow:hidden; float:right;}
 
-/*古莲公告&旅游资讯*/
-.index_lyzx				{ width:188px; height:206px; margin:10px 0 0 0; display:inline; border:1px solid #e1e1e1; overflow:hidden; float:left;}
-.index_lyzx .tabContainer			{ width:188px; height:28px; background:url(../images/index_lyzx_bav_bg.png) repeat-x; border-bottom:1px solid #e1e1e1; overflow:hidden; float:left;}
-.index_lyzx .tabContainer ul		{ width:152px; height:28px; margin:0 0 0 -1px; display:inline; overflow:hidden; float:left;}
-.index_lyzx .tabContainer li		{ float:left;}
-.index_lyzx .tabContainer li a		{ width:75px; height:28px; border-left:1px solid #e1e1e1; text-align:center; font-weight:normal; line-height:29px; overflow:hidden; float:left;}
-.index_lyzx .tabContainer li.currentBtn a	{ background:#FFF;}
-.index_lyzx .tabContainer em		{ height:28px; padding:0 13px 0 0; line-height:29px; overflow:hidden; float:right;}
-.index_lyzx .tabContainer em a		{ color:#999999;}
-.index_lyzx .tabContainer em a:hover{ color:#ff6633;}
-.index_lyzx .tabBody				{ width:188px; height:173px; position:relative; overflow:hidden;}
-.index_lyzx .tabBody ul				{ padding:4px 0 0 10px; position:absolute;}
-.index_lyzx .tabBody ul li			{ width:188px; overflow:hidden; float:left;}
-.index_lyzx .tabBody ul li ol li	{ width:163px; height:24px; padding:0 0 0 8px; background:url(../images/index_right_right_point.png) no-repeat 0 11px; line-height:24px; overflow:hidden; float:left;}
-.index_lyzx .tabBody ul li ol li a	{ color:#333333;}
-.index_lyzx .tabBody ul li ol li a:hover	{ color:#ff6633;}
+/*古莲公告*/
+.index_glgg			{ width:188px; height:261px; margin:10px 0 0 0; display:inline; border:1px solid #e1e1e1; overflow:hidden; float:left;}
+.index_glgg dl						{ width:188px; height:28px; background:url(../images/index_right_right_bav_bg.png) repeat-x; border-bottom:1px solid #e1e1e1; line-height:29px; overflow:hidden; float:left;}
+.index_glgg dl dd					{ height:28px; padding:0 0 0 10px; overflow:hidden; float:left;}
+.index_glgg dl dt					{ height:28px; padding:0 13px 0 0; overflow:hidden; float:right;}
+.index_glgg dl dt a					{ color:#999999;}
+.index_glgg dl dt a:hover			{ color:#ff6633;}
+.index_glgg ol						{ width:167px; height:224px; margin:7px 0 0 10px; display:inline; overflow:hidden; float:left;}
+.index_glgg ol li					{ width:160px; height:24px; line-height:24px; padding:0 0 0 7px; background:url(../images/index_right_right_point.png) no-repeat 0 12px; overflow:hidden; float:left;}
+.index_glgg ol li a					{ color:#333333;}
+.index_glgg ol li a:hover			{ color:#ff6633;}
+
+/*旅游资讯*/
+.index_lyzx			{ width:188px; height:261px; margin:10px 0 0 0; display:inline; border:1px solid #e1e1e1; overflow:hidden; float:left;}
+.index_lyzx dl						{ width:188px; height:28px; background:url(../images/index_right_right_bav_bg.png) repeat-x; border-bottom:1px solid #e1e1e1; line-height:29px; overflow:hidden; float:left;}
+.index_lyzx dl dd					{ height:28px; padding:0 0 0 10px; overflow:hidden; float:left;}
+.index_lyzx dl dt					{ height:28px; padding:0 13px 0 0; overflow:hidden; float:right;}
+.index_lyzx dl dt a					{ color:#999999;}
+.index_lyzx dl dt a:hover			{ color:#ff6633;}
+.index_lyzx ol						{ width:167px; height:224px; margin:7px 0 0 10px; display:inline; overflow:hidden; float:left;}
+.index_lyzx ol li					{ width: 163px; background: url("../images/index_right_right_point.png") no-repeat scroll 0 11px; float: left; height: 24px; line-height: 24px;
+    overflow: hidden;  padding: 0 0 0 8px;}
+.index_lyzx ol li a					{ color:#333333;}
+.index_lyzx ol li a:hover			{ color:#ff6633;}
 
 /*出行小贴士*/
 .index_cxxts			{ width:188px; height:196px; margin:10px 0 0 0; display:inline; border:1px solid #e1e1e1; overflow:hidden; float:left;}

@@ -209,7 +209,7 @@ $(document).ready(function(){
                 </div>
             </div>
             <div class="index_rmyj"><!--热门游记-->
-            	<em></em>
+            	<em><a href="http://www.gulianlvyou.com/gulian/dryj/" target="_blank" style="font-size:12px; color:#000; margin:10px 10px 0 0; display:inline; float:right;">>></a></em>
                 <i>
                 	{dede:arclist typeid=35 row=1 flag=h titlelen=150}
                 	<p><a href="[field:arcurl/]" target="_blank" title="[field:title/]"><img src="[field:litpic/]" width="230" height="101" /></a></p>
@@ -261,7 +261,7 @@ $(document).ready(function(){
                         {/dede:arclist}
                     </div>
                 </div>
-                <em><a href="/gulian/gg" target="_blank">更多&gt;&gt;</a></em>
+                <em><a href="/gulian/gg" target="_blank">更多>></a></em>
             </div>
             <div class="index_right_left"><!--右边部分左半部-->
             	<div class="index_jxzdy"><!--精选主打游-->
@@ -402,43 +402,39 @@ $(document).ready(function(){
                 </div>
             </div>
             <div class="index_right_right"><!--右边部分右半部-->
-            	<div class="index_lyzx"><!--古莲公告&旅游资讯-->
-                    <div class="tabContainer">
-                        <ul class="tabHead">
-                            <li class="currentBtn"><a href="javascript:;">古莲公告</a></li>
-                            <li><a href="javascript:;">旅游资讯</a></li>
-                        </ul>
-                        <em><a href="/demand/ggzx" target="_blank">&gt;&gt;</a></em>
-                    </div>
-                    <div class="tabBody">
-                        <ul>
-                            <li>
-                            	<ol>
-                                	{dede:arclist typeid=20 row=7 flag=h titlelen=150}
-                                	<li><a href="[field:arcurl/]" target="_blank">[field:title/]</a></li>
-                                    {/dede:arclist}
-                                </ol>
-                            </li>
-                            <li>
-                            	<ol>
-                                	{dede:arclist typeid=20 row=7 flag=a titlelen=150}
-                                	<li><a href="[field:arcurl/]" target="_blank">[field:title/]</a></li>
-                                    {/dede:arclist}
-                                </ol>
-                            </li>
-                        </ul>
-                    </div>
+            	<div class="index_glgg"><!--古莲公告-->
+                    <dl>
+                    	<dd>古莲公告</dd>
+                        <dt><a href="/gulian/guliangonggao/" target="_blank">>></a></dt>
+                    </dl>
+                    <ol>{dede:arclist typeid=123 row=9 titlelen=150}
+                        <li><a href="[field:arcurl/]" target="_blank" title="[field:title/]">[field:title/]</a></li>
+                        {/dede:arclist}
+                    </ol>
                 </div>
+                
+                <div class="index_lyzx"><!--旅游资讯-->
+                    <dl>
+                    	<dd>旅游资讯</dd>
+                        <dt><a href="/gulian/lvyouzixun/" target="_blank">>></a></dt>
+                    </dl>
+                    <ol>
+                      {dede:arclist typeid=124 row=9 titlelen=150}
+                      <li><a href="[field:arcurl/]" target="_blank" title="[field:title/]">[field:title/]</a></li>
+                      {/dede:arclist}
+                    </ol>
+                </div>
+                
                 <div class="index_cxxts"><!--出行小贴士-->
                 	<dl>
                     	<dd>出行小贴士</dd>
-                        <dt><a href="/gulian/cxxts" target="_blank">&gt;&gt;</a></dt>
+                        <dt><a href="/gulian/cxxts" target="_blank">>></a></dt>
                     </dl>
                     <ul>
-                    	<li>{dede:arclist typeid=21 limit=0,1 flag=h titlelen=10}<a href="[field:arcurl/]" target="_blank">[field:title/]</a>{/dede:arclist}&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;{dede:arclist typeid=21 limit=1,1 flag=h titlelen=10}<a href="[field:arcurl/]" target="_blank">[field:title/]</a>{/dede:arclist}</li>
-                        <li>{dede:arclist typeid=21 limit=2,1 flag=h titlelen=10}<a href="[field:arcurl/]" target="_blank">[field:title/]</a>{/dede:arclist}&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;{dede:arclist typeid=21 limit=3,1 flag=h titlelen=10}<a href="[field:arcurl/]" target="_blank">[field:title/]</a>{/dede:arclist}</li>
-                        <li>{dede:arclist typeid=21 limit=4,1 flag=h titlelen=10}<a href="[field:arcurl/]" target="_blank">[field:title/]</a>{/dede:arclist}&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;{dede:arclist typeid=21 limit=5,1 flag=h titlelen=10}<a href="[field:arcurl/]" target="_blank">[field:title/]</a>{/dede:arclist}</li>
-                        <li>{dede:arclist typeid=21 limit=6,1 flag=h titlelen=10}<a href="[field:arcurl/]" target="_blank">[field:title/]</a>{/dede:arclist}&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;{dede:arclist typeid=21 limit=7,1 flag=h titlelen=10}<a href="[field:arcurl/]" target="_blank">[field:title/]</a>{/dede:arclist}</li>
+                    	<li>{dede:arclist typeid=21 limit=0,1 flag=h titlelen=10}<a href="[field:arcurl/]" target="_blank">[field:title/]</a>{/dede:arclist}  |   {dede:arclist typeid=21 limit=1,1 flag=h titlelen=10}<a href="[field:arcurl/]" target="_blank">[field:title/]</a>{/dede:arclist}</li>
+                        <li>{dede:arclist typeid=21 limit=2,1 flag=h titlelen=10}<a href="[field:arcurl/]" target="_blank">[field:title/]</a>{/dede:arclist}  |   {dede:arclist typeid=21 limit=3,1 flag=h titlelen=10}<a href="[field:arcurl/]" target="_blank">[field:title/]</a>{/dede:arclist}</li>
+                        <li>{dede:arclist typeid=21 limit=4,1 flag=h titlelen=10}<a href="[field:arcurl/]" target="_blank">[field:title/]</a>{/dede:arclist}  |   {dede:arclist typeid=21 limit=5,1 flag=h titlelen=10}<a href="[field:arcurl/]" target="_blank">[field:title/]</a>{/dede:arclist}</li>
+                        <li>{dede:arclist typeid=21 limit=6,1 flag=h titlelen=10}<a href="[field:arcurl/]" target="_blank">[field:title/]</a>{/dede:arclist}  |   {dede:arclist typeid=21 limit=7,1 flag=h titlelen=10}<a href="[field:arcurl/]" target="_blank">[field:title/]</a>{/dede:arclist}</li>
                     </ul>
                     <ol>
                     	{dede:arclist typeid=21 row=3 noflag=h titlelen=150}
@@ -449,7 +445,7 @@ $(document).ready(function(){
                 <div class="index_rthd"><!--热推活动-->
                 	<dl>
                     	<dd>热推活动</dd>
-                        <dt><a href="/demand/rthd" target="_blank">&gt;&gt;</a></dt>
+                        <dt><a href="/demand/rthd" target="_blank">>></a></dt>
                     </dl>
                     <ul>
                     	{dede:arclist typeid=22 row=6 titlelen=150}
@@ -463,19 +459,10 @@ $(document).ready(function(){
                 <div class="index_right_poster"><!--首页右侧广告02-->
                 	{dede:myad name='index_right_02'/}
                 </div>
-                <div class="index_wbgl"><!--微博攻略-->
-                	<dl>
-                    	<dd>微博攻略</dd>
-                    </dl>
-                    <div style=" width:188px; height:288px; overflow:hidden; float:left;">
-<iframe width="188" height="288"  frameborder="0" scrolling="no" src="http://widget.weibo.com/livestream/listlive.php?language=zh_cn&width=188&height=288&uid=1798857095&skin=1&refer=0&appkey=&pic=0&titlebar=0&border=0&publish=0&atalk=1&recomm=0&at=0&atopic=%E7%B3%97%E4%BA%8B%E5%BE%AE%E8%AE%B0%E5%BD%95&dpc=1"></iframe>                    
-                    </div>
-                    
-                </div>
                 <div class="index_ykgy"><!--游客感言-->
                 	<dl>
                     	<dd>游客感言</dd>
-                        <dt><a href="/demand/ykgy" target="_blank">&gt;&gt;</a></dt>
+                        <dt><a href="/demand/ykgy" target="_blank">>></a></dt>
                     </dl>
                     <ul>
                     	{dede:arclist typeid=24 row=6 titlelen=150}
