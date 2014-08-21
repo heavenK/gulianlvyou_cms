@@ -361,7 +361,8 @@ class OrderAction extends CommonMyAction{
 			exit;
 			//redirect(ORDER_INDEX);
 		}
-		
+		$Dingdan = D("Dingdan");
+		$order = $Dingdan->where("`orderID` = '$orderID'")->find();
 		//检查产品
 		if($order['type'] == '签证')
 			$chanpin = A("MethodService")->_checkchanpin_qianzheng($order['serverdataID'],1);
