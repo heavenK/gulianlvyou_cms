@@ -1,6 +1,6 @@
 <?php
 class DISCUZConfigModel extends RelationModel {
-	protected $connection="mysql://root:@localhost:3306/gulianbbs";
+	protected $connection="mysql://root:@127.0.0.1:3306/gulianbbs";
 //	protected $connection = array(
 //        'DB_TYPE'=>'mysql',
 //        'DB_HOST'=>'localhost',
