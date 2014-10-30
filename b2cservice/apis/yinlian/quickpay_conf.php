@@ -16,7 +16,7 @@ class quickpay_conf
     static $timezone        = "Asia/Shanghai"; //时区
     static $sign_method     = "md5"; //摘要算法，目前仅支持md5 (2011-08-22)
 
-    static $security_key    = "88888888"; //商户密钥
+    static $security_key    = "HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4 HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4 HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4 HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4HVFOERTUEOITU409R84UIOTERRR4"; //商户密钥
 
     //支付请求预定义字段
     static $pay_params  = array(
@@ -25,7 +25,7 @@ class quickpay_conf
         'merId'         => '105550149170027', //商户填写
         'acqCode'       => '',  //收单机构填写
         'merCode'       => '',  //收单机构填写
-        'merAbbr'       => '商户名称',
+        'merAbbr'       => '古莲旅游网',
     );
 
     //* 测试环境
@@ -35,16 +35,16 @@ class quickpay_conf
     //*/
 
     /* 预上线环境*/
-    static $front_pay_url   = "https://www.epay.lxdns.com/UpopWeb/api/Pay.action";
+    /*static $front_pay_url   = "https://www.epay.lxdns.com/UpopWeb/api/Pay.action";
     static $back_pay_url    = "https://www.epay.lxdns.com/UpopWeb/api/BSPay.action";
-    static $query_url       = "https://www.epay.lxdns.com/UpopWeb/api/Query.action";
+    static $query_url       = "https://www.epay.lxdns.com/UpopWeb/api/Query.action";*/
     //
 
-    /* 线上环境
+    /* 线上环境*/
     static $front_pay_url   = "https://unionpaysecure.com/api/Pay.action";
     static $back_pay_url    = "https://besvr.unionpaysecure.com/api/BSPay.action";
     static $query_url       = "https://query.unionpaysecure.com/api/Query.action";
-    //*/
+    //
     
     const FRONT_PAY = 1;
     const BACK_PAY  = 2;
