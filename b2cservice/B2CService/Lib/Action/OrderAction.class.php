@@ -406,7 +406,7 @@ class OrderAction extends CommonMyAction{
 		$param['transType']             = quickpay_conf::CONSUME;  //交易类型，CONSUME or PRE_AUTH
 		
 		$param['orderAmount']           = $order['price'];;        //交易金额
-		$param['orderNumber']           = $order['OrderNo']; //订单号，必须唯一
+		$param['orderNumber']           = $orderID; //订单号，必须唯一
 		$param['orderTime']             = date('YmdHis');   //交易时间, YYYYmmhhddHHMMSS
 		$param['orderCurrency']         = quickpay_conf::CURRENCY_CNY;  //交易币种，CURRENCY_CNY=>人民币
 		
@@ -427,8 +427,7 @@ class OrderAction extends CommonMyAction{
 		//
 		
 		//其余可填空的参数可以不填写
-		dump($param);
-		exit;
+
 		$pay_service = new quickpay_service($param, quickpay_conf::FRONT_PAY);
 		$html = $pay_service->create_html();
 		
