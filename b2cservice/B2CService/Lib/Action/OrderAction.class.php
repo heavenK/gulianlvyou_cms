@@ -354,13 +354,13 @@ class OrderAction extends CommonMyAction{
 	function MerchantPaymant(){
 		$orderID = $_REQUEST['orderID'];
 		//支付前进行订单查询
-		if(A("NHOrder")->_query_order_byorderID($orderID,0)){
+		/*if(A("NHOrder")->_query_order_byorderID($orderID,0)){
 			$this->assign("msg_title",'订单已支付！');
 			$this->assign("msg_content",'');
 			$this->display('xinxi_tishi');
 			exit;
 			//redirect(ORDER_INDEX);
-		}
+		}*/
 		$Dingdan = D("Dingdan");
 		$order = $Dingdan->where("`orderID` = '$orderID'")->find();
 		//检查产品
@@ -376,7 +376,67 @@ class OrderAction extends CommonMyAction{
 			//redirect(ORDER_INDEX);
 		}
 		
-		require_once(B2CSERVICE_PATH."/apis/nh/b2c01/api.php");
+		require_once(B2CSERVICE_PATH."/apis/yinlian/quickpay_service.php");
+		//检查订单
+		$info = A("MethodService")->_check_dingdan_valid($orderID);
+		if(false === $info){
+			$_REQUEST['msg'] = '订单已失效或产品已下架';
+			$_REQUEST['msg'] = iconv("UTF-8","GBK",$_REQUEST['msg']);
+//			$this->ajaxReturn($_REQUEST, '操作失败123！', 0);
+			print("<br>Failed!!!"."</br>");
+			print("<br>Error Message:".$_REQUEST['msg']."</br>");
+			print("<br>Point0</br>");
+			exit;
+		}
+		else{
+			$order = $info['order'];
+			$chanpin = $info['chanpin'];
+			if($order['status'] != '等待支付'){
+				$_REQUEST['msg'] = '此订单不允许再支付';
+				$_REQUEST['msg'] = iconv("UTF-8","GBK",$_REQUEST['msg']);
+//				$this->ajaxReturn($_REQUEST, '操作失败234！', 0);
+				print("<br>Failed!!!"."</br>");
+				print("<br>Error Message:".$_REQUEST['msg']."</br>");
+				print("<br>Point1</br>");
+				exit;
+			}
+		}
+		
+		
+		$param['transType']             = quickpay_conf::CONSUME;  //交易类型，CONSUME or PRE_AUTH
+		
+		$param['orderAmount']           = $order['price'];;        //交易金额
+		$param['orderNumber']           = $order['OrderNo']; //订单号，必须唯一
+		$param['orderTime']             = date('YmdHis');   //交易时间, YYYYmmhhddHHMMSS
+		$param['orderCurrency']         = quickpay_conf::CURRENCY_CNY;  //交易币种，CURRENCY_CNY=>人民币
+		
+		$param['customerIp']            = $_SERVER['REMOTE_ADDR'];  //用户IP
+		$param['frontEndUrl']           = NHORDER_INDEX;    //前台回调URL
+		$param['backEndUrl']            = NHORDER_INDEX;    //后台回调URL
+		
+		/* 可填空字段*/
+		$param['commodityUrl']          = ORDER_INDEX.'Order/book3/orderID/'.$orderID;  //商品URL
+		
+		if($order['type'] != '签证')
+			$param['commodityName'] = "线路：".$order['title_copy']."/团号：".$order['tuanhao']."/联系人：".$order['lxr_name'];
+		else
+			$param['commodityName'] = "签证：".$order['title_copy']."/联系人：".$order['lxr_name'];
+
+		//$param['commodityUnitPrice']    = 11000;        //商品单价
+		//$param['commodityQuantity']     = 1;            //商品数量
+		//
+		
+		//其余可填空的参数可以不填写
+		
+		$pay_service = new quickpay_service($param, quickpay_conf::FRONT_PAY);
+		$html = $pay_service->create_html();
+		
+		header("Content-Type: text/html; charset=" . quickpay_conf::$pay_params['charset']);
+		echo $html; //自动post表单
+		
+		
+		
+		/*require_once(B2CSERVICE_PATH."/apis/nh/b2c01/api.php");
 		//$add = "http://www.dlgulian.com:8080/axis/services/B2CWarpper?wsdl";
 		$add = "http://www.gulianlvyou.com:8080/axis/services/B2CWarpper?wsdl";
 		//检查订单
@@ -468,7 +528,7 @@ class OrderAction extends CommonMyAction{
 		A("MethodService")->_change_order_tempstatus($orderID,'开始支付');
 		$_REQUEST['PaymentURL'] = $PaymentURL;
 //		$this->ajaxReturn($_REQUEST, '保存成功！', 1);
-		echo '<script language=javascript>var redirectURL="'.$PaymentURL.'";if(redirectURL!=null&&redirectURL!=""){location.href="'.$PaymentURL.'";}</script> ';
+		echo '<script language=javascript>var redirectURL="'.$PaymentURL.'";if(redirectURL!=null&&redirectURL!=""){location.href="'.$PaymentURL.'";}</script> ';*/
 		
 	}
 	
