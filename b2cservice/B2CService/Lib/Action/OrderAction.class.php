@@ -427,8 +427,7 @@ class OrderAction extends CommonMyAction{
 		//
 		
 		//其余可填空的参数可以不填写
-		dump($param);
-		exit;
+		
 		$pay_service = new quickpay_service($param, quickpay_conf::FRONT_PAY);
 		$html = $pay_service->create_html();
 		
