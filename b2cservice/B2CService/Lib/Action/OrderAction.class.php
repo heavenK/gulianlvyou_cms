@@ -411,8 +411,8 @@ class OrderAction extends CommonMyAction{
 		$param['orderCurrency']         = quickpay_conf::CURRENCY_CNY;  //交易币种，CURRENCY_CNY=>人民币
 		
 		$param['customerIp']            = $_SERVER['REMOTE_ADDR'];  //用户IP
-		$param['frontEndUrl']           = NHORDER_INDEX;    //前台回调URL
-		$param['backEndUrl']            = NHORDER_INDEX;    //后台回调URL
+		$param['frontEndUrl']           = B2CSERVICE_INDEX.'Order/notify';    //前台回调URL
+		$param['backEndUrl']            = B2CSERVICE_INDEX.'Order/backnotify';    //后台回调URL
 		
 		/* 可填空字段*/
 		$param['commodityUrl']          = ORDER_INDEX.'Order/book3/orderID/'.$orderID;  //商品URL
@@ -532,6 +532,75 @@ class OrderAction extends CommonMyAction{
 		
 	}
 	
+	function notify(){
+		require_once(B2CSERVICE_PATH."/apis/yinlian/quickpay_service.php");
+		
+		try {
+			$response = new quickpay_service($_POST, quickpay_conf::RESPONSE);
+			if ($response->get('respCode') != quickpay_service::RESP_SUCCESS) {
+				$err = sprintf("Error: %d => %s", $response->get('respCode'), $response->get('respMsg'));
+				throw new Exception($err);
+			}
+			$arr_ret = $response->get_args(); 
+			//告诉用户交易完成
+			
+			$Dingdan = D("Dingdan");
+			$order = A("MethodService")->_getdingdan($arr_ret['orderNumber']);
+			$order['status'] = '已支付';
+			if(false == $Dingdan->save($order)){
+				$msg = iconv("UTF-8","GBK",'<br>已支付成功!!!但订单返回错误！！！</br>');
+			}
+			else
+				$msg = iconv("UTF-8","GBK",'<br>已支付成功!!!</br>');
+			//推送到erp和center
+			$order_s = FileGetContents(SERVER_INDEX."Server/dopostOrder/orderID/".$order['orderID']);
+			//$order = FileGetContents(CLIENT_INDEX."Client/dopostOrder/orderID/".$order['orderID']);
+			print($msg);
+			
+			echo "订单 {$arr_ret['orderNumber']} 支付成功";
+		
+		}
+		catch(Exception $exp) {
+			$str .= var_export($exp, true);
+			die("error happend: " . $str);
+		}
+	}
+	
+	
+	function backnotify(){
+		require_once(B2CSERVICE_PATH."/apis/yinlian/quickpay_service.php");
+		
+		try {
+			$response = new quickpay_service($_POST, quickpay_conf::RESPONSE);
+			if ($response->get('respCode') != quickpay_service::RESP_SUCCESS) {
+				$err = sprintf("Error: %d => %s", $response->get('respCode'), $response->get('respMsg'));
+				throw new Exception($err);
+			}
+		
+			$arr_ret = $response->get_args();
+		
+			//更新数据库，将交易状态设置为已付款
+			$Dingdan = D("Dingdan");
+			$order = A("MethodService")->_getdingdan($arr_ret['orderNumber']);
+			$order['status'] = '已支付';
+			if(false == $Dingdan->save($order)){
+				$msg = iconv("UTF-8","GBK",'<br>已支付成功!!!但订单返回错误！！！</br>');
+			}
+			else
+				$msg = iconv("UTF-8","GBK",'<br>已支付成功!!!</br>');
+			//推送到erp和center
+			$order_s = FileGetContents(SERVER_INDEX."Server/dopostOrder/orderID/".$order['orderID']);
+			//$order = FileGetContents(CLIENT_INDEX."Client/dopostOrder/orderID/".$order['orderID']);
+		
+			//以下仅用于测试
+			file_put_contents('notify.txt', var_export($arr_ret, true));
+		
+		}
+		catch(Exception $exp) {
+			//后台通知出错
+			file_put_contents('notify.txt', var_export($exp, true));
+		}
+	}
 	
 	//广告
 	function _getadstips(){
